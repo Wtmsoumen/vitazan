@@ -8,7 +8,7 @@ const tabs = [
   { label: "Notifications", icon: Bell },
   { label: "Email", icon: Mail },
   { label: "Security", icon: Shield },
-  { label: "Appearance", icon: Palette },
+  // { label: "Appearance", icon: Palette },
 ];
 
 export default function SettingsPage() {
@@ -32,8 +32,8 @@ export default function SettingsPage() {
                   key={tab.label}
                   onClick={() => setActiveTab(tab.label)}
                   className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${activeTab === tab.label
-                      ? "bg-teal/10 text-teal"
-                      : "text-gray-600 hover:bg-gray-100"
+                    ? "bg-teal/10 text-teal"
+                    : "text-gray-600 hover:bg-gray-100"
                     }`}
                 >
                   <Icon size={18} />
@@ -233,7 +233,7 @@ export default function SettingsPage() {
             </div>
           )}
 
-          {activeTab === "Appearance" && (
+          {/* {activeTab === "Appearance" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
               <h3 className="text-lg font-semibold text-gray-900">Brand Appearance</h3>
               <p className="mt-1 text-sm text-gray-500">Customize your store&apos;s look and feel</p>
@@ -281,7 +281,7 @@ export default function SettingsPage() {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

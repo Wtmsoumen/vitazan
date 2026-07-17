@@ -319,7 +319,7 @@ export default function Home() {
         <div className="flex items-center justify-end gap-16">
           <div className="w-[90%] flex justify-center items-center gap-16 border border-solid border-[#00485D] py-15.75 rounded-3xl pl-15.75">
             <Image
-              src="/images/syrup1.png"
+              src="/images/syrup2.png"
               alt="Wellness"
               width={1920}
               height={1080}

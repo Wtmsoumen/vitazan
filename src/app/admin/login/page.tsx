@@ -122,13 +122,13 @@ export default function LoginPage() {
             </Link>
           </form>
 
-          <div className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4">
+          {/* <div className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4">
             <p className="text-xs font-medium text-gray-500 mb-2">Demo Credentials</p>
             <div className="space-y-1 text-xs text-gray-400">
               <p>Email: <span className="font-mono text-gray-600">admin@vitazan.com</span></p>
               <p>Password: <span className="font-mono text-gray-600">admin123</span></p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
