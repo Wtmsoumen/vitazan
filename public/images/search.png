@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="cart">
+<g id="Ellipse 12">
+<circle cx="26" cy="26" r="26" fill="var(--fill-0, #F8FAFB)"/>
+<circle cx="26" cy="26" r="25.5" stroke="var(--stroke-0, #00485D)" stroke-opacity="0.04"/>
+</g>
+<path id="Vector" d="M31.3204 30.8612L35.3204 34.8612M17.3204 24.8612C17.3204 26.9829 18.1633 29.0177 19.6636 30.518C21.1639 32.0183 23.1987 32.8612 25.3204 32.8612C27.4422 32.8612 29.477 32.0183 30.9773 30.518C32.4776 29.0177 33.3204 26.9829 33.3204 24.8612C33.3204 22.7394 32.4776 20.7046 30.9773 19.2043C29.477 17.704 27.4422 16.8612 25.3204 16.8612C23.1987 16.8612 21.1639 17.704 19.6636 19.2043C18.1633 20.7046 17.3204 22.7394 17.3204 24.8612Z" stroke="var(--stroke-0, #00485D)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
