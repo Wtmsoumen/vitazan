@@ -61,7 +61,7 @@ export default function Header() {
 
                 {/* Main nav */}
                 <nav className="px-4 sm:px-8 md:px-10 py-3 md:py-4 z-10 bg-white w-full">
-                    <div className="mx-auto flex items-center justify-between max-w-[1600px]">
+                    <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 sm:px-8 md:px-10">
                         {/* Logo */}
                         <motion.div className="flex-shrink-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
                             <Link href="/">
@@ -71,7 +71,7 @@ export default function Header() {
 
                         {/* Desktop nav links */}
                         <motion.div
-                            className="hidden lg:flex items-center gap-6 xl:gap-10"
+                            className="hidden lg:flex items-center gap-6 xl:gap-14"
                             initial="hidden"
                             animate="visible"
                             variants={{
@@ -99,7 +99,7 @@ export default function Header() {
                         {/* Icon buttons + hamburger */}
                         <div className="flex items-center gap-1 sm:gap-2">
                             <motion.div
-                                className="hidden sm:flex items-center gap-1 sm:gap-2"
+                                className="hidden sm:flex items-center gap-1 sm:gap-4₹"
                                 initial="hidden"
                                 animate="visible"
                                 variants={{

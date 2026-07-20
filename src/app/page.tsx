@@ -77,7 +77,7 @@ export default function Home() {
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-          className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[645px] relative"
+          className="w-full h-[320px] sm:h-[400px] md:h-[500px] lg:h-[580px] xl:h-[705px] relative"
         >
           <Image
             src="/images/banner.png"
@@ -87,50 +87,75 @@ export default function Home() {
             className="w-full h-full object-cover"
             priority
           />
-          <div className="absolute top-[8%] sm:top-[10%] md:top-[12%] lg:top-[15%] left-[4%] sm:left-[5%] z-[1] max-w-[90%] sm:max-w-[70%] md:max-w-[55%] lg:max-w-[45%]">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <p className="font-display italic text-[20px] sm:text-[24px] md:text-[28px] lg:text-[34px] text-[#003d4a] font-medium">Your Trusted</p>
-              <div className="hidden sm:flex items-center gap-2">
-                <div className="w-8 md:w-14 border-b border-[#578654]" />
-                <Image src={leafIcon} alt="" width={40} height={40} className="w-5 md:w-7 h-5 md:h-7" />
-                <div className="w-8 md:w-14 border-b border-[#578654]" />
-              </div>
-            </div>
-            <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] text-[#003d4a] mt-1 font-medium">
-              Vitality Store for
-            </h1>
-            <div className="relative">
-              <h1 className="font-display italic text-[32px] sm:text-[42px] md:text-[56px] lg:text-[72px] leading-[1.1] text-pink font-medium">
-                Wellness Unleashed
-              </h1>
-              <Image src={bannerTextLine} alt="" width={500} height={20} className="w-[90%] h-auto mt-[-2px] sm:mt-[-4px]" />
-            </div>
-            <p className="text-[14px] sm:text-[16px] md:text-[18px] leading-[20px] sm:leading-[24px] md:leading-[28px] text-[#333] mt-2 sm:mt-4 font-medium">
-              Premium natural products crafted to support<br className="hidden sm:block" /> a healthier you and a better tomorrow.
-            </p>
-            <div className="hidden md:flex gap-2 lg:gap-4 items-center mt-3 lg:mt-6">
-              {BannerData.map((item, index) => (
-                <div key={index} className="flex items-center gap-1 lg:gap-2">
-                  <div className="bg-[#f4eac7] p-2 lg:p-3 border-l-2 border-t-2 border-solid border-[#bac394] rounded-full -rotate-45">
-                    <Image src={item.image} alt={item.name} width={18} height={18} className="w-3 lg:w-[18px] h-3 lg:h-[18px] rotate-45" />
+          <div className="absolute inset-0 z-[1] mx-auto max-w-[1600px] px-4 sm:px-10  pointer-events-none">
+            <div className="relative w-full h-full pointer-events-auto">
+              <div className="absolute top-[8%] sm:top-[10%] md:top-[12%] lg:top-[15%] left-0 max-w-[90%] sm:max-w-[70%] md:max-w-[55%] lg:max-w-[45%]">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <p className="font-display italic text-[20px] sm:text-[24px] md:text-[28px] lg:text-[34px] text-[#003d4a] font-medium">Your Trusted</p>
+                  <div className="hidden sm:flex items-center gap-2">
+                    <div className="w-8 md:w-14 border-b border-[#578654]" />
+                    <Image src={leafIcon} alt="" width={40} height={40} className="w-5 md:w-7 h-5 md:h-7" />
+                    <div className="w-8 md:w-14 border-b border-[#578654]" />
                   </div>
-                  <p className="text-[#333] text-[12px] lg:text-[14px] leading-[15px] lg:leading-[18px] font-semibold">
-                    {item.name.split(" ").slice(0, -1).join(" ")}<br />
-                    {item.name.split(" ").slice(-1)[0]}
-                  </p>
                 </div>
-              ))}
-            </div>
-            <hr className="hidden md:block border-[#40b281] mt-3 lg:mt-5 mb-2 lg:mb-4" />
-            <div className="hidden md:flex gap-2 lg:gap-4 items-center">
-              {BannerData2.map((item, index) => (
-                <div key={index} className="border-l border-[#ccc] pl-2 lg:pl-4">
-                  <Image src={item.image} alt={item.name} width={72} height={72} className="w-[48px] lg:w-[60px] xl:w-[72px] h-[48px] lg:h-[60px] xl:h-[72px]" />
+                <h1 className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] leading-[1.1] text-[#003d4a] mt-1 font-medium">
+                  Vitality Store for
+                </h1>
+                <div className="relative">
+                  <h1 className="font-display italic text-[32px] sm:text-[42px] md:text-[56px] lg:text-[74px] leading-[1.1] text-pink font-semibold">
+                    Wellness Unleashed
+                  </h1>
+                  <Image src={bannerTextLine} alt="" width={500} height={20} className="w-[90%] h-auto mt-[-2px] sm:mt-[-4px]" />
                 </div>
-              ))}
+                <p className="text-[14px] sm:text-[16px] md:text-[18px] leading-[20px] sm:leading-[24px] md:leading-[28px] text-[#333] mt-2 sm:mt-4 font-medium">
+                  Premium natural products crafted to support<br className="hidden sm:block" /> a healthier you and a better tomorrow.
+                </p>
+                <div className="hidden md:flex gap-2 lg:gap-4 items-center mt-3 lg:mt-6">
+                  {BannerData.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      whileHover="hover"
+                      className="flex items-center gap-1 lg:gap-2 cursor-pointer"
+                    >
+                      <motion.div
+                        variants={{
+                          hover: { scale: 1.15, rotate: -35, backgroundColor: "#ebdca8" }
+                        }}
+                        transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                        className="bg-[#f4eac7] p-2 lg:p-3 border-l-2 border-t-2 border-solid border-[#bac394] rounded-full -rotate-45"
+                      >
+                        <Image src={item.image} alt={item.name} width={18} height={18} className="w-3 lg:w-[18px] h-3 lg:h-[18px] rotate-45" />
+                      </motion.div>
+                      <motion.p
+                        variants={{
+                          hover: { x: 3 }
+                        }}
+                        className="text-[#333] text-[12px] lg:text-[14px] leading-[15px] lg:leading-[18px] font-semibold transition-colors duration-200 group-hover:text-pink"
+                      >
+                        {item.name.split(" ").slice(0, -1).join(" ")}<br />
+                        {item.name.split(" ").slice(-1)[0]}
+                      </motion.p>
+                    </motion.div>
+                  ))}
+                </div>
+                <hr className="hidden md:block border-[#40b281] mt-3 lg:mt-5 mb-2 lg:mb-4" />
+                <div className="hidden md:flex gap-2 lg:gap-6 items-center justify-center">
+                  {BannerData2.map((item, index) => (
+                    <div key={index} className={`${index === 0 ? 'pl-0' : 'border-l border-[#ccc] pl-2 lg:pl-6'}`}>
+                      <motion.div
+                        whileHover={{ scale: 1.12, y: -6, filter: "drop-shadow(0px 8px 12px rgba(0,0,0,0.08))" }}
+                        transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                        className="cursor-pointer"
+                      >
+                        <Image src={item.image} alt={item.name} width={72} height={72} className="w-[48px] lg:w-[60px] xl:w-[72px] h-[48px] lg:h-[60px] xl:h-[72px]" />
+                      </motion.div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 right-0" />
             </div>
           </div>
-          <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 right-0 z-[1]" />
         </motion.div>
       </section>
 
@@ -240,7 +265,7 @@ export default function Home() {
               <h2 className="font-display mt-2 text-[32px] sm:text-[42px] md:text-[52px] lg:text-[60px] text-black">
                 Vitazan Essence
               </h2>
-              <p className="mx-auto mt-4 md:mt-6 max-w-[800px] text-[15px] sm:text-[17px] md:text-[18px] leading-[24px] sm:leading-[28px] md:leading-[30px] text-black">
+              <p className="mx-auto mt-4 md:mt-6 max-w-[800px] text-[16px] sm:text-[18px] md:text-[20px] leading-[24px] sm:leading-[28px] md:leading-[30px] text-black">
                 Among the lesser known Treasures of Ayurveda like Bhargi Muuli. A Hindi shrub/plant about more in
                 Village Traditions than in Classical Texts. Folk healers, however, always knew its Worth. They called it
                 Guardian of the Lungs, a Plant that gave Strength back to the Weak.
@@ -276,8 +301,8 @@ export default function Home() {
               <React.Fragment key={idx}>
                 <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12">
                   <AnimatedSection animation="fadeLeft" delay={idx * 0.1} className="flex-1 text-center sm:text-left">
-                    <h3 className="font-display text-[28px] sm:text-[34px] md:text-[42px] italic text-black">{item.name}</h3>
-                    <p className="mt-3 max-w-[500px] text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-gray-700">
+                    <h3 className="font-display font-medium text-[28px] sm:text-[34px] md:text-[42px] italic text-black">{item.name}</h3>
+                    <p className="mt-3 max-w-[500px] text-[16px] sm:text-[18px] leading-[22px] sm:leading-[26px] text-gray-700">
                       {item.desc}
                     </p>
                   </AnimatedSection>
@@ -366,11 +391,11 @@ export default function Home() {
                 <Image src="/images/reload.png" alt="Reload" fill className="object-contain" />
               </div>
               <div className="relative z-10 p-6 sm:p-8 md:p-12">
-                <p className="text-[16px] sm:text-[20px] md:text-[22px] font-bold tracking-[0.95px] text-black">SALE UP TO</p>
-                <p className="mt-1 sm:mt-2 text-[68px] sm:text-[90px] md:text-[120px] font-bold leading-none tracking-[3px] sm:tracking-[5.35px] text-black">
+                <p className="text-[16px] sm:text-[20px] md:text-[22px] font-bold tracking-[0.95px] text-white">SALE UP TO</p>
+                <p className="mt-1 sm:mt-2 text-[68px] sm:text-[90px] md:text-[120px] font-bold leading-none tracking-[3px] sm:tracking-[5.35px] text-white">
                   20<span className="text-[40px] sm:text-[54px] md:text-[70px]">%</span>
                 </p>
-                <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-black font-semibold">
+                <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-white font-semibold">
                   New Collection
                 </p>
                 <motion.button
@@ -449,7 +474,7 @@ export default function Home() {
             },
           ].map((item, idx) => (
             <React.Fragment key={item.title}>
-              <StaggerItem className="flex-1 text-center" animation="fadeUp">
+              <StaggerItem className="flex-1 text-center z-1" animation="fadeUp">
                 <motion.div
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 >
@@ -465,9 +490,21 @@ export default function Home() {
                 </motion.div>
               </StaggerItem>
               {idx < 2 && (
-                <AnimatedSection animation="fadeIn" delay={0.4} className="hidden md:flex items-center pt-20">
-                  <Image src="/images/arrowRight.png" alt="" width={86} height={24} />
-                </AnimatedSection>
+                <div className="hidden md:flex items-center pt-16.5">
+                  <div className="relative w-[86px] h-[24px] ">
+                    <motion.div
+                      className="absolute inset-0 flex items-center"
+                      animate={{ x: ["-200%", "200%"] }}
+                      transition={{
+                        duration: 1.6,
+                        repeat: Infinity,
+                        ease: "linear",
+                      }}
+                    >
+                      <Image src="/images/arrowRight.png" alt="" width={86} height={24} />
+                    </motion.div>
+                  </div>
+                </div>
               )}
             </React.Fragment>
           ))}
