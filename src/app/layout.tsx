@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Gilda_Display } from "next/font/google";
+import { Lato, Cardo } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const lato = Lato({
+  variable: "--font-lato",
+  weight: ["100", "300", "400", "700", "900"],
   subsets: ["latin"],
 });
 
-const gildaDisplay = Gilda_Display({
-  variable: "--font-gilda",
-  weight: "400",
+const cardo = Cardo({
+  variable: "--font-cardo",
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${gildaDisplay.variable} antialiased`}>
+    <html lang="en" className={`${lato.variable} ${cardo.variable} antialiased`}>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );

@@ -12,28 +12,85 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-screen">
-      {/* Left - Branding Side */}
-      <div className="relative hidden w-1/2 lg:flex flex-col justify-between overflow-hidden bg-[#00485d]">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-white/20" />
-          <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-white/10" />
-          <div className="absolute left-1/2 top-1/3 h-64 w-64 -translate-x-1/2 rounded-full bg-[#e5097f]/20" />
-        </div>
+      {/* Left - Branding Side with Image */}
+      <div className="relative hidden w-1/2 lg:flex flex-col justify-between overflow-hidden">
+        {/* Background photo */}
+        <Image
+          src="/images/banner.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
 
-        <div className="relative z-10 flex flex-col justify-center flex-1 px-16">
-          <div className="mb-12">
-            <Image src="/images/logo.png" alt="Vitazan" width={200} height={60} className="brightness-0 invert h-12 w-auto" />
+        {/* Teal gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/92 via-[#00485d]/85 to-[#004b61]/78" />
+
+        {/* Decorative rings */}
+        <div className="absolute -left-16 -top-16 h-72 w-72 rounded-full border border-white/10" />
+        <div className="absolute -left-8 -top-8 h-52 w-52 rounded-full border border-white/[0.06]" />
+        <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full border border-white/10" />
+        <div className="absolute -bottom-12 -right-12 h-56 w-56 rounded-full border border-white/[0.06]" />
+
+        <div className="relative z-10 flex flex-col justify-between flex-1 px-14 py-10">
+          {/* Logo */}
+          <div>
+            <Image src="/images/logo.png" alt="Vitazan" width={180} height={50} className="brightness-0 invert h-11 w-auto" />
           </div>
-          <h1 className="text-4xl font-bold leading-tight text-white">
-            Manage Your<br />
-            <span className="text-[#eaffad]">Health Store</span><br />
-            With Ease
-          </h1>
-          <p className="mt-6 max-w-md text-lg text-white/70">
-            Access your admin dashboard to manage products, orders, customers, and grow your Ayurvedic wellness business.
-          </p>
 
-          <div className="mt-12 grid grid-cols-3 gap-6">
+          {/* Product showcase with ingredient badges */}
+          <div className="flex flex-col items-center">
+            <div className="relative flex items-center justify-center">
+              {/* Main product image */}
+              <div className="relative h-[280px] w-[230px]">
+                <Image
+                  src="/images/htkof-display.png"
+                  alt="Vitazan HT-KOF"
+                  fill
+                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
+                />
+              </div>
+
+              {/* Floating ingredient badges */}
+              <div className="absolute -left-6 top-4 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
+                <div className="flex items-center gap-2">
+                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
+                    <Image src="/images/turmeric.png" alt="Turmeric" fill className="object-cover" />
+                  </div>
+                  <span className="text-xs font-medium text-white">Turmeric</span>
+                </div>
+              </div>
+              <div className="absolute -left-2 bottom-12 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
+                <div className="flex items-center gap-2">
+                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
+                    <Image src="/images/tulsi.png" alt="Holy Basil" fill className="object-cover" />
+                  </div>
+                  <span className="text-xs font-medium text-white">Holy Basil</span>
+                </div>
+              </div>
+              <div className="absolute -right-4 top-16 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
+                <div className="flex items-center gap-2">
+                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
+                    <Image src="/images/malabar.png" alt="Malabar Nut" fill className="object-cover" />
+                  </div>
+                  <span className="text-xs font-medium text-white">Malabar Nut</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tagline */}
+            <div className="mt-8 text-center">
+              <h1 className="font-display text-[34px] leading-tight text-white">
+                Manage Your <span className="text-[#eaffad]">Health Store</span>
+              </h1>
+              <p className="mx-auto mt-4 max-w-sm text-[15px] leading-relaxed text-white/60">
+                Access your admin dashboard to manage products, orders, customers, and grow your Ayurvedic wellness business.
+              </p>
+            </div>
+          </div>
+
+          {/* Stats row */}
+          <div className="grid grid-cols-3 gap-4">
             {[
               { value: "3,420+", label: "Customers" },
               { value: "1,948", label: "Orders" },
@@ -41,14 +98,10 @@ export default function LoginPage() {
             ].map((stat) => (
               <div key={stat.label} className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="mt-1 text-sm text-white/60">{stat.label}</p>
+                <p className="mt-1 text-sm text-white/50">{stat.label}</p>
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="relative z-10 px-16 pb-8">
-          <p className="text-sm text-white/40">&copy; 2026 Vitazan. All rights reserved.</p>
         </div>
       </div>
 
