@@ -42,7 +42,7 @@ export default function LoginPage() {
           <div className="flex flex-col items-center">
             <div className="relative flex items-center justify-center">
               {/* Main product image */}
-              <div className="relative h-[280px] w-[230px]">
+              <div className="relative h-75 w-75">
                 <Image
                   src="/images/htkof-display.png"
                   alt="Vitazan HT-KOF"

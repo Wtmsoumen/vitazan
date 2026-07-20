@@ -9,7 +9,7 @@
 
 @theme inline {
   --font-sans: var(--font-lato), "Lato", sans-serif;
-  --font-heading: var(--font-cardo), "Cardo", serif;
+  --font-heading: var(--font-gilda), "Gilda Display", serif;
   --color-teal: var(--teal);
   --color-pink: var(--pink);
   --color-dark-teal: var(--dark-teal);

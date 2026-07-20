@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Lato, Cardo } from "next/font/google";
+import { Lato, Gilda_Display } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/client/Header";
+import Footer from "@/components/client/Footer";
+import Layout from "@/components/client/layout";
 
 const lato = Lato({
   variable: "--font-lato",
@@ -8,9 +11,9 @@ const lato = Lato({
   subsets: ["latin"],
 });
 
-const cardo = Cardo({
-  variable: "--font-cardo",
-  weight: ["400", "700"],
+const gildaDisplay = Gilda_Display({
+  variable: "--font-gilda",
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -26,8 +29,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${lato.variable} ${cardo.variable} antialiased`}>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+    <html lang="en" className={`${lato.variable} ${gildaDisplay.variable} antialiased`}>
+      <Layout>
+        <body className="min-h-full flex flex-col font-sans">{children}</body>
+      </Layout>
     </html>
   );
 }
