@@ -297,7 +297,7 @@ export default function Home() {
       {/* Wellness Formulated Section */}
       <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
         <div className="flex flex-col lg:flex-row items-center justify-end gap-8 lg:gap-16">
-          <div className="w-full lg:w-[90%] flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 border border-solid border-[#00485D] p-6 sm:p-8 lg:py-15.75 rounded-3xl lg:pl-15.75">
+          <div className="w-full lg:w-[80%] flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 border border-solid border-[#00485D] p-6 sm:p-8 lg:py-15.75 rounded-3xl lg:pl-15.75">
             <Image
               src="/images/syrup2.png"
               alt="Wellness"
@@ -305,7 +305,7 @@ export default function Home() {
               height={1080}
               className="w-full sm:w-[60%] lg:w-auto h-auto lg:h-134.25 rounded-3xl lg:-ml-140"
             />
-            <AnimatedSection animation="fadeRight" delay={0.2}>
+            <AnimatedSection animation="fadeRight" delay={0.2} className="mr-[-28rem]">
               <div className="flex flex-col items-start gap-4 sm:gap-6">
                 <p className="text-[13px] sm:text-[15px] md:text-[16px] font-bold uppercase tracking-[2.1px] text-pink">
                   BEST SELLER . BONE & JOINT
@@ -313,7 +313,7 @@ export default function Home() {
                 <h2 className="font-display text-[30px] sm:text-[40px] md:text-[50px] leading-[1.15] text-black">
                   Wellness <span className="relative inline-block text-pink">Formulated</span><br />with Intention.
                 </h2>
-                <p className="text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-gray-600">
+                <p className="text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-gray-600 w-[50%]">
                   Our product line of HT-KOF is a herbal cough syrup/tonic carefully formulated using time-tested Ayurvedic herbs.
                 </p>
                 <div className="space-y-3 sm:space-y-4">
