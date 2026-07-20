@@ -6,25 +6,24 @@ import AnimatedSection, { StaggerContainer, StaggerItem } from "./AnimatedSectio
 
 export default function ClassicTopProducts() {
     return (
-        <section className="mx-auto max-w-[1600px] px-[140px] py-16">
+        <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
             {/* Section heading */}
             <AnimatedSection animation="fadeUp">
                 <div className="text-center">
-                    <p className="text-[14px] font-medium uppercase tracking-[2.1px] text-pink">
+                    <p className="text-[12px] sm:text-[14px] font-medium uppercase tracking-[2.1px] text-pink">
                         CLASSIC TOP picks
                     </p>
-                    <h2 className="font-display mt-2 text-[52px] text-black">
+                    <h2 className="font-display mt-2 text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] text-black">
                         Classic Top{" "}
-                        <span className="relative inline-block">
+                        <span className="relative inline-block text-pink">
                             Products
-                            <span className="absolute -bottom-1 left-0 h-[6px] w-full rounded-full bg-pink opacity-60" />
                         </span>
                     </h2>
                 </div>
             </AnimatedSection>
 
             {/* Product cards grid */}
-            <StaggerContainer className="mt-16 grid grid-cols-2 gap-5" staggerDelay={0.15}>
+            <StaggerContainer className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5" staggerDelay={0.15}>
                 {[
                     {
                         name: "VITAZAN™ SENAX",
@@ -50,15 +49,14 @@ export default function ClassicTopProducts() {
                         bg: "/images/reload-bg.jpg",
                         product: "/images/reload-product.png",
                     },
-                ].map((product) => (
-                    <StaggerItem key={product.name} animation="scaleUp">
+                ].map((product, idx) => (
+                    <StaggerItem key={idx} animation="scaleUp">
                         <motion.div
                             whileHover="hover"
                             initial="rest"
                             animate="rest"
-                            className="group relative h-[760px] overflow-hidden rounded-[25px] cursor-pointer"
+                            className="group relative h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px] xl:h-[760px] overflow-hidden rounded-[16px] sm:rounded-[25px] cursor-pointer"
                         >
-                            {/* Background image — subtle zoom on hover */}
                             <motion.div
                                 variants={{
                                     rest: { scale: 1 },
@@ -71,11 +69,10 @@ export default function ClassicTopProducts() {
                                     src={product.bg}
                                     alt=""
                                     fill
-                                    className="object-cover"
+                                    className={`object-cover ${idx === 2 ? "scale-x-[-1]" : ""}`}
                                 />
                             </motion.div>
 
-                            {/* Gradient overlay — deepens on hover */}
                             <motion.div
                                 variants={{
                                     rest: { opacity: 1 },
@@ -85,38 +82,36 @@ export default function ClassicTopProducts() {
                                 className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent"
                             />
 
-                            {/* Text content — slides up slightly on hover */}
                             <motion.div
                                 variants={{
                                     rest: { y: 0 },
                                     hover: { y: -8 },
                                 }}
                                 transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-                                className="relative z-10 p-10 pt-12"
+                                className="relative z-10 p-5 sm:p-7 md:p-10 pt-6 sm:pt-8 md:pt-12"
                             >
-                                <h3 className="text-[40px] font-medium leading-[45px] text-[#08131e]">
+                                <h3 className="text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-semibold leading-[1.15] text-[#08131e]">
                                     {product.name}
                                 </h3>
-                                <p className="mt-4 max-w-[468px] text-[14px] leading-[21px] text-black">
+                                <p className="mt-2 sm:mt-4 max-w-[468px] text-[12px] sm:text-[13px] md:text-[14px] leading-[18px] sm:leading-[21px] text-black">
                                     {product.desc}
                                 </p>
                                 <motion.button
                                     whileHover={{ scale: 1.06 }}
                                     whileTap={{ scale: 0.97 }}
-                                    className="mt-6 rounded-full bg-dark-teal px-8 py-3 text-[16px] text-white transition-opacity hover:opacity-90"
+                                    className="mt-4 sm:mt-6 rounded-full bg-dark-teal px-6 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-[16px] text-white transition-opacity hover:opacity-90"
                                 >
                                     Enquiry Now
                                 </motion.button>
                             </motion.div>
 
-                            {/* Product image — floats up on hover */}
                             <motion.div
                                 variants={{
                                     rest: { y: 0 },
                                     hover: { y: -18 },
                                 }}
                                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                                className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[55%]"
+                                className={`absolute ${idx === 0 ? 'bottom-15 left-1/2' : idx === 1 ? 'bottom-25.5 left-[55%]' : idx === 2 ? 'bottom-8 left-[52%]' : 'bottom-25 left-1/2'} -translate-x-1/2 w-[80%] h-[50%] sm:h-[55%]`}
                             >
                                 <Image
                                     src={product.product}

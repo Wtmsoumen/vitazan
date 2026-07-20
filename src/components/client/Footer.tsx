@@ -30,7 +30,7 @@ export default function Footer() {
                         <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25 }}>
                             <Image src="/images/logoWhite.png" alt="Vitazan" width={180} height={50} />
                         </motion.div>
-                        <p className="mt-4 text-[14px] leading-[22px] text-white">
+                        <p className="mt-4 text-[18px] leading-[22px] text-white">
                             Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density.
                         </p>
                         {/* Social icons — staggered on scroll */}
@@ -68,11 +68,11 @@ export default function Footer() {
 
                     {/* Shop */}
                     <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
-                        <h4 className="text-[18px] font-medium text-white">Shop</h4>
+                        <h4 className="text-[24px] font-semibold text-white">Shop</h4>
                         <ul className="mt-4 space-y-3">
                             {["All Products", "VITAZAN™ HT-Kof", "VITAZAN™ Senax", "VITAZAN™ Reload", "VITAZAN™ Osteomac"].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white/80 hover:text-white transition-colors">
+                                    <a href="#" className="text-[16px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -82,11 +82,11 @@ export default function Footer() {
 
                     {/* Company */}
                     <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
-                        <h4 className="text-[18px] font-medium text-white">Company</h4>
+                        <h4 className="text-[24px] font-semibold text-white">Company</h4>
                         <ul className="mt-4 space-y-3">
                             {["Home", "Shop", "About Us", "Our Essence", "Blog", "Contact Us"].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white/80 hover:text-white transition-colors">
+                                    <a href="#" className="text-[15px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -96,14 +96,14 @@ export default function Footer() {
 
                     {/* Contact */}
                     <motion.div custom={3} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
-                        <h4 className="text-[18px] font-medium text-white">Contact</h4>
+                        <h4 className="text-[24px] font-semibold text-white">Contact</h4>
                         <ul className="mt-4 space-y-3">
                             {[
                                 "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore - 560016",
                                 "health@vitazan.co.uk",
                             ].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white/80 hover:text-white transition-colors">
+                                    <a href="#" className="text-[15px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -119,7 +119,7 @@ export default function Footer() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="border-t border-white/20"
+                className="border-t border-white"
             >
                 <div className="mx-auto max-w-[1600px] px-[140px] py-4 flex items-center justify-between">
                     <p className="text-center text-[13px] text-white">
