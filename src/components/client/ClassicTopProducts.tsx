@@ -138,7 +138,7 @@ export default function ClassicTopProducts() {
                                     whileTap={{ scale: 0.97 }}
                                     className="mt-4 sm:mt-6 rounded-full bg-dark-teal hover:bg-pink px-6 sm:px-8 py-2.5 sm:py-3 text-[13px] sm:text-[16px] text-white transition-opacity hover:opacity-90"
                                 >
-                                    Enquiry Now
+                                    Shop Now
                                 </motion.button>
                             </motion.div>
 
