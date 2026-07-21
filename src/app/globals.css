@@ -3,6 +3,7 @@
 :root {
   --teal: #00485d;
   --pink: #e5097f;
+  --pink-light: #f842a3;
   --dark-teal: #004b61;
   --dark: #08131e;
 }
@@ -12,6 +13,7 @@
   --font-heading: var(--font-gilda), "Gilda Display", serif;
   --color-teal: var(--teal);
   --color-pink: var(--pink);
+  --color-pink-light: var(--pink-light);
   --color-dark-teal: var(--dark-teal);
   --color-dark: var(--dark);
 }

@@ -24,8 +24,8 @@ export default function BrandsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Brands</h1>
-          <p className="mt-1 text-sm text-gray-500">Manage product brands and manufacturers</p>
+          <h1 className="text-2xl font-semibold text-black">Brands</h1>
+          <p className="mt-1 text-sm text-gray-900">Manage product brands and manufacturers</p>
         </div>
         <button onClick={() => { setSelected(null); setModal("add"); }} className="flex items-center gap-2 rounded-lg bg-[#00485d] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#003a4d]">
           <Plus size={18} /> Add Brand
@@ -48,11 +48,11 @@ export default function BrandsPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100">
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Brand</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Description</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Products</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Brand</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Description</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Products</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
@@ -61,11 +61,11 @@ export default function BrandsPage() {
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg text-white font-bold text-sm" style={{ backgroundColor: brand.color }}>{brand.logo}</div>
-                    <span className="text-sm font-medium text-gray-900">{brand.name}</span>
+                    <span className="text-sm font-medium text-black">{brand.name}</span>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{brand.description}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{brand.products}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{brand.products}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${brand.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{brand.status}</span>
                 </td>
@@ -87,7 +87,7 @@ export default function BrandsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">{modal === "add" ? "Add New Brand" : "Edit Brand"}</h2>
+              <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Add New Brand" : "Edit Brand"}</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
@@ -131,28 +131,28 @@ export default function BrandsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">Brand Details</h2>
+              <h2 className="text-lg font-semibold text-black">Brand Details</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="flex items-center gap-4 mb-6">
               <div className="flex h-16 w-16 items-center justify-center rounded-xl text-white font-bold text-2xl" style={{ backgroundColor: selected.color }}>{selected.logo}</div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">{selected.name}</h3>
+                <h3 className="text-xl font-semibold text-black">{selected.name}</h3>
                 <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{selected.status}</span>
               </div>
             </div>
             <div className="space-y-3">
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Description</p>
-                <p className="mt-1 text-sm text-gray-900">{selected.description}</p>
+                <p className="mt-1 text-sm text-black">{selected.description}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Brand Story</p>
-                <p className="mt-1 text-sm text-gray-900">{selected.story}</p>
+                <p className="mt-1 text-sm text-black">{selected.story}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Total Products</p>
-                <p className="mt-1 text-sm font-medium text-gray-900">{selected.products}</p>
+                <p className="mt-1 text-sm font-medium text-black">{selected.products}</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">

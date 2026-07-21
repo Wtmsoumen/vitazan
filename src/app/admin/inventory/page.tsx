@@ -28,8 +28,8 @@ export default function InventoryPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Inventory</h1>
-          <p className="mt-1 text-sm text-gray-500">Track stock levels and manage inventory</p>
+          <h1 className="text-2xl font-semibold text-black">Inventory</h1>
+          <p className="mt-1 text-sm text-gray-900">Track stock levels and manage inventory</p>
         </div>
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
@@ -48,8 +48,8 @@ export default function InventoryPage() {
               <s.icon size={22} />
             </div>
             <div>
-              <p className="text-sm text-gray-500">{s.label}</p>
-              <p className="text-2xl font-semibold text-gray-900">{s.value}</p>
+              <p className="text-sm text-gray-900">{s.label}</p>
+              <p className="text-2xl font-semibold text-black">{s.value}</p>
             </div>
           </div>
         ))}
@@ -81,23 +81,23 @@ export default function InventoryPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100">
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">SKU</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Product</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Category</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Price</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Stock</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Reorder Level</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">SKU</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Product</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Category</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Price</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Stock</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Reorder Level</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
             {inventoryItems.map((item) => (
               <tr key={item.id} className="hover:bg-gray-50/50">
                 <td className="px-6 py-4 text-sm font-mono text-teal">{item.sku}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.name}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{item.name}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{item.category}</td>
-                <td className="px-6 py-4 text-sm text-gray-900">{item.price}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{item.stock}</td>
+                <td className="px-6 py-4 text-sm text-black">{item.price}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{item.stock}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{item.reorder}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[item.status]}`}>

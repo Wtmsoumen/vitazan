@@ -47,8 +47,8 @@ export default function OrdersPage() {
     <div>
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Orders</h1>
-          <p className="mt-1 text-sm text-gray-500">Track and manage customer orders</p>
+          <h1 className="text-2xl font-semibold text-black">Orders</h1>
+          <p className="mt-1 text-sm text-gray-900">Track and manage customer orders</p>
         </div>
         <button className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
           <Download size={16} /> Export
@@ -57,7 +57,7 @@ export default function OrdersPage() {
 
       <div className="mb-6 flex items-center gap-1 rounded-lg bg-gray-100 p-1 w-fit">
         {statusTabs.map((tab) => (
-          <button key={tab} onClick={() => setActiveTab(tab)} className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${activeTab === tab ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"}`}>{tab}</button>
+          <button key={tab} onClick={() => setActiveTab(tab)} className={`rounded-md px-4 py-2 text-sm font-medium transition-colors ${activeTab === tab ? "bg-white text-black shadow-sm" : "text-gray-900 hover:text-gray-700"}`}>{tab}</button>
         ))}
       </div>
 
@@ -70,14 +70,14 @@ export default function OrdersPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Order ID</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Customer</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Products</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Amount</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Payment</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Date</th>
-              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Action</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Order ID</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Customer</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Products</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Amount</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Payment</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Date</th>
+              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -85,14 +85,14 @@ export default function OrdersPage() {
               <tr key={order.id} className="hover:bg-gray-50/50">
                 <td className="px-6 py-4 text-sm font-medium text-teal">{order.id}</td>
                 <td className="px-6 py-4">
-                  <p className="text-sm font-medium text-gray-900">{order.customer}</p>
-                  <p className="text-xs text-gray-500">{order.email}</p>
+                  <p className="text-sm font-medium text-black">{order.customer}</p>
+                  <p className="text-xs text-gray-900">{order.email}</p>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{order.products.length} items</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{order.amount}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{order.amount}</td>
                 <td className="px-6 py-4"><span className={`text-sm font-medium ${paymentColor[order.payment]}`}>{order.payment}</span></td>
                 <td className="px-6 py-4"><span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[order.status]}`}>{order.status}</span></td>
-                <td className="px-6 py-4 text-sm text-gray-500">{order.date}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{order.date}</td>
                 <td className="px-6 py-4 text-right">
                   <button onClick={() => setViewOrder(order)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
                 </td>
@@ -101,11 +101,11 @@ export default function OrdersPage() {
           </tbody>
         </table>
         <div className="flex items-center justify-between border-t border-gray-100 px-6 py-3.5">
-          <p className="text-sm text-gray-500">Showing {filtered.length} of {ordersData.length} orders</p>
+          <p className="text-sm text-gray-900">Showing {filtered.length} of {ordersData.length} orders</p>
           <div className="flex items-center gap-1">
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Previous</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Previous</button>
             <button className="rounded-lg bg-teal px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Next</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Next</button>
           </div>
         </div>
       </div>
@@ -116,8 +116,8 @@ export default function OrdersPage() {
           <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">Order {viewOrder.id}</h2>
-                <p className="text-sm text-gray-500">{viewOrder.date}</p>
+                <h2 className="text-lg font-semibold text-black">Order {viewOrder.id}</h2>
+                <p className="text-sm text-gray-900">{viewOrder.date}</p>
               </div>
               <button onClick={() => setViewOrder(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
@@ -129,29 +129,29 @@ export default function OrdersPage() {
 
             <div className="space-y-4">
               <div className="rounded-lg border border-gray-100 p-4">
-                <div className="flex items-center gap-2 mb-3 text-sm font-medium text-gray-900">
+                <div className="flex items-center gap-2 mb-3 text-sm font-medium text-black">
                   <Package size={16} className="text-gray-400" /> Order Items
                 </div>
                 <div className="space-y-2">
                   {viewOrder.products.map((p, i) => (
                     <div key={i} className="flex items-center justify-between text-sm">
                       <span className="text-gray-600">VITAZAN™ {p.name} <span className="text-gray-400">x{p.qty}</span></span>
-                      <span className="font-medium text-gray-900">{p.price}</span>
+                      <span className="font-medium text-black">{p.price}</span>
                     </div>
                   ))}
                   <div className="border-t border-gray-100 pt-2 mt-2 flex items-center justify-between text-sm font-semibold">
-                    <span className="text-gray-900">Total</span>
-                    <span className="text-gray-900">{viewOrder.amount}</span>
+                    <span className="text-black">Total</span>
+                    <span className="text-black">{viewOrder.amount}</span>
                   </div>
                 </div>
               </div>
 
               <div className="rounded-lg border border-gray-100 p-4">
-                <div className="flex items-center gap-2 mb-3 text-sm font-medium text-gray-900">
+                <div className="flex items-center gap-2 mb-3 text-sm font-medium text-black">
                   <MapPin size={16} className="text-gray-400" /> Customer & Shipping
                 </div>
                 <div className="space-y-1.5 text-sm text-gray-600">
-                  <p className="font-medium text-gray-900">{viewOrder.customer}</p>
+                  <p className="font-medium text-black">{viewOrder.customer}</p>
                   <p>{viewOrder.email}</p>
                   <p>{viewOrder.phone}</p>
                   <p>{viewOrder.address}</p>
@@ -160,7 +160,7 @@ export default function OrdersPage() {
 
               {viewOrder.status !== "Delivered" && viewOrder.status !== "Cancelled" && (
                 <div className="rounded-lg border border-gray-100 p-4">
-                  <label className="mb-2 block text-sm font-medium text-gray-900">Update Status</label>
+                  <label className="mb-2 block text-sm font-medium text-black">Update Status</label>
                   <select defaultValue={viewOrder.status} className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
                     <option>Pending</option>
                     <option>Processing</option>

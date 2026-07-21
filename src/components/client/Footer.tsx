@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, number } from "framer-motion";
+import { useState } from "react";
 
 const colVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -14,6 +15,10 @@ const colVariants = {
 };
 
 export default function Footer() {
+
+    const [socialIcon, setSocialIcon] = useState("")
+
+
     return (
         <motion.footer
             initial={{ opacity: 0 }}
@@ -22,11 +27,11 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
             className="bg-dark-teal mt-16"
         >
-            <div className="mx-auto max-w-[1600px] px-[140px] py-16">
-                <div className="grid grid-cols-[1.2fr_1fr_1fr_1fr] gap-12">
+            <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-8 sm:py-12 md:py-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-8 sm:gap-10 lg:gap-12">
 
                     {/* Logo & Info */}
-                    <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
+                    <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants} className="sm:col-span-2 lg:col-span-1">
                         <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25 }}>
                             <Image src="/images/logoWhite.png" alt="Vitazan" width={180} height={50} />
                         </motion.div>
@@ -45,20 +50,22 @@ export default function Footer() {
                             }}
                         >
                             {[
-                                { src: "/images/facebook.png", alt: "Facebook" },
-                                { src: "/images/twitter.png", alt: "Twitter" },
-                                { src: "/images/instagram.png", alt: "Instagram" },
-                                { src: "/images/linkedin.png", alt: "LinkedIn" },
+                                { src: "/images/facebook.png", srcp: "/images/linkedinPink.png", alt: "Facebook" },
+                                { src: "/images/twitter.png", srcp: "/images/linkedinPink.png", alt: "Twitter" },
+                                { src: "/images/instagram.png", srcp: "/images/linkedinPink.png", alt: "Instagram" },
+                                { src: "/images/linkedin.png", srcp: "/images/linkedinPink.png", alt: "LinkedIn" },
                             ].map((social) => (
                                 <motion.div
                                     key={social.alt}
                                     variants={{ hidden: { opacity: 0, scale: 0.6 }, visible: { opacity: 1, scale: 1 } }}
                                     transition={{ duration: 0.35 }}
                                     className="mr-4"
+                                    onMouseEnter={() => setSocialIcon(social.alt)}
+                                    onMouseLeave={() => setSocialIcon("")}
                                 >
                                     <Link href="#">
                                         <motion.div whileHover={{ scale: 1.18, y: -3 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
-                                            <Image src={social.src} alt={social.alt} width={1920} height={1080} className="w-10 h-10" />
+                                            <Image src={social.alt === socialIcon ? social.srcp : social.src} alt={social.alt} width={1920} height={1080} className="w-10 h-10" />
                                         </motion.div>
                                     </Link>
                                 </motion.div>
@@ -72,7 +79,7 @@ export default function Footer() {
                         <ul className="mt-4 space-y-3">
                             {["All Products", "VITAZAN™ HT-Kof", "VITAZAN™ Senax", "VITAZAN™ Reload", "VITAZAN™ Osteomac"].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[16px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
+                                    <a href="#" className="text-[16px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -86,7 +93,7 @@ export default function Footer() {
                         <ul className="mt-4 space-y-3">
                             {["Home", "Shop", "About Us", "Our Essence", "Blog", "Contact Us"].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
+                                    <a href="#" className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -103,7 +110,7 @@ export default function Footer() {
                                 "health@vitazan.co.uk",
                             ].map((item) => (
                                 <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white hover:text-white transition-colors font-medium! hover:border-b border-solid border-white">
+                                    <a href="#" className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
                                         {item}
                                     </a>
                                 </motion.li>
@@ -121,11 +128,11 @@ export default function Footer() {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="border-t border-white"
             >
-                <div className="mx-auto max-w-[1600px] px-[140px] py-4 flex items-center justify-between">
-                    <p className="text-center text-[13px] text-white">
+                <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+                    <p className="text-center text-[12px] sm:text-[13px] text-white">
                         Copyright &copy; 2026 Vitazan. All rights reserved.
                     </p>
-                    <p className="text-center text-[13px] text-white flex items-baseline gap-4">
+                    <p className="text-center text-[12px] sm:text-[13px] text-white flex items-baseline gap-4">
                         Terms <span className="w-0.5 h-0.5 rounded-full bg-white" /> Privacy Policy <span className="w-0.5 h-0.5 rounded-full bg-white" /> FAQ
                     </p>
                 </div>

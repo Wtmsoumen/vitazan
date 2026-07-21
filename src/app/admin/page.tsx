@@ -69,8 +69,8 @@ export default function DashboardPage() {
     <div>
       {/* Page Title */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-        <p className="mt-1 text-sm text-gray-500">
+        <h1 className="text-2xl font-semibold text-black">Dashboard</h1>
+        <p className="mt-1 text-sm text-gray-900">
           Welcome back! Here&apos;s what&apos;s happening with Vitazan today.
         </p>
       </div>
@@ -117,8 +117,8 @@ export default function DashboardPage() {
         <div className="col-span-2 rounded-xl border border-gray-200 bg-white p-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Revenue Overview</h3>
-              <p className="text-sm text-gray-500">Monthly revenue & orders</p>
+              <h3 className="text-lg font-semibold text-black">Revenue Overview</h3>
+              <p className="text-sm text-gray-900">Monthly revenue & orders</p>
             </div>
             <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
               <option>Last 7 months</option>
@@ -159,8 +159,8 @@ export default function DashboardPage() {
 
         {/* Category Pie Chart */}
         <div className="rounded-xl border border-gray-200 bg-white p-6">
-          <h3 className="text-lg font-semibold text-gray-900">Sales by Category</h3>
-          <p className="text-sm text-gray-500">Product category distribution</p>
+          <h3 className="text-lg font-semibold text-black">Sales by Category</h3>
+          <p className="text-sm text-gray-900">Product category distribution</p>
           <div className="mt-4 h-[200px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                   <div className="h-3 w-3 rounded-full" style={{ backgroundColor: cat.color }} />
                   <span className="text-sm text-gray-600">{cat.name}</span>
                 </div>
-                <span className="text-sm font-medium text-gray-900">{cat.value}%</span>
+                <span className="text-sm font-medium text-black">{cat.value}%</span>
               </div>
             ))}
           </div>
@@ -201,8 +201,8 @@ export default function DashboardPage() {
         <div className="col-span-3 rounded-xl border border-gray-200 bg-white">
           <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Recent Orders</h3>
-              <p className="text-sm text-gray-500">Latest customer orders</p>
+              <h3 className="text-lg font-semibold text-black">Recent Orders</h3>
+              <p className="text-sm text-gray-900">Latest customer orders</p>
             </div>
             <button className="flex items-center gap-1 text-sm font-medium text-teal hover:underline">
               View All <ArrowUpRight size={14} />
@@ -212,11 +212,11 @@ export default function DashboardPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100">
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Order</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Customer</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Product</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Amount</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Order</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Customer</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Product</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Amount</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
@@ -225,7 +225,7 @@ export default function DashboardPage() {
                     <td className="px-6 py-3.5 text-sm font-medium text-teal">{order.id}</td>
                     <td className="px-6 py-3.5 text-sm text-gray-700">{order.customer}</td>
                     <td className="px-6 py-3.5 text-sm text-gray-600">{order.product}</td>
-                    <td className="px-6 py-3.5 text-sm font-medium text-gray-900">{order.amount}</td>
+                    <td className="px-6 py-3.5 text-sm font-medium text-black">{order.amount}</td>
                     <td className="px-6 py-3.5">
                       <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[order.status]}`}>
                         {order.status}
@@ -242,8 +242,8 @@ export default function DashboardPage() {
         <div className="col-span-2 rounded-xl border border-gray-200 bg-white">
           <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
             <div>
-              <h3 className="text-lg font-semibold text-gray-900">Top Products</h3>
-              <p className="text-sm text-gray-500">Best selling this month</p>
+              <h3 className="text-lg font-semibold text-black">Top Products</h3>
+              <p className="text-sm text-gray-900">Best selling this month</p>
             </div>
             <button className="text-gray-400 hover:text-gray-600">
               <MoreHorizontal size={18} />
@@ -253,11 +253,11 @@ export default function DashboardPage() {
             {topProducts.map((product) => (
               <div key={product.name} className="flex items-center justify-between px-6 py-4 hover:bg-gray-50/50">
                 <div>
-                  <p className="text-sm font-medium text-gray-900">{product.name}</p>
-                  <p className="text-xs text-gray-500">{product.category}</p>
+                  <p className="text-sm font-medium text-black">{product.name}</p>
+                  <p className="text-xs text-gray-900">{product.category}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm font-medium text-gray-900">{product.revenue}</p>
+                  <p className="text-sm font-medium text-black">{product.revenue}</p>
                   <p className="text-xs text-emerald-500">{product.trend}</p>
                 </div>
               </div>

@@ -24,7 +24,7 @@ export default function LoginPage() {
         />
 
         {/* Teal gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/92 via-[#00485d]/85 to-[#004b61]/78" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/20 via-[#00485d]/20 to-[#004b61]/20" />
 
         {/* Decorative rings */}
         <div className="absolute -left-16 -top-16 h-72 w-72 rounded-full border border-white/10" />
@@ -35,13 +35,12 @@ export default function LoginPage() {
         <div className="relative z-10 flex flex-col justify-between flex-1 px-14 py-10">
           {/* Logo */}
           <div>
-            <Image src="/images/logo.png" alt="Vitazan" width={180} height={50} className="brightness-0 invert h-11 w-auto" />
+            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="brightness-0 invert h-20 w-auto" />
           </div>
 
           {/* Product showcase with ingredient badges */}
-          <div className="flex flex-col items-center">
-            <div className="relative flex items-center justify-center">
-              {/* Main product image */}
+          {/* <div className="flex flex-col items-center"> */}
+          {/* <div className="relative flex items-center justify-center">
               <div className="relative h-75 w-75">
                 <Image
                   src="/images/htkof-display.png"
@@ -51,7 +50,6 @@ export default function LoginPage() {
                 />
               </div>
 
-              {/* Floating ingredient badges */}
               <div className="absolute -left-6 top-4 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
                 <div className="flex items-center gap-2">
                   <div className="relative h-7 w-7 overflow-hidden rounded-full">
@@ -76,18 +74,18 @@ export default function LoginPage() {
                   <span className="text-xs font-medium text-white">Malabar Nut</span>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            {/* Tagline */}
-            <div className="mt-8 text-center">
+          {/* Tagline */}
+          {/* <div className="mt-8 text-center">
               <h1 className="font-display text-[34px] leading-tight text-white">
                 Manage Your <span className="text-[#eaffad]">Health Store</span>
               </h1>
               <p className="mx-auto mt-4 max-w-sm text-[15px] leading-relaxed text-white/60">
                 Access your admin dashboard to manage products, orders, customers, and grow your Ayurvedic wellness business.
               </p>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
 
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-4">
@@ -98,7 +96,7 @@ export default function LoginPage() {
             ].map((stat) => (
               <div key={stat.label} className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
                 <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="mt-1 text-sm text-white/50">{stat.label}</p>
+                <p className="mt-1 text-sm text-white">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -112,13 +110,17 @@ export default function LoginPage() {
             <Image src="/images/logo.png" alt="Vitazan" width={160} height={48} className="h-10 w-auto" />
           </div>
 
-          <div className="mb-2">
+          <div>
+            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-20 w-auto" />
+          </div>
+
+          <div className="mb-2 mt-8">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#eaffad] px-3 py-1 text-xs font-medium text-[#00485d]">
               <Lock size={12} /> Admin Portal
             </span>
           </div>
-          <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
-          <p className="mt-2 text-gray-500">Sign in to your admin account to continue</p>
+          <h2 className="text-3xl font-bold text-black">Welcome back</h2>
+          <p className="mt-2 text-gray-900">Sign in to your admin account to continue</p>
 
           <form className="mt-8 space-y-5" onSubmit={(e) => e.preventDefault()}>
             <div>
@@ -175,8 +177,12 @@ export default function LoginPage() {
             </Link>
           </form>
 
+          <p className="mt-4 text-[15px] text-gray-900 text-center">
+            Access your admin dashboard to manage products, orders, customers, and grow your Ayurvedic wellness business.
+          </p>
+
           {/* <div className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4">
-            <p className="text-xs font-medium text-gray-500 mb-2">Demo Credentials</p>
+            <p className="text-xs font-medium text-gray-900 mb-2">Demo Credentials</p>
             <div className="space-y-1 text-xs text-gray-400">
               <p>Email: <span className="font-mono text-gray-600">admin@vitazan.com</span></p>
               <p>Password: <span className="font-mono text-gray-600">admin123</span></p>

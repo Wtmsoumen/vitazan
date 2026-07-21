@@ -22,8 +22,8 @@ export default function StatCard({ title, value, change, trend, icon: Icon, colo
     <div className="rounded-xl border border-gray-200 bg-white p-6 transition-shadow hover:shadow-md">
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm text-gray-500">{title}</p>
-          <p className="mt-2 text-3xl font-semibold text-gray-900">{value}</p>
+          <p className="text-sm text-gray-900">{title}</p>
+          <p className="mt-2 text-3xl font-semibold text-black">{value}</p>
         </div>
         <div className={`flex h-11 w-11 items-center justify-center rounded-lg ${c.icon}`}>
           <Icon size={22} className="text-white" />

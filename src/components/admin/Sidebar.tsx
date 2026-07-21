@@ -61,8 +61,8 @@ export default function Sidebar() {
               <span className="text-sm font-bold text-white">V</span>
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-900">Vitazan</p>
-              <p className="text-[11px] text-gray-500">Admin Panel</p>
+              <p className="text-sm font-semibold text-black">Vitazan</p>
+              <p className="text-[11px] text-gray-900">Admin Panel</p>
             </div> */}
             <Image src={logo} alt="Vitazan" width={1920} height={1080} className="w-auto h-10" />
           </div>
@@ -94,7 +94,7 @@ export default function Sidebar() {
                   href={item.href}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${active
                     ? "bg-teal text-white"
-                    : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    : "text-gray-600 hover:bg-gray-100 hover:text-black"
                     } ${collapsed ? "justify-center" : ""}`}
                   title={collapsed ? item.label : undefined}
                 >

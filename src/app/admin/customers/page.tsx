@@ -30,8 +30,8 @@ export default function CustomersPage() {
     <div>
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Customers</h1>
-          <p className="mt-1 text-sm text-gray-500">Manage your customer base</p>
+          <h1 className="text-2xl font-semibold text-black">Customers</h1>
+          <p className="mt-1 text-sm text-gray-900">Manage your customer base</p>
         </div>
         <button className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
           <Download size={16} /> Export CSV
@@ -46,7 +46,7 @@ export default function CustomersPage() {
           { label: "Avg. Spend", value: "₱185", color: "text-pink" },
         ].map((s) => (
           <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-4">
-            <p className="text-sm text-gray-500">{s.label}</p>
+            <p className="text-sm text-gray-900">{s.label}</p>
             <p className={`mt-1 text-2xl font-semibold ${s.color}`}>{s.value}</p>
           </div>
         ))}
@@ -61,13 +61,13 @@ export default function CustomersPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Customer</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Phone</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Orders</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Total Spent</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Joined</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Actions</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Customer</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Phone</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Orders</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Total Spent</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Joined</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -79,15 +79,15 @@ export default function CustomersPage() {
                       {customer.name.split(" ").map((n) => n[0]).join("")}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{customer.name}</p>
-                      <p className="text-xs text-gray-500">{customer.email}</p>
+                      <p className="text-sm font-medium text-black">{customer.name}</p>
+                      <p className="text-xs text-gray-900">{customer.email}</p>
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{customer.phone}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{customer.orders}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{customer.spent}</td>
-                <td className="px-6 py-4 text-sm text-gray-500">{customer.joined}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{customer.spent}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{customer.joined}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${customer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{customer.status}</span>
                 </td>
@@ -102,11 +102,11 @@ export default function CustomersPage() {
           </tbody>
         </table>
         <div className="flex items-center justify-between border-t border-gray-100 px-6 py-3.5">
-          <p className="text-sm text-gray-500">Showing {filtered.length} customers</p>
+          <p className="text-sm text-gray-900">Showing {filtered.length} customers</p>
           <div className="flex items-center gap-1">
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Previous</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Previous</button>
             <button className="rounded-lg bg-teal px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Next</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Next</button>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@ export default function CustomersPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setViewCustomer(null)}>
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">Customer Details</h2>
+              <h2 className="text-lg font-semibold text-black">Customer Details</h2>
               <button onClick={() => setViewCustomer(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
 
@@ -125,7 +125,7 @@ export default function CustomersPage() {
                 {viewCustomer.name.split(" ").map((n) => n[0]).join("")}
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">{viewCustomer.name}</h3>
+                <h3 className="text-xl font-semibold text-black">{viewCustomer.name}</h3>
                 <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${viewCustomer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{viewCustomer.status}</span>
               </div>
             </div>
@@ -133,11 +133,11 @@ export default function CustomersPage() {
             <div className="grid grid-cols-2 gap-3 mb-4">
               <div className="rounded-lg bg-teal/5 p-3 text-center">
                 <p className="text-2xl font-bold text-teal">{viewCustomer.orders}</p>
-                <p className="text-xs text-gray-500">Total Orders</p>
+                <p className="text-xs text-gray-900">Total Orders</p>
               </div>
               <div className="rounded-lg bg-pink/5 p-3 text-center">
                 <p className="text-2xl font-bold text-pink">{viewCustomer.spent}</p>
-                <p className="text-xs text-gray-500">Total Spent</p>
+                <p className="text-xs text-gray-900">Total Spent</p>
               </div>
             </div>
 
@@ -152,7 +152,7 @@ export default function CustomersPage() {
                   <item.icon size={16} className="text-gray-400" />
                   <div>
                     <p className="text-xs text-gray-400">{item.label}</p>
-                    <p className="text-sm text-gray-900">{item.value}</p>
+                    <p className="text-sm text-black">{item.value}</p>
                   </div>
                 </div>
               ))}

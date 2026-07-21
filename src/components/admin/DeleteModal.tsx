@@ -21,8 +21,8 @@ export default function DeleteModal({ title, message, onConfirm, onCancel }: Del
             <X size={20} />
           </button>
         </div>
-        <h3 className="mt-4 text-lg font-semibold text-gray-900">{title}</h3>
-        <p className="mt-2 text-sm text-gray-500">{message}</p>
+        <h3 className="mt-4 text-lg font-semibold text-black">{title}</h3>
+        <p className="mt-2 text-sm text-gray-900">{message}</p>
         <div className="mt-6 flex items-center gap-3">
           <button onClick={onCancel} className="flex-1 rounded-lg border border-gray-200 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50">
             Cancel

@@ -16,6 +16,9 @@ import lab from "../../public/images/lab.png";
 import plant from "../../public/images/plant.png";
 import leafIcon from "../../public/images/leafIcon.png"
 import bannerTextLine from "../../public/images/bannerTextLine.png";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import Carousel from "@/components/client/Carousel";
 
 export default function Home() {
 
@@ -89,7 +92,7 @@ export default function Home() {
           />
           <div className="absolute inset-0 z-[1] mx-auto max-w-[1600px] px-4 sm:px-10  pointer-events-none">
             <div className="relative w-full h-full pointer-events-auto">
-              <div className="absolute top-[8%] sm:top-[10%] md:top-[12%] lg:top-[15%] left-0 max-w-[90%] sm:max-w-[70%] md:max-w-[55%] lg:max-w-[45%]">
+              <div className="absolute top-[8%] sm:top-[10%] md:top-[12%] lg:top-[15%] left-0 max-w-[90%] sm:max-w-[70%] md:max-w-[55%] lg:max-w-[45%] lg:pl-12.5">
                 <div className="flex items-center gap-2 sm:gap-3">
                   <p className="font-display italic text-[20px] sm:text-[24px] md:text-[28px] lg:text-[34px] text-[#003d4a] font-medium">Your Trusted</p>
                   <div className="hidden sm:flex items-center gap-2">
@@ -102,7 +105,7 @@ export default function Home() {
                   Vitality Store for
                 </h1>
                 <div className="relative">
-                  <h1 className="font-display italic text-[32px] sm:text-[42px] md:text-[56px] lg:text-[74px] leading-[1.1] text-pink font-semibold">
+                  <h1 className="font-display italic text-[32px] sm:text-[42px] md:text-[56px] lg:text-[68px] leading-[1.1] text-pink font-semibold">
                     Wellness Unleashed
                   </h1>
                   <Image src={bannerTextLine} alt="" width={500} height={20} className="w-[90%] h-auto mt-[-2px] sm:mt-[-4px]" />
@@ -226,15 +229,16 @@ export default function Home() {
           </div>
         </AnimatedSection>
 
-        <StaggerContainer className="mt-8 md:mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.15}>
-          {[
-            { name: "Cold and Cough Remedy", img: "/images/category-cold.png", bg: "#fff1e0" },
-            { name: "Gut Health", img: "/images/category-gut.png", bg: "#e2fbff" },
-            { name: "Bone Joint Muscle Care", img: "/images/category-bone.png", bg: "#f3e4fd" },
-            { name: "Vitamin & Nutrition", img: "/images/category-vitamin.png", bg: "#eaecff" },
-          ].map((cat) => (
-            <StaggerItem key={cat.name} animation="scaleUp">
+        <div className="mt-8 md:mt-12">
+          <Carousel itemsPerView={{ base: 2, sm: 2, md: 3, lg: 4 }} gap={20} showDots={true} showArrows={true} className="py-4">
+            {[
+              { name: "Cold and Cough Remedy", img: "/images/category-cold.png", bg: "#fff1e0" },
+              { name: "Gut Health", img: "/images/category-gut.png", bg: "#e2fbff" },
+              { name: "Bone Joint Muscle Care", img: "/images/category-bone.png", bg: "#f3e4fd" },
+              { name: "Vitamin & Nutrition", img: "/images/category-vitamin.png", bg: "#eaecff" },
+            ].map((cat) => (
               <motion.div
+                key={cat.name}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
                 className="group cursor-pointer text-center"
               >
@@ -246,9 +250,9 @@ export default function Home() {
                 </div>
                 <p className="mt-3 sm:mt-6 text-[16px] sm:text-[20px] md:text-[22px] font-semibold text-black">{cat.name}</p>
               </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+            ))}
+          </Carousel>
+        </div>
       </section>
 
       {/* Classic Top Products */}
@@ -273,7 +277,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="mt-6 md:mt-8 rounded-full border-2 border-pink px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-pink transition-colors hover:bg-pink hover:text-white"
+                className="mt-6 md:mt-8 rounded-full border-2 border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold bg-pink text-white transition-colors hover:bg-dark-teal"
               >
                 Explore More
               </motion.button>
@@ -299,16 +303,21 @@ export default function Home() {
               },
             ].map((item, idx) => (
               <React.Fragment key={idx}>
-                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12">
+                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12 group">
                   <AnimatedSection animation="fadeLeft" delay={idx * 0.1} className="flex-1 text-center sm:text-left">
-                    <h3 className="font-display font-medium text-[28px] sm:text-[34px] md:text-[42px] italic text-black">{item.name}</h3>
-                    <p className="mt-3 max-w-[500px] text-[16px] sm:text-[18px] leading-[22px] sm:leading-[26px] text-gray-700">
+                    <div className="flex items-center justify-between">
+                      <h3 className="font-display font-semibold text-[30px] sm:text-[36px] md:text-[48px] text-black">{item.name}</h3>
+                      <Link href="#" className="border border-solid border-black w-13 h-13 rounded-full flex items-center justify-center group-hover:rotate-12 transition-all duration-300">
+                        <ArrowUpRight className="w-auto h-8" strokeWidth={1} />
+                      </Link>
+                    </div>
+                    <p className="mt-3 max-w-[500px] text-[16px] sm:text-[20px] leading-[22px] sm:leading-[26px] text-gray-700">
                       {item.desc}
                     </p>
                   </AnimatedSection>
                   <AnimatedSection animation="fadeRight" delay={idx * 0.1} className="w-full sm:w-1/2">
                     <div className="relative h-[150px] sm:h-[180px] md:h-[200px] overflow-hidden rounded-full">
-                      <Image src={item.img} alt={item.name} width={1920} height={1080} className="w-full h-full object-cover" />
+                      <Image src={item.img} alt={item.name} width={1920} height={1080} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                     </div>
                   </AnimatedSection>
                 </div>
@@ -328,9 +337,9 @@ export default function Home() {
               alt="Wellness"
               width={1920}
               height={1080}
-              className="w-full sm:w-[60%] lg:w-auto h-auto lg:h-134.25 rounded-3xl lg:-ml-140"
+              className="w-full sm:w-[60%] lg:w-auto h-auto lg:h-134.25 rounded-3xl lg:-ml-140 hover:scale-105 transition-all duration-700"
             />
-            <AnimatedSection animation="fadeRight" delay={0.2} className="mr-[-28rem]">
+            <AnimatedSection animation="fadeRight" delay={0.2} className="lg:mr-[-28rem]">
               <div className="flex flex-col items-start gap-4 sm:gap-6">
                 <p className="text-[13px] sm:text-[15px] md:text-[16px] font-bold uppercase tracking-[2.1px] text-pink">
                   BEST SELLER . BONE & JOINT
@@ -401,7 +410,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-white hover:bg-white hover:text-black"
+                  className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold bg-white text-black"
                 >
                   Shop Now
                 </motion.button>
@@ -429,7 +438,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-black transition-colors hover:bg-black hover:text-white"
+                  className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold transition-colors bg-black text-white"
                 >
                   Shop Now
                 </motion.button>
@@ -584,14 +593,15 @@ export default function Home() {
           </div>
         </AnimatedSection>
 
-        <StaggerContainer className="mt-10 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.15}>
-          {[
-            { name: "Alison Bali", bg: "/images/greenBg.png", quoteColor: "bg-dark-teal" },
-            { name: "Alison Bali", bg: "/images/PinkBg.png", quoteColor: "bg-pink" },
-            { name: "Alison Bali", bg: "/images/greenBg.png", quoteColor: "bg-dark-teal" },
-          ].map((person, i) => (
-            <StaggerItem key={i} animation="fadeUp">
+        <div className="mt-10 md:mt-16">
+          <Carousel itemsPerView={{ base: 1, sm: 2, md: 2, lg: 3 }} gap={24} showDots={true} showArrows={true}>
+            {[
+              { name: "Alison Bali", bg: "/images/greenBg.png", quoteColor: "bg-dark-teal" },
+              { name: "Alison Bali", bg: "/images/PinkBg.png", quoteColor: "bg-pink" },
+              { name: "Alison Bali", bg: "/images/greenBg.png", quoteColor: "bg-dark-teal" },
+            ].map((person, i) => (
               <motion.div
+                key={i}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
                 className="relative pt-[24px]"
               >
@@ -622,9 +632,9 @@ export default function Home() {
                   </div>
                 </div>
               </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+            ))}
+          </Carousel>
+        </div>
       </section>
 
       {/* Blog Posts */}
@@ -650,33 +660,34 @@ export default function Home() {
           </div>
         </AnimatedSection>
 
-        <StaggerContainer className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" staggerDelay={0.15}>
-          {[
-            {
-              img: "/images/blog1.png",
-              tag: "Bone & Joint Health",
-              title: "VITAZAN Osteomac – Comprehensive Bone Health Support Explained",
-              desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
-            },
-            {
-              img: "/images/blog2.png",
-              tag: "Healthy Living",
-              title: "Understanding Bone Health – The Key to Strength and Mobility",
-              desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
-            },
-            {
-              img: "/images/blog3.png",
-              tag: "Vitality Store",
-              title: "Healthy Living in the Modern Age – Small Habits That Create Big Impact",
-              desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
-            },
-          ].map((post) => (
-            <StaggerItem key={post.title} animation="fadeUp">
+        <div className="mt-8 md:mt-12 py-4">
+          <Carousel itemsPerView={{ base: 1, sm: 2, md: 2, lg: 3 }} gap={24} showDots={true} showArrows={true} className="py-4">
+            {[
+              {
+                img: "/images/blog1.png",
+                tag: "Bone & Joint Health",
+                title: "VITAZAN Osteomac - Comprehensive Bone Health Support Explained",
+                desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
+              },
+              {
+                img: "/images/blog2.png",
+                tag: "Healthy Living",
+                title: "Understanding Bone Health - The Key to Strength and Mobility",
+                desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
+              },
+              {
+                img: "/images/blog3.png",
+                tag: "Vitality Store",
+                title: "Healthy Living in the Modern Age - Small Habits That Create Big Impact",
+                desc: "Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density...",
+              },
+            ].map((post) => (
               <motion.div
+                key={post.title}
                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="group cursor-pointer"
+                className="flex flex-col justify-between h-full cursor-pointer shadow-md rounded-2xl"
               >
-                <div className="relative h-[200px] sm:h-[230px] md:h-[255px] overflow-hidden rounded-2xl">
+                <div className="relative h-[200px] sm:h-[230px] md:h-[255px] overflow-hidden rounded-t-2xl">
                   <Image
                     src={post.img}
                     alt={post.title}
@@ -689,22 +700,24 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-                <p className="mt-4 sm:mt-6 text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[26px] sm:leading-[30px] text-black">
-                  {post.title}
-                </p>
-                <a
-                  href="#"
-                  className="mt-3 sm:mt-4 inline-flex items-center gap-2 text-[16px] sm:text-[18px] font-semibold text-pink transition-colors hover:text-pink/80"
-                >
-                  Read More
-                  <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
-                    <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
+                <div className="p-4">
+                  <p className="text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[26px] sm:leading-[30px] text-black">
+                    {post.title}
+                  </p>
+                  <a
+                    href="#"
+                    className="mt-3 sm:mt-4 inline-flex items-center gap-2 text-[16px] sm:text-[18px] font-semibold text-pink transition-colors hover:text-pink/80"
+                  >
+                    Read More
+                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+                      <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </div>
               </motion.div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+            ))}
+          </Carousel>
+        </div>
       </section>
     </div>
   );

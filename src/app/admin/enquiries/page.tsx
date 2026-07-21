@@ -16,7 +16,7 @@ const statusConfig: Record<string, { icon: typeof Clock; color: string; bg: stri
   New: { icon: AlertCircle, color: "text-blue-600", bg: "bg-blue-100 text-blue-700" },
   Pending: { icon: Clock, color: "text-amber-600", bg: "bg-amber-100 text-amber-700" },
   Replied: { icon: CheckCircle, color: "text-emerald-600", bg: "bg-emerald-100 text-emerald-700" },
-  Closed: { icon: CheckCircle, color: "text-gray-500", bg: "bg-gray-100 text-gray-600" },
+  Closed: { icon: CheckCircle, color: "text-gray-900", bg: "bg-gray-100 text-gray-600" },
 };
 
 export default function EnquiriesPage() {
@@ -32,8 +32,8 @@ export default function EnquiriesPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Enquiries</h1>
-        <p className="mt-1 text-sm text-gray-500">Manage product enquiries and customer questions</p>
+        <h1 className="text-2xl font-semibold text-black">Enquiries</h1>
+        <p className="mt-1 text-sm text-gray-900">Manage product enquiries and customer questions</p>
       </div>
 
       {/* Stats */}
@@ -45,7 +45,7 @@ export default function EnquiriesPage() {
           { label: "Replied", value: "228", color: "text-emerald-600" },
         ].map((s) => (
           <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-4">
-            <p className="text-sm text-gray-500">{s.label}</p>
+            <p className="text-sm text-gray-900">{s.label}</p>
             <p className={`mt-1 text-2xl font-semibold ${s.color}`}>{s.value}</p>
           </div>
         ))}
@@ -68,12 +68,12 @@ export default function EnquiriesPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Customer</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Product</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Message</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Date</th>
-              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Actions</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Customer</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Product</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Message</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Date</th>
+              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -81,8 +81,8 @@ export default function EnquiriesPage() {
               <tr key={enquiry.id} className="hover:bg-gray-50/50">
                 <td className="px-6 py-4">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{enquiry.name}</p>
-                    <p className="text-xs text-gray-500">{enquiry.email}</p>
+                    <p className="text-sm font-medium text-black">{enquiry.name}</p>
+                    <p className="text-xs text-gray-900">{enquiry.email}</p>
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-600">{enquiry.product}</td>
@@ -94,7 +94,7 @@ export default function EnquiriesPage() {
                     {enquiry.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-500">{enquiry.date}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{enquiry.date}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-end gap-1">
                     <button
@@ -120,15 +120,15 @@ export default function EnquiriesPage() {
           <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
             <div className="flex items-start justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">{selectedEnquiry.name}</h2>
-                <p className="text-sm text-gray-500">{selectedEnquiry.email} &bull; {selectedEnquiry.phone}</p>
+                <h2 className="text-lg font-semibold text-black">{selectedEnquiry.name}</h2>
+                <p className="text-sm text-gray-900">{selectedEnquiry.email} &bull; {selectedEnquiry.phone}</p>
               </div>
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusConfig[selectedEnquiry.status].bg}`}>
                 {selectedEnquiry.status}
               </span>
             </div>
             <div className="mt-4 rounded-lg bg-gray-50 p-4">
-              <p className="text-xs font-medium uppercase text-gray-500">Product: {selectedEnquiry.product}</p>
+              <p className="text-xs font-medium uppercase text-gray-900">Product: {selectedEnquiry.product}</p>
               <p className="mt-2 text-sm text-gray-700">{selectedEnquiry.message}</p>
             </div>
             <div className="mt-4">

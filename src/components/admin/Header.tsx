@@ -37,8 +37,8 @@ export default function Header() {
             <span className="text-sm font-semibold text-white">AS</span>
           </div>
           <div className="text-left">
-            <p className="text-sm font-medium text-gray-900">Admin User</p>
-            <p className="text-[11px] text-gray-500">Super Admin</p>
+            <p className="text-sm font-medium text-black">Admin User</p>
+            <p className="text-[11px] text-gray-900">Super Admin</p>
           </div>
           <ChevronDown size={16} className="text-gray-400" />
         </button>

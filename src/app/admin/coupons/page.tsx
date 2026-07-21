@@ -32,8 +32,8 @@ export default function CouponsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Coupons & Offers</h1>
-          <p className="mt-1 text-sm text-gray-500">Manage discounts, campaigns, and promotions</p>
+          <h1 className="text-2xl font-semibold text-black">Coupons & Offers</h1>
+          <p className="mt-1 text-sm text-gray-900">Manage discounts, campaigns, and promotions</p>
         </div>
         <button onClick={() => { setSelected(null); setModal("add"); }} className="flex items-center gap-2 rounded-lg bg-[#00485d] px-4 py-2.5 text-sm font-medium text-white hover:bg-[#003a4d]">
           <Plus size={18} /> Create Coupon
@@ -43,15 +43,15 @@ export default function CouponsPage() {
       <div className="grid grid-cols-3 gap-6 mb-8">
         <div className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal/10 text-teal"><TicketPercent size={22} /></div>
-          <div><p className="text-sm text-gray-500">Active Coupons</p><p className="text-2xl font-semibold text-gray-900">12</p></div>
+          <div><p className="text-sm text-gray-900">Active Coupons</p><p className="text-2xl font-semibold text-black">12</p></div>
         </div>
         <div className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-50 text-pink-600"><Zap size={22} /></div>
-          <div><p className="text-sm text-gray-500">Flash Sales Running</p><p className="text-2xl font-semibold text-gray-900">2</p></div>
+          <div><p className="text-sm text-gray-900">Flash Sales Running</p><p className="text-2xl font-semibold text-black">2</p></div>
         </div>
         <div className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5">
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600"><Gift size={22} /></div>
-          <div><p className="text-sm text-gray-500">Total Redemptions</p><p className="text-2xl font-semibold text-gray-900">490</p></div>
+          <div><p className="text-sm text-gray-900">Total Redemptions</p><p className="text-2xl font-semibold text-black">490</p></div>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export default function CouponsPage() {
         <div className="border-b border-gray-100">
           <div className="flex gap-0 px-6">
             {tabs.map((tab, i) => (
-              <button key={tab} className={`border-b-2 px-4 py-3 text-sm font-medium transition-colors ${i === 0 ? "border-[#00485d] text-[#00485d]" : "border-transparent text-gray-500 hover:text-gray-700"}`}>{tab}</button>
+              <button key={tab} className={`border-b-2 px-4 py-3 text-sm font-medium transition-colors ${i === 0 ? "border-[#00485d] text-[#00485d]" : "border-transparent text-gray-900 hover:text-gray-700"}`}>{tab}</button>
             ))}
           </div>
         </div>
@@ -77,22 +77,22 @@ export default function CouponsPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100">
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Code</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Type</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Value</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Min Order</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Usage</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Valid Until</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Actions</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Code</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Type</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Value</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Min Order</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Usage</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Valid Until</th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-50">
             {couponsData.map((coupon) => (
               <tr key={coupon.id} className="hover:bg-gray-50/50">
-                <td className="px-6 py-4"><span className="rounded bg-gray-100 px-2 py-1 font-mono text-sm font-medium text-gray-900">{coupon.code}</span></td>
+                <td className="px-6 py-4"><span className="rounded bg-gray-100 px-2 py-1 font-mono text-sm font-medium text-black">{coupon.code}</span></td>
                 <td className="px-6 py-4 text-sm text-gray-600">{coupon.type}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{coupon.value}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{coupon.value}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{coupon.minOrder}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{coupon.usage}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{coupon.validUntil}</td>
@@ -115,7 +115,7 @@ export default function CouponsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">{modal === "add" ? "Create New Coupon" : "Edit Coupon"}</h2>
+              <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Create New Coupon" : "Edit Coupon"}</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
@@ -177,7 +177,7 @@ export default function CouponsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">Coupon Details</h2>
+              <h2 className="text-lg font-semibold text-black">Coupon Details</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="mb-6 rounded-xl bg-gradient-to-r from-[#00485d] to-[#006d8e] p-5 text-white">
@@ -196,7 +196,7 @@ export default function CouponsPage() {
               ].map((item) => (
                 <div key={item.label} className="rounded-lg bg-gray-50 p-3">
                   <p className="text-xs text-gray-400">{item.label}</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{item.value}</p>
+                  <p className="mt-1 text-sm font-medium text-black">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -206,7 +206,7 @@ export default function CouponsPage() {
                 <div className="h-2 w-full rounded-full bg-gray-200">
                   <div className="h-2 rounded-full bg-[#00485d]" style={{ width: `${(selected.usageCount / selected.maxUsage) * 100}%` }} />
                 </div>
-                <p className="mt-1 text-xs text-gray-500">{selected.usageCount} of {selected.maxUsage} used</p>
+                <p className="mt-1 text-xs text-gray-900">{selected.usageCount} of {selected.maxUsage} used</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">

@@ -17,8 +17,8 @@ export default function SettingsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Settings</h1>
-        <p className="mt-1 text-sm text-gray-500">Manage your store settings and preferences</p>
+        <h1 className="text-2xl font-semibold text-black">Settings</h1>
+        <p className="mt-1 text-sm text-gray-900">Manage your store settings and preferences</p>
       </div>
 
       <div className="flex gap-8">
@@ -48,8 +48,8 @@ export default function SettingsPage() {
         <div className="flex-1">
           {activeTab === "General" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-gray-900">Store Information</h3>
-              <p className="mt-1 text-sm text-gray-500">Basic information about your store</p>
+              <h3 className="text-lg font-semibold text-black">Store Information</h3>
+              <p className="mt-1 text-sm text-gray-900">Basic information about your store</p>
 
               <div className="mt-6 space-y-5">
                 <div className="grid grid-cols-2 gap-5">
@@ -118,8 +118,8 @@ export default function SettingsPage() {
 
           {activeTab === "Notifications" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-gray-900">Notification Preferences</h3>
-              <p className="mt-1 text-sm text-gray-500">Choose which notifications you want to receive</p>
+              <h3 className="text-lg font-semibold text-black">Notification Preferences</h3>
+              <p className="mt-1 text-sm text-gray-900">Choose which notifications you want to receive</p>
               <div className="mt-6 space-y-4">
                 {[
                   { label: "New Order", desc: "Get notified when a new order is placed" },
@@ -131,8 +131,8 @@ export default function SettingsPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between rounded-lg border border-gray-100 p-4">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{item.label}</p>
-                      <p className="text-xs text-gray-500">{item.desc}</p>
+                      <p className="text-sm font-medium text-black">{item.label}</p>
+                      <p className="text-xs text-gray-900">{item.desc}</p>
                     </div>
                     <label className="relative inline-flex cursor-pointer items-center">
                       <input type="checkbox" defaultChecked={i < 4} className="peer sr-only" />
@@ -152,8 +152,8 @@ export default function SettingsPage() {
 
           {activeTab === "Email" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-gray-900">Email Configuration</h3>
-              <p className="mt-1 text-sm text-gray-500">Configure email templates and SMTP settings</p>
+              <h3 className="text-lg font-semibold text-black">Email Configuration</h3>
+              <p className="mt-1 text-sm text-gray-900">Configure email templates and SMTP settings</p>
               <div className="mt-6 space-y-5">
                 <div className="grid grid-cols-2 gap-5">
                   <div>
@@ -187,8 +187,8 @@ export default function SettingsPage() {
 
           {activeTab === "Security" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-gray-900">Security Settings</h3>
-              <p className="mt-1 text-sm text-gray-500">Manage authentication and security preferences</p>
+              <h3 className="text-lg font-semibold text-black">Security Settings</h3>
+              <p className="mt-1 text-sm text-gray-900">Manage authentication and security preferences</p>
               <div className="mt-6 space-y-4">
                 {[
                   { label: "Two-Factor Authentication", desc: "Add an extra layer of security", enabled: false },
@@ -197,8 +197,8 @@ export default function SettingsPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between rounded-lg border border-gray-100 p-4">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{item.label}</p>
-                      <p className="text-xs text-gray-500">{item.desc}</p>
+                      <p className="text-sm font-medium text-black">{item.label}</p>
+                      <p className="text-xs text-gray-900">{item.desc}</p>
                     </div>
                     <label className="relative inline-flex cursor-pointer items-center">
                       <input type="checkbox" defaultChecked={item.enabled} className="peer sr-only" />
@@ -208,7 +208,7 @@ export default function SettingsPage() {
                 ))}
               </div>
               <div className="mt-8">
-                <h4 className="text-sm font-semibold text-gray-900">Change Password</h4>
+                <h4 className="text-sm font-semibold text-black">Change Password</h4>
                 <div className="mt-4 max-w-md space-y-4">
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Current Password</label>
@@ -235,8 +235,8 @@ export default function SettingsPage() {
 
           {/* {activeTab === "Appearance" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-gray-900">Brand Appearance</h3>
-              <p className="mt-1 text-sm text-gray-500">Customize your store&apos;s look and feel</p>
+              <h3 className="text-lg font-semibold text-black">Brand Appearance</h3>
+              <p className="mt-1 text-sm text-gray-900">Customize your store&apos;s look and feel</p>
               <div className="mt-6 space-y-5">
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Store Logo</label>

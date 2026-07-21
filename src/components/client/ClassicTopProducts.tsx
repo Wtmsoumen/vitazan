@@ -130,7 +130,7 @@ export default function ClassicTopProducts() {
                                 <h3 className="text-[22px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-semibold leading-[1.15] text-[#08131e]">
                                     {product.name}
                                 </h3>
-                                <p className="mt-2 sm:mt-4 max-w-[468px] text-[12px] sm:text-[13px] md:text-[14px] leading-[18px] sm:leading-[21px] text-black">
+                                <p className="mt-2 sm:mt-4 max-w-[468px] text-[12px] sm:text-[14px] md:text-[18px] leading-[18px] sm:leading-[21px] text-black">
                                     {product.desc}
                                 </p>
                                 <motion.button
@@ -148,7 +148,7 @@ export default function ClassicTopProducts() {
                                     hover: { y: -18 },
                                 }}
                                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                                className={`absolute ${idx === 0 ? 'bottom-15 left-1/2' : idx === 1 ? 'bottom-25.5 left-[55%]' : idx === 2 ? 'bottom-8 left-[52%]' : 'bottom-25 left-1/2'} -translate-x-1/2 w-[80%] h-[50%] sm:h-[55%]`}
+                                className={`absolute ${idx === 0 ? 'bottom-15 left-1/2' : idx === 1 ? 'bottom-25.5 left-[55%]' : idx === 2 ? 'bottom-8 left-[52%]' : 'bottom-25 left-1/2'} -translate-x-1/2 w-[80%] h-[50%] sm:h-[55%] z-20`}
                             >
                                 <Image
                                     src={product.product}

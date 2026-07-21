@@ -37,8 +37,8 @@ export default function ReviewsPage() {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Reviews</h1>
-        <p className="mt-1 text-sm text-gray-500">Manage customer ratings and reviews</p>
+        <h1 className="text-2xl font-semibold text-black">Reviews</h1>
+        <p className="mt-1 text-sm text-gray-900">Manage customer ratings and reviews</p>
       </div>
 
       <div className="grid grid-cols-3 gap-6 mb-8">
@@ -48,8 +48,8 @@ export default function ReviewsPage() {
           { label: "Pending Review", value: "18", sublabel: "needs moderation" },
         ].map((s) => (
           <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-5">
-            <p className="text-sm text-gray-500">{s.label}</p>
-            <p className="mt-1 text-2xl font-semibold text-gray-900">{s.value}</p>
+            <p className="text-sm text-gray-900">{s.label}</p>
+            <p className="mt-1 text-2xl font-semibold text-black">{s.value}</p>
             <p className="mt-0.5 text-xs text-gray-400">{s.sublabel}</p>
           </div>
         ))}
@@ -81,8 +81,8 @@ export default function ReviewsPage() {
                       {review.customer.split(" ").map(n => n[0]).join("")}
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{review.customer}</p>
-                      <p className="text-xs text-gray-500">{review.product} &middot; {review.date}</p>
+                      <p className="text-sm font-medium text-black">{review.customer}</p>
+                      <p className="text-xs text-gray-900">{review.product} &middot; {review.date}</p>
                     </div>
                   </div>
                   <div className="mt-3 ml-12">
@@ -112,7 +112,7 @@ export default function ReviewsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setViewReview(null)}>
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">Review Details</h2>
+              <h2 className="text-lg font-semibold text-black">Review Details</h2>
               <button onClick={() => setViewReview(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
 
@@ -121,8 +121,8 @@ export default function ReviewsPage() {
                 {viewReview.customer.split(" ").map(n => n[0]).join("")}
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">{viewReview.customer}</h3>
-                <p className="text-sm text-gray-500">{viewReview.email}</p>
+                <h3 className="text-lg font-semibold text-black">{viewReview.customer}</h3>
+                <p className="text-sm text-gray-900">{viewReview.email}</p>
               </div>
             </div>
 
@@ -137,11 +137,11 @@ export default function ReviewsPage() {
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-lg bg-gray-50 p-3">
                   <p className="text-xs text-gray-400">Product</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{viewReview.product}</p>
+                  <p className="mt-1 text-sm font-medium text-black">{viewReview.product}</p>
                 </div>
                 <div className="rounded-lg bg-gray-50 p-3">
                   <p className="text-xs text-gray-400">Date</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{viewReview.date}</p>
+                  <p className="mt-1 text-sm font-medium text-black">{viewReview.date}</p>
                 </div>
               </div>
             </div>

@@ -42,8 +42,8 @@ export default function ReportsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Reports</h1>
-          <p className="mt-1 text-sm text-gray-500">Sales analytics and revenue reports</p>
+          <h1 className="text-2xl font-semibold text-black">Reports</h1>
+          <p className="mt-1 text-sm text-gray-900">Sales analytics and revenue reports</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-600">
@@ -59,8 +59,8 @@ export default function ReportsPage() {
       <div className="grid grid-cols-4 gap-6 mb-8">
         {stats.map((s) => (
           <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-5">
-            <p className="text-sm text-gray-500">{s.label}</p>
-            <p className="mt-1 text-2xl font-semibold text-gray-900">{s.value}</p>
+            <p className="text-sm text-gray-900">{s.label}</p>
+            <p className="mt-1 text-2xl font-semibold text-black">{s.value}</p>
             <div className={`mt-1 flex items-center gap-1 text-xs font-medium ${s.trend === "up" ? "text-emerald-600" : "text-red-500"}`}>
               {s.trend === "up" ? <TrendingUp size={13} /> : <TrendingDown size={13} />}
               {s.change} vs last period
@@ -71,8 +71,8 @@ export default function ReportsPage() {
 
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-2 rounded-xl border border-gray-200 bg-white p-6">
-          <h3 className="text-lg font-semibold text-gray-900">Revenue Trend</h3>
-          <p className="text-sm text-gray-500">Monthly revenue over time</p>
+          <h3 className="text-lg font-semibold text-black">Revenue Trend</h3>
+          <p className="text-sm text-gray-900">Monthly revenue over time</p>
           <div className="mt-6 h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={monthlyRevenue}>
@@ -93,8 +93,8 @@ export default function ReportsPage() {
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-white p-6">
-          <h3 className="text-lg font-semibold text-gray-900">Product Sales</h3>
-          <p className="text-sm text-gray-500">Units sold by product</p>
+          <h3 className="text-lg font-semibold text-black">Product Sales</h3>
+          <p className="text-sm text-gray-900">Units sold by product</p>
           <div className="mt-6 h-[320px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={productSales} layout="vertical">

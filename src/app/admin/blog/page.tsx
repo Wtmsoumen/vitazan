@@ -28,8 +28,8 @@ export default function BlogPage() {
     <div>
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Blog Posts</h1>
-          <p className="mt-1 text-sm text-gray-500">Create and manage blog content</p>
+          <h1 className="text-2xl font-semibold text-black">Blog Posts</h1>
+          <p className="mt-1 text-sm text-gray-900">Create and manage blog content</p>
         </div>
         <button onClick={() => { setSelected(null); setModal("add"); }} className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
           <Plus size={18} /> New Post
@@ -57,8 +57,8 @@ export default function BlogPage() {
                 <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">{post.category}</span>
                 <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${post.status === "Published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>{post.status}</span>
               </div>
-              <h3 className="mt-2 text-base font-medium text-gray-900 truncate">{post.title}</h3>
-              <div className="mt-2 flex items-center gap-4 text-sm text-gray-500">
+              <h3 className="mt-2 text-base font-medium text-black truncate">{post.title}</h3>
+              <div className="mt-2 flex items-center gap-4 text-sm text-gray-900">
                 <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
                 <span>By {post.author}</span>
                 {post.views > 0 && <span>{post.views.toLocaleString()} views</span>}
@@ -78,7 +78,7 @@ export default function BlogPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold text-gray-900">{modal === "add" ? "Create New Blog Post" : "Edit Blog Post"}</h2>
+              <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Create New Blog Post" : "Edit Blog Post"}</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
@@ -124,7 +124,7 @@ export default function BlogPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Post Details</h2>
+              <h2 className="text-lg font-semibold text-black">Post Details</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
             <div className="relative h-48 w-full overflow-hidden rounded-xl mb-4">
@@ -134,20 +134,20 @@ export default function BlogPage() {
               <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">{selected.category}</span>
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>{selected.status}</span>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900">{selected.title}</h3>
+            <h3 className="text-xl font-semibold text-black">{selected.title}</h3>
             <p className="mt-2 text-sm text-gray-600">{selected.excerpt}</p>
             <div className="mt-4 grid grid-cols-3 gap-3">
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Author</p>
-                <p className="mt-1 text-sm font-medium text-gray-900">{selected.author}</p>
+                <p className="mt-1 text-sm font-medium text-black">{selected.author}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Date</p>
-                <p className="mt-1 text-sm font-medium text-gray-900">{selected.date}</p>
+                <p className="mt-1 text-sm font-medium text-black">{selected.date}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
                 <p className="text-xs text-gray-400">Views</p>
-                <p className="mt-1 text-sm font-medium text-gray-900">{selected.views.toLocaleString()}</p>
+                <p className="mt-1 text-sm font-medium text-black">{selected.views.toLocaleString()}</p>
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">

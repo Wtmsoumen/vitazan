@@ -41,8 +41,8 @@ export default function ProductsPage() {
     <div>
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Products</h1>
-          <p className="mt-1 text-sm text-gray-500">Manage your Vitazan product catalog</p>
+          <h1 className="text-2xl font-semibold text-black">Products</h1>
+          <p className="mt-1 text-sm text-gray-900">Manage your Vitazan product catalog</p>
         </div>
         <button onClick={() => { setSelected(null); setModal("add"); }} className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-teal/90">
           <Plus size={18} /> Add Product
@@ -74,13 +74,13 @@ export default function ProductsPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100 bg-gray-50/50">
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Product</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">SKU</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Category</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Price</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Stock</th>
-              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Status</th>
-              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-500">Actions</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Product</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">SKU</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Category</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Price</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Stock</th>
+              <th className="px-6 py-3.5 text-left text-xs font-medium uppercase tracking-wider text-gray-900">Status</th>
+              <th className="px-6 py-3.5 text-right text-xs font-medium uppercase tracking-wider text-gray-900">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -91,12 +91,12 @@ export default function ProductsPage() {
                     <div className="relative h-10 w-10 overflow-hidden rounded-lg bg-gray-100">
                       <Image src={product.image} alt={product.name} fill className="object-contain p-1" />
                     </div>
-                    <span className="text-sm font-medium text-gray-900">{product.name}</span>
+                    <span className="text-sm font-medium text-black">{product.name}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-500">{product.sku}</td>
+                <td className="px-6 py-4 text-sm text-gray-900">{product.sku}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{product.category}</td>
-                <td className="px-6 py-4 text-sm font-medium text-gray-900">{product.price}</td>
+                <td className="px-6 py-4 text-sm font-medium text-black">{product.price}</td>
                 <td className="px-6 py-4 text-sm text-gray-600">{product.stock}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[product.status]}`}>{product.status}</span>
@@ -113,12 +113,12 @@ export default function ProductsPage() {
           </tbody>
         </table>
         <div className="flex items-center justify-between border-t border-gray-100 px-6 py-3.5">
-          <p className="text-sm text-gray-500">Showing {filtered.length} of {productsData.length} products</p>
+          <p className="text-sm text-gray-900">Showing {filtered.length} of {productsData.length} products</p>
           <div className="flex items-center gap-1">
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Previous</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Previous</button>
             <button className="rounded-lg bg-teal px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">2</button>
-            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-500 hover:bg-gray-100">Next</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">2</button>
+            <button className="rounded-lg px-3 py-1.5 text-sm text-gray-900 hover:bg-gray-100">Next</button>
           </div>
         </div>
       </div>
@@ -129,8 +129,8 @@ export default function ProductsPage() {
           <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-semibold text-gray-900">{modal === "add" ? "Add New Product" : "Edit Product"}</h2>
-                <p className="mt-1 text-sm text-gray-500">{modal === "add" ? "Fill in the details for the new product" : "Update the product information"}</p>
+                <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Add New Product" : "Edit Product"}</h2>
+                <p className="mt-1 text-sm text-gray-900">{modal === "add" ? "Fill in the details for the new product" : "Update the product information"}</p>
               </div>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
@@ -196,7 +196,7 @@ export default function ProductsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50" onClick={() => setModal(null)}>
           <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">Product Details</h2>
+              <h2 className="text-lg font-semibold text-black">Product Details</h2>
               <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
             </div>
 
@@ -205,9 +205,9 @@ export default function ProductsPage() {
                 <Image src={selected.image} alt={selected.name} fill className="object-contain p-2" />
               </div>
               <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900">{selected.name}</h3>
+                <h3 className="text-xl font-semibold text-black">{selected.name}</h3>
                 <span className={`mt-2 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[selected.status]}`}>{selected.status}</span>
-                <p className="mt-3 text-sm text-gray-500">{selected.description}</p>
+                <p className="mt-3 text-sm text-gray-900">{selected.description}</p>
               </div>
             </div>
 
@@ -220,7 +220,7 @@ export default function ProductsPage() {
               ].map((item) => (
                 <div key={item.label} className="rounded-lg bg-gray-50 p-3">
                   <p className="text-xs text-gray-400">{item.label}</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{item.value}</p>
+                  <p className="mt-1 text-sm font-medium text-black">{item.value}</p>
                 </div>
               ))}
             </div>
