@@ -35,6 +35,10 @@ h2 {
   font-weight: 600;
 }
 
+button {
+  cursor: pointer;
+}
+
 @keyframes ticker {
   0% {
     transform: translateX(0);

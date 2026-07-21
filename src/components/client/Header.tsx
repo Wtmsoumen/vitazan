@@ -25,7 +25,7 @@ export default function Header() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                className="fixed top-0 w-full overflow-x-hidden bg-white z-20 shadow-sm"
+                className="fixed top-0 w-full overflow-x-hidden bg-white z-50 shadow-sm"
             >
                 {/* Top bar */}
                 <div className="bg-teal w-full">

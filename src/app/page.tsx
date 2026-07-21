@@ -145,7 +145,7 @@ export default function Home() {
                       <motion.div
                         whileHover={{ scale: 1.12, y: -6, filter: "drop-shadow(0px 8px 12px rgba(0,0,0,0.08))" }}
                         transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                        className="cursor-pointer"
+                        className="cursor-pointer bg-[#f4eac7] rounded-full p-1 shadow-md"
                       >
                         <Image src={item.image} alt={item.name} width={72} height={72} className="w-[48px] lg:w-[60px] xl:w-[72px] h-[48px] lg:h-[60px] xl:h-[72px]" />
                       </motion.div>
@@ -219,7 +219,7 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="rounded-full border border-pink px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] bg-pink/80 hover:bg-pink text-white! font-semibold! transition-all hover:shadow-md duration-300"
+              className="rounded-full border border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] bg-pink text-white! font-semibold! transition-all hover:bg-dark-teal hover:shadow-md duration-300"
             >
               Discover More
             </motion.button>
@@ -367,7 +367,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="rounded-full bg-pink px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-white transition-opacity hover:opacity-90 mt-4 sm:mt-8"
+                  className="rounded-full bg-pink hover:bg-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-white transition-opacity hover:opacity-90 mt-4 sm:mt-8"
                 >
                   Enquiry Now
                 </motion.button>
@@ -401,7 +401,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-xl border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-white hover:bg-white hover:text-black"
+                  className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-white hover:bg-white hover:text-black"
                 >
                   Shop Now
                 </motion.button>
@@ -429,7 +429,7 @@ export default function Home() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-xl border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-black transition-colors hover:bg-black hover:text-white"
+                  className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold text-black transition-colors hover:bg-black hover:text-white"
                 >
                   Shop Now
                 </motion.button>
@@ -559,7 +559,7 @@ export default function Home() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
-                className="sm:ml-[10px] h-[50px] sm:h-[60px] md:h-[66px] w-full sm:w-[180px] md:w-[200px] rounded-full bg-pink text-[17px] sm:text-[19px] md:text-[21px] font-bold text-white transition-opacity hover:opacity-90"
+                className="sm:ml-[10px] h-[50px] sm:h-[60px] md:h-[66px] w-full sm:w-[180px] md:w-[200px] rounded-full bg-pink hover:bg-dark-teal text-[17px] sm:text-[19px] md:text-[21px] font-bold text-white transition-opacity hover:opacity-90"
               >
                 Subscribe Now
               </motion.button>
@@ -643,7 +643,7 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="rounded-full border border-pink px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] transition-colors bg-pink/80 hover:bg-pink text-white! font-semibold!"
+              className="rounded-full border border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] transition-colors bg-pink hover:bg-dark-teal text-white! font-semibold!"
             >
               Discover More
             </motion.button>
