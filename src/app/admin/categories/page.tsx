@@ -41,16 +41,16 @@ export default function CategoriesPage() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ backgroundColor: cat.color }}>
                   <Package size={22} className="text-gray-700" />
                 </div>
-                <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${cat.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{cat.status}</span>
+                <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${cat.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{cat.status}</span>
               </div>
               <h3 className="mt-4 text-lg font-semibold text-black">{cat.name}</h3>
               <p className="mt-1.5 text-sm text-gray-900 line-clamp-2">{cat.description}</p>
               <div className="mt-4 flex items-center justify-between">
                 <span className="text-sm text-gray-900">{cat.products} products</span>
                 <div className="flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
-                  <button onClick={() => { setSelected(cat); setModal("view"); }} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
-                  <button onClick={() => { setSelected(cat); setModal("edit"); }} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
-                  <button onClick={() => setDeleteTarget(cat)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
+                  <button onClick={() => { setSelected(cat); setModal("view"); }} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                  <button onClick={() => { setSelected(cat); setModal("edit"); }} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
+                  <button onClick={() => setDeleteTarget(cat)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
                 </div>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function CategoriesPage() {
           <div className="w-full max-w-md max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Add New Category" : "Edit Category"}</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
               <ImageUpload label="Category Image" />
@@ -95,7 +95,7 @@ export default function CategoriesPage() {
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
+              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Cancel</button>
               <button onClick={() => setModal(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">{modal === "add" ? "Add Category" : "Save Changes"}</button>
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function CategoriesPage() {
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-black">Category Details</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="flex items-center gap-4 mb-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-xl" style={{ backgroundColor: selected.color }}>
@@ -116,7 +116,7 @@ export default function CategoriesPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-black">{selected.name}</h3>
-                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{selected.status}</span>
+                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{selected.status}</span>
               </div>
             </div>
             <div className="space-y-3">
@@ -126,7 +126,7 @@ export default function CategoriesPage() {
                 { label: "Description", value: selected.description },
               ].map((item) => (
                 <div key={item.label} className="rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs text-gray-400">{item.label}</p>
+                  <p className="text-xs text-black">{item.label}</p>
                   <p className="mt-1 text-sm text-black">{item.value}</p>
                 </div>
               ))}

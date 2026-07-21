@@ -16,7 +16,7 @@ const statusConfig: Record<string, { icon: typeof Clock; color: string; bg: stri
   New: { icon: AlertCircle, color: "text-blue-600", bg: "bg-blue-100 text-blue-700" },
   Pending: { icon: Clock, color: "text-amber-600", bg: "bg-amber-100 text-amber-700" },
   Replied: { icon: CheckCircle, color: "text-emerald-600", bg: "bg-emerald-100 text-emerald-700" },
-  Closed: { icon: CheckCircle, color: "text-gray-900", bg: "bg-gray-100 text-gray-600" },
+  Closed: { icon: CheckCircle, color: "text-gray-900", bg: "bg-gray-100 text-black" },
 };
 
 export default function EnquiriesPage() {
@@ -53,7 +53,7 @@ export default function EnquiriesPage() {
 
       {/* Search */}
       <div className="mb-6 relative max-w-md">
-        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
         <input
           type="text"
           placeholder="Search by name or product..."
@@ -85,9 +85,9 @@ export default function EnquiriesPage() {
                     <p className="text-xs text-gray-900">{enquiry.email}</p>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-600">{enquiry.product}</td>
+                <td className="px-6 py-4 text-sm text-black">{enquiry.product}</td>
                 <td className="px-6 py-4 max-w-xs">
-                  <p className="text-sm text-gray-600 truncate">{enquiry.message}</p>
+                  <p className="text-sm text-black truncate">{enquiry.message}</p>
                 </td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusConfig[enquiry.status].bg}`}>
@@ -99,11 +99,11 @@ export default function EnquiriesPage() {
                   <div className="flex items-center justify-end gap-1">
                     <button
                       onClick={() => setSelectedEnquiry(enquiry)}
-                      className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"
+                      className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"
                     >
                       <Eye size={16} />
                     </button>
-                    <button className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600">
+                    <button className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-blue-600">
                       <Mail size={16} />
                     </button>
                   </div>
@@ -136,7 +136,7 @@ export default function EnquiriesPage() {
               <textarea className="h-24 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" placeholder="Type your reply..." />
             </div>
             <div className="mt-4 flex items-center justify-end gap-3">
-              <button onClick={() => setSelectedEnquiry(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Close</button>
+              <button onClick={() => setSelectedEnquiry(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Close</button>
               <button className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">Send Reply</button>
             </div>
           </div>

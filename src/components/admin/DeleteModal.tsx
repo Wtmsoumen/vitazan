@@ -17,7 +17,7 @@ export default function DeleteModal({ title, message, onConfirm, onCancel }: Del
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100">
             <AlertTriangle size={20} className="text-red-600" />
           </div>
-          <button onClick={onCancel} className="text-gray-400 hover:text-gray-600">
+          <button onClick={onCancel} className="text-black hover:text-black">
             <X size={20} />
           </button>
         </div>

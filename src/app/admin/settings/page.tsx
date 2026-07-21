@@ -33,7 +33,7 @@ export default function SettingsPage() {
                   onClick={() => setActiveTab(tab.label)}
                   className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${activeTab === tab.label
                     ? "bg-teal/10 text-teal"
-                    : "text-gray-600 hover:bg-gray-100"
+                    : "text-black hover:bg-gray-100"
                     }`}
                 >
                   <Icon size={18} />
@@ -59,7 +59,7 @@ export default function SettingsPage() {
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Store URL</label>
-                    <input type="text" defaultValue="https://vitazan.com" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                    <input type="text" defaultValue="https://vitazan.ph" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
                   </div>
                 </div>
                 <div>
@@ -82,7 +82,7 @@ export default function SettingsPage() {
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Address</label>
                   <textarea
-                    defaultValue="ZANIQ CARE LIMITED, London, United Kingdom"
+                    defaultValue="Vitazen Philippines"
                     className="h-20 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal"
                   />
                 </div>
@@ -90,18 +90,13 @@ export default function SettingsPage() {
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Currency</label>
                     <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                      <option>USD ($)</option>
-                      <option>INR (₹)</option>
-                      <option>GBP (£)</option>
-                      <option>EUR (€)</option>
+                      <option>₱</option>
                     </select>
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Timezone</label>
                     <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                      <option>Asia/Kolkata (IST)</option>
-                      <option>Europe/London (GMT)</option>
-                      <option>America/New_York (EST)</option>
+                      <option>Philippines</option>
                     </select>
                   </div>
                 </div>
@@ -240,7 +235,7 @@ export default function SettingsPage() {
               <div className="mt-6 space-y-5">
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Store Logo</label>
-                  <div className="flex h-24 w-60 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-gray-400">
+                  <div className="flex h-24 w-60 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-black">
                     Click to upload logo
                   </div>
                 </div>
@@ -269,7 +264,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Favicon</label>
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-gray-400">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-black">
                     32x32
                   </div>
                 </div>

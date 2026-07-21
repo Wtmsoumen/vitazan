@@ -21,7 +21,7 @@ const statusColor: Record<string, string> = {
   Active: "bg-emerald-100 text-emerald-700",
   "Out of Stock": "bg-red-100 text-red-700",
   "Low Stock": "bg-amber-100 text-amber-700",
-  Draft: "bg-gray-100 text-gray-600",
+  Draft: "bg-gray-100 text-black",
 };
 
 export default function ProductsPage() {
@@ -51,17 +51,17 @@ export default function ProductsPage() {
 
       <div className="mb-6 flex items-center gap-4">
         <div className="relative flex-1 max-w-md">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
           <input type="text" placeholder="Search products..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="h-10 w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal" />
         </div>
-        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-600 outline-none">
+        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-black outline-none">
           <option>All Categories</option>
           <option>Cold & Cough</option>
           <option>Gut Health</option>
           <option>Bone & Joint</option>
           <option>Vitamins & Nutrition</option>
         </select>
-        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-600 outline-none">
+        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-black outline-none">
           <option>All Status</option>
           <option>Active</option>
           <option>Out of Stock</option>
@@ -95,17 +95,17 @@ export default function ProductsPage() {
                   </div>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-900">{product.sku}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{product.category}</td>
+                <td className="px-6 py-4 text-sm text-black">{product.category}</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{product.price}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{product.stock}</td>
+                <td className="px-6 py-4 text-sm text-black">{product.stock}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[product.status]}`}>{product.status}</span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-end gap-1">
-                    <button onClick={() => openView(product)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
-                    <button onClick={() => openEdit(product)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
-                    <button onClick={() => setDeleteTarget(product)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
+                    <button onClick={() => openView(product)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                    <button onClick={() => openEdit(product)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
+                    <button onClick={() => setDeleteTarget(product)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
                   </div>
                 </td>
               </tr>
@@ -132,7 +132,7 @@ export default function ProductsPage() {
                 <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Add New Product" : "Edit Product"}</h2>
                 <p className="mt-1 text-sm text-gray-900">{modal === "add" ? "Fill in the details for the new product" : "Update the product information"}</p>
               </div>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
 
             <div className="mt-6 space-y-4">
@@ -182,7 +182,7 @@ export default function ProductsPage() {
             </div>
 
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
+              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Cancel</button>
               <button onClick={() => setModal(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">
                 {modal === "add" ? "Add Product" : "Save Changes"}
               </button>
@@ -197,7 +197,7 @@ export default function ProductsPage() {
           <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-black">Product Details</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
 
             <div className="flex gap-6">
@@ -219,7 +219,7 @@ export default function ProductsPage() {
                 { label: "Stock", value: String(selected.stock) },
               ].map((item) => (
                 <div key={item.label} className="rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs text-gray-400">{item.label}</p>
+                  <p className="text-xs text-black">{item.label}</p>
                   <p className="mt-1 text-sm font-medium text-black">{item.value}</p>
                 </div>
               ))}

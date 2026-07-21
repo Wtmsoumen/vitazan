@@ -46,7 +46,7 @@ export default function ReportsPage() {
           <p className="mt-1 text-sm text-gray-900">Sales analytics and revenue reports</p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm text-gray-600">
+          <div className="flex items-center gap-2 rounded-lg border border-gray-200 px-3 py-2 text-sm text-black">
             <Calendar size={16} />
             <span>Jan 2026 - Jul 2026</span>
           </div>

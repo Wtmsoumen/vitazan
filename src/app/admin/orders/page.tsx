@@ -20,7 +20,7 @@ const statusColor: Record<string, string> = {
   Delivered: "bg-emerald-100 text-emerald-700",
   Shipped: "bg-blue-100 text-blue-700",
   Processing: "bg-amber-100 text-amber-700",
-  Pending: "bg-gray-100 text-gray-600",
+  Pending: "bg-gray-100 text-black",
   Cancelled: "bg-red-100 text-red-700",
 };
 
@@ -62,7 +62,7 @@ export default function OrdersPage() {
       </div>
 
       <div className="mb-6 relative max-w-md">
-        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
         <input type="text" placeholder="Search by order ID or customer..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="h-10 w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal" />
       </div>
 
@@ -88,13 +88,13 @@ export default function OrdersPage() {
                   <p className="text-sm font-medium text-black">{order.customer}</p>
                   <p className="text-xs text-gray-900">{order.email}</p>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-600">{order.products.length} items</td>
+                <td className="px-6 py-4 text-sm text-black">{order.products.length} items</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{order.amount}</td>
                 <td className="px-6 py-4"><span className={`text-sm font-medium ${paymentColor[order.payment]}`}>{order.payment}</span></td>
                 <td className="px-6 py-4"><span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[order.status]}`}>{order.status}</span></td>
                 <td className="px-6 py-4 text-sm text-gray-900">{order.date}</td>
                 <td className="px-6 py-4 text-right">
-                  <button onClick={() => setViewOrder(order)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                  <button onClick={() => setViewOrder(order)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
                 </td>
               </tr>
             ))}
@@ -119,7 +119,7 @@ export default function OrdersPage() {
                 <h2 className="text-lg font-semibold text-black">Order {viewOrder.id}</h2>
                 <p className="text-sm text-gray-900">{viewOrder.date}</p>
               </div>
-              <button onClick={() => setViewOrder(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setViewOrder(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
 
             <div className="flex items-center gap-3 mb-6">
@@ -130,12 +130,12 @@ export default function OrdersPage() {
             <div className="space-y-4">
               <div className="rounded-lg border border-gray-100 p-4">
                 <div className="flex items-center gap-2 mb-3 text-sm font-medium text-black">
-                  <Package size={16} className="text-gray-400" /> Order Items
+                  <Package size={16} className="text-black" /> Order Items
                 </div>
                 <div className="space-y-2">
                   {viewOrder.products.map((p, i) => (
                     <div key={i} className="flex items-center justify-between text-sm">
-                      <span className="text-gray-600">VITAZAN™ {p.name} <span className="text-gray-400">x{p.qty}</span></span>
+                      <span className="text-black">VITAZAN™ {p.name} <span className="text-black">x{p.qty}</span></span>
                       <span className="font-medium text-black">{p.price}</span>
                     </div>
                   ))}
@@ -148,9 +148,9 @@ export default function OrdersPage() {
 
               <div className="rounded-lg border border-gray-100 p-4">
                 <div className="flex items-center gap-2 mb-3 text-sm font-medium text-black">
-                  <MapPin size={16} className="text-gray-400" /> Customer & Shipping
+                  <MapPin size={16} className="text-black" /> Customer & Shipping
                 </div>
-                <div className="space-y-1.5 text-sm text-gray-600">
+                <div className="space-y-1.5 text-sm text-black">
                   <p className="font-medium text-black">{viewOrder.customer}</p>
                   <p>{viewOrder.email}</p>
                   <p>{viewOrder.phone}</p>
@@ -173,7 +173,7 @@ export default function OrdersPage() {
             </div>
 
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button onClick={() => setViewOrder(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Close</button>
+              <button onClick={() => setViewOrder(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Close</button>
               {viewOrder.status !== "Delivered" && viewOrder.status !== "Cancelled" && (
                 <button onClick={() => setViewOrder(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">Update Order</button>
               )}

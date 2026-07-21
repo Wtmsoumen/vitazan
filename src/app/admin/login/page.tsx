@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Eye, EyeOff, Lock, Mail, ArrowRight } from "lucide-react";
 
+
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export default function LoginPage() {
       <div className="relative hidden w-1/2 lg:flex flex-col justify-between overflow-hidden">
         {/* Background photo */}
         <Image
-          src="/images/banner.jpg"
+          src="/images/adminLogin.png"
           alt=""
           fill
           className="object-cover"
@@ -34,58 +35,8 @@ export default function LoginPage() {
 
         <div className="relative z-10 flex flex-col justify-between flex-1 px-14 py-10">
           {/* Logo */}
-          <div>
-            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="brightness-0 invert h-20 w-auto" />
-          </div>
+          <div />
 
-          {/* Product showcase with ingredient badges */}
-          {/* <div className="flex flex-col items-center"> */}
-          {/* <div className="relative flex items-center justify-center">
-              <div className="relative h-75 w-75">
-                <Image
-                  src="/images/htkof-display.png"
-                  alt="Vitazan HT-KOF"
-                  fill
-                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
-                />
-              </div>
-
-              <div className="absolute -left-6 top-4 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
-                <div className="flex items-center gap-2">
-                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
-                    <Image src="/images/turmeric.png" alt="Turmeric" fill className="object-cover" />
-                  </div>
-                  <span className="text-xs font-medium text-white">Turmeric</span>
-                </div>
-              </div>
-              <div className="absolute -left-2 bottom-12 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
-                <div className="flex items-center gap-2">
-                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
-                    <Image src="/images/tulsi.png" alt="Holy Basil" fill className="object-cover" />
-                  </div>
-                  <span className="text-xs font-medium text-white">Holy Basil</span>
-                </div>
-              </div>
-              <div className="absolute -right-4 top-16 rounded-full bg-white/15 px-3.5 py-2 backdrop-blur-md">
-                <div className="flex items-center gap-2">
-                  <div className="relative h-7 w-7 overflow-hidden rounded-full">
-                    <Image src="/images/malabar.png" alt="Malabar Nut" fill className="object-cover" />
-                  </div>
-                  <span className="text-xs font-medium text-white">Malabar Nut</span>
-                </div>
-              </div>
-            </div> */}
-
-          {/* Tagline */}
-          {/* <div className="mt-8 text-center">
-              <h1 className="font-display text-[34px] leading-tight text-white">
-                Manage Your <span className="text-[#eaffad]">Health Store</span>
-              </h1>
-              <p className="mx-auto mt-4 max-w-sm text-[15px] leading-relaxed text-white/60">
-                Access your admin dashboard to manage products, orders, customers, and grow your Ayurvedic wellness business.
-              </p>
-            </div> */}
-          {/* </div> */}
 
           {/* Stats row */}
           <div className="grid grid-cols-3 gap-4">
@@ -106,9 +57,9 @@ export default function LoginPage() {
       {/* Right - Login Form */}
       <div className="flex w-full flex-col items-center justify-center px-8 lg:w-1/2">
         <div className="w-full max-w-md">
-          <div className="lg:hidden mb-8">
+          {/* <div className="lg:hidden mb-8">
             <Image src="/images/logo.png" alt="Vitazan" width={160} height={48} className="h-10 w-auto" />
-          </div>
+          </div> */}
 
           <div>
             <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-20 w-auto" />
@@ -126,7 +77,7 @@ export default function LoginPage() {
             <div>
               <label className="mb-1.5 block text-sm font-medium text-gray-700">Email Address</label>
               <div className="relative">
-                <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Mail size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-black" />
                 <input
                   type="email"
                   value={email}
@@ -143,7 +94,7 @@ export default function LoginPage() {
                 <button type="button" className="text-xs font-medium text-[#e5097f] hover:underline">Forgot password?</button>
               </div>
               <div className="relative">
-                <Lock size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Lock size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-black" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
@@ -154,7 +105,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-black hover:text-black"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -163,7 +114,7 @@ export default function LoginPage() {
 
             <div className="flex items-center gap-2">
               <input type="checkbox" id="remember" className="h-4 w-4 rounded border-gray-300 text-[#00485d] focus:ring-[#00485d]" />
-              <label htmlFor="remember" className="text-sm text-gray-600">Keep me signed in</label>
+              <label htmlFor="remember" className="text-sm text-black">Keep me signed in</label>
             </div>
 
             <Link href="/admin">
@@ -183,9 +134,9 @@ export default function LoginPage() {
 
           {/* <div className="mt-8 rounded-xl border border-gray-100 bg-gray-50 p-4">
             <p className="text-xs font-medium text-gray-900 mb-2">Demo Credentials</p>
-            <div className="space-y-1 text-xs text-gray-400">
-              <p>Email: <span className="font-mono text-gray-600">admin@vitazan.com</span></p>
-              <p>Password: <span className="font-mono text-gray-600">admin123</span></p>
+            <div className="space-y-1 text-xs text-black">
+              <p>Email: <span className="font-mono text-black">admin@vitazan.com</span></p>
+              <p>Password: <span className="font-mono text-black">admin123</span></p>
             </div>
           </div> */}
         </div>

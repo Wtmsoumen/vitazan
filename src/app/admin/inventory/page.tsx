@@ -58,17 +58,17 @@ export default function InventoryPage() {
       <div className="rounded-xl border border-gray-200 bg-white">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <div className="relative w-[300px]">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
             <input type="text" placeholder="Search by SKU or product name..." className="h-9 w-full rounded-lg border border-gray-200 bg-gray-50 pl-9 pr-4 text-sm outline-none focus:border-[#00485d]" />
           </div>
           <div className="flex items-center gap-2">
-            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
               <option>All Status</option>
               <option>In Stock</option>
               <option>Low Stock</option>
               <option>Out of Stock</option>
             </select>
-            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
               <option>All Categories</option>
               <option>Cold & Cough</option>
               <option>Gut Health</option>
@@ -95,10 +95,10 @@ export default function InventoryPage() {
               <tr key={item.id} className="hover:bg-gray-50/50">
                 <td className="px-6 py-4 text-sm font-mono text-teal">{item.sku}</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{item.name}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{item.category}</td>
+                <td className="px-6 py-4 text-sm text-black">{item.category}</td>
                 <td className="px-6 py-4 text-sm text-black">{item.price}</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{item.stock}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{item.reorder}</td>
+                <td className="px-6 py-4 text-sm text-black">{item.reorder}</td>
                 <td className="px-6 py-4">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[item.status]}`}>
                     {item.status}

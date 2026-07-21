@@ -35,10 +35,10 @@ export default function BrandsPage() {
       <div className="rounded-xl border border-gray-200 bg-white">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <div className="relative w-[300px]">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
             <input type="text" placeholder="Search brands..." className="h-9 w-full rounded-lg border border-gray-200 bg-gray-50 pl-9 pr-4 text-sm outline-none focus:border-[#00485d]" />
           </div>
-          <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+          <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
             <option>All Status</option>
             <option>Active</option>
             <option>Inactive</option>
@@ -64,16 +64,16 @@ export default function BrandsPage() {
                     <span className="text-sm font-medium text-black">{brand.name}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-600">{brand.description}</td>
+                <td className="px-6 py-4 text-sm text-black">{brand.description}</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{brand.products}</td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${brand.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{brand.status}</span>
+                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${brand.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{brand.status}</span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-end gap-1">
-                    <button onClick={() => { setSelected(brand); setModal("view"); }} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
-                    <button onClick={() => { setSelected(brand); setModal("edit"); }} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
-                    <button onClick={() => setDeleteTarget(brand)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
+                    <button onClick={() => { setSelected(brand); setModal("view"); }} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                    <button onClick={() => { setSelected(brand); setModal("edit"); }} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-blue-600"><Edit size={16} /></button>
+                    <button onClick={() => setDeleteTarget(brand)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
                   </div>
                 </td>
               </tr>
@@ -88,7 +88,7 @@ export default function BrandsPage() {
           <div className="w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Add New Brand" : "Edit Brand"}</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
               <ImageUpload label="Brand Logo" />
@@ -119,7 +119,7 @@ export default function BrandsPage() {
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
+              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Cancel</button>
               <button onClick={() => setModal(null)} className="rounded-lg bg-[#00485d] px-4 py-2 text-sm font-medium text-white hover:bg-[#003a4d]">{modal === "add" ? "Add Brand" : "Save Changes"}</button>
             </div>
           </div>
@@ -132,26 +132,26 @@ export default function BrandsPage() {
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-black">Brand Details</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="flex items-center gap-4 mb-6">
               <div className="flex h-16 w-16 items-center justify-center rounded-xl text-white font-bold text-2xl" style={{ backgroundColor: selected.color }}>{selected.logo}</div>
               <div>
                 <h3 className="text-xl font-semibold text-black">{selected.name}</h3>
-                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{selected.status}</span>
+                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{selected.status}</span>
               </div>
             </div>
             <div className="space-y-3">
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Description</p>
+                <p className="text-xs text-black">Description</p>
                 <p className="mt-1 text-sm text-black">{selected.description}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Brand Story</p>
+                <p className="text-xs text-black">Brand Story</p>
                 <p className="mt-1 text-sm text-black">{selected.story}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Total Products</p>
+                <p className="text-xs text-black">Total Products</p>
                 <p className="mt-1 text-sm font-medium text-black">{selected.products}</p>
               </div>
             </div>

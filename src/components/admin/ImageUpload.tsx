@@ -60,15 +60,14 @@ export default function ImageUpload({ label = "Upload Image", value, onChange, c
           onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
           onDragLeave={() => setDragActive(false)}
           onDrop={handleDrop}
-          className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-8 transition-colors ${
-            dragActive ? "border-[#00485d] bg-[#00485d]/5" : "border-gray-200 bg-gray-50 hover:border-gray-300"
-          }`}
+          className={`flex cursor-pointer flex-col items-center justify-center rounded-xl border-2 border-dashed px-6 py-8 transition-colors ${dragActive ? "border-[#00485d] bg-[#00485d]/5" : "border-gray-200 bg-gray-50 hover:border-gray-300"
+            }`}
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100">
-            <ImageIcon size={22} className="text-gray-400" />
+            <ImageIcon size={22} className="text-black" />
           </div>
           <p className="mt-3 text-sm font-medium text-gray-700">Click to upload or drag & drop</p>
-          <p className="mt-1 text-xs text-gray-400">PNG, JPG, WEBP up to 5MB</p>
+          <p className="mt-1 text-xs text-black">PNG, JPG, WEBP up to 5MB</p>
         </div>
       )}
       <input ref={inputRef} type="file" accept="image/*" onChange={handleChange} className="hidden" />

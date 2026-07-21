@@ -60,7 +60,7 @@ const statusColor: Record<string, string> = {
   Delivered: "bg-emerald-100 text-emerald-700",
   Shipped: "bg-blue-100 text-blue-700",
   Processing: "bg-amber-100 text-amber-700",
-  Pending: "bg-gray-100 text-gray-600",
+  Pending: "bg-gray-100 text-black",
   Cancelled: "bg-red-100 text-red-700",
 };
 
@@ -76,7 +76,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
         <StatCard
           title="Total Revenue"
           value="₱48,200"
@@ -112,15 +112,15 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts Row */}
-      <div className="mt-8 grid grid-cols-3 gap-6">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6">
         {/* Revenue Chart */}
-        <div className="col-span-2 rounded-xl border border-gray-200 bg-white p-6">
+        <div className="xl:col-span-2 rounded-xl border border-gray-200 bg-white p-4 sm:p-6">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-semibold text-black">Revenue Overview</h3>
               <p className="text-sm text-gray-900">Monthly revenue & orders</p>
             </div>
-            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
               <option>Last 7 months</option>
               <option>Last 12 months</option>
               <option>This year</option>
@@ -186,7 +186,7 @@ export default function DashboardPage() {
               <div key={cat.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="h-3 w-3 rounded-full" style={{ backgroundColor: cat.color }} />
-                  <span className="text-sm text-gray-600">{cat.name}</span>
+                  <span className="text-sm text-black">{cat.name}</span>
                 </div>
                 <span className="text-sm font-medium text-black">{cat.value}%</span>
               </div>
@@ -196,9 +196,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Bottom Row */}
-      <div className="mt-8 grid grid-cols-5 gap-6">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 xl:grid-cols-5 gap-4 sm:gap-6">
         {/* Recent Orders */}
-        <div className="col-span-3 rounded-xl border border-gray-200 bg-white">
+        <div className="xl:col-span-3 rounded-xl border border-gray-200 bg-white">
           <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
             <div>
               <h3 className="text-lg font-semibold text-black">Recent Orders</h3>
@@ -224,7 +224,7 @@ export default function DashboardPage() {
                   <tr key={order.id} className="hover:bg-gray-50/50">
                     <td className="px-6 py-3.5 text-sm font-medium text-teal">{order.id}</td>
                     <td className="px-6 py-3.5 text-sm text-gray-700">{order.customer}</td>
-                    <td className="px-6 py-3.5 text-sm text-gray-600">{order.product}</td>
+                    <td className="px-6 py-3.5 text-sm text-black">{order.product}</td>
                     <td className="px-6 py-3.5 text-sm font-medium text-black">{order.amount}</td>
                     <td className="px-6 py-3.5">
                       <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColor[order.status]}`}>
@@ -239,13 +239,13 @@ export default function DashboardPage() {
         </div>
 
         {/* Top Products */}
-        <div className="col-span-2 rounded-xl border border-gray-200 bg-white">
-          <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
+        <div className="xl:col-span-2 rounded-xl border border-gray-200 bg-white">
+          <div className="flex items-center justify-between border-b border-gray-100 px-4 sm:px-6 py-4">
             <div>
               <h3 className="text-lg font-semibold text-black">Top Products</h3>
               <p className="text-sm text-gray-900">Best selling this month</p>
             </div>
-            <button className="text-gray-400 hover:text-gray-600">
+            <button className="text-black hover:text-black">
               <MoreHorizontal size={18} />
             </button>
           </div>

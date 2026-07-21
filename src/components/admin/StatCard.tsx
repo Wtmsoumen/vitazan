@@ -38,7 +38,7 @@ export default function StatCard({ title, value, change, trend, icon: Icon, colo
         <span className={`text-sm font-medium ${trend === "up" ? "text-emerald-500" : "text-red-500"}`}>
           {change}
         </span>
-        <span className="text-sm text-gray-400">vs last month</span>
+        <span className="text-sm text-black">vs last month</span>
       </div>
     </div>
   );

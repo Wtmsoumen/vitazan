@@ -53,7 +53,7 @@ export default function CustomersPage() {
       </div>
 
       <div className="mb-6 relative max-w-md">
-        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
         <input type="text" placeholder="Search by name or email..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="h-10 w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal" />
       </div>
 
@@ -84,17 +84,17 @@ export default function CustomersPage() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-sm text-gray-600">{customer.phone}</td>
-                <td className="px-6 py-4 text-sm text-gray-600">{customer.orders}</td>
+                <td className="px-6 py-4 text-sm text-black">{customer.phone}</td>
+                <td className="px-6 py-4 text-sm text-black">{customer.orders}</td>
                 <td className="px-6 py-4 text-sm font-medium text-black">{customer.spent}</td>
                 <td className="px-6 py-4 text-sm text-gray-900">{customer.joined}</td>
                 <td className="px-6 py-4">
-                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${customer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{customer.status}</span>
+                  <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${customer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{customer.status}</span>
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-end gap-1">
-                    <button onClick={() => setViewCustomer(customer)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
-                    <button className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-blue-600"><Mail size={16} /></button>
+                    <button onClick={() => setViewCustomer(customer)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                    <button className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-blue-600"><Mail size={16} /></button>
                   </div>
                 </td>
               </tr>
@@ -117,7 +117,7 @@ export default function CustomersPage() {
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-black">Customer Details</h2>
-              <button onClick={() => setViewCustomer(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setViewCustomer(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
 
             <div className="flex items-center gap-4 mb-6">
@@ -126,7 +126,7 @@ export default function CustomersPage() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-black">{viewCustomer.name}</h3>
-                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${viewCustomer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>{viewCustomer.status}</span>
+                <span className={`mt-1 inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${viewCustomer.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-black"}`}>{viewCustomer.status}</span>
               </div>
             </div>
 
@@ -149,9 +149,9 @@ export default function CustomersPage() {
                 { icon: ShoppingCart, label: "Last Order", value: viewCustomer.lastOrder },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-3 rounded-lg bg-gray-50 p-3">
-                  <item.icon size={16} className="text-gray-400" />
+                  <item.icon size={16} className="text-black" />
                   <div>
-                    <p className="text-xs text-gray-400">{item.label}</p>
+                    <p className="text-xs text-black">{item.label}</p>
                     <p className="text-sm text-black">{item.value}</p>
                   </div>
                 </div>

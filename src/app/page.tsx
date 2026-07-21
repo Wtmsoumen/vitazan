@@ -347,7 +347,7 @@ export default function Home() {
                 <h2 className="font-display text-[30px] sm:text-[40px] md:text-[50px] leading-[1.15] text-black">
                   Wellness <span className="relative inline-block text-pink">Formulated</span><br />with Intention.
                 </h2>
-                <p className="text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-gray-600 w-[50%]">
+                <p className="text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-black w-[50%]">
                   Our product line of HT-KOF is a herbal cough syrup/tonic carefully formulated using time-tested Ayurvedic herbs.
                 </p>
                 <div className="space-y-3 sm:space-y-4">
@@ -369,7 +369,7 @@ export default function Home() {
                           <path d="M2 5L4 7L8 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <p className="text-[14px] sm:text-[16px] text-gray-600">{text}</p>
+                      <p className="text-[14px] sm:text-[16px] text-black">{text}</p>
                     </motion.div>
                   ))}
                 </div>

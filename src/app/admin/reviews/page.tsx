@@ -50,7 +50,7 @@ export default function ReviewsPage() {
           <div key={s.label} className="rounded-xl border border-gray-200 bg-white p-5">
             <p className="text-sm text-gray-900">{s.label}</p>
             <p className="mt-1 text-2xl font-semibold text-black">{s.value}</p>
-            <p className="mt-0.5 text-xs text-gray-400">{s.sublabel}</p>
+            <p className="mt-0.5 text-xs text-black">{s.sublabel}</p>
           </div>
         ))}
       </div>
@@ -58,14 +58,14 @@ export default function ReviewsPage() {
       <div className="rounded-xl border border-gray-200 bg-white">
         <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
           <div className="relative w-[300px]">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
             <input type="text" placeholder="Search reviews..." className="h-9 w-full rounded-lg border border-gray-200 bg-gray-50 pl-9 pr-4 text-sm outline-none focus:border-[#00485d]" />
           </div>
           <div className="flex items-center gap-2">
-            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
               <option>All Ratings</option><option>5 Stars</option><option>4 Stars</option><option>3 Stars</option><option>2 Stars</option><option>1 Star</option>
             </select>
-            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 outline-none">
+            <select className="rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-black outline-none">
               <option>All Status</option><option>Published</option><option>Pending</option><option>Flagged</option>
             </select>
           </div>
@@ -77,7 +77,7 @@ export default function ReviewsPage() {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-gray-600">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-sm font-medium text-black">
                       {review.customer.split(" ").map(n => n[0]).join("")}
                     </div>
                     <div>
@@ -87,13 +87,13 @@ export default function ReviewsPage() {
                   </div>
                   <div className="mt-3 ml-12">
                     <StarRating rating={review.rating} />
-                    <p className="mt-2 text-sm text-gray-600">{review.comment}</p>
+                    <p className="mt-2 text-sm text-black">{review.comment}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${statusStyles[review.status]}`}>{review.status}</span>
-                  <button onClick={() => setViewReview(review)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
-                  <button onClick={() => setDeleteTarget(review)} className="rounded-lg p-1.5 text-gray-400 hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
+                  <button onClick={() => setViewReview(review)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-teal"><Eye size={16} /></button>
+                  <button onClick={() => setDeleteTarget(review)} className="rounded-lg p-1.5 text-black hover:bg-gray-100 hover:text-red-600"><Trash2 size={16} /></button>
                 </div>
               </div>
               {review.status === "Pending" && (
@@ -113,11 +113,11 @@ export default function ReviewsPage() {
           <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-black">Review Details</h2>
-              <button onClick={() => setViewReview(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setViewReview(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-sm font-bold text-gray-600">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-sm font-bold text-black">
                 {viewReview.customer.split(" ").map(n => n[0]).join("")}
               </div>
               <div>
@@ -136,11 +136,11 @@ export default function ReviewsPage() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs text-gray-400">Product</p>
+                  <p className="text-xs text-black">Product</p>
                   <p className="mt-1 text-sm font-medium text-black">{viewReview.product}</p>
                 </div>
                 <div className="rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs text-gray-400">Date</p>
+                  <p className="text-xs text-black">Date</p>
                   <p className="mt-1 text-sm font-medium text-black">{viewReview.date}</p>
                 </div>
               </div>

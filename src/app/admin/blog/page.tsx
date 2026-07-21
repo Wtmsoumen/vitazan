@@ -38,10 +38,10 @@ export default function BlogPage() {
 
       <div className="mb-6 flex items-center gap-4">
         <div className="relative flex-1 max-w-md">
-          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+          <Search size={18} className="absolute left-3 top-1/2 -translate-y-1/2 text-black" />
           <input type="text" placeholder="Search posts..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="h-10 w-full rounded-lg border border-gray-200 bg-white pl-10 pr-4 text-sm outline-none focus:border-teal" />
         </div>
-        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-gray-600 outline-none">
+        <select className="h-10 rounded-lg border border-gray-200 bg-white px-3 text-sm text-black outline-none">
           <option>All Status</option><option>Published</option><option>Draft</option>
         </select>
       </div>
@@ -54,7 +54,7 @@ export default function BlogPage() {
             </div>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">{post.category}</span>
+                <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-black">{post.category}</span>
                 <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${post.status === "Published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>{post.status}</span>
               </div>
               <h3 className="mt-2 text-base font-medium text-black truncate">{post.title}</h3>
@@ -65,9 +65,9 @@ export default function BlogPage() {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              <button onClick={() => { setSelected(post); setModal("view"); }} className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-teal"><Eye size={18} /></button>
-              <button onClick={() => { setSelected(post); setModal("edit"); }} className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-blue-600"><Edit size={18} /></button>
-              <button onClick={() => setDeleteTarget(post)} className="rounded-lg p-2 text-gray-400 hover:bg-gray-100 hover:text-red-600"><Trash2 size={18} /></button>
+              <button onClick={() => { setSelected(post); setModal("view"); }} className="rounded-lg p-2 text-black hover:bg-gray-100 hover:text-teal"><Eye size={18} /></button>
+              <button onClick={() => { setSelected(post); setModal("edit"); }} className="rounded-lg p-2 text-black hover:bg-gray-100 hover:text-blue-600"><Edit size={18} /></button>
+              <button onClick={() => setDeleteTarget(post)} className="rounded-lg p-2 text-black hover:bg-gray-100 hover:text-red-600"><Trash2 size={18} /></button>
             </div>
           </div>
         ))}
@@ -79,7 +79,7 @@ export default function BlogPage() {
           <div className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
               <h2 className="text-lg font-semibold text-black">{modal === "add" ? "Create New Blog Post" : "Edit Blog Post"}</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="mt-6 space-y-4">
               <ImageUpload label="Featured Image" value={modal === "edit" && selected ? selected.image : undefined} />
@@ -111,7 +111,7 @@ export default function BlogPage() {
               </div>
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">
-              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50">Cancel</button>
+              <button onClick={() => setModal(null)} className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-black hover:bg-gray-50">Cancel</button>
               <button onClick={() => setModal(null)} className="rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200">Save Draft</button>
               <button onClick={() => setModal(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">{modal === "add" ? "Publish" : "Save Changes"}</button>
             </div>
@@ -125,28 +125,28 @@ export default function BlogPage() {
           <div className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold text-black">Post Details</h2>
-              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600"><X size={20} /></button>
+              <button onClick={() => setModal(null)} className="text-black hover:text-black"><X size={20} /></button>
             </div>
             <div className="relative h-48 w-full overflow-hidden rounded-xl mb-4">
               <Image src={selected.image} alt={selected.title} fill className="object-cover" />
             </div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600">{selected.category}</span>
+              <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-black">{selected.category}</span>
               <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${selected.status === "Published" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>{selected.status}</span>
             </div>
             <h3 className="text-xl font-semibold text-black">{selected.title}</h3>
-            <p className="mt-2 text-sm text-gray-600">{selected.excerpt}</p>
+            <p className="mt-2 text-sm text-black">{selected.excerpt}</p>
             <div className="mt-4 grid grid-cols-3 gap-3">
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Author</p>
+                <p className="text-xs text-black">Author</p>
                 <p className="mt-1 text-sm font-medium text-black">{selected.author}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Date</p>
+                <p className="text-xs text-black">Date</p>
                 <p className="mt-1 text-sm font-medium text-black">{selected.date}</p>
               </div>
               <div className="rounded-lg bg-gray-50 p-3">
-                <p className="text-xs text-gray-400">Views</p>
+                <p className="text-xs text-black">Views</p>
                 <p className="mt-1 text-sm font-medium text-black">{selected.views.toLocaleString()}</p>
               </div>
             </div>
