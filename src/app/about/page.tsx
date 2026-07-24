@@ -53,7 +53,7 @@ export default function AboutPage() {
                         className="w-full h-auto"
                         priority
                     />
-                    <div className="absolute inset-0 z-[1] mx-auto max-w-[1600px] px-4 sm:px-10 pointer-events-none h-full">
+                    <div className="absolute inset-0 z-[1] mx-auto max-w-[1600px] px-4 sm:px-20 pointer-events-none h-full">
                         <div className="flex flex-col justify-center h-full gap-2 sm:gap-4 w-[55%] sm:w-1/2">
                             <h1 className="font-display text-[24px] sm:text-[40px] md:text-[52px] lg:text-[67px] leading-[1.1] text-black font-medium">
                                 About Us
