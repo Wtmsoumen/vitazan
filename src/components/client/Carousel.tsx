@@ -77,7 +77,7 @@ export default function Carousel({
 
     return (
         <div className="relative">
-            <div ref={containerRef} className="overflow-">
+            <div ref={containerRef} className="overflow-hidden">
                 <motion.div
                     className={`flex cursor-grab select-none ${className}`}
                     whileTap={{ cursor: "grabbing" }}
