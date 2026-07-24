@@ -171,12 +171,13 @@ export default function OurEssencePage() {
     const selected = ingredients[selectedIndex];
 
     const scrollCarousel = (direction: "left" | "right") => {
+        const newIndex = direction === "left"
+            ? Math.max(0, selectedIndex - 1)
+            : Math.min(ingredients.length - 1, selectedIndex + 1);
+        setSelectedIndex(newIndex);
         if (!carouselRef.current) return;
-        const scrollAmount = 160;
-        carouselRef.current.scrollBy({
-            left: direction === "left" ? -scrollAmount : scrollAmount,
-            behavior: "smooth",
-        });
+        const buttons = carouselRef.current.querySelectorAll("button");
+        buttons[newIndex]?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
     };
 
     return (
