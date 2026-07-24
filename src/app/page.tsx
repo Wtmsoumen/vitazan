@@ -570,7 +570,7 @@ export default function Home() {
       </section>
 
       {/* Blog Posts */}
-      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-8 md:py-12">
         <AnimatedSection animation="fadeUp">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>

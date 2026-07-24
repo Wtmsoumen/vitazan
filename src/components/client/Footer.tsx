@@ -25,7 +25,7 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5 }}
-            className="bg-dark-teal mt-16"
+            className="bg-dark-teal mt-8"
         >
             <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-8 sm:py-12 md:py-16">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] gap-8 sm:gap-10 lg:gap-12">
