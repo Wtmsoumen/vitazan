@@ -28,57 +28,16 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="flex min-h-screen">
-            {/* Left - Branding Side */}
-            <div className="relative hidden w-1/2 lg:flex flex-col justify-between overflow-hidden">
-                {/* Background photo */}
-                <Image
-                    src="/images/adminLogin.png"
-                    alt=""
-                    fill
-                    className="object-cover"
-                    priority
-                />
-
-                {/* Teal gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/20 via-[#00485d]/20 to-[#004b61]/20" />
-
-                {/* Decorative rings */}
-                <div className="absolute -left-16 -top-16 h-72 w-72 rounded-full border border-white/10" />
-                <div className="absolute -left-8 -top-8 h-52 w-52 rounded-full border border-white/[0.06]" />
-                <div className="absolute -bottom-24 -right-24 h-80 w-80 rounded-full border border-white/10" />
-                <div className="absolute -bottom-12 -right-12 h-56 w-56 rounded-full border border-white/[0.06]" />
-
-                <div className="relative z-10 flex flex-col justify-between flex-1 px-14 py-10">
-                    {/* Logo */}
-                    <div />
-
-
-                    {/* Stats row */}
-                    <div className="grid grid-cols-3 gap-4">
-                        {[
-                            { value: "100%", label: "Genuine" },
-                            { value: "30-Day", label: "Guarantee" },
-                            { value: "24/7", label: "Support" },
-                        ].map((stat) => (
-                            <div key={stat.label} className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                                <p className="text-2xl font-bold text-white">{stat.value}</p>
-                                <p className="mt-1 text-sm text-white">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-
+        <div className="flex flex-col items-center justify-center min-h-screen">
+            <div className="absolute inset-0 z-0 opacity-70" style={{ backgroundImage: "url(/images/loginD2.png)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.2 }}></div>
             {/* Right - Login Form */}
-            <div className="flex w-full flex-col items-center justify-center px-6 sm:px-8 lg:w-1/2">
-                <div className="w-full max-w-md">
-                    <div className="mb-8">
-                        <Link href="/">
-                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-18 w-auto" />
-                        </Link>
-                    </div>
+            <div className="mb-8 w-full flex items-center justify-center z-10">
+                <Link href="/">
+                    <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-18 w-auto" />
+                </Link>
+            </div>
+            <div className="flex w-fit flex-col items-center justify-center p-6 sm:p-8 shadow-xl shadow-[#00485d20] border border-solid border-[#00485d20] rounded-2xl bg-white z-10">
+                <div className="w-[30rem]">
 
                     <div className="mb-2">
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-[#e8f5e9] px-3 py-1 text-xs font-medium text-[#00485d]">
@@ -230,6 +189,6 @@ export default function LoginPage() {
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
