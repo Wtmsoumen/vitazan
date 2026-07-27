@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Check, ChevronDown } from "lucide-react";
+import Link from "next/link";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import Carousel from "@/components/client/Carousel";
 
@@ -66,7 +67,7 @@ export default function ShopProductDetails() {
     const [openFaq, setOpenFaq] = useState<number>(0);
 
     return (
-        <div className="w-full overflow-x-hidden bg-white">
+        <div className="w-full bg-white">
             {/* Hero Banner */}
             <section className="relative mx-auto w-full overflow-hidden">
                 <motion.div
@@ -164,13 +165,15 @@ export default function ShopProductDetails() {
                             </div>
 
                             {/* Enquiry Button */}
-                            <motion.button
-                                whileHover={{ scale: 1.03 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="mt-8 w-fit rounded-full bg-pink px-8 sm:px-10 py-3 sm:py-3.5 text-[14px] sm:text-[16px] font-semibold text-white shadow-lg shadow-pink/25 transition-colors hover:bg-pink-light"
-                            >
-                                Enquiry Now
-                            </motion.button>
+                            <Link href="/cart">
+                                <motion.div
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    className="mt-8 w-fit rounded-full bg-pink px-8 sm:px-10 py-3 sm:py-3.5 text-[14px] sm:text-[16px] font-semibold text-white shadow-lg shadow-pink/25 transition-colors hover:bg-pink-light"
+                                >
+                                    Shop Now
+                                </motion.div>
+                            </Link>
                         </div>
                     </div>
                 </AnimatedSection>

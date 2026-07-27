@@ -66,7 +66,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full overflow-x-hidden bg-white">
+    <div className="w-full bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -374,13 +374,15 @@ export default function Home() {
                     </motion.div>
                   ))}
                 </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="rounded-full bg-pink hover:bg-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-white transition-opacity hover:opacity-90 mt-4 sm:mt-8"
-                >
-                  Enquiry Now
-                </motion.button>
+                <Link href="/cart">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="rounded-full bg-pink hover:bg-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-white transition-opacity hover:opacity-90 mt-4 sm:mt-8 w-fit"
+                  >
+                    Shop Now
+                  </motion.div>
+                </Link>
               </div>
             </AnimatedSection>
           </div>
@@ -408,13 +410,15 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-white font-semibold">
                   New Collection
                 </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold bg-white text-black"
-                >
-                  Shop Now
-                </motion.button>
+                <Link href="/cart">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold bg-white text-black w-fit"
+                  >
+                    Shop Now
+                  </motion.div>
+                </Link>
               </div>
             </motion.div>
           </StaggerItem>
@@ -436,13 +440,15 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-black font-semibold">
                   New Collection
                 </p>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold transition-colors bg-black text-white"
-                >
-                  Shop Now
-                </motion.button>
+                <Link href="/cart">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold transition-colors bg-black text-white w-fit"
+                  >
+                    Shop Now
+                  </motion.div>
+                </Link>
               </div>
             </motion.div>
           </StaggerItem>

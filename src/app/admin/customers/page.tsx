@@ -7,7 +7,7 @@ import DeleteModal from "@/components/admin/DeleteModal";
 const customersData = [
   { id: 1, name: "Rajesh Kumar", email: "rajesh@email.com", phone: "+91 98765 43210", orders: 12, spent: "₱1,450", joined: "Jan 2026", status: "Active", lastOrder: "Jul 16, 2026", address: "123 MG Road, Mumbai 400001" },
   { id: 2, name: "Priya Sharma", email: "priya@email.com", phone: "+91 87654 32109", orders: 8, spent: "₱960", joined: "Feb 2026", status: "Active", lastOrder: "Jul 16, 2026", address: "45 Park Street, Kolkata 700016" },
-  { id: 3, name: "Amit Singh", email: "amit@email.com", phone: "+91 76543 21098", orders: 15, spent: "₱2,100", joined: "Dec 2025", status: "Active", lastOrder: "Jul 15, 2026", address: "78 Sector 18, Noida 201301" },
+  { id: 3, name: "User", email: "amit@email.com", phone: "+91 76543 21098", orders: 15, spent: "₱2,100", joined: "Dec 2025", status: "Active", lastOrder: "Jul 15, 2026", address: "78 Sector 18, Noida 201301" },
   { id: 4, name: "Neha Gupta", email: "neha@email.com", phone: "+91 65432 10987", orders: 3, spent: "₱280", joined: "Mar 2026", status: "Active", lastOrder: "Jul 15, 2026", address: "12 Brigade Road, Bangalore 560001" },
   { id: 5, name: "Vikram Patel", email: "vikram@email.com", phone: "+91 54321 09876", orders: 6, spent: "₱720", joined: "Apr 2026", status: "Inactive", lastOrder: "Jun 28, 2026", address: "56 SG Highway, Ahmedabad 380015" },
   { id: 6, name: "Sneha Rao", email: "sneha@email.com", phone: "+91 43210 98765", orders: 20, spent: "₱3,200", joined: "Nov 2025", status: "Active", lastOrder: "Jul 14, 2026", address: "89 Anna Salai, Chennai 600002" },

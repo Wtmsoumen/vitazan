@@ -18,10 +18,15 @@
   --color-dark: var(--dark);
 }
 
+html {
+  overflow-x: clip;
+}
+
 body {
   background: #ffffff;
   color: #171717;
   font-family: var(--font-sans);
+  overflow-x: clip;
 }
 
 h1,

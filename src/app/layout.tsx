@@ -111,9 +111,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#00485d" />
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
-      <Layout>
-        <body className="min-h-full flex flex-col font-sans">{children}</body>
-      </Layout>
+      <body className="flex flex-col font-sans">
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }

@@ -77,11 +77,15 @@ export default function Footer() {
                     <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
                         <h4 className="text-[24px] font-semibold text-white">Shop</h4>
                         <ul className="mt-4 space-y-3">
-                            {["All Products", "VITAZAN™ HT-Kof", "VITAZAN™ Senax", "VITAZAN™ Reload", "VITAZAN™ Osteomac"].map((item) => (
-                                <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[16px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
-                                        {item}
-                                    </a>
+                            {[{ name: "All Products", link: "/shop" },
+                            { name: "VITAZAN™ HT-Kof", link: "/shop/details" },
+                            { name: "VITAZAN™ Senax", link: "/shop/details" },
+                            { name: "VITAZAN™ Reload", link: "/shop/details" },
+                            { name: "VITAZAN™ Osteomac", link: "/shop/details" }].map((item, idx) => (
+                                <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                                    <Link href={item.link} className="text-[16px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                        {item.name}
+                                    </Link>
                                 </motion.li>
                             ))}
                         </ul>
@@ -91,11 +95,17 @@ export default function Footer() {
                     <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
                         <h4 className="text-[24px] font-semibold text-white">Company</h4>
                         <ul className="mt-4 space-y-3">
-                            {["Home", "Shop", "About Us", "Our Essence", "Blog", "Contact Us"].map((item) => (
-                                <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
-                                        {item}
-                                    </a>
+                            {[{ name: "Home", link: "/" },
+                            { name: "Shop", link: "/shop" },
+                            { name: "About Us", link: "/about" },
+                            { name: "Our Essence", link: "/our-essence" },
+                            { name: "Blog", link: "/blog" },
+                            { name: "Contact Us", link: "/contact-us" }
+                            ].map((item, idx) => (
+                                <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                                    <Link href={item.link} className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                        {item.name}
+                                    </Link>
                                 </motion.li>
                             ))}
                         </ul>

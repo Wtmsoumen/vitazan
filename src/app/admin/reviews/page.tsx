@@ -7,7 +7,7 @@ import DeleteModal from "@/components/admin/DeleteModal";
 const reviewsData = [
   { id: 1, customer: "Rajesh Kumar", email: "rajesh@email.com", product: "VITAZAN™ HT-KOF", rating: 5, comment: "Excellent product! Really helped with my cold symptoms. Will buy again.", date: "Jul 16, 2026", status: "Published" },
   { id: 2, customer: "Priya Sharma", email: "priya@email.com", product: "VITAZAN™ SENAX", rating: 4, comment: "Good quality supplement. Noticed improvement in digestion within a week.", date: "Jul 15, 2026", status: "Published" },
-  { id: 3, customer: "Amit Singh", email: "amit@email.com", product: "VITAZAN™ OSTEOMAC", rating: 5, comment: "Best bone health supplement I've tried. Doctor recommended and it works.", date: "Jul 14, 2026", status: "Pending" },
+  { id: 3, customer: "User", email: "amit@email.com", product: "VITAZAN™ OSTEOMAC", rating: 5, comment: "Best bone health supplement I've tried. Doctor recommended and it works.", date: "Jul 14, 2026", status: "Pending" },
   { id: 4, customer: "Neha Gupta", email: "neha@email.com", product: "VITAZAN™ RELOAD", rating: 3, comment: "Decent product but packaging could be better. Effectiveness is okay.", date: "Jul 13, 2026", status: "Published" },
   { id: 5, customer: "Vikram Patel", email: "vikram@email.com", product: "VITAZAN™ HT-KOF", rating: 1, comment: "Did not work for me at all. Very disappointed with the results.", date: "Jul 12, 2026", status: "Flagged" },
 ];

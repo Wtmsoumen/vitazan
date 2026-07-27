@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export default function Shop() {
     return (
-        <div className="w-full overflow-x-hidden bg-white">
+        <div className="w-full bg-white">
             {/* Hero Banner */}
-            <section className="relative mx-auto w-full overflow-hidden">
+            {/* <section className="relative mx-auto w-full overflow-hidden">
                 <motion.div
                     initial={{ scale: 1.08 }}
                     animate={{ scale: 1 }}
@@ -34,7 +34,7 @@ export default function Shop() {
                         </div>
                     </div>
                 </motion.div>
-            </section>
+            </section> */}
 
             {/* <AnimatedSection animation="fadeUp" > */}
             <ClassicTopProducts />

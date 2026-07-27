@@ -36,7 +36,7 @@ const wellnessItems = [
 
 export default function AboutPage() {
     return (
-        <div className="w-full overflow-x-hidden bg-white">
+        <div className="w-full bg-white">
             {/* Hero Banner */}
             <section className="relative mx-auto w-full overflow-hidden">
                 <motion.div

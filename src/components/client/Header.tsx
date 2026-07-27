@@ -11,8 +11,8 @@ const navLinks = [
     { name: "Shop", link: "/shop" },
     { name: "About Us", link: "/about" },
     { name: "Our Essence", link: "/our-essence" },
-    { name: "Blog", link: "#" },
-    { name: "Contact Us", link: "#" },
+    { name: "Blog", link: "/blog" },
+    { name: "Contact Us", link: "/contact-us" },
 ];
 
 export default function Header() {
@@ -120,6 +120,7 @@ export default function Header() {
                                     border: "border border-[#0284C7]",
                                     shadow: "shadow-md shadow-[#0284C7]/20",
                                     hoverBg: "#0284C7",
+                                    href: "#",
                                 },
                                 {
                                     icon: <ShoppingBasket className="w-5 h-5 sm:w-6 sm:h-6 text-[#E5097F] group-hover:text-white transition-all duration-500" strokeWidth={2.2} />,
@@ -127,6 +128,7 @@ export default function Header() {
                                     border: "border border-[#E5097F]",
                                     shadow: "shadow-md shadow-[#E5097F]/20",
                                     hoverBg: "#E5097F",
+                                    href: "/cart",
                                 },
                                 {
                                     icon: <UserRound className="w-5 h-5 sm:w-6 sm:h-6 text-[#7C3AED] group-hover:text-white transition-all duration-500" strokeWidth={2.2} />,
@@ -134,20 +136,22 @@ export default function Header() {
                                     border: "border border-[#7C3AED]",
                                     shadow: "shadow-md shadow-[#7C3AED]/20",
                                     hoverBg: "#7C3AED",
+                                    href: "/login",
                                 },
                             ].map((btn, i) => (
-                                <motion.button
-                                    key={i}
-                                    variants={{
-                                        hidden: { opacity: 0, scale: 0.7 },
-                                        visible: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] } },
-                                    }}
-                                    whileHover={{ scale: 1.12, backgroundColor: btn.hoverBg }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className={`relative flex w-10 h-10 sm:w-12 sm:h-12 md:w-13 md:h-13 items-center justify-center rounded-full group ${btn.bg} ${btn.border} ${btn.shadow} transition-all`}
-                                >
-                                    {btn.icon}
-                                </motion.button>
+                                <Link key={i} href={btn.href}>
+                                    <motion.div
+                                        variants={{
+                                            hidden: { opacity: 0, scale: 0.7 },
+                                            visible: { opacity: 1, scale: 1, transition: { duration: 0.35, ease: [0.25, 0.1, 0.25, 1] } },
+                                        }}
+                                        whileHover={{ scale: 1.12, backgroundColor: btn.hoverBg }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className={`relative flex w-10 h-10 sm:w-12 sm:h-12 md:w-13 md:h-13 items-center justify-center rounded-full group ${btn.bg} ${btn.border} ${btn.shadow} transition-all`}
+                                    >
+                                        {btn.icon}
+                                    </motion.div>
+                                </Link>
                             ))}
                         </motion.div>
 
@@ -192,14 +196,14 @@ export default function Header() {
                             {/* Mobile-only icons row */}
                             <div className="sm:hidden flex items-center gap-3 pt-3 px-3 border-t border-gray-100 mt-2">
                                 {[
-                                    { icon: <Search className="w-5 h-5 text-[#0284C7]" />, label: "Search", bg: "bg-[#F0F9FF]" },
-                                    { icon: <ShoppingBasket className="w-5 h-5 text-[#E5097F]" />, label: "Cart", bg: "bg-[#FDF2F8]" },
-                                    { icon: <UserRound className="w-5 h-5 text-[#7C3AED]" />, label: "Account", bg: "bg-[#F5F3FF]" },
+                                    { icon: <Search className="w-5 h-5 text-[#0284C7]" />, label: "Search", bg: "bg-[#F0F9FF]", href: "#" },
+                                    { icon: <ShoppingBasket className="w-5 h-5 text-[#E5097F]" />, label: "Cart", bg: "bg-[#FDF2F8]", href: "/cart" },
+                                    { icon: <UserRound className="w-5 h-5 text-[#7C3AED]" />, label: "Account", bg: "bg-[#F5F3FF]", href: "/login" },
                                 ].map((btn, i) => (
-                                    <button key={i} className={`flex items-center gap-2 py-2 px-3 rounded-lg ${btn.bg} transition-colors`}>
+                                    <Link key={i} href={btn.href} className={`flex items-center gap-2 py-2 px-3 rounded-lg ${btn.bg} transition-colors`} onClick={() => setMobileMenuOpen(false)}>
                                         {btn.icon}
                                         <span className="text-[14px] font-medium text-black">{btn.label}</span>
-                                    </button>
+                                    </Link>
                                 ))}
                             </div>
                         </div>

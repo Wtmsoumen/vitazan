@@ -93,7 +93,7 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
           onClick={() => setMobileOpen(false)}
           className="lg:hidden absolute top-5 right-4 flex h-8 w-8 items-center justify-center rounded-lg hover:bg-white/10"
         >
-          <X size={18} className="text-white/70" />
+          <X size={18} className="text-white" />
         </button>
       </div>
 
@@ -125,11 +125,11 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
                       onClick={() => setMobileOpen(false)}
                       className={`group flex items-center gap-3 rounded-xl px-3 py-2 text-[15px] font-medium transition-all duration-200 ${active
                         ? "bg-white/15 text-white shadow-sm backdrop-blur-sm"
-                        : "text-white/80 hover:bg-white/10 hover:text-white"
+                        : "text-white hover:bg-white/10 hover:text-white"
                         } ${collapsed ? "justify-center" : ""}`}
                       title={collapsed ? item.label : undefined}
                     >
-                      <Icon size={19} className={active ? "text-white" : "text-white/70 group-hover:text-white transition-colors"} />
+                      <Icon size={19} className={active ? "text-white" : "text-white group-hover:text-white transition-colors"} />
                       {!collapsed && <span>{item.label}</span>}
                     </Link>
                   </li>
@@ -144,7 +144,7 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
       <div className="border-t border-white/10 p-3 flex-shrink-0">
         <a
           href="/admin/login"
-          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-white/50 transition-all hover:bg-red-500/15 hover:text-red-400 ${collapsed ? "justify-center" : ""}`}
+          className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-white transition-all hover:bg-red-500/15 hover:text-red-400 ${collapsed ? "justify-center" : ""}`}
         >
           <LogOut size={19} />
           {!collapsed && <span>Logout</span>}

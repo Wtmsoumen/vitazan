@@ -51,7 +51,7 @@ const topProducts = [
 const recentOrders = [
   { id: "#VZ-1024", customer: "Rajesh Kumar", product: "HT-KOF", amount: "₱45.00", status: "Delivered", date: "Jul 16, 2026" },
   { id: "#VZ-1023", customer: "Priya Sharma", product: "SENAX", amount: "₱32.00", status: "Shipped", date: "Jul 16, 2026" },
-  { id: "#VZ-1022", customer: "Amit Singh", product: "OSTEOMAC", amount: "₱55.00", status: "Processing", date: "Jul 15, 2026" },
+  { id: "#VZ-1022", customer: "User", product: "OSTEOMAC", amount: "₱55.00", status: "Processing", date: "Jul 15, 2026" },
   { id: "#VZ-1021", customer: "Neha Gupta", product: "RELOAD", amount: "₱28.00", status: "Delivered", date: "Jul 15, 2026" },
   { id: "#VZ-1020", customer: "Vikram Patel", product: "HT-KOF", amount: "₱90.00", status: "Pending", date: "Jul 14, 2026" },
 ];
