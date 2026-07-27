@@ -31,14 +31,14 @@ export default function ContactUsPage() {
                     initial={{ scale: 1.08 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="relative w-full"
+                    className="relative w-full h-[30vh] flex"
                 >
                     <Image
                         src="/images/contactUs.png"
                         alt="Contact Us"
                         width={1920}
                         height={1080}
-                        className="w-full h-auto"
+                        className="w-full h-full object-cover"
                         priority
                     />
                     <div className="absolute inset-0 z-[1] mx-auto max-w-[1600px] px-4 sm:px-20 pointer-events-none h-full">

@@ -188,7 +188,7 @@ export default function OurEssencePage() {
                     initial={{ scale: 1.08 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="relative w-full"
+                    className="relative w-full h-[50vh]"
                 >
                     <Image
                         src="/images/ourEssence.png"

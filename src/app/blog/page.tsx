@@ -123,14 +123,14 @@ export default function BlogPage() {
                     initial={{ scale: 1.08 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="relative w-full"
+                    className="relative w-full h-[30vh]"
                 >
                     <Image
                         src="/images/FiveMinuteReads.png"
                         alt="Blog"
                         width={1920}
                         height={1080}
-                        className="w-full h-[320px] sm:h-[400px] md:h-[460px] object-cover"
+                        className="w-full h-full object-cover"
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />

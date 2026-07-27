@@ -31,14 +31,17 @@ export default function LoginPage() {
         <div className="flex min-h-screen">
             {/* Left - Branding Side */}
             <div className="relative hidden w-1/2 lg:flex flex-col justify-between overflow-hidden">
+                {/* Background photo */}
                 <Image
-                    src="/images/aboutBanner.png"
+                    src="/images/adminLogin.png"
                     alt=""
                     fill
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/80 via-[#00485d]/60 to-[#004b61]/70" />
+
+                {/* Teal gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#00485d]/20 via-[#00485d]/20 to-[#004b61]/20" />
 
                 {/* Decorative rings */}
                 <div className="absolute -left-16 -top-16 h-72 w-72 rounded-full border border-white/10" />
@@ -47,36 +50,9 @@ export default function LoginPage() {
                 <div className="absolute -bottom-12 -right-12 h-56 w-56 rounded-full border border-white/[0.06]" />
 
                 <div className="relative z-10 flex flex-col justify-between flex-1 px-14 py-10">
-                    <Link href="/">
-                        <Image
-                            src="/images/logoWhite.png"
-                            alt="Vitazan"
-                            width={238}
-                            height={62}
-                            className="w-[180px] h-auto"
-                        />
-                    </Link>
+                    {/* Logo */}
+                    <div />
 
-                    <div>
-                        <h2 className="font-display text-[38px] xl:text-[46px] text-white leading-tight">
-                            Wellness<br />Unleashed
-                        </h2>
-                        <p className="mt-4 text-[15px] leading-[1.8] text-white max-w-[380px]">
-                            Your trusted vitality partner — premium, scientifically-backed supplements delivered to your doorstep.
-                        </p>
-                        <div className="mt-8 flex flex-col gap-3">
-                            {[
-                                "Track your orders in real-time",
-                                "Exclusive member-only discounts",
-                                "Personalized wellness recommendations",
-                            ].map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-[#E5097F]" />
-                                    <span className="text-[14px] text-white">{item}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
 
                     {/* Stats row */}
                     <div className="grid grid-cols-3 gap-4">
@@ -86,7 +62,7 @@ export default function LoginPage() {
                             { value: "24/7", label: "Support" },
                         ].map((stat) => (
                             <div key={stat.label} className="rounded-xl bg-white/10 p-4 backdrop-blur-sm">
-                                <p className="text-xl font-bold text-white">{stat.value}</p>
+                                <p className="text-2xl font-bold text-white">{stat.value}</p>
                                 <p className="mt-1 text-sm text-white">{stat.label}</p>
                             </div>
                         ))}
@@ -94,12 +70,13 @@ export default function LoginPage() {
                 </div>
             </div>
 
+
             {/* Right - Login Form */}
             <div className="flex w-full flex-col items-center justify-center px-6 sm:px-8 lg:w-1/2">
                 <div className="w-full max-w-md">
-                    <div className="lg:hidden mb-6">
+                    <div className="mb-8">
                         <Link href="/">
-                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-14 w-auto" />
+                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="h-18 w-auto" />
                         </Link>
                     </div>
 
