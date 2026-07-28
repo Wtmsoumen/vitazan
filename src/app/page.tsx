@@ -191,7 +191,7 @@ export default function Home() {
       </motion.div>
 
       {/* Leaf decoration */}
-      <div className="relative hidden md:block">
+      {/* <div className="relative hidden md:block">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -206,7 +206,7 @@ export default function Home() {
             className="absolute -top-20 left-0 z-10"
           />
         </motion.div>
-      </div>
+      </div> */}
 
       {/* Shop by Categories */}
       <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
