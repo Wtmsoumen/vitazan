@@ -190,24 +190,6 @@ export default function Home() {
         </div>
       </motion.div>
 
-      {/* Leaf decoration */}
-      {/* <div className="relative hidden md:block">
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Image
-            src="/images/leaf.png"
-            alt=""
-            width={112}
-            height={170}
-            className="absolute -top-20 left-0 z-10"
-          />
-        </motion.div>
-      </div> */}
-
       {/* Shop by Categories */}
       <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
         <AnimatedSection animation="fadeUp">
@@ -220,13 +202,7 @@ export default function Home() {
                 Shop by <span className="relative inline-block text-pink">Categories</span>
               </h2>
             </div>
-            {/* <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.97 }}
-              className="rounded-full border border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] bg-pink text-white! font-semibold! transition-all hover:bg-dark-teal hover:shadow-md duration-300"
-            >
-              Discover More
-            </motion.button> */}
+
           </div>
         </AnimatedSection>
 

@@ -214,64 +214,18 @@ export default function Shop() {
 
     return (
         <div className="w-full bg-white">
-            {/* Hero Banner */}
-            {/* <section className="relative w-full overflow-hidden bg-gradient-to-r from-[#00485d] via-[#006d7f] to-[#00485d]">
-                <motion.div
-                    initial={{ scale: 1.05, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-                    className="relative mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-12 sm:py-16 md:py-20 text-center"
-                >
-                    <div className="absolute inset-0 opacity-10">
-                        <div className="absolute top-6 left-[10%] w-32 h-32 rounded-full bg-white/20 blur-3xl" />
-                        <div className="absolute bottom-4 right-[15%] w-40 h-40 rounded-full bg-pink/20 blur-3xl" />
-                    </div>
-                    <motion.p
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                        className="font-display text-[22px] sm:text-[32px] md:text-[42px] lg:text-[52px] text-white leading-[1.2]"
-                    >
-                        Shop for your requirement by
-                    </motion.p>
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.4, duration: 0.6 }}
-                        className="mt-3 sm:mt-4 flex flex-col items-center gap-0"
-                    >
-                        <span className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] text-white font-medium leading-[1.15]">Therapy</span>
-                        <span className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] text-white/80 font-medium leading-[1.15]">Age</span>
-                        <span className="font-display text-[28px] sm:text-[38px] md:text-[50px] lg:text-[62px] text-pink font-medium leading-[1.15]">Gender</span>
-                    </motion.div>
-                </motion.div>
-            </section> */}
-
             {/* Main content: sidebar + grid */}
             <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-8 md:py-12">
-                {/* Mobile filter toggle + search bar */}
-                {/* <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 md:mb-8">
-                    <div className="relative flex-1">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                        <input
-                            type="text"
-                            placeholder="Search products..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full h-[48px] rounded-full border border-gray-200 pl-12 pr-5 text-[14px] text-black outline-none focus:border-pink focus:ring-2 focus:ring-pink/10 placeholder:text-gray-400"
-                        />
-                    </div>
+                {/* Mobile filter toggle */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 md:mb-8">
                     <button
                         onClick={() => setMobileFilterOpen(true)}
-                        className="lg:hidden flex items-center justify-center gap-2 h-[48px] px-6 rounded-full bg-teal text-white text-[14px] font-medium"
+                        className="lg:hidden flex items-center justify-center gap-2 h-[48px] w-fit px-6 rounded-full bg-teal text-white text-[14px] font-medium"
                     >
                         <Filter className="w-4 h-4" />
                         Filters
                     </button>
-                    <div className="hidden sm:flex items-center gap-2 text-[13px] text-black">
-                        <span>{filtered.length} product{filtered.length !== 1 ? "s" : ""} found</span>
-                    </div>
-                </div> */}
+                </div>
 
                 {/* Active filters */}
                 {(selectedCategory !== "All" || selectedGender !== "All" || selectedAge !== "All Age") && (

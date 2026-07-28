@@ -13,7 +13,11 @@ export default function Layout({
 
     return (
         <>
-            {pathname.split("/")[1] === "admin" || pathname.split("/")[1] === "login" || pathname.split("/")[1] === "dashboard" ? children : <><Header /> {children} <Footer /></>}
+            {pathname.split("/")[1] === "admin" ||
+                pathname.split("/")[1] === "login" ||
+                pathname.split("/")[1] === "dashboard" ? children :
+                <><Header /> {children} <Footer /></>
+            }
         </>
     );
 }

@@ -203,20 +203,6 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 placeholder="Search products, pages, articles..."
                                 className="flex-1 text-[16px] sm:text-[18px] text-gray-900 outline-none placeholder:text-gray-400 bg-transparent font-sans"
                             />
-                            <div className="flex items-center gap-2 flex-shrink-0">
-                                {/* {query && (
-                                    <button
-                                        onClick={() => setQuery("")}
-                                        className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
-                                        title="Clear search"
-                                    >
-                                        <X size={16} />
-                                    </button>
-                                )}
-                                <kbd className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md bg-gray-100 text-[11px] font-medium text-gray-400 border border-gray-200/80 select-none">
-                                    <span>ESC</span>
-                                </kbd> */}
-                            </div>
                         </div>
 
                         {/* Content & Results Scroll Area */}
@@ -371,28 +357,6 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 </div>
                             )}
                         </div>
-
-                        {/* Mac Spotlight Footer */}
-                        {/* <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100 bg-gray-50/80 text-[12px] text-black select-none">
-                            <div className="flex items-center gap-4">
-                                <span className="flex items-center gap-1.5">
-                                    <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono shadow-xs text-gray-600">↑↓</kbd>
-                                    <span>Navigate</span>
-                                </span>
-                                <span className="flex items-center gap-1.5">
-                                    <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono shadow-xs text-gray-600">↵</kbd>
-                                    <span>Select</span>
-                                </span>
-                                <span className="flex items-center gap-1.5">
-                                    <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono shadow-xs text-gray-600">ESC</kbd>
-                                    <span>Dismiss</span>
-                                </span>
-                            </div>
-                            <div className="hidden sm:flex items-center gap-1 text-[11px] text-gray-400 font-medium">
-                                <Command size={12} />
-                                <span>Spotlight Search</span>
-                            </div>
-                        </div> */}
                     </motion.div>
                 </div>
             )}

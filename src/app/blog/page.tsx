@@ -311,40 +311,6 @@ export default function BlogPage() {
                     )}
                 </div>
             </section>
-
-            {/* Newsletter CTA */}
-            {/* <AnimatedSection animation="fadeUp">
-                <section className="relative h-[320px] sm:h-[380px] md:h-[420px] w-full overflow-hidden">
-                    <Image src="/images/FiveMinuteReads.png" alt="" fill className="object-cover" />
-                    <div className="absolute inset-0 bg-black/10" />
-                    <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] flex flex-col justify-center h-full">
-                        <p className="text-[14px] sm:text-[18px] uppercase tracking-[2px] text-black font-bold">
-                            Join the Vitazan
-                        </p>
-                        <h2 className="mt-2 sm:mt-3 text-[28px] sm:text-[42px] md:text-[52px] font-bold leading-[1.1] text-black">
-                            Five-minute reads{" "}
-                            <span className="font-display italic">for<br />a healthier you.</span>
-                        </h2>
-                        <p className="mt-3 text-[14px] sm:text-[16px] text-black/70 font-medium max-w-[440px]">
-                            Herbal cough remedy carefully formulated using time-tested Ayurvedic herbs.
-                        </p>
-                        <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0">
-                            <input
-                                type="email"
-                                placeholder="Enter your email address..."
-                                className="h-[50px] sm:h-[56px] w-full sm:w-[360px] rounded-full border border-white bg-white/34 px-6 text-[14px] sm:text-[16px] italic text-black placeholder:text-black/50 outline-none"
-                            />
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.97 }}
-                                className="sm:ml-[10px] h-[50px] sm:h-[56px] w-full sm:w-[170px] rounded-full bg-pink hover:bg-dark-teal text-[16px] sm:text-[18px] font-bold text-white transition-colors"
-                            >
-                                Subscribe
-                            </motion.button>
-                        </div>
-                    </div>
-                </section>
-            </AnimatedSection> */}
         </div>
     );
 }
