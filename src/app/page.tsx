@@ -231,7 +231,7 @@ export default function Home() {
         </AnimatedSection>
 
         <div className="mt-8 md:mt-12">
-          <Carousel itemsPerView={{ base: 3, sm: 4, md: 5, lg: 7 }} gap={16} showDots={true} showArrows={true} leftArrow='top-[32%]' rightArrow='top-[32%]' className="py-4">
+          <Carousel itemsPerView={{ base: 3, sm: 4, md: 5, lg: 8 }} gap={0} showDots={true} showArrows={true} leftArrow='top-[32%]' rightArrow='top-[32%]' className="py-4">
             {[
               { name: "Bone & Joint Care", icon: "/images/Category Icons/Bone, joint & muscle care 2.svg", bg: "#f3e4fd" },
               { name: "Cold & Cough", icon: "/images/Category Icons/Cold and Cough remedy.svg", bg: "#fff1e0" },
