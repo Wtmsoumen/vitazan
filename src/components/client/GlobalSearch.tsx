@@ -17,7 +17,7 @@ const pages = [
     { title: "Health & Wellness Blog", href: "/blog", icon: FileText, category: "Pages", desc: "Expert articles, tips & guides" },
     { title: "Contact Us", href: "/contact-us", icon: MapPin, category: "Pages", desc: "Get in touch with customer care" },
     { title: "My Dashboard", href: "/dashboard", icon: MapPin, category: "Pages", desc: "Manage orders & personal account" },
-    { title: "Shopping Cart", href: "/cart", icon: ShoppingBasket, category: "Pages", desc: "Review items in your cart" },
+    { title: "Shopping Cart", href: "#/cart", icon: ShoppingBasket, category: "Pages", desc: "Review items in your cart" },
     { title: "Login / Sign Up", href: "/login", icon: MapPin, category: "Pages", desc: "Account access & authentication" },
 ];
 
@@ -204,7 +204,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 className="flex-1 text-[16px] sm:text-[18px] text-gray-900 outline-none placeholder:text-gray-400 bg-transparent font-sans"
                             />
                             <div className="flex items-center gap-2 flex-shrink-0">
-                                {query && (
+                                {/* {query && (
                                     <button
                                         onClick={() => setQuery("")}
                                         className="p-1 rounded-full text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
@@ -215,7 +215,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 )}
                                 <kbd className="hidden sm:flex items-center gap-1 px-2 py-1 rounded-md bg-gray-100 text-[11px] font-medium text-gray-400 border border-gray-200/80 select-none">
                                     <span>ESC</span>
-                                </kbd>
+                                </kbd> */}
                             </div>
                         </div>
 
@@ -373,7 +373,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                         </div>
 
                         {/* Mac Spotlight Footer */}
-                        <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100 bg-gray-50/80 text-[12px] text-gray-500 select-none">
+                        {/* <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100 bg-gray-50/80 text-[12px] text-gray-500 select-none">
                             <div className="flex items-center gap-4">
                                 <span className="flex items-center gap-1.5">
                                     <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono shadow-xs text-gray-600">↑↓</kbd>
@@ -392,7 +392,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                 <Command size={12} />
                                 <span>Spotlight Search</span>
                             </div>
-                        </div>
+                        </div> */}
                     </motion.div>
                 </div>
             )}

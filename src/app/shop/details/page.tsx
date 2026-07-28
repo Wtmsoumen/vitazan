@@ -165,13 +165,13 @@ export default function ShopProductDetails() {
                             </div>
 
                             {/* Enquiry Button */}
-                            <Link href="/cart">
+                            <Link href="#/cart">
                                 <motion.div
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
                                     className="mt-8 w-fit rounded-full bg-pink px-8 sm:px-10 py-3 sm:py-3.5 text-[14px] sm:text-[16px] font-semibold text-white shadow-lg shadow-pink/25 transition-colors hover:bg-pink-light"
                                 >
-                                    Shop Now
+                                    Enquiry Now
                                 </motion.div>
                             </Link>
                         </div>

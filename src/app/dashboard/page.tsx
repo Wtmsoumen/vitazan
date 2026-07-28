@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import {
     User, Package, Heart, MapPin, CreditCard, LogOut,
     ShoppingBasket, Star, Eye, Truck, Clock,
@@ -12,11 +13,11 @@ import {
 } from "lucide-react";
 
 const sidebarItems = [
-    { id: "overview", label: "Overview", icon: User },
-    { id: "orders", label: "My Orders", icon: Package },
-    { id: "wishlist", label: "Wishlist", icon: Heart },
-    { id: "addresses", label: "Addresses", icon: MapPin },
+    // { id: "overview", label: "Overview", icon: User },
+    // { id: "orders", label: "My Orders", icon: Package },
+    // { id: "wishlist", label: "Wishlist", icon: Heart },
     { id: "settings", label: "Profile Settings", icon: Settings },
+    { id: "addresses", label: "Addresses", icon: MapPin },
 ];
 
 const orders = [
@@ -71,7 +72,7 @@ const statusConfig: Record<string, { color: string; bg: string; icon: React.Reac
 };
 
 export default function DashboardPage() {
-    const [activeTab, setActiveTab] = useState("overview");
+    const [activeTab, setActiveTab] = useState("settings");
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const router = useRouter();
 
@@ -258,9 +259,9 @@ export default function DashboardPage() {
                                                     <div className="flex items-center gap-3">
                                                         <div className="flex -space-x-2">
                                                             {order.items.slice(0, 2).map((item, i) => (
-                                                                <div key={i} className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center">
+                                                                <Link key={i} href="/shop/details" className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center hover:border-pink transition-colors">
                                                                     <Image src={item.image} alt={item.name} width={100} height={100} className="w-7 h-7 object-contain" />
-                                                                </div>
+                                                                </Link>
                                                             ))}
                                                         </div>
                                                         <div>
@@ -333,7 +334,7 @@ export default function DashboardPage() {
                                             </div>
                                             <div className="space-y-2.5">
                                                 {order.items.map((item, idx) => (
-                                                    <div key={idx} className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
+                                                    <Link key={idx} href="/shop/details" className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
                                                         <div className="w-12 h-12 rounded-lg bg-white border border-gray-100 flex items-center justify-center flex-shrink-0">
                                                             <Image src={item.image} alt={item.name} width={100} height={100} className="w-8 h-8 object-contain" />
                                                         </div>
@@ -341,13 +342,13 @@ export default function DashboardPage() {
                                                             <p className="text-[15px] font-semibold text-black">{item.name}</p>
                                                             <p className="text-[13px] text-gray-500">{item.variant} &times; {item.qty}</p>
                                                         </div>
-                                                    </div>
+                                                    </Link>
                                                 ))}
                                             </div>
                                             <div className="flex gap-3 mt-4">
-                                                <button className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors">
+                                                <Link href="/shop/details" className="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-gray-200 text-xs font-medium text-gray-600 hover:bg-gray-50 transition-colors">
                                                     <Eye size={14} /> View Details
-                                                </button>
+                                                </Link>
                                                 {order.status === "Delivered" && (
                                                     <button className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#00485d] text-xs font-medium text-white hover:bg-[#003a4d] transition-colors">
                                                         <Star size={14} /> Write Review
@@ -365,9 +366,9 @@ export default function DashboardPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                             {wishlistItems.map((item) => (
                                 <div key={item.id} className="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-md transition-shadow">
-                                    <div className="relative p-6 bg-gray-50 flex items-center justify-center h-[180px]">
-                                        <Image src={item.image} alt={item.name} width={200} height={200} className="w-[110px] h-[110px] object-contain" />
-                                        <button className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-red-50 transition-colors">
+                                    <Link href="/shop/details" className="relative p-6 bg-gray-50 flex items-center justify-center h-[180px] group">
+                                        <Image src={item.image} alt={item.name} width={200} height={200} className="w-[110px] h-[110px] object-contain transition-transform duration-300 group-hover:scale-105" />
+                                        <button onClick={(e) => e.preventDefault()} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-red-50 transition-colors z-10">
                                             <Heart className="w-4 h-4 text-red-500 fill-red-500" />
                                         </button>
                                         {!item.inStock && (
@@ -375,9 +376,9 @@ export default function DashboardPage() {
                                                 <span className="px-4 py-1.5 rounded-full bg-gray-800 text-white text-xs font-semibold">Out of Stock</span>
                                             </div>
                                         )}
-                                    </div>
+                                    </Link>
                                     <div className="p-4 sm:p-5">
-                                        <h3 className="text-[15px] font-bold text-black">{item.name}</h3>
+                                        <Link href="/shop/details" className="text-[15px] font-bold text-black hover:text-pink transition-colors">{item.name}</Link>
                                         <div className="flex items-center gap-2 mt-2">
                                             <span className="text-xl font-bold text-[#00485d]">&#8369;{item.price}</span>
                                             <span className="text-xs text-black line-through">&#8369;{item.originalPrice}</span>

@@ -2,9 +2,33 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import AnimatedSection from "@/components/client/AnimatedSection";
-import { ArrowRight } from "lucide-react";
+import AnimatedSection, { StaggerContainer, StaggerItem } from "@/components/client/AnimatedSection";
+import { ArrowRight, Leaf, FlaskConical, ShieldCheck, Info } from "lucide-react";
 import WellnessIsDailyRitual from "@/components/client/WellnessIsDailyRitual";
+
+const howItWorksSteps = [
+    {
+        step: "01",
+        title: "Nature-Powered",
+        desc: "Using the finest, naturally sourced ingredients to promote vitality.",
+        icon: Leaf,
+        bgClass: "bg-[#e8f5e9] text-[#2e7d32]",
+    },
+    {
+        step: "02",
+        title: "Scientifically Formulated",
+        desc: "Designed with cutting-edge research to ensure effectiveness and safety.",
+        icon: FlaskConical,
+        bgClass: "bg-[#e3f2fd] text-[#1565c0]",
+    },
+    {
+        step: "03",
+        title: "Commitment to Quality",
+        desc: "Our products undergo stringent quality controls, delivering on our promise of purity and reliability.",
+        icon: ShieldCheck,
+        bgClass: "bg-[#fce4ec] text-[#c2185b]",
+    },
+];
 
 
 const whyCards = [
@@ -110,6 +134,52 @@ export default function AboutPage() {
             {/* Wellness is a daily ritual */}
             <WellnessIsDailyRitual />
 
+            {/* How It Works */}
+            <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+                <AnimatedSection animation="fadeUp">
+                    <div className="text-center max-w-[700px] mx-auto">
+                        <h2 className="font-display text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-dark leading-tight">
+                            How It Works
+                        </h2>
+                        <p className="mt-3 text-[14px] sm:text-[16px] md:text-[18px] text-black font-medium">
+                            The steps for your wellness to be unleashed
+                        </p>
+                    </div>
+                </AnimatedSection>
+
+                <StaggerContainer className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8" staggerDelay={0.15}>
+                    {howItWorksSteps.map((item, idx) => {
+                        const IconComponent = item.icon;
+                        return (
+                            <StaggerItem key={idx} animation="fadeUp" className="h-full">
+                                <motion.div
+                                    whileHover={{ y: -6 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="relative h-full bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+                                >
+                                    <div>
+                                        <div className="flex items-center justify-between mb-6">
+                                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${item.bgClass} shadow-sm group-hover:scale-105 transition-transform duration-200`}>
+                                                <IconComponent className="w-7 h-7" />
+                                            </div>
+                                            <span className="font-display text-3xl font-bold text-gray-200 group-hover:text-[#E5097F]/40 transition-colors">
+                                                {item.step}
+                                            </span>
+                                        </div>
+                                        <h3 className="font-display text-[18px] sm:text-[22px] font-semibold text-dark mb-3">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-[14px] sm:text-[15px] leading-[1.8] text-black">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            </StaggerItem>
+                        );
+                    })}
+                </StaggerContainer>
+            </section>
+
             {/* Why VITAZAN? */}
             <section className="bg-[#e8f5e98f]">
                 <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-6 md:py-10">
@@ -177,10 +247,10 @@ export default function AboutPage() {
                                         offers reliable solutions rooted in natural ingredients, optimized by
                                         science for superior results.
                                     </p>
-                                    <p className="text-[14px] sm:text-[15px] leading-[1.8] text-black">
+                                    {/* <p className="text-[14px] sm:text-[15px] leading-[1.8] text-black">
                                         VITAZAN is the division of ZANIQ CARE LIMITED offering premium
                                         nutraceutical and OTC healthcare solutions.
-                                    </p>
+                                    </p> */}
                                 </div>
                                 <Image
                                     src="/images/signArrow.png"
@@ -201,16 +271,16 @@ export default function AboutPage() {
                 <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-6 md:py-10 mt-8 lg:mt-50">
 
                     <AnimatedSection animation="fadeUp">
-                        <div className="mt-8 md:mt-12 flex flex-col lg:flex-row gap-8 lg:gap-16">
+                        <div className="mt-8 md:mt-12 flex flex-col lg:flex-row gap-6 lg:gap-12">
                             <div className="w-full lg:w-1/2 flex flex-col gap-8 justify-evenly">
                                 <h2 className="font-display text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-dark leading-tight">
                                     Our Mission &amp;<br />Vision
                                 </h2>
                                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-2">
                                     {[{ icon: "/images/shakeHand.svg", name: "Our Promise", description: "With VITAZAN, we are committed to being a trusted partner in your wellness journey, helping you unlock a lifestyle of energy, balance, and holistic health. Our products are not only designed to aid but also to enhance wellness. We believe that anyone can easily trust and depend upon." },
-                                    { icon: "/images/pinPoient.svg", name: "What we stand for?", description: "VITAZAN&apos;s vision is to become a prominent figure in the wellness industry, recognized for our commitment to quality, innovation, and customer satisfaction. We are committed to promoting healthier lifestyles by offering reliable, scientifically-backed products that support overall well-being. Through our dedication to excellence, we aim to make a meaningful impact on people&apos;s lives." }
+                                    { icon: "/images/pinPoient.svg", name: "What we stand for?", description: "VITAZAN&apos;s vision is to become a prominent figure in the wellness industry, recognized for our commitment to quality, innovation, and customer satisfaction. We are committed to promoting healthier lifestyles by offering reliable, scientifically-backed products that support overall well-being. Through our dedication to excellence, we aim to make a meaningful impact on people&apos;s lives." },
                                     ]?.map((itm, idx) =>
-                                        <div key={idx} className="border border-solid border-[#DBD8D8] rounded-xl p-4 flex flex-col items-start gap-6 h-fit">
+                                        <div key={idx} className="border border-solid border-[#DBD8D8] rounded-xl p-4 flex flex-col items-start gap-6 h-[-webkit-fill-available] w-1/2">
                                             <div className="bg-[#E5097F]/10 w-[58px] h-[58px] rounded-full flex items-center justify-center">
                                                 <Image src={itm?.icon} alt={itm?.name} width={1920} height={1080} className="w-[36px] h-[36px]" />
                                             </div>
@@ -218,19 +288,27 @@ export default function AboutPage() {
                                                 {itm?.name}
                                             </h3>
                                             <p className="text-[14px] sm:text-[15px] leading-[1.8] text-black">
-                                                With VITAZAN, we are committed to
-                                                being a trusted partner in your wellness
-                                                journey, helping you unlock a lifestyle of
-                                                energy, balance, and holistic health. Our
-                                                products are not only designed to aid but
-                                                also to enhance wellness. We believe
-                                                that anyone can easily trust and depend
-                                                upon.
+                                                {itm?.description}
                                             </p>
                                         </div>)}
                                 </div>
                             </div>
                             <Image src={"/images/omv.png"} alt="omv" width={1920} height={1080} className="w-full lg:w-1/2 h-auto rounded-lg" />
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-2 mt-8">
+                            {[{ icon: "/images/shakeHand.svg", name: "What drives us", description: "VITAZAN mission is to deliver premium wellness offerings that blend ancient wisdom with modern science. By meticulously sourcing and formulating natural ingredients, we aim to provide solutions that boost the immune system, enhance cognitive function, and optimise daily wellness routines. Our commitment to quality and sustainability ensures that every product we offer supports the holistic well-being of our customers." },
+                            ]?.map((itm, idx) =>
+                                <div key={idx} className="border border-solid border-[#DBD8D8] rounded-xl p-4 flex flex-col items-start gap-6 h-fit">
+                                    <div className="bg-[#E5097F]/10 w-[58px] h-[58px] rounded-full flex items-center justify-center">
+                                        <Info strokeWidth={1} className="w-[36px] h-[36px] text-[#e5267f]" />
+                                    </div>
+                                    <h3 className="text-[18px] sm:text-[22px] font-display font-semibold text-dark">
+                                        {itm?.name}
+                                    </h3>
+                                    <p className="text-[14px] sm:text-[15px] leading-[1.8] text-black">
+                                        {itm?.description}
+                                    </p>
+                                </div>)}
                         </div>
                     </AnimatedSection>
                 </div>

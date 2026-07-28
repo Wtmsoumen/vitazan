@@ -11,7 +11,9 @@ interface CarouselProps {
     showDots?: boolean;
     gap?: number;
     itemsPerView?: { base: number; sm?: number; md?: number; lg?: number };
-    className?: string
+    className?: string;
+    leftArrow?: string
+    rightArrow?: string;
 }
 
 export default function Carousel({
@@ -21,7 +23,9 @@ export default function Carousel({
     showDots = true,
     gap = 24,
     itemsPerView = { base: 1, sm: 2, md: 2, lg: 3 },
-    className
+    className,
+    leftArrow,
+    rightArrow
 }: CarouselProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
@@ -108,14 +112,14 @@ export default function Carousel({
                     <button
                         onClick={() => goTo(currentIndex - 1)}
                         disabled={currentIndex === 0}
-                        className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-200 transition-all hover:shadow-xl hover:scale-110 disabled:opacity-30 disabled:hover:scale-100"
+                        className={`${leftArrow} absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-200 transition-all hover:shadow-xl hover:scale-110 disabled:opacity-30 disabled:hover:scale-100`}
                     >
                         <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-dark-teal" />
                     </button>
                     <button
                         onClick={() => goTo(currentIndex + 1)}
                         disabled={currentIndex >= maxIndex}
-                        className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-200 transition-all hover:shadow-xl hover:scale-110 disabled:opacity-30 disabled:hover:scale-100"
+                        className={`${rightArrow} absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white shadow-lg border border-gray-200 transition-all hover:shadow-xl hover:scale-110 disabled:opacity-30 disabled:hover:scale-100`}
                     >
                         <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-dark-teal" />
                     </button>

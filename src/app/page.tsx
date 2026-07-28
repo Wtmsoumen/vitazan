@@ -157,7 +157,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 right-0" />
+              <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 -right-20" />
             </div>
           </div>
         </motion.div>
@@ -220,36 +220,52 @@ export default function Home() {
                 Shop by <span className="relative inline-block text-pink">Categories</span>
               </h2>
             </div>
-            <motion.button
+            {/* <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               className="rounded-full border border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[17px] tracking-[0.32px] bg-pink text-white! font-semibold! transition-all hover:bg-dark-teal hover:shadow-md duration-300"
             >
               Discover More
-            </motion.button>
+            </motion.button> */}
           </div>
         </AnimatedSection>
 
         <div className="mt-8 md:mt-12">
-          <Carousel itemsPerView={{ base: 2, sm: 2, md: 3, lg: 4 }} gap={20} showDots={true} showArrows={true} className="py-4">
+          <Carousel itemsPerView={{ base: 3, sm: 4, md: 5, lg: 7 }} gap={16} showDots={true} showArrows={true} leftArrow='top-[32%]' rightArrow='top-[32%]' className="py-4">
             {[
-              { name: "Cold and Cough Remedy", img: "/images/category-cold.png", bg: "#fff1e0" },
-              { name: "Gut Health", img: "/images/category-gut.png", bg: "#e2fbff" },
-              { name: "Bone Joint Muscle Care", img: "/images/category-bone.png", bg: "#f3e4fd" },
-              { name: "Vitamin & Nutrition", img: "/images/category-vitamin.png", bg: "#eaecff" },
+              { name: "Bone & Joint Care", icon: "/images/Category Icons/Bone, joint & muscle care 2.svg", bg: "#f3e4fd" },
+              { name: "Cold & Cough", icon: "/images/Category Icons/Cold and Cough remedy.svg", bg: "#fff1e0" },
+              { name: "Gut Health", icon: "/images/Category Icons/Gut Health.svg", bg: "#e2fbff" },
+              { name: "Vitamin & Nutrition", icon: "/images/Category Icons/Vit & Nutrition 1.svg", bg: "#eaecff" },
+              { name: "Sexual Health", icon: "/images/Category Icons/Sexual health.svg", bg: "#fce4ec" },
+              { name: "Hormonal Balance", icon: "/images/Category Icons/Hormonal balance ref 1.svg", bg: "#e8f5e9" },
+              { name: "Fertility", icon: "/images/Category Icons/fertility.svg", bg: "#fff3e0" },
+              { name: "Iron Supplement", icon: "/images/Category Icons/Iron supplement.svg", bg: "#ffebee" },
+              { name: "Menstruation", icon: "/images/Category Icons/menstruation.svg", bg: "#fce4ec" },
+              { name: "Urinary Health", icon: "/images/Category Icons/Urology care.svg", bg: "#e0f7fa" },
+              { name: "Female Vitality", icon: "/images/Category Icons/Female Vitality symbol.svg", bg: "#fce4ec" },
+              { name: "Male Vitality", icon: "/images/Category Icons/Male Vitality symbol.svg", bg: "#e3f2fd" },
+              { name: "Mental Wellness", icon: "/images/Category Icons/Mental Wellness 1.svg", bg: "#e8eaf6" },
+              { name: "General Wellness", icon: "/images/Category Icons/General Wellness Symbol.svg", bg: "#e0f2f1" },
+              { name: "Natal Care", icon: "/images/Category Icons/Natal Care.svg", bg: "#fff9c4" },
+              { name: "PCOS / PCOD", icon: "/images/Category Icons/PCOS_PCOD.svg", bg: "#f3e5f5" },
+              { name: "Nutrition Plus", icon: "/images/Category Icons/Vit & Nutrition 2.svg", bg: "#e8eaf6" },
+              { name: "Immunity Boost", icon: "/images/Category Icons/Vit & Nutrition 3.svg", bg: "#e0f7fa" },
+              { name: "Mind & Focus", icon: "/images/Category Icons/Mental Wellness 2.svg", bg: "#ede7f6" },
+              { name: "Hormonal Care", icon: "/images/Category Icons/Hormonal balance ref 2.svg", bg: "#e8f5e9" },
             ].map((cat) => (
               <motion.div
                 key={cat.name}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group cursor-pointer text-center"
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                className="group cursor-pointer flex flex-col items-center text-center"
               >
                 <div
-                  className="relative h-[180px] sm:h-[220px] md:h-[259px] overflow-hidden rounded-bl-[10px] rounded-br-[10px] rounded-tl-[100px] sm:rounded-tl-[150px] rounded-tr-[100px] sm:rounded-tr-[150px] transition-all group-hover:scale-[1.02] shadow-none group-hover:shadow-xl duration-300"
+                  className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-full flex items-center justify-center transition-all group-hover:scale-[1.08] shadow-sm group-hover:shadow-lg duration-300"
                   style={{ backgroundColor: cat.bg }}
                 >
-                  <Image src={cat.img} alt={cat.name} fill className="object-contain p-4 sm:p-6" />
+                  <Image src={cat.icon} alt={cat.name} width={56} height={56} className="w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[56px] md:h-[56px]" />
                 </div>
-                <p className="mt-3 sm:mt-6 text-[16px] sm:text-[20px] md:text-[22px] font-semibold text-black">{cat.name}</p>
+                <p className="mt-2 sm:mt-3 text-[12px] sm:text-[14px] md:text-[15px] font-semibold text-black leading-[1.3] max-w-[100px] sm:max-w-[120px]">{cat.name}</p>
               </motion.div>
             ))}
           </Carousel>
@@ -374,13 +390,13 @@ export default function Home() {
                     </motion.div>
                   ))}
                 </div>
-                <Link href="/cart">
+                <Link href="#/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                     className="rounded-full bg-pink hover:bg-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold text-white transition-opacity hover:opacity-90 mt-4 sm:mt-8 w-fit"
                   >
-                    Shop Now
+                    Enquiry Now
                   </motion.div>
                 </Link>
               </div>
@@ -410,13 +426,13 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-white font-semibold">
                   New Collection
                 </p>
-                <Link href="/cart">
+                <Link href="#/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                     className="mt-4 sm:mt-8 rounded-full border border-white px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold bg-white text-black w-fit"
                   >
-                    Shop Now
+                    Enquiry Now
                   </motion.div>
                 </Link>
               </div>
@@ -440,13 +456,13 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-black font-semibold">
                   New Collection
                 </p>
-                <Link href="/cart">
+                <Link href="#/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
                     className="mt-4 sm:mt-8 rounded-full border border-black px-6 sm:px-8 py-2.5 sm:py-3 text-[15px] sm:text-[18px] font-semibold transition-colors bg-black text-white w-fit"
                   >
-                    Shop Now
+                    Enquiry Now
                   </motion.div>
                 </Link>
               </div>

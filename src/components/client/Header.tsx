@@ -23,7 +23,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 40) {
+            if (window.scrollY > 80) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -49,7 +49,7 @@ export default function Header() {
         <>
             <header className={`sticky top-0 w-full z-50 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : "shadow-sm"}`}>
                 {/* Top bar */}
-                <div className={`bg-teal w-full transition-all duration-300 overflow-hidden ${isScrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}>
+                <div className={`bg-teal w-full transition-all duration-500 overflow-hidden ${isScrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}>
                     <div className="mx-auto flex h-8 sm:h-9 max-w-[1600px] items-center justify-between px-4 sm:px-8 md:px-10">
                         <p className="text-[11px] sm:text-[13px] uppercase tracking-[0.65px] text-white">
                             free shipping over ₱199 &nbsp; | &nbsp; 100% Genuine product
@@ -145,7 +145,7 @@ export default function Header() {
                                 </motion.button>
 
                                 {/* Cart Button */}
-                                <Link href="/cart">
+                                {/* <Link href="#/cart">
                                     <motion.div
                                         variants={{
                                             hidden: { opacity: 0, scale: 0.7 },
@@ -157,7 +157,7 @@ export default function Header() {
                                     >
                                         <ShoppingBasket className="w-5 h-5 sm:w-6 sm:h-6 text-[#E5097F] group-hover:text-white transition-all duration-500" strokeWidth={2.2} />
                                     </motion.div>
-                                </Link>
+                                </Link> */}
 
                                 {/* Account Button */}
                                 <Link href="/login">
@@ -226,7 +226,7 @@ export default function Header() {
                                         <Search className="w-5 h-5 text-[#0284C7]" />
                                         <span className="text-[14px] font-medium text-black">Search</span>
                                     </button>
-                                    <Link href="/cart" className="flex items-center gap-2 py-2 px-3 rounded-lg bg-[#FDF2F8] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                                    <Link href="#/cart" className="flex items-center gap-2 py-2 px-3 rounded-lg bg-[#FDF2F8] transition-colors" onClick={() => setMobileMenuOpen(false)}>
                                         <ShoppingBasket className="w-5 h-5 text-[#E5097F]" />
                                         <span className="text-[14px] font-medium text-black">Cart</span>
                                     </Link>
