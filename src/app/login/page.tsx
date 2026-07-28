@@ -47,7 +47,7 @@ export default function LoginPage() {
                     <h2 className="text-3xl font-bold text-black">
                         {isSignUp ? "Create Account" : "Welcome back"}
                     </h2>
-                    <p className="mt-2 text-gray-500">
+                    <p className="mt-2 text-black">
                         {isSignUp
                             ? "Join Vitazan and start your wellness journey"
                             : "Sign in to your account to continue"}
@@ -57,13 +57,13 @@ export default function LoginPage() {
                     <div className="mt-6 flex items-center gap-1 rounded-full bg-gray-100 p-1 w-fit">
                         <button
                             onClick={() => setIsSignUp(false)}
-                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${!isSignUp ? "bg-[#00485d] text-white shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${!isSignUp ? "bg-[#00485d] text-white shadow-sm" : "text-black hover:text-gray-700"}`}
                         >
                             Sign In
                         </button>
                         <button
                             onClick={() => setIsSignUp(true)}
-                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${isSignUp ? "bg-[#00485d] text-white shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+                            className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${isSignUp ? "bg-[#00485d] text-white shadow-sm" : "text-black hover:text-gray-700"}`}
                         >
                             Sign Up
                         </button>
@@ -178,7 +178,7 @@ export default function LoginPage() {
                         </button>
                     </form>
 
-                    <p className="mt-6 text-center text-sm text-gray-500">
+                    <p className="mt-6 text-center text-sm text-black">
                         {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
                         <button
                             onClick={() => setIsSignUp(!isSignUp)}

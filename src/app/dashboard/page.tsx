@@ -203,7 +203,7 @@ export default function DashboardPage() {
             <div className="flex-1 min-w-0">
                 <div className="bg-white border-b border-gray-200 px-4 sm:px-8 py-4 flex items-center justify-between sticky top-0 z-30">
                     <div className="flex items-center gap-3">
-                        <button className="lg:hidden w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gray-50" onClick={() => setSidebarOpen(true)}>
+                        <button className="lg:hidden w-10 h-10 rounded-xl border border-gray-200 flex items-center justify-center text-black hover:bg-gray-50" onClick={() => setSidebarOpen(true)}>
                             <Menu size={20} />
                         </button>
                         <div className="flex items-center gap-2 text-black">
@@ -229,7 +229,7 @@ export default function DashboardPage() {
                                     <div key={idx} className="rounded-xl border border-gray-200 bg-white p-4 sm:p-5">
                                         <div className="flex items-center justify-between">
                                             <div>
-                                                <p className="text-[13px] sm:text-[15px] font-medium text-gray-500">{stat.label}</p>
+                                                <p className="text-[13px] sm:text-[15px] font-medium text-black">{stat.label}</p>
                                                 <p className="text-[26px] sm:text-[32px] font-bold text-black mt-1">{stat.value}</p>
                                             </div>
                                             <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${stat.color} flex items-center justify-center text-white`}>
@@ -245,7 +245,7 @@ export default function DashboardPage() {
                                     <div className="flex items-center justify-between border-b border-gray-100 px-5 sm:px-6 py-4">
                                         <div>
                                             <h3 className="text-xl font-bold text-black">Recent Orders</h3>
-                                            <p className="text-[14px] text-gray-500">Your latest purchases</p>
+                                            <p className="text-[14px] text-black">Your latest purchases</p>
                                         </div>
                                         <button onClick={() => setActiveTab("orders")} className="flex items-center gap-1 text-sm font-medium text-[#00485d] hover:underline">
                                             View All <ArrowUpRight size={14} />
@@ -266,7 +266,7 @@ export default function DashboardPage() {
                                                         </div>
                                                         <div>
                                                             <p className="text-[15px] font-semibold text-black">{order.id}</p>
-                                                            <p className="text-[13px] text-gray-500">{order.date}</p>
+                                                            <p className="text-[13px] text-black">{order.date}</p>
                                                         </div>
                                                     </div>
                                                     <div className="flex items-center gap-4">
@@ -285,7 +285,7 @@ export default function DashboardPage() {
                                     <div className="flex items-center justify-between border-b border-gray-100 px-5 sm:px-6 py-4">
                                         <div>
                                             <h3 className="text-xl font-bold text-black">Account Details</h3>
-                                            <p className="text-[14px] text-gray-500">Your profile information</p>
+                                            <p className="text-[14px] text-black">Your profile information</p>
                                         </div>
                                         <button onClick={() => setActiveTab("settings")} className="flex items-center gap-1 text-sm font-medium text-[#00485d] hover:underline">
                                             <Edit3 size={14} /> Edit
@@ -313,7 +313,7 @@ export default function DashboardPage() {
                         <div className="rounded-xl border border-gray-200 bg-white">
                             <div className="px-5 sm:px-6 py-4 border-b border-gray-100">
                                 <h3 className="text-xl font-bold text-black">Order History</h3>
-                                <p className="text-[14px] text-gray-500">All your past orders</p>
+                                <p className="text-[14px] text-black">All your past orders</p>
                             </div>
                             <div className="divide-y divide-gray-50">
                                 {orders.map((order) => {
@@ -323,7 +323,7 @@ export default function DashboardPage() {
                                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
                                                 <div>
                                                     <p className="text-[16px] font-bold text-black">{order.id}</p>
-                                                    <p className="text-[13px] text-gray-500 mt-0.5">Placed on {order.date}</p>
+                                                    <p className="text-[13px] text-black mt-0.5">Placed on {order.date}</p>
                                                 </div>
                                                 <div className="flex items-center gap-4">
                                                     <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${status.bg} ${status.color}`}>
@@ -340,7 +340,7 @@ export default function DashboardPage() {
                                                         </div>
                                                         <div>
                                                             <p className="text-[15px] font-semibold text-black">{item.name}</p>
-                                                            <p className="text-[13px] text-gray-500">{item.variant} &times; {item.qty}</p>
+                                                            <p className="text-[13px] text-black">{item.variant} &times; {item.qty}</p>
                                                         </div>
                                                     </Link>
                                                 ))}
@@ -405,10 +405,10 @@ export default function DashboardPage() {
                                         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
                                             <div>
                                                 <h3 className="text-lg font-bold text-black">{editingAddressId ? "Edit Address" : "Add New Address"}</h3>
-                                                <p className="text-sm text-gray-500 mt-0.5">{editingAddressId ? "Update your address details" : "Enter your new address details"}</p>
+                                                <p className="text-sm text-black mt-0.5">{editingAddressId ? "Update your address details" : "Enter your new address details"}</p>
                                             </div>
                                             <button onClick={() => setShowAddressForm(false)} className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors">
-                                                <X size={18} className="text-gray-500" />
+                                                <X size={18} className="text-black" />
                                             </button>
                                         </div>
                                         <div className="p-6 space-y-5">
@@ -470,7 +470,7 @@ export default function DashboardPage() {
                                             <span className="text-[15px] font-bold text-black">{addr.label}</span>
                                         </div>
                                         <p className="text-[15px] font-semibold text-black">{addr.name}</p>
-                                        <p className="text-[14px] text-gray-500 mt-1 leading-[1.6]">
+                                        <p className="text-[14px] text-black mt-1 leading-[1.6]">
                                             {addr.address}<br />
                                             {addr.city} - {addr.zip}
                                         </p>
@@ -481,7 +481,7 @@ export default function DashboardPage() {
                                             </button>
                                             {!addr.isDefault && (
                                                 <>
-                                                    <button onClick={() => handleSetDefault(addr.id)} className="flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:underline">Set as Default</button>
+                                                    <button onClick={() => handleSetDefault(addr.id)} className="flex items-center gap-1.5 text-xs font-medium text-black hover:underline">Set as Default</button>
                                                     <button onClick={() => handleDeleteAddress(addr.id)} className="flex items-center gap-1.5 text-xs font-medium text-red-500 hover:underline ml-auto">
                                                         <XCircle size={13} /> Remove
                                                     </button>
@@ -519,7 +519,7 @@ export default function DashboardPage() {
                                     </div>
                                     <div className="text-center sm:text-left">
                                         <h3 className="text-xl font-bold text-black">{profile.firstName}</h3>
-                                        <p className="text-sm text-gray-500 mt-1">{profile.email}</p>
+                                        <p className="text-sm text-black mt-1">{profile.email}</p>
                                         <p className="text-xs text-black mt-1">Member since July 2026</p>
                                         {avatarUrl && (
                                             <button onClick={() => setAvatarUrl(null)} className="mt-2 text-xs font-medium text-red-500 hover:underline">
@@ -582,7 +582,7 @@ export default function DashboardPage() {
                                     <div className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100">
                                         <div>
                                             <p className="text-[15px] font-semibold text-black">Password</p>
-                                            <p className="text-sm text-gray-500 mt-0.5">Last changed 30 days ago</p>
+                                            <p className="text-sm text-black mt-0.5">Last changed 30 days ago</p>
                                         </div>
                                         <button className="px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-600 hover:bg-gray-50 transition-colors">
                                             Change
@@ -591,7 +591,7 @@ export default function DashboardPage() {
                                     <div className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100">
                                         <div>
                                             <p className="text-[15px] font-semibold text-black">Two-Factor Authentication</p>
-                                            <p className="text-sm text-gray-500 mt-0.5">Add an extra layer of security</p>
+                                            <p className="text-sm text-black mt-0.5">Add an extra layer of security</p>
                                         </div>
                                         <button className="px-4 py-2 rounded-lg border border-[#00485d] text-sm font-medium text-[#00485d] hover:bg-[#00485d] hover:text-white transition-colors">
                                             Enable
@@ -614,7 +614,7 @@ export default function DashboardPage() {
                                         <div key={idx} className="flex items-center justify-between p-4 rounded-xl bg-gray-50 border border-gray-100">
                                             <div>
                                                 <p className="text-[15px] font-semibold text-black">{item.label}</p>
-                                                <p className="text-sm text-gray-500 mt-0.5">{item.desc}</p>
+                                                <p className="text-sm text-black mt-0.5">{item.desc}</p>
                                             </div>
                                             <label className="relative inline-flex items-center cursor-pointer">
                                                 <input type="checkbox" defaultChecked={idx === 0} className="sr-only peer" />

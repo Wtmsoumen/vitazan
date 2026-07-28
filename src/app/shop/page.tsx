@@ -268,7 +268,7 @@ export default function Shop() {
                         <Filter className="w-4 h-4" />
                         Filters
                     </button>
-                    <div className="hidden sm:flex items-center gap-2 text-[13px] text-gray-500">
+                    <div className="hidden sm:flex items-center gap-2 text-[13px] text-black">
                         <span>{filtered.length} product{filtered.length !== 1 ? "s" : ""} found</span>
                     </div>
                 </div> */}
@@ -276,7 +276,7 @@ export default function Shop() {
                 {/* Active filters */}
                 {(selectedCategory !== "All" || selectedGender !== "All" || selectedAge !== "All Age") && (
                     <div className="flex flex-wrap items-center gap-2 mb-6">
-                        <span className="text-[13px] text-gray-500">Active filters:</span>
+                        <span className="text-[13px] text-black">Active filters:</span>
                         {selectedCategory !== "All" && (
                             <button onClick={() => setSelectedCategory("All")} className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-pink/10 text-pink text-[13px] font-medium hover:bg-pink/20 transition-colors">
                                 {selectedCategory} <X className="w-3 h-3" />
@@ -363,7 +363,7 @@ export default function Shop() {
                                                         <h3 className="text-[16px] sm:text-[18px] font-bold text-black leading-[1.3] group-hover:text-pink transition-colors">
                                                             {product.name}
                                                         </h3>
-                                                        <p className="mt-1.5 text-[12px] sm:text-[13px] leading-[1.5] text-gray-500 line-clamp-2">
+                                                        <p className="mt-1.5 text-[12px] sm:text-[13px] leading-[1.5] text-black line-clamp-2">
                                                             {product.desc}
                                                         </p>
                                                         <div className="mt-4 flex items-center justify-between">

@@ -345,7 +345,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                                                     <Image src={item.image} alt={item.title} width={44} height={44} className="w-full h-full object-contain" />
                                                                 </div>
                                                             ) : (
-                                                                <div className={`w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 ${isSelected ? "bg-pink text-white" : "bg-gray-100 text-gray-500"
+                                                                <div className={`w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 ${isSelected ? "bg-pink text-white" : "bg-gray-100 text-black"
                                                                     }`}>
                                                                     {item.icon ? <item.icon className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
                                                                 </div>
@@ -357,7 +357,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                                                                         {item.category}
                                                                     </span>
                                                                 </div>
-                                                                {item.desc && <p className="text-[12px] text-gray-500 truncate mt-0.5">{item.desc}</p>}
+                                                                {item.desc && <p className="text-[12px] text-black truncate mt-0.5">{item.desc}</p>}
                                                             </div>
                                                             <div className="flex items-center gap-1">
                                                                 <ArrowRight size={15} className={`transition-transform duration-150 ${isSelected ? "text-pink translate-x-0.5" : "text-gray-300"}`} />
@@ -373,7 +373,7 @@ export default function GlobalSearch({ isOpen, onClose }: GlobalSearchProps) {
                         </div>
 
                         {/* Mac Spotlight Footer */}
-                        {/* <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100 bg-gray-50/80 text-[12px] text-gray-500 select-none">
+                        {/* <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100 bg-gray-50/80 text-[12px] text-black select-none">
                             <div className="flex items-center gap-4">
                                 <span className="flex items-center gap-1.5">
                                     <kbd className="px-1.5 py-0.5 rounded bg-white border border-gray-200 text-[10px] font-mono shadow-xs text-gray-600">↑↓</kbd>

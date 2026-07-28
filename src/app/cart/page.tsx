@@ -92,7 +92,7 @@ export default function CartPage() {
                                 <h1 className="font-display text-[24px] sm:text-[32px] md:text-[40px] text-dark font-medium">
                                     Your Cart
                                 </h1>
-                                <p className="text-[13px] sm:text-[14px] text-gray-500">
+                                <p className="text-[13px] sm:text-[14px] text-black">
                                     {cartItems.length} {cartItems.length === 1 ? "item" : "items"} in your cart
                                 </p>
                             </div>
@@ -109,7 +109,7 @@ export default function CartPage() {
                                 <ShoppingBasket className="w-12 h-12 text-[#E5097F]" />
                             </div>
                             <h2 className="font-display text-[24px] sm:text-[32px] text-dark">Your cart is empty</h2>
-                            <p className="text-[14px] sm:text-[16px] text-gray-500 text-center max-w-md">
+                            <p className="text-[14px] sm:text-[16px] text-black text-center max-w-md">
                                 Looks like you haven&apos;t added any products yet. Explore our range of premium wellness products.
                             </p>
                             <Link
@@ -127,7 +127,7 @@ export default function CartPage() {
                             <AnimatedSection animation="fadeUp">
                                 <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
                                     {/* Table Header - Desktop */}
-                                    <div className="hidden sm:grid grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 px-6 py-4 bg-[#F8FAFB] border-b border-gray-100 text-[13px] font-semibold text-gray-500 uppercase tracking-wide">
+                                    <div className="hidden sm:grid grid-cols-[2fr_1fr_1fr_1fr_auto] gap-4 px-6 py-4 bg-[#F8FAFB] border-b border-gray-100 text-[13px] font-semibold text-black uppercase tracking-wide">
                                         <span>Product</span>
                                         <span className="text-center">Price</span>
                                         <span className="text-center">Quantity</span>
@@ -158,7 +158,7 @@ export default function CartPage() {
                                                         </div>
                                                         <div>
                                                             <h3 className="text-[15px] font-semibold text-dark">{item.name}</h3>
-                                                            <p className="text-[13px] text-gray-500 mt-0.5">{item.variant}</p>
+                                                            <p className="text-[13px] text-black mt-0.5">{item.variant}</p>
                                                         </div>
                                                     </div>
                                                     <div className="text-center">
@@ -209,7 +209,7 @@ export default function CartPage() {
                                                             <div className="flex items-start justify-between">
                                                                 <div>
                                                                     <h3 className="text-[14px] font-semibold text-dark">{item.name}</h3>
-                                                                    <p className="text-[12px] text-gray-500">{item.variant}</p>
+                                                                    <p className="text-[12px] text-black">{item.variant}</p>
                                                                 </div>
                                                                 <button
                                                                     onClick={() => removeItem(item.id)}
@@ -301,7 +301,7 @@ export default function CartPage() {
 
                                     {/* Coupon Code */}
                                     <div className="mb-5">
-                                        <label className="text-[13px] font-semibold text-gray-500 uppercase tracking-wide">Coupon Code</label>
+                                        <label className="text-[13px] font-semibold text-black uppercase tracking-wide">Coupon Code</label>
                                         <div className="mt-2 flex gap-2">
                                             <input
                                                 type="text"

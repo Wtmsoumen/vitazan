@@ -190,7 +190,7 @@ export default function ShopProductDetails() {
                                 </div>
                                 <div className="flex flex-col items-center sm:items-start">
                                     <h4 className="text-[12px] sm:text-[13px] md:text-[15px] font-semibold text-dark">{badge.title}</h4>
-                                    <p className="text-[10px] sm:text-[11px] md:text-[13px] text-gray-500">{badge.desc}</p>
+                                    <p className="text-[10px] sm:text-[11px] md:text-[13px] text-black">{badge.desc}</p>
                                 </div>
                             </div>
                         ))}
@@ -403,7 +403,7 @@ export default function ShopProductDetails() {
                                             animate={{ rotate: openFaq === idx ? 180 : 0 }}
                                             transition={{ duration: 0.2 }}
                                         >
-                                            <ChevronDown size={18} className="text-gray-500 flex-shrink-0" />
+                                            <ChevronDown size={18} className="text-black flex-shrink-0" />
                                         </motion.div>
                                     </button>
 

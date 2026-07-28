@@ -254,7 +254,7 @@ export default function BlogPage() {
                             <h2 className="text-[22px] sm:text-[28px] font-bold text-black">
                                 {searchQuery ? `Results for "${searchQuery}"` : activeCategory}
                             </h2>
-                            <p className="text-sm text-gray-500 mt-1">{filtered.length} article{filtered.length !== 1 ? "s" : ""} found</p>
+                            <p className="text-sm text-black mt-1">{filtered.length} article{filtered.length !== 1 ? "s" : ""} found</p>
                         </div>
                     )}
                     {!searchQuery && activeCategory === "All" && (
@@ -294,7 +294,7 @@ export default function BlogPage() {
                                             <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.3] text-black">
                                                 {post.title}
                                             </h3>
-                                            <p className="mt-2 text-[14px] leading-[1.6] text-gray-500 line-clamp-2">
+                                            <p className="mt-2 text-[14px] leading-[1.6] text-black line-clamp-2">
                                                 {post.desc}
                                             </p>
                                             <span className="mt-auto pt-4 inline-flex items-center gap-2 text-[15px] sm:text-[16px] font-semibold text-pink transition-colors hover:text-pink/80">
