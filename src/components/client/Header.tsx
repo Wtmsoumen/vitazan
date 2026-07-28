@@ -23,7 +23,7 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > 80) {
+            if (window.scrollY > 100) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
@@ -81,7 +81,7 @@ export default function Header() {
                 </div>
 
                 {/* Main nav */}
-                <nav className={`px-4 sm:px-8 md:px-10 transition-all duration-300 bg-white w-full ${isScrolled ? "py-2 md:py-2.5" : "py-3 md:py-4"}`}>
+                <nav className={`px-4 sm:px-8 md:px-10 transition-all duration-300 bg-white w-full ${isScrolled ? "py-3 md:py-2.5" : "py-3 md:py-4"}`}>
                     <div className="mx-auto flex max-w-[1600px] items-center justify-between sm:px-8 md:px-10">
                         {/* Logo */}
                         <motion.div className="flex-shrink-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
