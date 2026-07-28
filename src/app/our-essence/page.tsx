@@ -8,162 +8,231 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import WellnessIsDailyRitual from "@/components/client/WellnessIsDailyRitual";
 
 
-const ingredients = [
-    {
-        name: "Turmeric",
-        subtitle: "(Curcuma longa)",
-        image: "/images/turmericOE.png",
-        detailImages: ["/images/turmericOED.png"],
-        paragraphs: [
-            "Legends describe Turmeric, also known as Haldi, as the golden gift of the earth, a herb sanctified in rituals and celebrated in kitchens. Ancient Vedic texts call it Haridra, meaning 'yellow one', symbolising purity, protection, and healing. In weddings, the Haldi ceremony was more than a cosmetic ritual; it was believed to guard the Bride and Groom against evil and disease, blessing them with Health and Fertility.",
-            "Ayurvedic Physicians prescribed Haldi for Wounds, Skin Conditions, Digestive Imbalances, and Liver Disorders. Warriors returning from battle were treated with Turmeric paste to disinfect injuries and speed up recovery. Its golden Colour became a symbol of Vitality, often referred to as 'the Body's inner sunlight'.",
-            "Modern Science validates these traditions: curcumin, Turmeric's active compound, is a potent anti-inflammatory and antioxidant. It helps with Arthritis, Liver Detoxification, Diabetes Management, and even supports Heart Health. A warm cup of Haldi Doodh (Turmeric Milk), still common in Indian homes, carries both History and Healing in every sip.",
-        ],
-    },
-    {
-        name: "Long Pepper",
-        subtitle: "(Pippali)",
-        image: "/images/longPepperOE.png",
-        detailImages: ["/images/longPepperOE.png"],
-        paragraphs: [
-            "Long Pepper, known as Pippali in Sanskrit, has been revered in Ayurveda for thousands of years as a powerful rejuvenating herb. It was once more valued than black pepper and was a prized commodity along ancient trade routes.",
-            "In traditional medicine, Pippali is classified as a 'Rasayana' — a rejuvenative tonic that promotes longevity. It is known to enhance bioavailability of other herbs and nutrients, making it an essential companion in many Ayurvedic formulations.",
-            "Modern research has identified piperine and piperlongumine as key active compounds in Long Pepper. These compounds exhibit anti-inflammatory, immunomodulatory, and hepatoprotective properties, supporting respiratory health, digestive function, and metabolic balance.",
-        ],
-    },
-    {
-        name: "Bibhitaki",
-        subtitle: "(Terminalia bellirica)",
-        image: "/images/bibhitakiOE.png",
-        detailImages: ["/images/bibhitakiOE.png"],
-        paragraphs: [
-            "Bibhitaki, one of the three fruits in the legendary Triphala formulation, has been a cornerstone of Ayurvedic medicine for centuries. Its name translates to 'the one that keeps away disease,' reflecting its profound healing reputation.",
-            "Ancient texts describe Bibhitaki as a powerful detoxifier that helps cleanse the body of accumulated toxins. It was traditionally used to support respiratory health, improve digestion, and promote healthy hair and skin.",
-            "Scientific studies have revealed that Bibhitaki is rich in tannins, ellagic acid, and gallic acid — compounds with potent antioxidant and anti-inflammatory properties. It supports healthy cholesterol levels, promotes liver function, and aids in maintaining balanced blood sugar.",
-        ],
-    },
-    {
-        name: "Malabar Nut",
-        subtitle: "Leaves",
-        image: "/images/malabarNutLeavesOE.png",
-        detailImages: ["/images/malabarNutLeavesOE.png"],
-        paragraphs: [
-            "Malabar Nut, known as Vasaka or Adhatoda vasica, has been a trusted remedy in traditional Indian medicine for over 2,000 years. The plant's leaves, flowers, and roots have all been used therapeutically, with the leaves being the most potent.",
-            "In Ayurveda, Vasaka is primarily known for its remarkable respiratory benefits. It was traditionally used as an expectorant and bronchodilator, helping to clear congestion, soothe coughs, and support healthy breathing patterns.",
-            "Modern pharmacological research has identified vasicine and vasicinone as the key alkaloids responsible for Malabar Nut's therapeutic effects. These compounds have demonstrated significant bronchodilatory, anti-inflammatory, and antimicrobial properties.",
-        ],
-    },
-    {
-        name: "Carom Seeds",
-        subtitle: "(Ajwain)",
-        image: "/images/caromSeedsOE.png",
-        detailImages: ["/images/caromSeedsOE.png"],
-        paragraphs: [
-            "Carom Seeds, known as Ajwain in Hindi, have been an integral part of Indian culinary and medicinal traditions for centuries. These tiny, ridged seeds pack a powerful punch of flavour and therapeutic benefits.",
-            "In traditional medicine, Ajwain was revered as a digestive powerhouse. Grandmothers across India would prescribe Ajwain water for stomachaches, bloating, and indigestion. It was also used as a natural remedy for cold and cough symptoms.",
-            "The primary active compound in Carom Seeds is thymol, which gives them their distinctive aroma and potent medicinal properties. Thymol is a powerful antimicrobial, antifungal, and antispasmodic agent that supports digestive health and respiratory function.",
-        ],
-    },
-    {
-        name: "Holy Basil",
-        subtitle: "(Tulsi)",
-        image: "/images/holyBasilOE.png",
-        detailImages: ["/images/holyBasilOE.png"],
-        paragraphs: [
-            "Holy Basil, known as Tulsi, is regarded as the 'Queen of Herbs' in Ayurveda and holds a sacred place in Indian culture. For thousands of years, Tulsi has been worshipped and cultivated in Indian households for its spiritual significance and medicinal properties.",
-            "In Ayurvedic tradition, Tulsi is classified as a Rasayana — an herb that promotes perfect health and longevity. It was used to treat a wide range of ailments including respiratory disorders, digestive issues, skin problems, and stress-related conditions.",
-            "Modern science has validated many of Tulsi's traditional uses. Research shows that Holy Basil contains eugenol, rosmarinic acid, and ursolic acid — compounds with powerful adaptogenic, anti-inflammatory, and immunomodulatory properties that help the body resist stress and maintain homeostasis.",
-        ],
-    },
-    {
-        name: "Ginger",
-        subtitle: "(Zingiber officinale)",
-        image: "/images/mintOE.png",
-        detailImages: ["/images/mintOE.png"],
-        paragraphs: [
-            "Ginger, one of the most widely used spices in the world, has been a cornerstone of traditional medicine systems across Asia for over 5,000 years. Ancient Chinese and Indian healers recognized its potent warming and healing properties.",
-            "In Ayurveda, Ginger is known as 'Vishwabhesaj' — the universal medicine. It was prescribed for digestive ailments, nausea, cold and flu symptoms, and joint inflammation. Fresh ginger juice with honey was a common household remedy for sore throats.",
-            "Gingerols and shogaols are the bioactive compounds responsible for Ginger's therapeutic effects. These compounds have demonstrated powerful anti-inflammatory, antioxidant, and antiemetic properties, making Ginger effective for managing nausea, reducing muscle pain, and supporting cardiovascular health.",
-        ],
-    },
-    {
-        name: "Turmeric",
-        subtitle: "(Curcuma longa)",
-        image: "/images/turmericOE.png",
-        detailImages: ["/images/turmericOED.png"],
-        paragraphs: [
-            "Legends describe Turmeric, also known as Haldi, as the golden gift of the earth, a herb sanctified in rituals and celebrated in kitchens. Ancient Vedic texts call it Haridra, meaning 'yellow one', symbolising purity, protection, and healing. In weddings, the Haldi ceremony was more than a cosmetic ritual; it was believed to guard the Bride and Groom against evil and disease, blessing them with Health and Fertility.",
-            "Ayurvedic Physicians prescribed Haldi for Wounds, Skin Conditions, Digestive Imbalances, and Liver Disorders. Warriors returning from battle were treated with Turmeric paste to disinfect injuries and speed up recovery. Its golden Colour became a symbol of Vitality, often referred to as 'the Body's inner sunlight'.",
-            "Modern Science validates these traditions: curcumin, Turmeric's active compound, is a potent anti-inflammatory and antioxidant. It helps with Arthritis, Liver Detoxification, Diabetes Management, and even supports Heart Health. A warm cup of Haldi Doodh (Turmeric Milk), still common in Indian homes, carries both History and Healing in every sip.",
-        ],
-    },
-    {
-        name: "Long Pepper",
-        subtitle: "(Pippali)",
-        image: "/images/longPepperOE.png",
-        detailImages: ["/images/longPepperOE.png"],
-        paragraphs: [
-            "Long Pepper, known as Pippali in Sanskrit, has been revered in Ayurveda for thousands of years as a powerful rejuvenating herb. It was once more valued than black pepper and was a prized commodity along ancient trade routes.",
-            "In traditional medicine, Pippali is classified as a 'Rasayana' — a rejuvenative tonic that promotes longevity. It is known to enhance bioavailability of other herbs and nutrients, making it an essential companion in many Ayurvedic formulations.",
-            "Modern research has identified piperine and piperlongumine as key active compounds in Long Pepper. These compounds exhibit anti-inflammatory, immunomodulatory, and hepatoprotective properties, supporting respiratory health, digestive function, and metabolic balance.",
-        ],
-    },
-    {
-        name: "Bibhitaki",
-        subtitle: "(Terminalia bellirica)",
-        image: "/images/bibhitakiOE.png",
-        detailImages: ["/images/bibhitakiOE.png"],
-        paragraphs: [
-            "Bibhitaki, one of the three fruits in the legendary Triphala formulation, has been a cornerstone of Ayurvedic medicine for centuries. Its name translates to 'the one that keeps away disease,' reflecting its profound healing reputation.",
-            "Ancient texts describe Bibhitaki as a powerful detoxifier that helps cleanse the body of accumulated toxins. It was traditionally used to support respiratory health, improve digestion, and promote healthy hair and skin.",
-            "Scientific studies have revealed that Bibhitaki is rich in tannins, ellagic acid, and gallic acid — compounds with potent antioxidant and anti-inflammatory properties. It supports healthy cholesterol levels, promotes liver function, and aids in maintaining balanced blood sugar.",
-        ],
-    },
-    {
-        name: "Malabar Nut",
-        subtitle: "Leaves",
-        image: "/images/malabarNutLeavesOE.png",
-        detailImages: ["/images/malabarNutLeavesOE.png"],
-        paragraphs: [
-            "Malabar Nut, known as Vasaka or Adhatoda vasica, has been a trusted remedy in traditional Indian medicine for over 2,000 years. The plant's leaves, flowers, and roots have all been used therapeutically, with the leaves being the most potent.",
-            "In Ayurveda, Vasaka is primarily known for its remarkable respiratory benefits. It was traditionally used as an expectorant and bronchodilator, helping to clear congestion, soothe coughs, and support healthy breathing patterns.",
-            "Modern pharmacological research has identified vasicine and vasicinone as the key alkaloids responsible for Malabar Nut's therapeutic effects. These compounds have demonstrated significant bronchodilatory, anti-inflammatory, and antimicrobial properties.",
-        ],
-    },
-    {
-        name: "Carom Seeds",
-        subtitle: "(Ajwain)",
-        image: "/images/caromSeedsOE.png",
-        detailImages: ["/images/caromSeedsOE.png"],
-        paragraphs: [
-            "Carom Seeds, known as Ajwain in Hindi, have been an integral part of Indian culinary and medicinal traditions for centuries. These tiny, ridged seeds pack a powerful punch of flavour and therapeutic benefits.",
-            "In traditional medicine, Ajwain was revered as a digestive powerhouse. Grandmothers across India would prescribe Ajwain water for stomachaches, bloating, and indigestion. It was also used as a natural remedy for cold and cough symptoms.",
-            "The primary active compound in Carom Seeds is thymol, which gives them their distinctive aroma and potent medicinal properties. Thymol is a powerful antimicrobial, antifungal, and antispasmodic agent that supports digestive health and respiratory function.",
-        ],
-    },
-    {
-        name: "Holy Basil",
-        subtitle: "(Tulsi)",
-        image: "/images/holyBasilOE.png",
-        detailImages: ["/images/holyBasilOE.png"],
-        paragraphs: [
-            "Holy Basil, known as Tulsi, is regarded as the 'Queen of Herbs' in Ayurveda and holds a sacred place in Indian culture. For thousands of years, Tulsi has been worshipped and cultivated in Indian households for its spiritual significance and medicinal properties.",
-            "In Ayurvedic tradition, Tulsi is classified as a Rasayana — an herb that promotes perfect health and longevity. It was used to treat a wide range of ailments including respiratory disorders, digestive issues, skin problems, and stress-related conditions.",
-            "Modern science has validated many of Tulsi's traditional uses. Research shows that Holy Basil contains eugenol, rosmarinic acid, and ursolic acid — compounds with powerful adaptogenic, anti-inflammatory, and immunomodulatory properties that help the body resist stress and maintain homeostasis.",
-        ],
-    },
-    {
-        name: "Ginger",
-        subtitle: "(Zingiber officinale)",
-        image: "/images/mintOE.png",
-        detailImages: ["/images/mintOE.png"],
-        paragraphs: [
-            "Ginger, one of the most widely used spices in the world, has been a cornerstone of traditional medicine systems across Asia for over 5,000 years. Ancient Chinese and Indian healers recognized its potent warming and healing properties.",
-            "In Ayurveda, Ginger is known as 'Vishwabhesaj' — the universal medicine. It was prescribed for digestive ailments, nausea, cold and flu symptoms, and joint inflammation. Fresh ginger juice with honey was a common household remedy for sore throats.",
-            "Gingerols and shogaols are the bioactive compounds responsible for Ginger's therapeutic effects. These compounds have demonstrated powerful anti-inflammatory, antioxidant, and antiemetic properties, making Ginger effective for managing nausea, reducing muscle pain, and supporting cardiovascular health.",
-        ],
-    },
-];
+// const ingredients = [
+//     {
+//         name: "Turmeric",
+//         subtitle: "(Curcuma longa)",
+//         image: "/images/turmericOE.png",
+//         detailImages: ["/images/turmericOED.png"],
+//         paragraphs: [
+//             "Legends describe Turmeric, also known as Haldi, as the golden gift of the earth, a herb sanctified in rituals and celebrated in kitchens. Ancient Vedic texts call it Haridra, meaning 'yellow one', symbolising purity, protection, and healing. In weddings, the Haldi ceremony was more than a cosmetic ritual; it was believed to guard the Bride and Groom against evil and disease, blessing them with Health and Fertility.",
+//             "Ayurvedic Physicians prescribed Haldi for Wounds, Skin Conditions, Digestive Imbalances, and Liver Disorders. Warriors returning from battle were treated with Turmeric paste to disinfect injuries and speed up recovery. Its golden Colour became a symbol of Vitality, often referred to as 'the Body's inner sunlight'.",
+//             "Modern Science validates these traditions: curcumin, Turmeric's active compound, is a potent anti-inflammatory and antioxidant. It helps with Arthritis, Liver Detoxification, Diabetes Management, and even supports Heart Health. A warm cup of Haldi Doodh (Turmeric Milk), still common in Indian homes, carries both History and Healing in every sip.",
+//         ],
+//     },
+//     {
+//         name: "Long Pepper",
+//         subtitle: "(Pippali)",
+//         image: "/images/longPepperOE.png",
+//         detailImages: ["/images/longPepperOE.png"],
+//         paragraphs: [
+//             "Long Pepper, known as Pippali in Sanskrit, has been revered in Ayurveda for thousands of years as a powerful rejuvenating herb. It was once more valued than black pepper and was a prized commodity along ancient trade routes.",
+//             "In traditional medicine, Pippali is classified as a 'Rasayana' — a rejuvenative tonic that promotes longevity. It is known to enhance bioavailability of other herbs and nutrients, making it an essential companion in many Ayurvedic formulations.",
+//             "Modern research has identified piperine and piperlongumine as key active compounds in Long Pepper. These compounds exhibit anti-inflammatory, immunomodulatory, and hepatoprotective properties, supporting respiratory health, digestive function, and metabolic balance.",
+//         ],
+//     },
+//     {
+//         name: "Bibhitaki",
+//         subtitle: "(Terminalia bellirica)",
+//         image: "/images/bibhitakiOE.png",
+//         detailImages: ["/images/bibhitakiOE.png"],
+//         paragraphs: [
+//             "Bibhitaki, one of the three fruits in the legendary Triphala formulation, has been a cornerstone of Ayurvedic medicine for centuries. Its name translates to 'the one that keeps away disease,' reflecting its profound healing reputation.",
+//             "Ancient texts describe Bibhitaki as a powerful detoxifier that helps cleanse the body of accumulated toxins. It was traditionally used to support respiratory health, improve digestion, and promote healthy hair and skin.",
+//             "Scientific studies have revealed that Bibhitaki is rich in tannins, ellagic acid, and gallic acid — compounds with potent antioxidant and anti-inflammatory properties. It supports healthy cholesterol levels, promotes liver function, and aids in maintaining balanced blood sugar.",
+//         ],
+//     },
+//     {
+//         name: "Malabar Nut",
+//         subtitle: "Leaves",
+//         image: "/images/malabarNutLeavesOE.png",
+//         detailImages: ["/images/malabarNutLeavesOE.png"],
+//         paragraphs: [
+//             "Malabar Nut, known as Vasaka or Adhatoda vasica, has been a trusted remedy in traditional Indian medicine for over 2,000 years. The plant's leaves, flowers, and roots have all been used therapeutically, with the leaves being the most potent.",
+//             "In Ayurveda, Vasaka is primarily known for its remarkable respiratory benefits. It was traditionally used as an expectorant and bronchodilator, helping to clear congestion, soothe coughs, and support healthy breathing patterns.",
+//             "Modern pharmacological research has identified vasicine and vasicinone as the key alkaloids responsible for Malabar Nut's therapeutic effects. These compounds have demonstrated significant bronchodilatory, anti-inflammatory, and antimicrobial properties.",
+//         ],
+//     },
+//     {
+//         name: "Carom Seeds",
+//         subtitle: "(Ajwain)",
+//         image: "/images/caromSeedsOE.png",
+//         detailImages: ["/images/caromSeedsOE.png"],
+//         paragraphs: [
+//             "Carom Seeds, known as Ajwain in Hindi, have been an integral part of Indian culinary and medicinal traditions for centuries. These tiny, ridged seeds pack a powerful punch of flavour and therapeutic benefits.",
+//             "In traditional medicine, Ajwain was revered as a digestive powerhouse. Grandmothers across India would prescribe Ajwain water for stomachaches, bloating, and indigestion. It was also used as a natural remedy for cold and cough symptoms.",
+//             "The primary active compound in Carom Seeds is thymol, which gives them their distinctive aroma and potent medicinal properties. Thymol is a powerful antimicrobial, antifungal, and antispasmodic agent that supports digestive health and respiratory function.",
+//         ],
+//     },
+//     {
+//         name: "Holy Basil",
+//         subtitle: "(Tulsi)",
+//         image: "/images/holyBasilOE.png",
+//         detailImages: ["/images/holyBasilOE.png"],
+//         paragraphs: [
+//             "Holy Basil, known as Tulsi, is regarded as the 'Queen of Herbs' in Ayurveda and holds a sacred place in Indian culture. For thousands of years, Tulsi has been worshipped and cultivated in Indian households for its spiritual significance and medicinal properties.",
+//             "In Ayurvedic tradition, Tulsi is classified as a Rasayana — an herb that promotes perfect health and longevity. It was used to treat a wide range of ailments including respiratory disorders, digestive issues, skin problems, and stress-related conditions.",
+//             "Modern science has validated many of Tulsi's traditional uses. Research shows that Holy Basil contains eugenol, rosmarinic acid, and ursolic acid — compounds with powerful adaptogenic, anti-inflammatory, and immunomodulatory properties that help the body resist stress and maintain homeostasis.",
+//         ],
+//     },
+//     {
+//         name: "Ginger",
+//         subtitle: "(Zingiber officinale)",
+//         image: "/images/mintOE.png",
+//         detailImages: ["/images/mintOE.png"],
+//         paragraphs: [
+//             "Ginger, one of the most widely used spices in the world, has been a cornerstone of traditional medicine systems across Asia for over 5,000 years. Ancient Chinese and Indian healers recognized its potent warming and healing properties.",
+//             "In Ayurveda, Ginger is known as 'Vishwabhesaj' — the universal medicine. It was prescribed for digestive ailments, nausea, cold and flu symptoms, and joint inflammation. Fresh ginger juice with honey was a common household remedy for sore throats.",
+//             "Gingerols and shogaols are the bioactive compounds responsible for Ginger's therapeutic effects. These compounds have demonstrated powerful anti-inflammatory, antioxidant, and antiemetic properties, making Ginger effective for managing nausea, reducing muscle pain, and supporting cardiovascular health.",
+//         ],
+//     },
+//     {
+//         name: "Turmeric",
+//         subtitle: "(Curcuma longa)",
+//         image: "/images/turmericOE.png",
+//         detailImages: ["/images/turmericOED.png"],
+//         paragraphs: [
+//             "Legends describe Turmeric, also known as Haldi, as the golden gift of the earth, a herb sanctified in rituals and celebrated in kitchens. Ancient Vedic texts call it Haridra, meaning 'yellow one', symbolising purity, protection, and healing. In weddings, the Haldi ceremony was more than a cosmetic ritual; it was believed to guard the Bride and Groom against evil and disease, blessing them with Health and Fertility.",
+//             "Ayurvedic Physicians prescribed Haldi for Wounds, Skin Conditions, Digestive Imbalances, and Liver Disorders. Warriors returning from battle were treated with Turmeric paste to disinfect injuries and speed up recovery. Its golden Colour became a symbol of Vitality, often referred to as 'the Body's inner sunlight'.",
+//             "Modern Science validates these traditions: curcumin, Turmeric's active compound, is a potent anti-inflammatory and antioxidant. It helps with Arthritis, Liver Detoxification, Diabetes Management, and even supports Heart Health. A warm cup of Haldi Doodh (Turmeric Milk), still common in Indian homes, carries both History and Healing in every sip.",
+//         ],
+//     },
+//     {
+//         name: "Long Pepper",
+//         subtitle: "(Pippali)",
+//         image: "/images/longPepperOE.png",
+//         detailImages: ["/images/longPepperOE.png"],
+//         paragraphs: [
+//             "Long Pepper, known as Pippali in Sanskrit, has been revered in Ayurveda for thousands of years as a powerful rejuvenating herb. It was once more valued than black pepper and was a prized commodity along ancient trade routes.",
+//             "In traditional medicine, Pippali is classified as a 'Rasayana' — a rejuvenative tonic that promotes longevity. It is known to enhance bioavailability of other herbs and nutrients, making it an essential companion in many Ayurvedic formulations.",
+//             "Modern research has identified piperine and piperlongumine as key active compounds in Long Pepper. These compounds exhibit anti-inflammatory, immunomodulatory, and hepatoprotective properties, supporting respiratory health, digestive function, and metabolic balance.",
+//         ],
+//     },
+//     {
+//         name: "Bibhitaki",
+//         subtitle: "(Terminalia bellirica)",
+//         image: "/images/bibhitakiOE.png",
+//         detailImages: ["/images/bibhitakiOE.png"],
+//         paragraphs: [
+//             "Bibhitaki, one of the three fruits in the legendary Triphala formulation, has been a cornerstone of Ayurvedic medicine for centuries. Its name translates to 'the one that keeps away disease,' reflecting its profound healing reputation.",
+//             "Ancient texts describe Bibhitaki as a powerful detoxifier that helps cleanse the body of accumulated toxins. It was traditionally used to support respiratory health, improve digestion, and promote healthy hair and skin.",
+//             "Scientific studies have revealed that Bibhitaki is rich in tannins, ellagic acid, and gallic acid — compounds with potent antioxidant and anti-inflammatory properties. It supports healthy cholesterol levels, promotes liver function, and aids in maintaining balanced blood sugar.",
+//         ],
+//     },
+//     {
+//         name: "Malabar Nut",
+//         subtitle: "Leaves",
+//         image: "/images/malabarNutLeavesOE.png",
+//         detailImages: ["/images/malabarNutLeavesOE.png"],
+//         paragraphs: [
+//             "Malabar Nut, known as Vasaka or Adhatoda vasica, has been a trusted remedy in traditional Indian medicine for over 2,000 years. The plant's leaves, flowers, and roots have all been used therapeutically, with the leaves being the most potent.",
+//             "In Ayurveda, Vasaka is primarily known for its remarkable respiratory benefits. It was traditionally used as an expectorant and bronchodilator, helping to clear congestion, soothe coughs, and support healthy breathing patterns.",
+//             "Modern pharmacological research has identified vasicine and vasicinone as the key alkaloids responsible for Malabar Nut's therapeutic effects. These compounds have demonstrated significant bronchodilatory, anti-inflammatory, and antimicrobial properties.",
+//         ],
+//     },
+//     {
+//         name: "Carom Seeds",
+//         subtitle: "(Ajwain)",
+//         image: "/images/caromSeedsOE.png",
+//         detailImages: ["/images/caromSeedsOE.png"],
+//         paragraphs: [
+//             "Carom Seeds, known as Ajwain in Hindi, have been an integral part of Indian culinary and medicinal traditions for centuries. These tiny, ridged seeds pack a powerful punch of flavour and therapeutic benefits.",
+//             "In traditional medicine, Ajwain was revered as a digestive powerhouse. Grandmothers across India would prescribe Ajwain water for stomachaches, bloating, and indigestion. It was also used as a natural remedy for cold and cough symptoms.",
+//             "The primary active compound in Carom Seeds is thymol, which gives them their distinctive aroma and potent medicinal properties. Thymol is a powerful antimicrobial, antifungal, and antispasmodic agent that supports digestive health and respiratory function.",
+//         ],
+//     },
+//     {
+//         name: "Holy Basil",
+//         subtitle: "(Tulsi)",
+//         image: "/images/holyBasilOE.png",
+//         detailImages: ["/images/holyBasilOE.png"],
+//         paragraphs: [
+//             "Holy Basil, known as Tulsi, is regarded as the 'Queen of Herbs' in Ayurveda and holds a sacred place in Indian culture. For thousands of years, Tulsi has been worshipped and cultivated in Indian households for its spiritual significance and medicinal properties.",
+//             "In Ayurvedic tradition, Tulsi is classified as a Rasayana — an herb that promotes perfect health and longevity. It was used to treat a wide range of ailments including respiratory disorders, digestive issues, skin problems, and stress-related conditions.",
+//             "Modern science has validated many of Tulsi's traditional uses. Research shows that Holy Basil contains eugenol, rosmarinic acid, and ursolic acid — compounds with powerful adaptogenic, anti-inflammatory, and immunomodulatory properties that help the body resist stress and maintain homeostasis.",
+//         ],
+//     },
+//     {
+//         name: "Ginger",
+//         subtitle: "(Zingiber officinale)",
+//         image: "/images/mintOE.png",
+//         detailImages: ["/images/mintOE.png"],
+//         paragraphs: [
+//             "Ginger, one of the most widely used spices in the world, has been a cornerstone of traditional medicine systems across Asia for over 5,000 years. Ancient Chinese and Indian healers recognized its potent warming and healing properties.",
+//             "In Ayurveda, Ginger is known as 'Vishwabhesaj' — the universal medicine. It was prescribed for digestive ailments, nausea, cold and flu symptoms, and joint inflammation. Fresh ginger juice with honey was a common household remedy for sore throats.",
+//             "Gingerols and shogaols are the bioactive compounds responsible for Ginger's therapeutic effects. These compounds have demonstrated powerful anti-inflammatory, antioxidant, and antiemetic properties, making Ginger effective for managing nausea, reducing muscle pain, and supporting cardiovascular health.",
+//         ],
+//     },
+// ];
+
+
+
+const ingredients = [{
+    name: "Saw Palmetto",
+    subtitle: "(Serenoa repens)",
+    image: "/images/Our Essence/Saw Palmetto.webp",
+    detailImages: ["/images/Our Essence/Saw Palmetto.webp"],
+    paragraphs: [
+        "A Native Remedy with a Rich History. Saw Palmetto is a small palm native to the southeastern United States, especially Florida, Georgia, and South Carolina. Native American tribes such as the Seminoles traditionally used its berries for urinary and reproductive wellness.",
+        "The plant grows in sandy coastal regions and produces medicinal reddish-black berries. These berries are harvested in autumn and have long been valued in traditional herbal medicine.",
+        "Modern herbal research recognises Saw Palmetto for supporting prostate health, urinary function, hormone balance, healthy hair growth, and reducing inflammation, making it one of the world's most trusted botanical supplements."
+    ]
+},
+{
+    name: "Nettle Root",
+    subtitle: "(Urtica dioica)",
+    image: "/images/Our Essence/Nettle root.webp",
+    detailImages: ["/images/Our Essence/Nettle root.webp"],
+    paragraphs: [
+        "A Stinging Plant with Soothing Benefits. Nettle is a herbaceous perennial native to Europe, Asia, North America and northern Africa. Despite its stinging leaves, it has been treasured in traditional medicine for centuries.",
+        "Ancient Greeks, Romans and medieval herbalists relied on nettle for a variety of medicinal applications, while its fibres were also used in textiles.",
+        "Today, Nettle Root is widely recognised for supporting prostate health, urinary function, reducing inflammation, promoting healthy blood sugar levels and easing seasonal allergies."
+    ]
+},
+{
+    name: "Pomegranate",
+    subtitle: "(Punica granatum)",
+    image: "/images/Our Essence/Pomegranate.webp",
+    detailImages: ["/images/Our Essence/Pomegranate.webp"],
+    paragraphs: [
+        "The Ancient Fruit of Vitality. Native to the region stretching from Iran to northern India, Pomegranate has symbolised abundance, longevity and health for over four thousand years.",
+        "Celebrated in ancient Egypt, Greek mythology, Ayurveda and Traditional Chinese Medicine, it has remained one of the world's most respected medicinal fruits.",
+        "Rich in antioxidants such as punicalagins and anthocyanins, Pomegranate supports cardiovascular health, healthy blood pressure, digestion, immunity and helps protect cells from oxidative stress."
+    ]
+},
+{
+    name: "Lady's Mantle",
+    subtitle: "(Alchemilla vulgaris)",
+    image: "/images/Our Essence/ladys mantle.jpg",
+    detailImages: ["/images/Our Essence/ladys mantle.jpg"],
+    paragraphs: [
+        "The Herbal Embrace for Women's Health. Lady's Mantle is native to Europe and Asia and is recognised by its beautiful fan-shaped leaves that naturally collect dew.",
+        "For centuries it has been an important herb in European traditional medicine and was highly valued by medieval herbalists and alchemists.",
+        "Naturally rich in tannins, Lady's Mantle is traditionally used to support menstrual comfort, menopause, digestive wellness, wound healing and healthy skin."
+    ]
+},
+{
+    name: "Marigold Flower",
+    subtitle: "(Tagetes erecta)",
+    image: "/images/Our Essence/marigold.jpeg",
+    detailImages: ["/images/Our Essence/marigold.jpeg"],
+    paragraphs: [
+        "The Vibrant Healer. Native to Mexico and Central America, Marigold is admired worldwide for its brilliant golden-orange flowers and remarkable medicinal value.",
+        "Historically used by the Aztecs in ceremonies and healing traditions, Marigold continues to play an important role in herbal medicine and cultural celebrations.",
+        "Its natural carotenoids, including lutein, provide antioxidant and anti-inflammatory support while promoting eye health, skin wellness and the healing of minor wounds."
+    ]
+},
+{
+    name: "Yarrow",
+    subtitle: "(Achillea millefolium)",
+    image: "/images/Our Essence/Yarrow.jpeg",
+    detailImages: ["/images/Our Essence/Yarrow.jpeg"],
+    paragraphs: [
+        "The Warrior's Herb. Yarrow is a flowering perennial native to Europe, Asia and North America, famous for its delicate white flower clusters and feathery foliage.",
+        "Named after the legendary Greek warrior Achilles, Yarrow has been used for thousands of years to help treat wounds and support healing.",
+        "Known for its anti-inflammatory, antiseptic and astringent properties, Yarrow supports wound care, digestive health, circulation and women's wellness while promoting natural healing."
+    ]
+}]
 
 export default function OurEssencePage() {
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -239,13 +308,15 @@ export default function OurEssencePage() {
                                             `
                                         }
                                     >
-                                        <Image
-                                            src={item.image}
-                                            alt={item.name}
-                                            width={1920}
-                                            height={1080}
-                                            className="w-33 h-33 object-contain rounded-full border-2 border-solid border-[#E5097F]"
-                                        />
+                                        <div className="w-33 h-33 rounded-full border-2 border-solid border-[#E5097F] overflow-hidden">
+                                            <Image
+                                                src={item.image}
+                                                alt={item.name}
+                                                width={1920}
+                                                height={1080}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </div>
                                         <span
                                             className={`text-[12px] sm:text-[13px] md:text-[14px] text-center font-semibold leading-tight transition-colors ${selectedIndex === idx ? "text-[#00485d]" : "text-gray-600"
                                                 }`}
@@ -299,7 +370,7 @@ export default function OurEssencePage() {
                                             alt={selected.name}
                                             width={1920}
                                             height={1080}
-                                            className="w-full h-full object-cover rounded-xl"
+                                            className="w-full h-full object-cover rounded-2xl"
                                         />
                                     </div>
                                 </div>
