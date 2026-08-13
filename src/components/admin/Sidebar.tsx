@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 import {
   LayoutDashboard,
   Package,
@@ -19,6 +20,7 @@ import {
   BarChart3,
   MessageSquareText,
   X,
+  Layers,
 } from "lucide-react";
 import Image from "next/image";
 import logo from "../../../public/images/logoWhite.png";
@@ -51,6 +53,7 @@ const navGroups = [
   {
     label: "Content",
     items: [
+      { label: "Pages", href: "/admin/pages", icon: Layers },
       { label: "Blog", href: "/admin/blog", icon: FileText },
       { label: "Reports", href: "/admin/reports", icon: BarChart3 },
       { label: "Settings", href: "/admin/settings", icon: Settings },
@@ -67,6 +70,13 @@ interface SidebarProps {
 
 export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobileOpen }: SidebarProps) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    router.replace("/admin/login");
+  };
 
   const isActive = (href: string) => {
     if (href === "/admin") return pathname === "/admin";
@@ -142,13 +152,13 @@ export default function Sidebar({ collapsed, setCollapsed, mobileOpen, setMobile
 
       {/* Logout */}
       <div className="border-t border-white/10 p-3 flex-shrink-0">
-        <a
-          href="/admin/login"
+        <button
+          onClick={handleLogout}
           className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-white transition-all hover:bg-red-500/15 hover:text-red-400 ${collapsed ? "justify-center" : ""}`}
         >
           <LogOut size={19} />
           {!collapsed && <span>Logout</span>}
-        </a>
+        </button>
       </div>
     </aside>
   );

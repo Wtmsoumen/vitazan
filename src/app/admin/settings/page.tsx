@@ -1,56 +1,231 @@
 "use client";
 
 import { useState } from "react";
-import { Save, Store, Mail, Bell, Shield, Globe, Palette } from "lucide-react";
+import { Save, Shield, User, Loader2 } from "lucide-react";
+import { useAuth, type User as AuthUser } from "@/context/AuthContext";
+import { api } from "@/utils/api";
+import { endpoints } from "@/utils/endpoints";
+import { buildProfileFormFromUser, getProfileImageUrl } from "@/utils/profile";
+import ImageUpload from "@/components/admin/ImageUpload";
 
 const tabs = [
-  { label: "General", icon: Store },
-  { label: "Notifications", icon: Bell },
-  { label: "Email", icon: Mail },
+  { label: "Profile", icon: User },
+  // { label: "General", icon: Store },
+  // { label: "Notifications", icon: Bell },
+  // { label: "Email", icon: Mail },
   { label: "Security", icon: Shield },
-  // { label: "Appearance", icon: Palette },
 ];
 
+interface ProfileUpdateResponse {
+  status: boolean;
+  message?: string;
+  user?: AuthUser;
+}
+
+function ProfileSettingsTab({
+  user,
+  fetchProfile,
+  updateUser,
+}: {
+  user: AuthUser;
+  fetchProfile: () => Promise<void>;
+  updateUser: (user: AuthUser) => void;
+}) {
+  const [profileForm, setProfileForm] = useState(() => buildProfileFormFromUser(user));
+  const [profilePhoto, setProfilePhoto] = useState<File | null>(null);
+  const [profileSaving, setProfileSaving] = useState(false);
+  const [profileMsg, setProfileMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleProfileUpdate = async () => {
+    setProfileSaving(true);
+    setProfileMsg(null);
+    try {
+      const formData = new FormData();
+      Object.entries(profileForm).forEach(([key, val]) => formData.append(key, String(val)));
+      if (profilePhoto) formData.append("profile_photo", profilePhoto);
+
+      const data = await api<ProfileUpdateResponse>(endpoints.profileUpdate, {
+        method: "POST",
+        auth: true,
+        body: formData,
+      });
+
+      if (data.user) {
+        updateUser(data.user);
+        setProfileForm(buildProfileFormFromUser(data.user));
+      } else {
+        await fetchProfile();
+      }
+
+      setProfilePhoto(null);
+      setProfileMsg({
+        type: "success",
+        text: data.message || "Profile updated successfully",
+      });
+    } catch (err: unknown) {
+      setProfileMsg({ type: "error", text: err instanceof Error ? err.message : "Failed to update profile" });
+    } finally {
+      setProfileSaving(false);
+    }
+  };
+
+  return (
+    <div className="rounded-xl border border-gray-200 bg-white p-6">
+      <h3 className="text-lg font-semibold text-gray-900">My Profile</h3>
+      <p className="mt-1 text-sm text-gray-500">Update your personal information</p>
+
+      {profileMsg && (
+        <div className={`mt-4 rounded-lg p-3 text-sm ${profileMsg.type === "success" ? "bg-emerald-50 border border-emerald-200 text-emerald-700" : "bg-red-50 border border-red-200 text-red-700"}`}>
+          {profileMsg.text}
+        </div>
+      )}
+
+      <div className="mt-6 space-y-5">
+        <ImageUpload
+          key={`${user.id}-${user.updated_at ?? "no-ts"}-${user.profile_photo ?? "no-photo"}`}
+          label="Profile Photo"
+          value={getProfileImageUrl(user)}
+          onChange={(file) => setProfilePhoto(file)}
+        />
+
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Full Name</label>
+            <input type="text" value={profileForm.name} onChange={(e) => setProfileForm({ ...profileForm, name: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Email</label>
+            <input type="email" value={user.email || ""} disabled
+              className="h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 text-sm text-gray-500 outline-none" />
+          </div>
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-gray-700">Mobile</label>
+          <input type="tel" value={user.mobile || ""} disabled
+            className="h-10 w-full rounded-lg border border-gray-200 bg-gray-50 px-3 text-sm text-gray-500 outline-none md:max-w-[calc(50%-0.625rem)]" />
+        </div>
+        <div className="grid grid-cols-2 gap-5">
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Gender</label>
+            <select value={profileForm.gender} onChange={(e) => setProfileForm({ ...profileForm, gender: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
+              <option value="">Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Date of Birth</label>
+            <input type="date" value={profileForm.dob} onChange={(e) => setProfileForm({ ...profileForm, dob: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+          </div>
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-gray-700">Address</label>
+          <input type="text" value={profileForm.address} onChange={(e) => setProfileForm({ ...profileForm, address: e.target.value })}
+            className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+        </div>
+        <div>
+          <label className="mb-1.5 block text-sm font-medium text-gray-700">Address Line 2</label>
+          <input type="text" value={profileForm.address_2} onChange={(e) => setProfileForm({ ...profileForm, address_2: e.target.value })}
+            className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+        </div>
+        <div className="grid grid-cols-3 gap-5">
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">City</label>
+            <input type="text" value={profileForm.city} onChange={(e) => setProfileForm({ ...profileForm, city: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Country ID</label>
+            <input type="text" value={profileForm.country_id} onChange={(e) => setProfileForm({ ...profileForm, country_id: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+          </div>
+          <div>
+            <label className="mb-1.5 block text-sm font-medium text-gray-700">Zipcode</label>
+            <input type="text" value={profileForm.zipcode} onChange={(e) => setProfileForm({ ...profileForm, zipcode: e.target.value })}
+              className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-6 flex justify-end">
+        <button onClick={handleProfileUpdate} disabled={profileSaving}
+          className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90 disabled:opacity-70">
+          {profileSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+          Save Profile
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function SettingsPage() {
-  const [activeTab, setActiveTab] = useState("General");
+  const [activeTab, setActiveTab] = useState("Profile");
+  const { user, fetchProfile, updateUser } = useAuth();
+
+  const [passwordForm, setPasswordForm] = useState({ old_password: "", new_password: "", new_password_confirmation: "" });
+  const [passwordSaving, setPasswordSaving] = useState(false);
+  const [passwordMsg, setPasswordMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  const handleChangePassword = async () => {
+    setPasswordSaving(true);
+    setPasswordMsg(null);
+    if (passwordForm.new_password !== passwordForm.new_password_confirmation) {
+      setPasswordMsg({ type: "error", text: "New passwords do not match" });
+      setPasswordSaving(false);
+      return;
+    }
+    try {
+      await api(endpoints.changePassword, { method: "POST", auth: true, body: passwordForm as unknown as Record<string, unknown> });
+      setPasswordMsg({ type: "success", text: "Password changed successfully" });
+      setPasswordForm({ old_password: "", new_password: "", new_password_confirmation: "" });
+    } catch (err: unknown) {
+      setPasswordMsg({ type: "error", text: err instanceof Error ? err.message : "Failed to change password" });
+    } finally {
+      setPasswordSaving(false);
+    }
+  };
 
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-black">Settings</h1>
-        <p className="mt-1 text-sm text-gray-900">Manage your store settings and preferences</p>
+        <h1 className="text-2xl font-semibold text-gray-900">Settings</h1>
+        <p className="mt-1 text-sm text-gray-500">Manage your profile and store settings</p>
       </div>
 
       <div className="flex gap-8">
-        {/* Sidebar Tabs */}
         <div className="w-48 flex-shrink-0">
           <nav className="space-y-1">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
-                <button
-                  key={tab.label}
-                  onClick={() => setActiveTab(tab.label)}
-                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${activeTab === tab.label
-                    ? "bg-teal/10 text-teal"
-                    : "text-black hover:bg-gray-100"
-                    }`}
-                >
-                  <Icon size={18} />
-                  {tab.label}
+                <button key={tab.label} onClick={() => setActiveTab(tab.label)}
+                  className={`flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${activeTab === tab.label ? "bg-teal/10 text-teal" : "text-gray-600 hover:bg-gray-100"}`}>
+                  <Icon size={18} /> {tab.label}
                 </button>
               );
             })}
           </nav>
         </div>
 
-        {/* Content */}
         <div className="flex-1">
+          {activeTab === "Profile" && (
+            user ? (
+              <ProfileSettingsTab key={user.id} user={user} fetchProfile={fetchProfile} updateUser={updateUser} />
+            ) : (
+              <div className="flex items-center justify-center rounded-xl border border-gray-200 bg-white p-12">
+                <Loader2 size={24} className="animate-spin text-teal" />
+              </div>
+            )
+          )}
+
           {activeTab === "General" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-black">Store Information</h3>
-              <p className="mt-1 text-sm text-gray-900">Basic information about your store</p>
-
+              <h3 className="text-lg font-semibold text-gray-900">Store Information</h3>
+              <p className="mt-1 text-sm text-gray-500">Basic information about your store</p>
               <div className="mt-6 space-y-5">
                 <div className="grid grid-cols-2 gap-5">
                   <div>
@@ -64,10 +239,7 @@ export default function SettingsPage() {
                 </div>
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Store Description</label>
-                  <textarea
-                    defaultValue="Vitazan - Natural health supplements for wellness unleashed. Shop cold & cough remedies, gut health, bone & joint care, vitamins & nutrition."
-                    className="h-24 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal"
-                  />
+                  <textarea defaultValue="Vitazan - Natural health supplements for wellness unleashed." className="h-24 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" />
                 </div>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
@@ -79,76 +251,57 @@ export default function SettingsPage() {
                     <input type="tel" defaultValue="+91 98765 43210" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
                   </div>
                 </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Address</label>
-                  <textarea
-                    defaultValue="Vitazen Philippines"
-                    className="h-20 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal"
-                  />
-                </div>
                 <div className="grid grid-cols-2 gap-5">
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Currency</label>
-                    <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                      <option>₱</option>
-                    </select>
+                    <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal"><option>₱</option></select>
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-700">Timezone</label>
-                    <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                      <option>Philippines</option>
-                    </select>
+                    <select className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal"><option>Philippines</option></select>
                   </div>
                 </div>
               </div>
-
               <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
-                  <Save size={16} />
-                  Save Changes
-                </button>
+                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90"><Save size={16} /> Save Changes</button>
               </div>
             </div>
           )}
 
           {activeTab === "Notifications" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-black">Notification Preferences</h3>
-              <p className="mt-1 text-sm text-gray-900">Choose which notifications you want to receive</p>
+              <h3 className="text-lg font-semibold text-gray-900">Notification Preferences</h3>
+              <p className="mt-1 text-sm text-gray-500">Choose which notifications you want to receive</p>
               <div className="mt-6 space-y-4">
                 {[
                   { label: "New Order", desc: "Get notified when a new order is placed" },
                   { label: "Order Status Update", desc: "Notifications for order status changes" },
-                  { label: "New Enquiry", desc: "Alert when a customer submits an enquiry" },
                   { label: "Low Stock Alert", desc: "Notify when product stock is below threshold" },
                   { label: "New Customer Registration", desc: "Alert for new customer sign-ups" },
                   { label: "Daily Sales Report", desc: "Receive a daily summary of sales" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between rounded-lg border border-gray-100 p-4">
                     <div>
-                      <p className="text-sm font-medium text-black">{item.label}</p>
-                      <p className="text-xs text-gray-900">{item.desc}</p>
+                      <p className="text-sm font-medium text-gray-900">{item.label}</p>
+                      <p className="text-xs text-gray-500">{item.desc}</p>
                     </div>
                     <label className="relative inline-flex cursor-pointer items-center">
-                      <input type="checkbox" defaultChecked={i < 4} className="peer sr-only" />
+                      <input type="checkbox" defaultChecked={i < 3} className="peer sr-only" />
                       <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-teal peer-checked:after:translate-x-full" />
                     </label>
                   </div>
                 ))}
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
-                  <Save size={16} />
-                  Save Preferences
-                </button>
+                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90"><Save size={16} /> Save Preferences</button>
               </div>
             </div>
           )}
 
           {activeTab === "Email" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-black">Email Configuration</h3>
-              <p className="mt-1 text-sm text-gray-900">Configure email templates and SMTP settings</p>
+              <h3 className="text-lg font-semibold text-gray-900">Email Configuration</h3>
+              <p className="mt-1 text-sm text-gray-500">Configure email templates and SMTP settings</p>
               <div className="mt-6 space-y-5">
                 <div className="grid grid-cols-2 gap-5">
                   <div>
@@ -172,111 +325,48 @@ export default function SettingsPage() {
                 </div>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
-                  <Save size={16} />
-                  Save Settings
-                </button>
+                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90"><Save size={16} /> Save Settings</button>
               </div>
             </div>
           )}
 
           {activeTab === "Security" && (
             <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-black">Security Settings</h3>
-              <p className="mt-1 text-sm text-gray-900">Manage authentication and security preferences</p>
-              <div className="mt-6 space-y-4">
-                {[
-                  { label: "Two-Factor Authentication", desc: "Add an extra layer of security", enabled: false },
-                  { label: "Login Notifications", desc: "Get notified of new login attempts", enabled: true },
-                  { label: "Session Timeout", desc: "Auto-logout after 30 minutes of inactivity", enabled: true },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between rounded-lg border border-gray-100 p-4">
-                    <div>
-                      <p className="text-sm font-medium text-black">{item.label}</p>
-                      <p className="text-xs text-gray-900">{item.desc}</p>
-                    </div>
-                    <label className="relative inline-flex cursor-pointer items-center">
-                      <input type="checkbox" defaultChecked={item.enabled} className="peer sr-only" />
-                      <div className="h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-teal peer-checked:after:translate-x-full" />
-                    </label>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-8">
-                <h4 className="text-sm font-semibold text-black">Change Password</h4>
-                <div className="mt-4 max-w-md space-y-4">
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Current Password</label>
-                    <input type="password" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">New Password</label>
-                    <input type="password" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Confirm Password</label>
-                    <input type="password" className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                  </div>
+              <h3 className="text-lg font-semibold text-gray-900">Change Password</h3>
+              <p className="mt-1 text-sm text-gray-500">Update your account password</p>
+
+              {passwordMsg && (
+                <div className={`mt-4 rounded-lg p-3 text-sm ${passwordMsg.type === "success" ? "bg-emerald-50 border border-emerald-200 text-emerald-700" : "bg-red-50 border border-red-200 text-red-700"}`}>
+                  {passwordMsg.text}
+                </div>
+              )}
+
+              <div className="mt-6 max-w-md space-y-4">
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Current Password</label>
+                  <input type="password" value={passwordForm.old_password} onChange={(e) => setPasswordForm({ ...passwordForm, old_password: e.target.value })}
+                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">New Password</label>
+                  <input type="password" value={passwordForm.new_password} onChange={(e) => setPasswordForm({ ...passwordForm, new_password: e.target.value })}
+                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                </div>
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Confirm New Password</label>
+                  <input type="password" value={passwordForm.new_password_confirmation} onChange={(e) => setPasswordForm({ ...passwordForm, new_password_confirmation: e.target.value })}
+                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
                 </div>
               </div>
               <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
-                  <Save size={16} />
-                  Update Security
+                <button onClick={handleChangePassword} disabled={passwordSaving}
+                  className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90 disabled:opacity-70">
+                  {passwordSaving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+                  Update Password
                 </button>
               </div>
             </div>
           )}
-
-          {/* {activeTab === "Appearance" && (
-            <div className="rounded-xl border border-gray-200 bg-white p-6">
-              <h3 className="text-lg font-semibold text-black">Brand Appearance</h3>
-              <p className="mt-1 text-sm text-gray-900">Customize your store&apos;s look and feel</p>
-              <div className="mt-6 space-y-5">
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Store Logo</label>
-                  <div className="flex h-24 w-60 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-black">
-                    Click to upload logo
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-5">
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Primary Color (Teal)</label>
-                    <div className="flex items-center gap-2">
-                      <input type="color" defaultValue="#00485d" className="h-10 w-14 rounded border border-gray-200" />
-                      <input type="text" defaultValue="#00485D" className="h-10 flex-1 rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Accent Color (Pink)</label>
-                    <div className="flex items-center gap-2">
-                      <input type="color" defaultValue="#e5097f" className="h-10 w-14 rounded border border-gray-200" />
-                      <input type="text" defaultValue="#E5097F" className="h-10 flex-1 rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Dark Color</label>
-                    <div className="flex items-center gap-2">
-                      <input type="color" defaultValue="#08131e" className="h-10 w-14 rounded border border-gray-200" />
-                      <input type="text" defaultValue="#08131E" className="h-10 flex-1 rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Favicon</label>
-                  <div className="flex h-16 w-16 items-center justify-center rounded-lg border-2 border-dashed border-gray-200 text-sm text-black">
-                    32x32
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 flex justify-end">
-                <button className="flex items-center gap-2 rounded-lg bg-teal px-4 py-2.5 text-sm font-medium text-white hover:bg-teal/90">
-                  <Save size={16} />
-                  Save Appearance
-                </button>
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </div>

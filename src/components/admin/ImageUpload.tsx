@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { Upload, X, ImageIcon } from "lucide-react";
+import { X, ImageIcon } from "lucide-react";
 
 interface ImageUploadProps {
   label?: string;
@@ -12,15 +12,26 @@ interface ImageUploadProps {
 }
 
 export default function ImageUpload({ label = "Upload Image", value, onChange, className = "" }: ImageUploadProps) {
-  const [preview, setPreview] = useState<string | null>(value || null);
+  const [localPreview, setLocalPreview] = useState<string | null>(null);
+  const [hasLocalFile, setHasLocalFile] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const preview = hasLocalFile ? localPreview : (value || null);
 
   const handleFile = (file: File) => {
+    if (!file.type.startsWith("image/")) return;
+    if (localPreview?.startsWith("blob:")) URL.revokeObjectURL(localPreview);
     const url = URL.createObjectURL(file);
-    setPreview(url);
+    setLocalPreview(url);
+    setHasLocalFile(true);
     onChange?.(file);
   };
+
+  useEffect(() => {
+    return () => {
+      if (localPreview?.startsWith("blob:")) URL.revokeObjectURL(localPreview);
+    };
+  }, [localPreview]);
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
@@ -33,7 +44,9 @@ export default function ImageUpload({ label = "Upload Image", value, onChange, c
   };
 
   const removeImage = () => {
-    setPreview(null);
+    if (localPreview?.startsWith("blob:")) URL.revokeObjectURL(localPreview);
+    setLocalPreview(null);
+    setHasLocalFile(false);
     onChange?.(null);
     if (inputRef.current) inputRef.current.value = "";
   };
@@ -43,9 +56,14 @@ export default function ImageUpload({ label = "Upload Image", value, onChange, c
       {label && <label className="mb-1.5 block text-sm font-medium text-gray-700">{label}</label>}
       {preview ? (
         <div className="relative inline-block">
-          <div className="relative h-32 w-32 overflow-hidden rounded-xl border border-gray-200">
-            <Image src={preview} alt="Preview" fill className="object-cover" />
-          </div>
+          <button
+            type="button"
+            onClick={() => inputRef.current?.click()}
+            className="relative block h-32 w-32 overflow-hidden rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal/40"
+            aria-label="Change image"
+          >
+            <Image src={preview} alt="Preview" fill className="object-cover" unoptimized />
+          </button>
           <button
             type="button"
             onClick={removeImage}
