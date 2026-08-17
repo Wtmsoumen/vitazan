@@ -386,7 +386,14 @@ export default function DashboardPage() {
                                                 {Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}% OFF
                                             </span>
                                         </div>
-                                        <button disabled={!item.inStock} className="mt-4 w-full flex items-center justify-center gap-2 h-10 rounded-lg bg-[#E5097F] text-white text-sm font-medium hover:bg-[#c4087a] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed">
+                                        <button 
+                                            disabled={!item.inStock} 
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                router.push(`/enquiry?product=${encodeURIComponent(item.name)}`);
+                                            }}
+                                            className="mt-4 w-full flex items-center justify-center gap-2 h-10 rounded-lg bg-[#E5097F] text-white text-sm font-medium hover:bg-[#c4087a] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                                        >
                                             <ShoppingBasket size={16} />
                                             {item.inStock ? "Enquiry Now" : "Notify Me"}
                                         </button>

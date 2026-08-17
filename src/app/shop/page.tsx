@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import { Filter, X, ChevronDown, ShoppingBasket, Search } from "lucide-react";
 
@@ -107,6 +108,7 @@ const allProducts = [
 ];
 
 export default function Shop() {
+    const router = useRouter();
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedAge, setSelectedAge] = useState("All Age");
     const [selectedGender, setSelectedGender] = useState("All");
@@ -327,6 +329,10 @@ export default function Shop() {
                                                             <motion.button
                                                                 whileHover={{ scale: 1.05 }}
                                                                 whileTap={{ scale: 0.95 }}
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    router.push(`/enquiry?product=${encodeURIComponent(product.name)}`);
+                                                                }}
                                                                 className="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-pink text-white text-[13px] font-semibold hover:bg-pink/90 transition-colors cursor-pointer"
                                                             >
                                                                 {/* <ShoppingBasket className="w-4 h-4" /> */}
