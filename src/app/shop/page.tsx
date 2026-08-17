@@ -327,10 +327,10 @@ export default function Shop() {
                                                             <motion.button
                                                                 whileHover={{ scale: 1.05 }}
                                                                 whileTap={{ scale: 0.95 }}
-                                                                className="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-pink text-white text-[13px] font-medium hover:bg-pink/90 transition-colors cursor-pointer"
+                                                                className="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-pink text-white text-[13px] font-semibold hover:bg-pink/90 transition-colors cursor-pointer"
                                                             >
-                                                                <ShoppingBasket className="w-4 h-4" />
-                                                                Add to cart
+                                                                {/* <ShoppingBasket className="w-4 h-4" /> */}
+                                                                Enquiry Now
                                                             </motion.button>
                                                         </div>
                                                     </div>

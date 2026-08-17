@@ -366,7 +366,7 @@ export default function Home() {
                     </motion.div>
                   ))}
                 </div>
-                <Link href="#/cart">
+                <Link href="/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
@@ -402,7 +402,7 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-white font-semibold">
                   New Collection
                 </p>
-                <Link href="#/cart">
+                <Link href="/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
@@ -432,7 +432,7 @@ export default function Home() {
                 <p className="mt-2 sm:mt-4 text-[16px] sm:text-[20px] md:text-[22px] uppercase tracking-[3px] sm:tracking-[5.6px] text-black font-semibold">
                   New Collection
                 </p>
-                <Link href="#/cart">
+                <Link href="/cart">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}

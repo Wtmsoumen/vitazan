@@ -145,7 +145,7 @@ export default function Header() {
                                 </motion.button>
 
                                 {/* Cart Button */}
-                                {/* <Link href="#/cart">
+                                {/* <Link href="/cart">
                                     <motion.div
                                         variants={{
                                             hidden: { opacity: 0, scale: 0.7 },
@@ -226,7 +226,7 @@ export default function Header() {
                                         <Search className="w-5 h-5 text-[#0284C7]" />
                                         <span className="text-[14px] font-medium text-black">Search</span>
                                     </button>
-                                    <Link href="#/cart" className="flex items-center gap-2 py-2 px-3 rounded-lg bg-[#FDF2F8] transition-colors" onClick={() => setMobileMenuOpen(false)}>
+                                    <Link href="/cart" className="flex items-center gap-2 py-2 px-3 rounded-lg bg-[#FDF2F8] transition-colors" onClick={() => setMobileMenuOpen(false)}>
                                         <ShoppingBasket className="w-5 h-5 text-[#E5097F]" />
                                         <span className="text-[14px] font-medium text-black">Cart</span>
                                     </Link>

@@ -388,7 +388,7 @@ export default function DashboardPage() {
                                         </div>
                                         <button disabled={!item.inStock} className="mt-4 w-full flex items-center justify-center gap-2 h-10 rounded-lg bg-[#E5097F] text-white text-sm font-medium hover:bg-[#c4087a] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed">
                                             <ShoppingBasket size={16} />
-                                            {item.inStock ? "Add to Cart" : "Notify Me"}
+                                            {item.inStock ? "Enquiry Now" : "Notify Me"}
                                         </button>
                                     </div>
                                 </div>

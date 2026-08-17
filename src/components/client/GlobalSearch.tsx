@@ -17,7 +17,7 @@ const pages = [
     { title: "Health & Wellness Blog", href: "/blog", icon: FileText, category: "Pages", desc: "Expert articles, tips & guides" },
     { title: "Contact Us", href: "/contact-us", icon: MapPin, category: "Pages", desc: "Get in touch with customer care" },
     { title: "My Dashboard", href: "/dashboard", icon: MapPin, category: "Pages", desc: "Manage orders & personal account" },
-    { title: "Shopping Cart", href: "#/cart", icon: ShoppingBasket, category: "Pages", desc: "Review items in your cart" },
+    { title: "Shopping Cart", href: "/cart", icon: ShoppingBasket, category: "Pages", desc: "Review items in your cart" },
     { title: "Login / Sign Up", href: "/login", icon: MapPin, category: "Pages", desc: "Account access & authentication" },
 ];
 

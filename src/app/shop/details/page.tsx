@@ -165,7 +165,8 @@ export default function ShopProductDetails() {
                             </div>
 
                             {/* Enquiry Button */}
-                            <Link href="#/cart">
+                            {/* <Link href="/cart"> */}
+                            <Link href="/enquiry?product=VITAZAN%20HT-KOF">
                                 <motion.div
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
