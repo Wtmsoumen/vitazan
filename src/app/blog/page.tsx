@@ -190,6 +190,7 @@ export default function BlogPage() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {/* Main featured */}
                             <AnimatedSection animation="fadeUp">
+                                <Link href={`/blog/${featured[0].id}`}>
                                 <motion.div
                                     whileHover={{ y: -6, transition: { duration: 0.3 } }}
                                     className="group rounded-2xl overflow-hidden shadow-lg h-fit cursor-pointer"
@@ -211,12 +212,14 @@ export default function BlogPage() {
                                         </div>
                                     </div>
                                 </motion.div>
+                                </Link>
                             </AnimatedSection>
 
                             {/* Side featured */}
                             <div className="flex flex-col gap-6">
                                 {featured.slice(1, 3).map((post, idx) => (
                                     <AnimatedSection key={post.id} animation="fadeUp" delay={0.1 * (idx + 1)}>
+                                        <Link href={`/blog/${post.id}`}>
                                         <motion.div
                                             whileHover={{ y: -4, transition: { duration: 0.3 } }}
                                             className="group flex flex-col sm:flex-row gap-4 rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white h-full"
@@ -240,6 +243,7 @@ export default function BlogPage() {
                                                 </span>
                                             </div>
                                         </motion.div>
+                                        </Link>
                                     </AnimatedSection>
                                 ))}
                             </div>
@@ -274,6 +278,7 @@ export default function BlogPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                             {(searchQuery || activeCategory !== "All" ? filtered : rest).map((post, idx) => (
                                 <AnimatedSection key={post.id} animation="fadeUp" delay={0.05 * idx}>
+                                    <Link href={`/blog/${post.id}`}>
                                     <motion.div
                                         whileHover={{ y: -6, transition: { duration: 0.3 } }}
                                         className="group flex flex-col h-full cursor-pointer shadow-md rounded-2xl overflow-hidden bg-white"
@@ -305,6 +310,7 @@ export default function BlogPage() {
                                             </span>
                                         </div>
                                     </motion.div>
+                                    </Link>
                                 </AnimatedSection>
                             ))}
                         </div>

@@ -118,7 +118,8 @@ export default function Shop() {
 
     const filtered = allProducts.filter((p) => {
         if (selectedCategory !== "All" && !p.therapies.includes(selectedCategory)) return false;
-        if (selectedGender !== "All" && p.gender !== selectedGender) return false;
+        if (selectedGender !== "All" && selectedGender !== "General Wellness" && p.gender !== selectedGender && p.gender !== "General Wellness") return false;
+        if (selectedGender === "General Wellness" && p.gender !== "General Wellness") return false;
         if (selectedAge !== "All Age" && !p.ages.includes(selectedAge)) return false;
         if (searchQuery.trim() && !p.name.toLowerCase().includes(searchQuery.toLowerCase()) && !p.desc.toLowerCase().includes(searchQuery.toLowerCase())) return false;
         return true;
@@ -322,10 +323,7 @@ export default function Shop() {
                                                         <p className="mt-1.5 text-[12px] sm:text-[13px] leading-[1.5] text-black line-clamp-2">
                                                             {product.desc}
                                                         </p>
-                                                        <div className="mt-4 flex items-center justify-between">
-                                                            <span className="text-[20px] sm:text-[22px] font-bold text-black">
-                                                                ₹{product.price.toFixed(2)}
-                                                            </span>
+                                                        <div className="mt-4 flex items-center justify-end">
                                                             <motion.button
                                                                 whileHover={{ scale: 1.05 }}
                                                                 whileTap={{ scale: 0.95 }}

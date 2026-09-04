@@ -174,12 +174,12 @@ export default function Home() {
           {[1, 2].map((i) => (
             <div key={i} className="flex items-center gap-0 text-[14px] sm:text-[16px] md:text-[19px] uppercase tracking-[1.5px] sm:tracking-[2.55px] text-white font-semibold">
               {[
-                "Long Pepper", "Bibhitaki", "Malabar Nut Leaves", "Carom Seeds",
-                "Turmeric", "Long Pepper", "Holy basil", "Mint",
-                "Bharangi", "Kakdasinghi", "Black Pepper",
-              ].map((ingredient, idx) => (
+                "ACINIL NEO", "ALFAAKTIV", "CYSTNIL SURE", "DIARON-C",
+                "FEMISAN A", "FEMISAN B", "FEMISAN GOLD", "OSTEOMAC",
+                "ACINIL NEO", "ALFAAKTIV", "CYSTNIL SURE",
+              ].map((product, idx) => (
                 <span key={idx} className="flex items-center">
-                  <span className="px-3 sm:px-6">{ingredient}</span>
+                  <span className="px-3 sm:px-6">{product}</span>
                   <svg width="8" height="8" viewBox="0 0 8 8" fill="none" className="mx-1 sm:mx-2">
                     <circle cx="4" cy="4" r="3" fill="white" />
                   </svg>
@@ -191,7 +191,7 @@ export default function Home() {
       </motion.div>
 
       {/* Shop by Categories */}
-      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] pt-10 md:pt-14">
         <AnimatedSection animation="fadeUp">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             <div>
@@ -267,62 +267,82 @@ export default function Home() {
                 Village Traditions than in Classical Texts. Folk healers, however, always knew its Worth. They called it
                 Guardian of the Lungs, a Plant that gave Strength back to the Weak.
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
-                className="mt-6 md:mt-8 rounded-full border-2 border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold bg-pink text-white transition-colors hover:bg-dark-teal"
-              >
-                Explore More
-              </motion.button>
+              <Link href="/our-essence">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="mt-6 md:mt-8 rounded-full border-2 border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold bg-pink text-white transition-colors hover:bg-dark-teal"
+                >
+                  Explore More
+                </motion.button>
+              </Link>
             </div>
           </AnimatedSection>
 
-          <div className="mt-10 md:mt-16 space-y-8 md:space-y-10">
+          <div className="mt-10 md:mt-16 grid grid-cols-1 gap-6 md:gap-8">
             {[
               {
-                name: "Turmeric",
-                desc: "A golden elixir from Turmeric, also known as Haldi, is a golden spice widely used in Indian cooking and Ayurvedic medicine for its anti-inflammatory & antioxidant properties.",
-                img: "/images/turmeric.png",
+                name: "Saw Palmetto",
+                subtitle: "(Serenoa repens)",
+                desc: "Saw Palmetto is a small palm native to the southeastern United States. Its berries have long been valued for supporting prostate health, urinary function, hormone balance and healthy hair growth.",
+                img: "/images/Our Essence/Saw Palmetto.webp",
               },
               {
-                name: "Malabar Nut Leaves",
-                desc: "The tale of Adusa Pata (Vasaka - also known as Vasa or Malabar Nut), goes beyond the books' tales. It's the household cold-and-cough remedy.",
-                img: "/images/malabar.png",
+                name: "Nettle Root",
+                subtitle: "(Urtica dioica)",
+                desc: "Despite its stinging leaves, Nettle Root has been treasured in traditional medicine for centuries — recognised for supporting prostate health, reducing inflammation and promoting healthy blood sugar levels.",
+                img: "/images/Our Essence/Nettle root.webp",
               },
               {
-                name: "Holy Basil",
-                desc: "Every Indian in Countryside and India knew Holy Basil Plant, also known as Tulsi, is worshipped for its medicinal and spiritual properties in a Healing Gardners philosophy.",
-                img: "/images/tulsi.png",
+                name: "Pomegranate",
+                subtitle: "(Punica granatum)",
+                desc: "Native to the region stretching from Iran to northern India, Pomegranate has symbolised abundance and health for over four thousand years, rich in antioxidants that support cardiovascular health and immunity.",
+                img: "/images/Our Essence/Pomegranate.webp",
               },
-            ].map((item, idx) => (
-              <React.Fragment key={idx}>
-                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12 group">
-                  <AnimatedSection animation="fadeLeft" delay={idx * 0.1} className="flex-1 text-center sm:text-left">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-display font-semibold text-[30px] sm:text-[36px] md:text-[48px] text-black">{item.name}</h3>
-                      <Link href="#" className="border border-solid border-black w-13 h-13 rounded-full flex items-center justify-center group-hover:rotate-12 transition-all duration-300">
-                        <ArrowUpRight className="w-auto h-8" strokeWidth={1} />
+            ].map((item, idx) => {
+              const isEven = idx % 2 === 0;
+              return (
+                <AnimatedSection key={idx} animation="fadeUp" delay={idx * 0.1}>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3 }}
+                    className={`group flex flex-col sm:flex-row ${isEven ? "" : "sm:flex-row-reverse"} items-stretch overflow-hidden rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 bg-white`}
+                  >
+                    {/* Image side */}
+                    <div className="w-full sm:w-[42%] shrink-0 relative h-50 sm:h-auto min-h-80 overflow-hidden">
+                      <Image
+                        src={item.img}
+                        alt={item.name}
+                        fill
+                        className="object-cover transition-transform duration-500 scale-98 group-hover:scale-105"
+                      />
+                    </div>
+                    {/* Text side */}
+                    <div className="flex-1 p-6 sm:p-8 md:p-10 flex flex-col justify-center gap-3">
+                      <p className="text-[12px] font-semibold uppercase tracking-[2px] text-pink">{item.subtitle}</p>
+                      <h3 className="font-display font-semibold text-[26px] sm:text-[32px] md:text-[40px] text-black leading-tight">
+                        {item.name}
+                      </h3>
+                      <p className="text-[14px] sm:text-[16px] leading-[22px] sm:leading-[26px] text-gray-600">
+                        {item.desc}
+                      </p>
+                      <Link
+                        href={`/our-essence?ingredient=${encodeURIComponent(item.name)}`}
+                        className="mt-2 inline-flex items-center gap-2 text-[14px] font-semibold text-pink hover:text-dark-teal transition-colors w-fit"
+                      >
+                        Read More <ArrowUpRight className="w-4 h-4" />
                       </Link>
                     </div>
-                    <p className="mt-3 max-w-[500px] text-[16px] sm:text-[20px] leading-[22px] sm:leading-[26px] text-gray-700">
-                      {item.desc}
-                    </p>
-                  </AnimatedSection>
-                  <AnimatedSection animation="fadeRight" delay={idx * 0.1} className="w-full sm:w-1/2">
-                    <div className="relative h-[150px] sm:h-[180px] md:h-[200px] overflow-hidden rounded-full">
-                      <Image src={item.img} alt={item.name} width={1920} height={1080} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                    </div>
-                  </AnimatedSection>
-                </div>
-                <hr className={`${idx === 2 ? 'hidden' : 'block'}`} />
-              </React.Fragment>
-            ))}
+                  </motion.div>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Wellness Formulated Section */}
-      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-14">
         <div className="flex flex-col lg:flex-row items-center justify-end gap-8 lg:gap-16">
           <div className="w-full lg:w-[80%] flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 border border-solid border-[#00485D] p-6 sm:p-8 lg:py-15.75 rounded-3xl lg:pl-15.75">
             <Image
@@ -382,7 +402,7 @@ export default function Home() {
       </section>
 
       {/* Sale Banners */}
-      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-10 py-10 md:py-16">
+      <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-10 py-10 md:py-14">
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" staggerDelay={0.2}>
           {/* Left Card */}
           <StaggerItem animation="fadeLeft">

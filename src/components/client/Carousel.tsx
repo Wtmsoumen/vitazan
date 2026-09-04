@@ -126,7 +126,7 @@ export default function Carousel({
                 </>
             )}
 
-            {showDots && maxIndex > 0 && (
+            {/* {showDots && maxIndex > 0 && (
                 <div className="mt-6 sm:mt-8 flex justify-center gap-2">
                     {Array.from({ length: maxIndex + 1 }).map((_, i) => (
                         <button
@@ -137,7 +137,7 @@ export default function Carousel({
                         />
                     ))}
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

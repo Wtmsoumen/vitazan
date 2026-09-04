@@ -49,7 +49,7 @@ export default function Header() {
         <>
             <header className={`sticky top-0 w-full z-50 bg-white transition-all duration-300 ${isScrolled ? "shadow-md" : "shadow-sm"}`}>
                 {/* Top bar */}
-                <div className={`bg-teal w-full transition-all duration-500 overflow-hidden ${isScrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}>
+                {/* <div className={`bg-teal w-full transition-all duration-500 overflow-hidden ${isScrolled ? "max-h-0 opacity-0" : "max-h-12 opacity-100"}`}>
                     <div className="mx-auto flex h-8 sm:h-9 max-w-[1600px] items-center justify-between px-4 sm:px-8 md:px-10">
                         <p className="text-[11px] sm:text-[13px] uppercase tracking-[0.65px] text-white">
                             free shipping over ₱199 &nbsp; | &nbsp; 100% Genuine product
@@ -78,10 +78,11 @@ export default function Header() {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Main nav */}
-                <nav className={`px-4 sm:px-8 md:px-10 transition-all duration-300 bg-white w-full ${isScrolled ? "py-3 md:py-2.5" : "py-3 md:py-4"}`}>
+                {/* <nav className={`px-4 sm:px-8 md:px-10 transition-all duration-300 bg-white w-full ${isScrolled ? "py-3 md:py-2.5" : "py-3 md:py-4"}`}> */}
+                <nav className={`px-4 sm:px-8 md:px-10 transition-all duration-300 bg-white w-full py-3 md:py-4`}>
                     <div className="mx-auto flex max-w-[1600px] items-center justify-between sm:px-8 md:px-10">
                         {/* Logo */}
                         <motion.div className="flex-shrink-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>

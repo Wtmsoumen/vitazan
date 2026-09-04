@@ -2,10 +2,35 @@
 
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import WellnessIsDailyRitual from "@/components/client/WellnessIsDailyRitual";
+
+const allIngredients = [
+    { name: "Saw Palmetto", subtitle: "(Serenoa repens)", image: "/images/Our Essence/Saw Palmetto.webp", products: ["ALFAAKTIV"] },
+    { name: "Nettle Root", subtitle: "(Urtica dioica)", image: "/images/Our Essence/Nettle root.webp", products: ["ALFAAKTIV", "FEMISAN A"] },
+    { name: "Pomegranate", subtitle: "(Punica granatum)", image: "/images/Our Essence/Pomegranate.webp", products: ["FEMISAN A", "FEMISAN B", "FEMISAN GOLD"] },
+    { name: "Lady's Mantle", subtitle: "(Alchemilla vulgaris)", image: "/images/Our Essence/ladys mantle.jpg", products: ["FEMISAN A", "FEMISAN B"] },
+    { name: "Marigold Flower", subtitle: "(Tagetes erecta)", image: "/images/Our Essence/marigold.jpeg", products: ["FEMISAN A", "DIARON-C"] },
+    { name: "Yarrow", subtitle: "(Achillea millefolium)", image: "/images/Our Essence/Yarrow.jpeg", products: ["FEMISAN B", "FEMISAN GOLD"] },
+    { name: "Turmeric", subtitle: "(Curcuma longa)", image: "/images/turmeric.png", products: ["OSTEOMAC", "ACINIL NEO"] },
+    { name: "Malabar Nut", subtitle: "(Adhatoda vasica)", image: "/images/malabar.png", products: ["ACINIL NEO"] },
+    { name: "Holy Basil", subtitle: "(Ocimum tenuiflorum)", image: "/images/tulsi.png", products: ["ACINIL NEO", "CYSTNIL SURE"] },
+    { name: "Black Pepper", subtitle: "(Piper nigrum)", image: "/images/Our Essence/Saw Palmetto.webp", products: ["ALFAAKTIV", "OSTEOMAC"] },
+];
+
+const productDetails: Record<string, { image: string; desc: string }> = {
+    "ACINIL NEO": { image: "/images/ACINIL_NEO.png", desc: "Antacid & antiflatulent oral suspension for fast relief from acidity, heartburn and gas." },
+    "ALFAAKTIV": { image: "/images/ALFAAKTIV.png", desc: "Active capsules formulated to support male vitality, energy and overall well-being." },
+    "CYSTNIL SURE": { image: "/images/CYSTNIL SURE.png", desc: "D-chiro-inositol and Myo-inositol tablets for hormonal balance and reproductive health." },
+    "DIARON-C": { image: "/images/DIARON-C.png", desc: "Citrus bioflavonoids, rosehip and vitamin C complex for immunity and skin health." },
+    "FEMISAN A": { image: "/images/FEMISAN_A.png", desc: "100% natural supplement supporting normal physiological functions of female reproductive organs." },
+    "FEMISAN B": { image: "/images/FEMISAN_B.png", desc: "Herbal drops with natural plant extracts for women's health and hormonal support." },
+    "FEMISAN GOLD": { image: "/images/FEMISAN_GOLD.png", desc: "Natural relief for menopause symptoms including hot flashes, sweating and restlessness." },
+    "OSTEOMAC": { image: "/images/osteomac-product.png", desc: "Calcium citrate maleate with vitamin D3, magnesium and zinc tablets for bone health support." },
+};
 
 const ingredients = [{
     name: "Saw Palmetto",
@@ -75,9 +100,47 @@ const ingredients = [{
 }]
 
 export default function OurEssencePage() {
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    return (
+        <Suspense>
+            <OurEssenceContent />
+        </Suspense>
+    );
+}
+
+function OurEssenceContent() {
+    const searchParams = useSearchParams();
+    const [selectedIndex, setSelectedIndex] = useState(() => {
+        const name = searchParams.get("ingredient");
+        if (!name) return 0;
+        const idx = ingredients.findIndex(i => i.name.toLowerCase() === name.toLowerCase());
+        return idx >= 0 ? idx : 0;
+    });
     const carouselRef = useRef<HTMLDivElement>(null);
+    const detailRef = useRef<HTMLDivElement>(null);
     const selected = ingredients[selectedIndex];
+
+    useEffect(() => {
+        const name = searchParams.get("ingredient");
+        if (!name) return;
+        const idx = ingredients.findIndex(i => i.name.toLowerCase() === name.toLowerCase());
+        if (idx >= 0) {
+            setSelectedIndex(idx);
+            setTimeout(() => {
+                detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 300);
+        }
+    }, [searchParams]);
+    const [selectedIngredient, setSelectedIngredient] = useState<string | null>("Saw Palmetto");
+    const ingredientProductsRef = useRef<HTMLDivElement>(null);
+
+    const handleIngredientClick = (name: string) => {
+        setSelectedIngredient(name === selectedIngredient ? null : name);
+        setTimeout(() => {
+            ingredientProductsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
+    };
+
+    const activeIngredientData = allIngredients.find(i => i.name === selectedIngredient);
 
     const scrollCarousel = (direction: "left" | "right") => {
         const newIndex = direction === "left"
@@ -185,6 +248,7 @@ export default function OurEssencePage() {
             </section>
 
             {/* Selected Ingredient Detail */}
+            <div ref={detailRef} className="scroll-mt-24">
             <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] pb-8 md:pb-16">
                 <AnimatePresence mode="wait">
                     <motion.div
@@ -235,6 +299,86 @@ export default function OurEssencePage() {
                         </div>
                     </motion.div>
                 </AnimatePresence>
+            </section>
+            </div>
+
+            {/* Ingredients Section */}
+            <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-14">
+                <AnimatedSection animation="fadeUp">
+                    <div className="text-center mb-8 md:mb-12">
+                        <p className="text-[13px] sm:text-[15px] font-bold uppercase tracking-[2.1px] text-pink">Key Ingredients</p>
+                        <h2 className="font-display mt-2 text-[28px] sm:text-[38px] md:text-[48px] text-black">
+                            Our <span className="text-pink">Ingredients</span>
+                        </h2>
+                        <p className="mt-3 text-[14px] sm:text-[16px] text-gray-600">Click any ingredient to discover which products contain it.</p>
+                    </div>
+                </AnimatedSection>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
+                    {allIngredients.map((ing) => (
+                        <motion.button
+                            key={ing.name}
+                            onClick={() => handleIngredientClick(ing.name)}
+                            whileHover={{ y: -4 }}
+                            className={`flex flex-col items-center text-center p-4 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${selectedIngredient === ing.name ? "border-pink bg-pink/5 shadow-lg" : "border-gray-100 bg-white hover:border-pink/40 hover:shadow-md"}`}
+                        >
+                            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-solid border-[#E5097F] mb-3 flex-shrink-0">
+                                <Image src={ing.image} alt={ing.name} width={200} height={200} className="w-full h-full object-cover" />
+                            </div>
+                            <p className={`text-[13px] sm:text-[14px] font-semibold leading-tight ${selectedIngredient === ing.name ? "text-pink" : "text-black"}`}>
+                                {ing.name}
+                            </p>
+                            <p className="text-[11px] text-gray-500 mt-0.5">{ing.subtitle}</p>
+                        </motion.button>
+                    ))}
+                </div>
+
+                {/* Products for selected ingredient */}
+                <div ref={ingredientProductsRef}>
+                    <AnimatePresence>
+                        {selectedIngredient && activeIngredientData && (
+                            <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className="mt-8 overflow-hidden"
+                            >
+                                <div className="bg-[#f9f9f9] rounded-2xl p-6 sm:p-8 md:p-10">
+                                    <h3 className="font-display text-[20px] sm:text-[24px] md:text-[28px] text-black mb-2">
+                                        Products with <span className="text-pink">{selectedIngredient}</span>
+                                    </h3>
+                                    <p className="text-[13px] text-gray-500 mb-6">{activeIngredientData.products.length} product{activeIngredientData.products.length !== 1 ? "s" : ""} found</p>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+                                        {activeIngredientData.products.map((productName) => {
+                                            const p = productDetails[productName];
+                                            if (!p) return null;
+                                            return (
+                                                <motion.div
+                                                    key={productName}
+                                                    initial={{ opacity: 0, scale: 0.95 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                                                >
+                                                    <div className="h-[180px] bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-4">
+                                                        <Image src={p.image} alt={productName} width={200} height={200} className="h-full w-auto object-contain" />
+                                                    </div>
+                                                    <div className="p-4">
+                                                        <h4 className="font-bold text-[15px] text-black">{productName}</h4>
+                                                        <p className="text-[12px] text-gray-600 mt-1 leading-[1.5] line-clamp-2">{p.desc}</p>
+                                                        <a href={`/enquiry?product=${encodeURIComponent(productName)}`} className="mt-3 inline-block text-[13px] font-semibold text-pink hover:underline">
+                                                            Enquire Now →
+                                                        </a>
+                                                    </div>
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </section>
 
             {/* Wellness is a daily ritual */}

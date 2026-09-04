@@ -58,7 +58,7 @@ const products = [
 
 export default function ClassicTopProducts() {
     return (
-        <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+        <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-14">
             {/* Section heading */}
             <AnimatedSection animation="fadeUp">
                 <div className="text-center">
@@ -134,7 +134,7 @@ export default function ClassicTopProducts() {
                                     <motion.div
                                         animate={{ y: [0, -8, 0] }}
                                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                                        className="relative w-[75%] h-[85%]"
+                                        className="relative w-[75%] h-[60%]"
                                     >
                                         <Image
                                             src={product.product}

@@ -135,7 +135,7 @@ export default function AboutPage() {
             <WellnessIsDailyRitual />
 
             {/* How It Works */}
-            <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-16">
+            <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-10 md:py-14">
                 <AnimatedSection animation="fadeUp">
                     <div className="text-center max-w-[700px] mx-auto">
                         <h2 className="font-display text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] text-dark leading-tight">
