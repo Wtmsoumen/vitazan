@@ -87,7 +87,7 @@ export default function Header() {
                         {/* Logo */}
                         <motion.div className="flex-shrink-0" whileHover={{ scale: 1.03 }} transition={{ duration: 0.25 }}>
                             <Link href="/">
-                                <Image src="/images/logo.png" alt="Vitazan" width={238} height={62} className="w-[140px] sm:w-[180px] md:w-[238px] h-auto" priority />
+                                <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="w-[140px] sm:w-[180px] md:w-[238px] h-auto" priority />
                             </Link>
                         </motion.div>
 

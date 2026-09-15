@@ -35,6 +35,7 @@ const genders = ["All", "Male Vitality", "Female Vitality", "General Wellness"];
 const allProducts = [
     {
         name: "ACINIL NEO",
+        slug: "acinil-neo",
         desc: "Antacid & antiflatulent oral suspension for fast relief from acidity, heartburn and gas.",
         price: 249,
         image: "/images/ACINIL_NEO.png",
@@ -44,6 +45,7 @@ const allProducts = [
     },
     {
         name: "ALFAAKTIV",
+        slug: "alfaaktiv-pro",
         desc: "Active capsules formulated to support male vitality, energy and overall well-being.",
         price: 349,
         image: "/images/ALFAAKTIV.png",
@@ -53,6 +55,7 @@ const allProducts = [
     },
     {
         name: "CYSTNIL SURE",
+        slug: "cystnil",
         desc: "D-chiro-inositol and Myo-inositol tablets for hormonal balance and reproductive health.",
         price: 299,
         image: "/images/CYSTNIL SURE.png",
@@ -62,6 +65,7 @@ const allProducts = [
     },
     {
         name: "DIARON-C",
+        slug: "diaron-c",
         desc: "Citrus bioflavonoids, rosehip and vitamin C complex for immunity and skin health.",
         price: 279,
         image: "/images/DIARON-C.png",
@@ -71,6 +75,7 @@ const allProducts = [
     },
     {
         name: "FEMISAN A",
+        slug: "femisan-a",
         desc: "100% natural supplement supporting normal physiological functions of female reproductive organs.",
         price: 399,
         image: "/images/FEMISAN_A.png",
@@ -80,6 +85,7 @@ const allProducts = [
     },
     {
         name: "FEMISAN B",
+        slug: "femisan-b",
         desc: "Herbal drops with natural plant extracts for women's health and hormonal support.",
         price: 379,
         image: "/images/FEMISAN_B.png",
@@ -89,6 +95,7 @@ const allProducts = [
     },
     {
         name: "FEMISAN GOLD",
+        slug: "femisan-gold",
         desc: "Natural relief for menopause symptoms including hot flashes, sweating and restlessness.",
         price: 449,
         image: "/images/FEMISAN_GOLD.png",
@@ -98,6 +105,7 @@ const allProducts = [
     },
     {
         name: "OSTEOMAC",
+        slug: "osteomac",
         desc: "Calcium citrate maleate with vitamin D3, magnesium and zinc tablets for bone health support.",
         price: 199,
         image: "/images/osteomac-product.png",
@@ -292,7 +300,7 @@ export default function Shop() {
                                             exit={{ opacity: 0, scale: 0.95 }}
                                             transition={{ duration: 0.3, delay: idx * 0.05 }}
                                         >
-                                            <Link href="/shop/details" className="group block">
+                                            <Link href={`/shop/details/${product.slug}`} className="group block">
                                                 <div className="relative rounded-2xl sm:rounded-[20px] border border-gray-100 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
                                                     {/* Product image */}
                                                     <div className="relative h-[240px] sm:h-[280px] md:h-[300px] bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-6 overflow-hidden">

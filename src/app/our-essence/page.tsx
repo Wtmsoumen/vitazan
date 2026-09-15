@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import AnimatedSection from "@/components/client/AnimatedSection";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import Link from "next/link";
 import WellnessIsDailyRitual from "@/components/client/WellnessIsDailyRitual";
 
 const allIngredients = [
@@ -130,17 +131,8 @@ function OurEssenceContent() {
             }, 300);
         }
     }, [searchParams]);
-    const [selectedIngredient, setSelectedIngredient] = useState<string | null>("Saw Palmetto");
-    const ingredientProductsRef = useRef<HTMLDivElement>(null);
-
-    const handleIngredientClick = (name: string) => {
-        setSelectedIngredient(name === selectedIngredient ? null : name);
-        setTimeout(() => {
-            ingredientProductsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
-    };
-
-    const activeIngredientData = allIngredients.find(i => i.name === selectedIngredient);
+    const [modalIngredient, setModalIngredient] = useState<string | null>(null);
+    const activeIngredientData = allIngredients.find(i => i.name === modalIngredient);
 
     const scrollCarousel = (direction: "left" | "right") => {
         const newIndex = direction === "left"
@@ -318,68 +310,97 @@ function OurEssenceContent() {
                     {allIngredients.map((ing) => (
                         <motion.button
                             key={ing.name}
-                            onClick={() => handleIngredientClick(ing.name)}
+                            onClick={() => setModalIngredient(ing.name)}
                             whileHover={{ y: -4 }}
-                            className={`flex flex-col items-center text-center p-4 rounded-2xl border-2 transition-all duration-300 cursor-pointer ${selectedIngredient === ing.name ? "border-pink bg-pink/5 shadow-lg" : "border-gray-100 bg-white hover:border-pink/40 hover:shadow-md"}`}
+                            className="flex flex-col items-center text-center p-4 rounded-2xl border-2 border-gray-100 bg-white hover:border-pink/40 hover:shadow-md transition-all duration-300 cursor-pointer"
                         >
                             <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-2 border-solid border-[#E5097F] mb-3 flex-shrink-0">
                                 <Image src={ing.image} alt={ing.name} width={200} height={200} className="w-full h-full object-cover" />
                             </div>
-                            <p className={`text-[13px] sm:text-[14px] font-semibold leading-tight ${selectedIngredient === ing.name ? "text-pink" : "text-black"}`}>
-                                {ing.name}
-                            </p>
+                            <p className="text-[13px] sm:text-[14px] font-semibold leading-tight text-black">{ing.name}</p>
                             <p className="text-[11px] text-gray-500 mt-0.5">{ing.subtitle}</p>
                         </motion.button>
                     ))}
                 </div>
-
-                {/* Products for selected ingredient */}
-                <div ref={ingredientProductsRef}>
-                    <AnimatePresence>
-                        {selectedIngredient && activeIngredientData && (
-                            <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="mt-8 overflow-hidden"
-                            >
-                                <div className="bg-[#f9f9f9] rounded-2xl p-6 sm:p-8 md:p-10">
-                                    <h3 className="font-display text-[20px] sm:text-[24px] md:text-[28px] text-black mb-2">
-                                        Products with <span className="text-pink">{selectedIngredient}</span>
-                                    </h3>
-                                    <p className="text-[13px] text-gray-500 mb-6">{activeIngredientData.products.length} product{activeIngredientData.products.length !== 1 ? "s" : ""} found</p>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-                                        {activeIngredientData.products.map((productName) => {
-                                            const p = productDetails[productName];
-                                            if (!p) return null;
-                                            return (
-                                                <motion.div
-                                                    key={productName}
-                                                    initial={{ opacity: 0, scale: 0.95 }}
-                                                    animate={{ opacity: 1, scale: 1 }}
-                                                    className="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                                                >
-                                                    <div className="h-[180px] bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-4">
-                                                        <Image src={p.image} alt={productName} width={200} height={200} className="h-full w-auto object-contain" />
-                                                    </div>
-                                                    <div className="p-4">
-                                                        <h4 className="font-bold text-[15px] text-black">{productName}</h4>
-                                                        <p className="text-[12px] text-gray-600 mt-1 leading-[1.5] line-clamp-2">{p.desc}</p>
-                                                        <a href={`/enquiry?product=${encodeURIComponent(productName)}`} className="mt-3 inline-block text-[13px] font-semibold text-pink hover:underline">
-                                                            Enquire Now →
-                                                        </a>
-                                                    </div>
-                                                </motion.div>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </div>
             </section>
+
+            {/* Ingredient Products Modal */}
+            <AnimatePresence>
+                {modalIngredient && activeIngredientData && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                        onClick={() => setModalIngredient(null)}
+                    >
+                        {/* Backdrop */}
+                        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+                        {/* Modal */}
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.92, y: 20 }}
+                            transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+                            className="relative z-10 w-full max-w-[680px] max-h-[85vh] overflow-y-auto bg-white rounded-2xl shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {/* Modal Header */}
+                            <div className="sticky top-0 z-10 flex items-center justify-between bg-white border-b border-gray-100 px-6 py-4">
+                                <div>
+                                    <p className="text-[11px] font-bold uppercase tracking-widest text-pink mb-0.5">Key Ingredients</p>
+                                    <h3 className="font-display text-[20px] sm:text-[24px] text-dark leading-tight">
+                                        Products with <span className="text-pink">{modalIngredient}</span>
+                                    </h3>
+                                </div>
+                                <button
+                                    onClick={() => setModalIngredient(null)}
+                                    className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                                >
+                                    <X size={18} className="text-gray-600" />
+                                </button>
+                            </div>
+
+                            {/* Modal Body */}
+                            <div className="p-6">
+                                <p className="text-[13px] text-gray-500 mb-5">
+                                    {activeIngredientData.products.length} product{activeIngredientData.products.length !== 1 ? "s" : ""} contain this ingredient
+                                </p>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {activeIngredientData.products.map((productName) => {
+                                        const p = productDetails[productName];
+                                        if (!p) return null;
+                                        return (
+                                            <motion.div
+                                                key={productName}
+                                                initial={{ opacity: 0, y: 10 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                className="flex gap-4 items-start bg-[#fafafa] rounded-xl border border-gray-100 p-4 hover:shadow-md transition-shadow"
+                                            >
+                                                <div className="w-[80px] h-[80px] flex-shrink-0 bg-white rounded-lg flex items-center justify-center p-2 border border-gray-100">
+                                                    <Image src={p.image} alt={productName} width={160} height={160} className="w-full h-full object-contain" />
+                                                </div>
+                                                <div className="flex flex-col flex-1 min-w-0">
+                                                    <h4 className="font-bold text-[14px] sm:text-[15px] text-black leading-tight">{productName}</h4>
+                                                    <p className="text-[12px] text-gray-600 mt-1 leading-[1.5] line-clamp-3">{p.desc}</p>
+                                                    <Link
+                                                        href={`/enquiry?product=${encodeURIComponent(productName)}`}
+                                                        className="mt-2 inline-block text-[12px] font-semibold text-pink hover:underline"
+                                                    >
+                                                        Enquire Now →
+                                                    </Link>
+                                                </div>
+                                            </motion.div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* Wellness is a daily ritual */}
             <WellnessIsDailyRitual />

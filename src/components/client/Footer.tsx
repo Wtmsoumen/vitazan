@@ -33,7 +33,7 @@ export default function Footer() {
                     {/* Logo & Info */}
                     <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants} className="sm:col-span-2 lg:col-span-1">
                         <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25 }}>
-                            <Image src="/images/logoWhite.png" alt="Vitazan" width={180} height={50} />
+                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="brightness-0 invert w-[180px] h-[50px]" />
                         </motion.div>
                         <p className="mt-4 text-[18px] leading-[22px] text-white">
                             Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density.
