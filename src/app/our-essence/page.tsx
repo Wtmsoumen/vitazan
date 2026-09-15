@@ -14,12 +14,24 @@ const allIngredients = [
     { name: "Nettle Root", subtitle: "(Urtica dioica)", image: "/images/Our Essence/Nettle root.webp", products: ["ALFAAKTIV", "FEMISAN A"] },
     { name: "Pomegranate", subtitle: "(Punica granatum)", image: "/images/Our Essence/Pomegranate.webp", products: ["FEMISAN A", "FEMISAN B", "FEMISAN GOLD"] },
     { name: "Lady's Mantle", subtitle: "(Alchemilla vulgaris)", image: "/images/Our Essence/ladys mantle.jpg", products: ["FEMISAN A", "FEMISAN B"] },
-    { name: "Marigold Flower", subtitle: "(Tagetes erecta)", image: "/images/Our Essence/marigold.jpeg", products: ["FEMISAN A", "DIARON-C"] },
+    { name: "Marigold Flower", subtitle: "(Calendula officinalis)", image: "/images/Our Essence/MarigoldFlower.jpg", products: ["FEMISAN A", "DIARON-C"] },
     { name: "Yarrow", subtitle: "(Achillea millefolium)", image: "/images/Our Essence/Yarrow.jpeg", products: ["FEMISAN B", "FEMISAN GOLD"] },
     { name: "Turmeric", subtitle: "(Curcuma longa)", image: "/images/turmeric.png", products: ["OSTEOMAC", "ACINIL NEO"] },
     { name: "Malabar Nut", subtitle: "(Adhatoda vasica)", image: "/images/malabar.png", products: ["ACINIL NEO"] },
     { name: "Holy Basil", subtitle: "(Ocimum tenuiflorum)", image: "/images/tulsi.png", products: ["ACINIL NEO", "CYSTNIL SURE"] },
     { name: "Black Pepper", subtitle: "(Piper nigrum)", image: "/images/Our Essence/Saw Palmetto.webp", products: ["ALFAAKTIV", "OSTEOMAC"] },
+    { name: "Shepherd's Purse", subtitle: "(Capsella bursa-pastoris)", image: "/images/Our Essence/ShepherdsPurse.webp", products: ["FEMISAN A"] },
+    { name: "Herb Robert", subtitle: "(Geranium robertianum)", image: "/images/Our Essence/HerbRobert.jpeg", products: ["FEMISAN A"] },
+    { name: "Golden Maca", subtitle: "(Lepidium meyenii)", image: "/images/Our Essence/GoldenMaca.jpg", products: ["FEMISAN A"] },
+    { name: "White Mistletoe Herb", subtitle: "(Viscum album)", image: "/images/Our Essence/WhiteMistletoeHerb.jpeg", products: ["FEMISAN B"] },
+    { name: "Lemon Balm Leaves", subtitle: "(Melissa officinalis)", image: "/images/Our Essence/LemonBalmLeaves.jpeg", products: ["FEMISAN B"] },
+    { name: "Valerian Root", subtitle: "(Valeriana officinalis)", image: "/images/Our Essence/ValerianRoot.jpg", products: ["FEMISAN B"] },
+    { name: "Chaste Tree", subtitle: "(Vitex agnus-castus)", image: "/images/Our Essence/ChasteTree.jpeg", products: ["FEMISAN GOLD"] },
+    { name: "Wild Yam", subtitle: "(Dioscorea villosa)", image: "/images/Our Essence/WildYam.avif", products: ["FEMISAN GOLD"] },
+    { name: "Hops", subtitle: "(Humulus lupulus)", image: "/images/Our Essence/Hops.jpeg", products: ["FEMISAN GOLD"] },
+    { name: "Black Cohosh", subtitle: "(Actaea racemosa)", image: "/images/Our Essence/BlackCohosh.jpg", products: ["FEMISAN GOLD"] },
+    { name: "Angelica", subtitle: "(Angelica archangelica L.)", image: "/images/Our Essence/Angelica.webp", products: ["FEMISAN GOLD"] },
+    { name: "Ginseng", subtitle: "(Panax ginseng)", image: "/images/Our Essence/ginseng.webp", products: ["FEMISAN GOLD"] },
 ];
 
 const productDetails: Record<string, { image: string; desc: string }> = {
@@ -79,13 +91,13 @@ const ingredients = [{
 },
 {
     name: "Marigold Flower",
-    subtitle: "(Tagetes erecta)",
-    image: "/images/Our Essence/marigold.jpeg",
-    detailImages: ["/images/Our Essence/marigold.jpeg"],
+    subtitle: "(Calendula officinalis)",
+    image: "/images/Our Essence/MarigoldFlower.jpg",
+    detailImages: ["/images/Our Essence/MarigoldFlower.jpg"],
     paragraphs: [
-        "The Vibrant Healer. Native to Mexico and Central America, Marigold is admired worldwide for its brilliant golden-orange flowers and remarkable medicinal value.",
-        "Historically used by the Aztecs in ceremonies and healing traditions, Marigold continues to play an important role in herbal medicine and cultural celebrations.",
-        "Its natural carotenoids, including lutein, provide antioxidant and anti-inflammatory support while promoting eye health, skin wellness and the healing of minor wounds."
+        "Marigold flower, particularly Calendula officinalis, is commonly known as pot marigold and is one of the best-known traditional botanical ingredients for skin and general wellness. Its bright orange-yellow flowers contain a diverse range of naturally occurring phytochemicals. Calendula officinalis belongs to the Asteraceae family and is an aromatic annual or short-lived perennial herb.",
+        "Its flower heads contain carotenoids, flavonoids, triterpenoids, coumarins and other compounds responsible for their characteristic colour and biological properties. Calendula has traditionally been used for minor skin irritation, wounds, inflammation and digestive complaints. Modern investigations have reported antioxidant, anti-inflammatory, antimicrobial and wound-healing-related activities. Clinical research has explored calendula preparations in areas including wound care, radiodermatitis, oral mucosal conditions and inflammatory skin concerns.",
+        "Beyond herbal medicine, calendula flowers have culinary and cosmetic applications and have historically been used as a natural colouring ingredient. Today, calendula remains an important botanical in creams, ointments, teas, extracts and women's wellness formulations."
     ]
 },
 {
@@ -97,6 +109,138 @@ const ingredients = [{
         "The Warrior's Herb. Yarrow is a flowering perennial native to Europe, Asia and North America, famous for its delicate white flower clusters and feathery foliage.",
         "Named after the legendary Greek warrior Achilles, Yarrow has been used for thousands of years to help treat wounds and support healing.",
         "Known for its anti-inflammatory, antiseptic and astringent properties, Yarrow supports wound care, digestive health, circulation and women's wellness while promoting natural healing."
+    ]
+},
+{
+    name: "Shepherd's Purse",
+    subtitle: "(Capsella bursa-pastoris)",
+    image: "/images/Our Essence/ShepherdsPurse.webp",
+    detailImages: ["/images/Our Essence/ShepherdsPurse.webp"],
+    paragraphs: [
+        "Shepherd's purse, Capsella bursa-pastoris, is a widespread annual or biennial herb recognised by its distinctive heart-shaped seed pods. It has been used traditionally in several cultures, particularly in herbal preparations associated with women's health and digestive wellness. This member of the Brassicaceae family forms a basal rosette of leaves with an upright flowering stem bearing small white flowers. Its characteristic triangular or heart-shaped seed pods give the plant its common name.",
+        "Phytochemical investigations have identified flavonoids, phenolic acids, phytosterols, amino acids and other constituents. Traditional applications include support for digestive function and preparations associated with bleeding and women's health. Modern studies have investigated antioxidant, anti-inflammatory, antimicrobial and other biological activities. Research has also explored its potential relevance to gynaecological applications, although traditional uses should not be interpreted as established clinical treatments.",
+        "Shepherd's purse has been used both medicinally and as an edible plant. Its recognition in modern pharmacognosy, including inclusion in the European Pharmacopoeia, illustrates the continuing relationship between traditional herbal knowledge and contemporary botanical medicine."
+    ]
+},
+{
+    name: "Herb Robert",
+    subtitle: "(Geranium robertianum)",
+    image: "/images/Our Essence/HerbRobert.jpeg",
+    detailImages: ["/images/Our Essence/HerbRobert.jpeg"],
+    paragraphs: [
+        "Herb Robert, Geranium robertianum, also known as red robin, is a delicate annual or biennial herb found widely across Europe and parts of Asia and North America. It has a long history in folk herbal practices. Herb Robert belongs to the Geraniaceae family and is characterised by finely divided leaves, reddish stems and small pink to purplish flowers.",
+        "Its phytochemical profile is particularly notable for phenolic compounds, including flavonoids, tannins and phenolic acids. Traditional herbal use has associated Herb Robert with a variety of everyday health applications. Modern phytochemical research has identified antioxidant, antimicrobial, anti-inflammatory and other biological activities in extracts of the plant. Some experimental studies have also examined metabolic and cellular effects, although these findings should not be equated with established clinical efficacy.",
+        "Herb Robert represents the broader European tradition of using locally available wild plants for household herbal preparations. Contemporary scientific interest is focused on understanding its phenolic constituents and determining how its traditional applications relate to experimentally observed biological activities."
+    ]
+},
+{
+    name: "Golden Maca",
+    subtitle: "(Lepidium meyenii)",
+    image: "/images/Our Essence/GoldenMaca.jpg",
+    detailImages: ["/images/Our Essence/GoldenMaca.jpg"],
+    paragraphs: [
+        "Maca, Lepidium meyenii or closely related cultivated Lepidium forms, is a root vegetable originating in the high Andes of Peru and Bolivia. Often described as an adaptogenic or vitality-supporting botanical, maca has become globally recognised for its traditional association with energy, fertility and sexual wellness.",
+        "Maca is a small biennial herb belonging to the Brassicaceae family. Its underground storage organ develops in several natural colour forms, including yellow or golden, red and black. Its phytochemical profile includes macamides, macaenes, glucosinolates, sterols and other compounds. Research has investigated maca for sexual function, fertility, energy, mood, antioxidant activity and physical performance. Some clinical studies have reported improvements in aspects of sexual desire and wellbeing, although results vary according to preparation, dose and study design.",
+        "Maca has been cultivated in the Andes for at least 2,000 years and has traditionally served both nutritional and medicinal purposes. Its transition from an Andean food crop to a globally marketed botanical illustrates the growing international interest in traditional plant-based wellness ingredients."
+    ]
+},
+{
+    name: "White Mistletoe Herb",
+    subtitle: "(Viscum album)",
+    image: "/images/Our Essence/WhiteMistletoeHerb.jpeg",
+    detailImages: ["/images/Our Essence/WhiteMistletoeHerb.jpeg"],
+    paragraphs: [
+        "White mistletoe, Viscum album, is a distinctive semi-parasitic plant traditionally associated with European herbal medicine. Unlike many conventional herbs, mistletoe grows attached to host trees and obtains water and minerals from its host. Viscum album belongs to the Santalaceae family. It forms evergreen, branching shrubs with paired leaves and characteristic white berries.",
+        "Its chemical profile includes lectins, viscotoxins, flavonoids, triterpenes and other bioactive compounds. Mistletoe has a long history of traditional use for several conditions, and modern research has particularly investigated its immunological, inflammatory and cancer-related biological effects. Extracts and isolated compounds have demonstrated pharmacological activity in laboratory and clinical research. However, evidence varies substantially by preparation, route and indication, and mistletoe should not be treated as a general-purpose treatment for serious disease.",
+        "Mistletoe has considerable cultural significance throughout Europe, where it is associated with seasonal traditions and symbolism. In modern phytotherapy and complementary medicine, standardised mistletoe preparations have attracted significant scientific research, particularly in European countries."
+    ]
+},
+{
+    name: "Lemon Balm Leaves",
+    subtitle: "(Melissa officinalis)",
+    image: "/images/Our Essence/LemonBalmLeaves.jpeg",
+    detailImages: ["/images/Our Essence/LemonBalmLeaves.jpeg"],
+    paragraphs: [
+        "Lemon balm, Melissa officinalis, is an aromatic perennial herb renowned for its pleasant lemon fragrance and calming herbal tradition. It has been used for centuries in European, Mediterranean and Middle Eastern herbal medicine. Lemon balm belongs to the Lamiaceae family and has soft, serrated green leaves that release a characteristic citrus-like aroma when crushed.",
+        "Its phytochemical profile includes rosmarinic acid, phenolic compounds, flavonoids, triterpenoids and volatile constituents such as citral and citronellal. Traditional applications include digestive comfort, nervous tension and sleep-related concerns. Modern research has investigated antioxidant, anti-inflammatory, antispasmodic, antiviral and anxiolytic activities. Some clinical studies have reported effects on mood, anxiety and cognitive performance, although outcomes depend on the extract and formulation.",
+        "Lemon balm has traditionally been consumed as a tea and culinary herb as well as used in herbal preparations. Its combination of a pleasant aroma, culinary versatility and research interest has made it a popular ingredient in modern relaxation, digestive and women's wellness products."
+    ]
+},
+{
+    name: "Valerian Root",
+    subtitle: "(Valeriana officinalis)",
+    image: "/images/Our Essence/ValerianRoot.jpg",
+    detailImages: ["/images/Our Essence/ValerianRoot.jpg"],
+    paragraphs: [
+        "Valerian, most commonly Valeriana officinalis, is a perennial herb whose underground root and rhizome have been used for centuries in European herbal medicine. It is particularly associated with relaxation and sleep support. Valeriana officinalis belongs to the Caprifoliaceae family. It produces clusters of small pale flowers and develops a distinctive aromatic root containing valerenic acids, iridoids, volatile oils and other constituents.",
+        "The chemical composition can vary according to species, growing conditions and extraction method. Valerian has traditionally been used to promote relaxation and support sleep. Modern research suggests that certain valerian preparations may influence neurotransmitter systems involved in nervous-system regulation. However, systematic reviews have found inconsistent evidence for objectively measured insomnia outcomes, although some people report subjective improvements in sleep quality.",
+        "Valerian remains one of the most widely recognised botanical sleep-support ingredients and is used in teas, capsules, extracts and combination herbal products. Its long traditional history and continuing scientific investigation make it an important example of traditional herbal knowledge being evaluated through modern clinical research."
+    ]
+},
+{
+    name: "Chaste Tree",
+    subtitle: "(Vitex agnus-castus)",
+    image: "/images/Our Essence/ChasteTree.jpeg",
+    detailImages: ["/images/Our Essence/ChasteTree.jpeg"],
+    paragraphs: [
+        "Chaste tree, Vitex agnus-castus, is a Mediterranean shrub whose fruits, often called chaste berries, have a long history of use in women's herbal medicine. It is particularly associated with menstrual and reproductive wellness. Vitex agnus-castus belongs to the Lamiaceae family and is a woody shrub with aromatic, palmately divided leaves and spikes of lilac or violet flowers.",
+        "Its fruits contain flavonoids, iridoids, diterpenes and volatile constituents that contribute to its biological activity. Chaste tree has been studied particularly for premenstrual symptoms and reproductive health. Proposed mechanisms include effects on dopaminergic and neuroendocrine pathways, including prolactin regulation. Clinical trials have produced evidence supporting some uses, although results depend on extract standardisation and the condition being studied.",
+        "Chaste tree has been used in European herbal medicine for generations and remains one of the most widely recognised botanical ingredients for women's hormonal wellness. Contemporary research continues to examine its role in menstrual and menopausal health and the mechanisms underlying its traditional applications."
+    ]
+},
+{
+    name: "Wild Yam",
+    subtitle: "(Dioscorea villosa)",
+    image: "/images/Our Essence/WildYam.avif",
+    detailImages: ["/images/Our Essence/WildYam.avif"],
+    paragraphs: [
+        "Wild yam refers to species of the genus Dioscorea, with several species historically used in traditional medicine. Wild yams are best known for their naturally occurring steroidal sapogenins, particularly diosgenin, which has attracted considerable pharmaceutical and phytochemical interest. Dioscorea species are climbing or twining plants belonging to the Dioscoreaceae family.",
+        "They develop underground tubers or rhizomes that serve as important storage organs. Different species contain varying levels of steroidal compounds, including diosgenin and related saponins. Laboratory research has investigated Dioscorea constituents for antioxidant, anti-inflammatory, metabolic and hormone-related biological activities. Diosgenin is particularly significant because of its use as a chemical starting material in the historical semi-synthesis of several steroidal pharmaceutical compounds. However, the human body does not simply convert dietary diosgenin into progesterone or other human hormones.",
+        "Yams have enormous nutritional and cultural importance across Africa, Asia, the Caribbean and other tropical regions. Beyond their role as food crops, Dioscorea species have become important subjects of pharmaceutical and natural-product research because of their steroidal phytochemicals."
+    ]
+},
+{
+    name: "Hops",
+    subtitle: "(Humulus lupulus)",
+    image: "/images/Our Essence/Hops.jpeg",
+    detailImages: ["/images/Our Essence/Hops.jpeg"],
+    paragraphs: [
+        "Hops, Humulus lupulus, are the female flowering cones of a climbing perennial plant best known for giving beer its characteristic bitterness and aroma. The same botanical has a long history of use in traditional herbal preparations associated with relaxation and digestive comfort. Hops belong to the Cannabaceae family and produce resin-rich female inflorescences containing bitter acids, essential oils and prenylated flavonoids.",
+        "Important phytochemicals include humulones, lupulones, xanthohumol and 8-prenylnaringenin. Traditional use has focused particularly on relaxation and sleep. Research has identified antioxidant, anti-inflammatory, antimicrobial and phytoestrogenic activities among hop constituents. The prenylated flavonoid 8-prenylnaringenin is of particular scientific interest because of its estrogen-receptor activity, while other constituents have been investigated for antioxidant and cellular effects.",
+        "Hops have an important cultural role in brewing and an equally interesting history in herbal medicine. Today, hop extracts are investigated in areas ranging from sleep and women's wellness to metabolic and cellular health, although clinical evidence varies according to preparation and intended use."
+    ]
+},
+{
+    name: "Black Cohosh",
+    subtitle: "(Actaea racemosa)",
+    image: "/images/Our Essence/BlackCohosh.jpg",
+    detailImages: ["/images/Our Essence/BlackCohosh.jpg"],
+    paragraphs: [
+        "Black cohosh, Actaea racemosa (formerly Cimicifuga racemosa), is a perennial North American woodland plant best known for its traditional and modern association with women's menopausal wellness. Black cohosh belongs to the Ranunculaceae family and develops tall flowering stems with elongated clusters of small white flowers.",
+        "Its underground rhizome and roots contain triterpene glycosides, phenolic compounds, chromones and other constituents that have been investigated for biological activity. Black cohosh has been studied primarily for menopausal symptoms such as hot flashes, sweating, sleep disturbance and mood-related complaints. Some clinical studies have reported benefits, but the evidence is not completely consistent, partly because commercially available extracts differ in composition and standardisation. Modern systematic reviews continue to emphasise the need for well-designed clinical trials.",
+        "Native American traditions included black cohosh among medicinal plants used for women's health and other complaints. Over the past century, it has become one of the most extensively researched Western herbal ingredients for menopause, demonstrating how traditional botanical knowledge can influence modern women's wellness research."
+    ]
+},
+{
+    name: "Angelica",
+    subtitle: "(Angelica archangelica L.)",
+    image: "/images/Our Essence/Angelica.webp",
+    detailImages: ["/images/Our Essence/Angelica.webp"],
+    paragraphs: [
+        "Angelica archangelica L., commonly known as garden angelica or European angelica, is an aromatic medicinal herb with a long history in traditional European herbal medicine. Native to northern and central Europe, the plant has traditionally been valued for its aromatic root and has been used particularly in preparations intended to support digestion, appetite and general vitality. Its distinctive fragrance and rich phytochemical profile have made angelica an enduring botanical in traditional herbal practices.",
+        "Angelica archangelica belongs to the Apiaceae (carrot) family and is a large biennial or short-lived perennial herb that can grow to considerable height. It has a robust, hollow stem, large divided leaves and characteristic rounded umbels of small greenish-white flowers. The roots, fruits and other plant parts contain essential oils, coumarins, furanocoumarins, phenolic compounds and other naturally occurring constituents. Compounds such as α-pinene, β-phellandrene and other volatile terpenes contribute to its characteristic aromatic profile.",
+        "Angelica has been an important traditional European herb for centuries and has also been used as a culinary flavouring and aromatic ingredient. Its roots and seeds are used in herbal preparations and flavouring applications, while modern pharmacognosy continues to investigate its essential oils and coumarin constituents. The plant's combination of traditional heritage, distinctive aroma and diverse phytochemistry gives Angelica archangelica a valued place among contemporary botanical wellness ingredients."
+    ]
+},
+{
+    name: "Ginseng",
+    subtitle: "(Panax ginseng)",
+    image: "/images/Our Essence/ginseng.webp",
+    detailImages: ["/images/Our Essence/ginseng.webp"],
+    paragraphs: [
+        "Ginseng, particularly Asian or Korean ginseng (Panax ginseng C.A. Meyer), is one of the world's most extensively studied traditional medicinal plants. Its root has been valued for centuries in East Asian traditions for vitality, resilience and general well-being. Panax ginseng is a slow-growing perennial herb belonging to the Araliaceae family.",
+        "Its characteristic palmate leaves surround a central flowering stem, while the fleshy root develops slowly underground. The major bioactive compounds are ginsenosides, accompanied by polysaccharides, polyacetylenes, peptides and other constituents. Scientific research has investigated ginseng for fatigue, cognitive function, immune activity, metabolic health, antioxidant effects, stress and aspects of sexual health. Ginsenosides appear to influence multiple biological pathways, which may help explain the broad pharmacological interest surrounding the plant.",
+        "Ginseng has deep roots in Chinese and Korean traditional medicine and remains an important cultural and commercial botanical worldwide. Today, it is used in teas, extracts, functional foods, supplements and wellness formulations, while modern research continues to explore how its diverse ginsenosides interact with human physiology."
     ]
 }]
 
