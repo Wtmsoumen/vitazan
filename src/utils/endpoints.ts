@@ -4,6 +4,7 @@ export const endpoints = {
     profile: "/profile",
     profileUpdate: "/profile-update",
     changePassword: "/change-password",
+    // Pages
     pages: "/admin/pages",
     pageAdd: "/admin/page/add",
     pageEdit: "/admin/page/edit",
@@ -11,4 +12,25 @@ export const endpoints = {
     pageSectionImageDelete: "/admin/page-section-image/delete",
     pageSectionDelete: "/admin/page-section/delete",
     pageDelete: "/admin/page/delete",
+    // Users
+    users: "/admin/users",
+    userAdd: "/admin/user/add",
+    userEdit: "/admin/user/edit",
+    userUpdate: "/admin/user/update",
+    userDelete: "/admin/user/delete",
+    // Categories
+    categories: "/admin/categories",
+    categoryAdd: "/admin/category/add",
+    categoryEdit: "/admin/category/edit",
+    categoryUpdate: "/admin/category/update",
+    categoryImageDelete: "/admin/category/delete-image",
+    categoryDelete: "/admin/category/delete",
+    // Products
+    products: "/admin/products",
+    productAdd: "/admin/product/add",
+    productEdit: "/admin/product/edit",
+    productUpdate: "/admin/product/update",
+    productSectionImageDelete: "/admin/product-section-image/delete",
+    productSectionDelete: "/admin/product-section/delete",
+    productDelete: "/admin/product/delete",
 }

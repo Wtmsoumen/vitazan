@@ -48,12 +48,12 @@ export default function Header() {
       </div>
 
       <div className="flex items-center gap-4 flex-shrink-0 ml-3">
-        <button className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 transition-colors hover:bg-gray-50">
+        {/* <button className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 transition-colors hover:bg-gray-50">
           <Bell size={17} className="text-gray-600" />
           <span className="absolute -right-1 -top-1 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-pink text-[9px] font-bold text-white ring-2 ring-white">
             3
           </span>
-        </button>
+        </button> */}
 
         <div className="h-8 w-px bg-gray-200" />
 
