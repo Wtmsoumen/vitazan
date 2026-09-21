@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
         hostname: "vitazan.webtechnomind.in",
         pathname: "/public/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.vamxm.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.venkateshmotors.net",
+      },
     ],
   },
 };

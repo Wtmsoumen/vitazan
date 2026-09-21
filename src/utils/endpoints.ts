@@ -1,4 +1,10 @@
 export const endpoints = {
+    // Public
+    getHeader: "/get-header",
+    getFooter: "/get-footer",
+    getPages: "/get-pages",
+    getPageDetails: "/get-page-details",
+    // Auth
     login: "/login",
     logout: "/logout",
     profile: "/profile",
@@ -30,7 +36,12 @@ export const endpoints = {
     productAdd: "/admin/product/add",
     productEdit: "/admin/product/edit",
     productUpdate: "/admin/product/update",
+    productImageDelete: "/admin/product/delete-image",
     productSectionImageDelete: "/admin/product-section-image/delete",
+    productGalleryDelete: "/admin/product-gallery/delete",
     productSectionDelete: "/admin/product-section/delete",
     productDelete: "/admin/product/delete",
+    // Settings
+    settings: "/admin/settings",
+    settingsUpdate: "/admin/settings",
 }

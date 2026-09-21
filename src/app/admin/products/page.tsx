@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { Plus, Search, Edit, Trash2, Eye, X, Loader2, ImageIcon } from "lucide-react";
+import { Plus, Search, Edit, Trash2, Eye, X, Loader2, ImageIcon, XCircle } from "lucide-react";
 import DeleteModal from "@/components/admin/DeleteModal";
 import ImageUpload from "@/components/admin/ImageUpload";
 import { api, getResponseData, type ApiEnvelope } from "@/utils/api";
@@ -24,7 +24,8 @@ interface Category {
 interface ApiProductSection {
   id: number;
   product_id?: number;
-  section_type: number;
+  type?: number;
+  section_type?: number;
   title: string;
   body?: string | null;
   btn_text?: string | null;
@@ -34,6 +35,12 @@ interface ApiProductSection {
   image_url?: string | null;
   image2_url?: string | null;
   rank?: number;
+}
+
+interface ApiGalleryImage {
+  id: number;
+  image?: string | null;
+  image_url?: string | null;
 }
 
 interface Product {
@@ -52,6 +59,7 @@ interface Product {
   image_url?: string | null;
   category?: Category[];
   extra?: ApiProductSection[];
+  gallery?: ApiGalleryImage[];
 }
 
 interface ProductEditResponse {
@@ -101,6 +109,7 @@ export default function ProductsPage() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [msg, setMsg] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [form, setForm] = useState<ProductFormData>(emptyForm);
+  const [deletingImageId, setDeletingImageId] = useState<string | null>(null);
 
   const fetchProducts = useCallback(async () => {
     setLoading(true);
@@ -132,11 +141,7 @@ export default function ProductsPage() {
     if (msg) { const t = setTimeout(() => setMsg(null), 4000); return () => clearTimeout(t); }
   }, [msg]);
 
-  const openAdd = () => { setSelected(null); setForm(emptyForm); setModal("add"); };
-
-  const openEdit = async (product: Product) => {
-    setSelected(product);
-    setModal("edit");
+  const loadDetail = async (product: Product) => {
     setDetailLoading(true);
     try {
       const res = await api<ApiEnvelope<ProductEditResponse>>(endpoints.productEdit, { auth: true, params: { id: String(product.id) } });
@@ -178,7 +183,85 @@ export default function ProductsPage() {
     }
   };
 
+  const openAdd = () => { setSelected(null); setForm(emptyForm); setModal("add"); };
+  const openEdit = (product: Product) => { setSelected(product); setModal("edit"); loadDetail(product); };
   const openView = (product: Product) => { setSelected(product); setModal("view"); };
+
+  // --- Delete helpers (used inside edit modal) ---
+
+  const deleteProductImage = async () => {
+    if (!selected) return;
+    const key = `img-${selected.id}`;
+    setDeletingImageId(key);
+    try {
+      await api(endpoints.productImageDelete, { method: "DELETE", params: { id: String(selected.id) }, auth: true });
+      setSelected((p) => p ? { ...p, image: null, image_url: null } : p);
+      setMsg({ type: "success", text: "Product image deleted" });
+    } catch (e) {
+      setMsg({ type: "error", text: e instanceof Error ? e.message : "Failed to delete image" });
+    } finally {
+      setDeletingImageId(null);
+    }
+  };
+
+  const deleteSectionImage = async (sectionId: number, field: "image" | "image2") => {
+    const key = `sec-img-${sectionId}-${field}`;
+    setDeletingImageId(key);
+    try {
+      await api(endpoints.productSectionImageDelete, {
+        method: "DELETE",
+        params: { id: String(sectionId), image_field: field },
+        auth: true,
+      });
+      setSelected((p) => p ? {
+        ...p,
+        extra: p.extra?.map((s) => s.id === sectionId ? { ...s, [field]: null, [`${field}_url`]: null } : s),
+      } : p);
+      setMsg({ type: "success", text: "Section image deleted" });
+    } catch (e) {
+      setMsg({ type: "error", text: e instanceof Error ? e.message : "Failed to delete image" });
+    } finally {
+      setDeletingImageId(null);
+    }
+  };
+
+  const deleteSection = async (sectionId: number) => {
+    const key = `sec-${sectionId}`;
+    setDeletingImageId(key);
+    try {
+      await api(endpoints.productSectionDelete, {
+        method: "DELETE",
+        params: { id: String(sectionId) },
+        auth: true,
+      });
+      setSelected((p) => p ? { ...p, extra: p.extra?.filter((s) => s.id !== sectionId) } : p);
+      setMsg({ type: "success", text: "Section deleted" });
+    } catch (e) {
+      setMsg({ type: "error", text: e instanceof Error ? e.message : "Failed to delete section" });
+    } finally {
+      setDeletingImageId(null);
+    }
+  };
+
+  const deleteGalleryImage = async (galleryId: number) => {
+    const key = `gal-${galleryId}`;
+    setDeletingImageId(key);
+    try {
+      await api(endpoints.productGalleryDelete, {
+        method: "DELETE",
+        params: { id: String(galleryId) },
+        auth: true,
+      });
+      setSelected((p) => p ? { ...p, gallery: p.gallery?.filter((g) => g.id !== galleryId) } : p);
+      setMsg({ type: "success", text: "Gallery image deleted" });
+    } catch (e) {
+      setMsg({ type: "error", text: e instanceof Error ? e.message : "Failed to delete gallery image" });
+    } finally {
+      setDeletingImageId(null);
+    }
+  };
+
+  // --- Save / Delete product ---
 
   const handleSubmit = async () => {
     setSaving(true);
@@ -216,11 +299,7 @@ export default function ProductsPage() {
   const handleDelete = async () => {
     if (!deleteTarget) return;
     try {
-      await api(endpoints.productDelete, {
-        method: "DELETE",
-        params: { id: String(deleteTarget.id) },
-        auth: true,
-      });
+      await api(endpoints.productDelete, { method: "DELETE", params: { id: String(deleteTarget.id) }, auth: true });
       setMsg({ type: "success", text: "Product deleted" });
       setDeleteTarget(null);
       fetchProducts();
@@ -240,6 +319,29 @@ export default function ProductsPage() {
   const filtered = products.filter((p) =>
     p.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // --- Small helper component for deletable image ---
+  const DeletableImage = ({ src, onDelete, deleteKey, label }: { src: string | null | undefined; onDelete: () => void; deleteKey: string; label?: string }) => {
+    const resolved = resolveImageUrl(src);
+    if (!resolved) return null;
+    const busy = deletingImageId === deleteKey;
+    return (
+      <div className="relative inline-block">
+        {label && <p className="mb-1 text-xs text-gray-500">{label}</p>}
+        <div className="relative h-20 w-20 overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+          <Image src={resolved} alt="image" fill className="object-cover" />
+          <button
+            onClick={onDelete}
+            disabled={busy}
+            title="Delete image"
+            className="absolute right-0.5 top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white/90 text-red-500 shadow hover:bg-red-500 hover:text-white disabled:opacity-50"
+          >
+            {busy ? <Loader2 size={11} className="animate-spin" /> : <XCircle size={13} />}
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -339,7 +441,21 @@ export default function ProductsPage() {
               <div className="flex items-center justify-center py-12"><Loader2 size={28} className="animate-spin text-teal" /></div>
             ) : (
               <div className="mt-6 space-y-4">
-                <ImageUpload label="Product Image" value={resolveImageUrl(selected?.image_url || selected?.image) ?? undefined} onChange={(f) => setForm((p) => ({ ...p, image: f }))} />
+                {/* Main image */}
+                <div>
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Product Image</label>
+                  {modal === "edit" && (selected?.image_url || selected?.image) && (
+                    <div className="mb-2 flex items-center gap-3">
+                      <DeletableImage
+                        src={selected.image_url || selected.image}
+                        onDelete={deleteProductImage}
+                        deleteKey={`img-${selected?.id}`}
+                        label="Current image"
+                      />
+                    </div>
+                  )}
+                  <ImageUpload label="Upload new image" value={undefined} onChange={(f) => setForm((p) => ({ ...p, image: f }))} />
+                </div>
 
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Product Name</label>
@@ -401,6 +517,67 @@ export default function ProductsPage() {
                     <input type="text" value={form.meta_description} onChange={(e) => setForm((p) => ({ ...p, meta_description: e.target.value }))} className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
                   </div>
                 </div>
+
+                {/* Sections */}
+                {modal === "edit" && selected?.extra && selected.extra.length > 0 && (
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700">Sections</label>
+                    <div className="space-y-3">
+                      {selected.extra.map((section) => (
+                        <div key={section.id} className="rounded-lg border border-gray-200 p-3">
+                          <div className="flex items-start justify-between gap-2">
+                            <p className="text-sm font-medium text-black">{section.title || `Section #${section.id}`}</p>
+                            <button
+                              onClick={() => deleteSection(section.id)}
+                              disabled={deletingImageId === `sec-${section.id}`}
+                              className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50"
+                            >
+                              {deletingImageId === `sec-${section.id}` ? <Loader2 size={11} className="animate-spin" /> : <Trash2 size={11} />}
+                              Delete section
+                            </button>
+                          </div>
+                          {(section.image || section.image_url || section.image2 || section.image2_url) && (
+                            <div className="mt-2 flex gap-3">
+                              {(section.image || section.image_url) && (
+                                <DeletableImage
+                                  src={section.image_url || section.image}
+                                  onDelete={() => deleteSectionImage(section.id, "image")}
+                                  deleteKey={`sec-img-${section.id}-image`}
+                                  label="Image 1"
+                                />
+                              )}
+                              {(section.image2 || section.image2_url) && (
+                                <DeletableImage
+                                  src={section.image2_url || section.image2}
+                                  onDelete={() => deleteSectionImage(section.id, "image2")}
+                                  deleteKey={`sec-img-${section.id}-image2`}
+                                  label="Image 2"
+                                />
+                              )}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Gallery */}
+                {modal === "edit" && selected?.gallery && selected.gallery.length > 0 && (
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-gray-700">Gallery</label>
+                    <div className="flex flex-wrap gap-3">
+                      {selected.gallery.map((img) => (
+                        <DeletableImage
+                          key={img.id}
+                          src={img.image_url || img.image}
+                          onDelete={() => deleteGalleryImage(img.id)}
+                          deleteKey={`gal-${img.id}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 

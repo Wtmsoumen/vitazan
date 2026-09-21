@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, number } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { fetchFooter, type FooterData } from "@/utils/public";
 
 const colVariants = {
     hidden: { opacity: 0, y: 40 },
@@ -15,8 +16,12 @@ const colVariants = {
 };
 
 export default function Footer() {
+    const [footerData, setFooterData] = useState<any>([]);
+    const [socialIcon, setSocialIcon] = useState("");
 
-    const [socialIcon, setSocialIcon] = useState("")
+    useEffect(() => {
+        fetchFooter().then((data: any) => { if (data) setFooterData(data?.site_footer1_menu); });
+    }, []);
 
 
     return (
@@ -50,9 +55,9 @@ export default function Footer() {
                             }}
                         >
                             {[
-                                { src: "/images/facebook.png", srcp: "/images/linkedinPink.png", alt: "Facebook" },
-                                { src: "/images/twitter.png", srcp: "/images/linkedinPink.png", alt: "Twitter" },
-                                { src: "/images/instagram.png", srcp: "/images/linkedinPink.png", alt: "Instagram" },
+                                { src: "/images/facebook.png", srcp: "/images/facebookPink.png", alt: "Facebook" },
+                                { src: "/images/twitter.png", srcp: "/images/twitterPink.png", alt: "Twitter" },
+                                { src: "/images/instagram.png", srcp: "/images/instagramPink.png", alt: "Instagram" },
                                 { src: "/images/linkedin.png", srcp: "/images/linkedinPink.png", alt: "LinkedIn" },
                             ].map((social) => (
                                 <motion.div
@@ -65,7 +70,7 @@ export default function Footer() {
                                 >
                                     <Link href="#">
                                         <motion.div whileHover={{ scale: 1.18, y: -3 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
-                                            <Image src={social.alt === socialIcon ? social.srcp : social.src} alt={social.alt} width={1920} height={1080} className="w-10 h-10" />
+                                            <Image src={social.alt === socialIcon ? social.srcp : social.src} alt={social.alt} width={1920} height={1080} className={`w-10 h-10 rounded ${social.alt === socialIcon ? "bg-black/50" : ""}`} />
                                         </motion.div>
                                     </Link>
                                 </motion.div>
@@ -95,19 +100,13 @@ export default function Footer() {
                     <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
                         <h4 className="text-[24px] font-semibold text-white">Company</h4>
                         <ul className="mt-4 space-y-3">
-                            {[{ name: "Home", link: "/" },
-                            { name: "Shop", link: "/shop" },
-                            { name: "About Us", link: "/about" },
-                            { name: "Our Essence", link: "/our-essence" },
-                            { name: "Blog", link: "/blog" },
-                            { name: "Contact Us", link: "/contact-us" }
-                            ].map((item, idx) => (
+                            {footerData?.length ? footerData.map((item: any, idx: number) => (
                                 <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <Link href={item.link} className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
-                                        {item.name}
+                                    <Link href={item?.slug === "home" ? "/" : `/${item?.slug}`} className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                        {item?.page_name}
                                     </Link>
                                 </motion.li>
-                            ))}
+                            )) : null}
                         </ul>
                     </motion.div>
 

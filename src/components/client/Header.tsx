@@ -6,8 +6,9 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import GlobalSearch from "@/components/client/GlobalSearch";
+import { fetchHeader, type NavLink } from "@/utils/public";
 
-const navLinks = [
+const fallbackNavLinks: NavLink[] = [
     { name: "Home", link: "/" },
     { name: "Shop", link: "/shop" },
     { name: "About Us", link: "/about" },
@@ -17,9 +18,17 @@ const navLinks = [
 ];
 
 export default function Header() {
+    const [navLinks, setNavLinks] = useState<NavLink[]>(fallbackNavLinks);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    useEffect(() => {
+        fetchHeader()
+            .then((data: any) => {
+                if (data?.site_header_menu?.length) setNavLinks(data.site_header_menu);
+            });
+    }, []);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -101,7 +110,7 @@ export default function Header() {
                                 visible: { transition: { staggerChildren: 0.07, delayChildren: 0.3 } },
                             }}
                         >
-                            {navLinks.map((item, idx) => (
+                            {navLinks?.length ? navLinks.map((item: any, idx: number) => (
                                 <motion.div
                                     key={idx}
                                     variants={{
@@ -110,12 +119,13 @@ export default function Header() {
                                     }}
                                     className="relative group"
                                 >
-                                    <Link href={item.link} className="text-center font-medium text-base xl:text-xl text-black transition-colors hover:text-pink">
-                                        {item.name}
+
+                                    <Link href={item?.slug === "home" ? "/" : `/${item?.slug}`} className="text-center font-medium text-base xl:text-xl text-black transition-colors hover:text-pink">
+                                        {item?.page_name}
                                     </Link>
                                     <span className="absolute -bottom-0.5 left-0 h-[2px] w-0 rounded-full bg-pink transition-all duration-300 group-hover:w-full" />
                                 </motion.div>
-                            ))}
+                            )) : <></>}
                         </motion.div>
 
                         {/* Icon buttons + hamburger */}
@@ -198,7 +208,7 @@ export default function Header() {
                             className="lg:hidden overflow-hidden bg-white border-t border-gray-100"
                         >
                             <div className="px-4 sm:px-8 py-4 space-y-1">
-                                {navLinks.map((item, idx) => (
+                                {navLinks.map((item: any, idx: number) => (
                                     <motion.div
                                         key={idx}
                                         initial={{ opacity: 0, x: -20 }}
@@ -206,11 +216,11 @@ export default function Header() {
                                         transition={{ duration: 0.3, delay: idx * 0.05 }}
                                     >
                                         <Link
-                                            href={item.link}
+                                            href={item.slug === "home" ? "/" : `/${item.slug}`}
                                             className="block py-3 px-3 text-[17px] font-medium text-black hover:text-pink hover:bg-pink/5 rounded-lg transition-colors"
                                             onClick={() => setMobileMenuOpen(false)}
                                         >
-                                            {item.name}
+                                            {item.page_name}
                                         </Link>
                                     </motion.div>
                                 ))}

@@ -314,7 +314,7 @@ export default function PagesAdmin() {
                       </div>
                     </td>
                     <td className="px-6 py-4 text-sm font-mono text-teal">/{page.slug}</td>
-                    <td className="px-6 py-4 text-sm text-gray-600">{page.display_in === 1 ? "Header" : page.display_in === 2 ? "Footer" : "Both"}</td>
+                    <td className="px-6 py-4 text-sm text-gray-600">{page.display_in === 1 ? "Header" : page.display_in === 2 ? "Both" : "Footer"}</td>
                     <td className="px-6 py-4 text-sm text-gray-600">{page.menu_order}</td>
                     <td className="px-6 py-4">
                       <span className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${page.status === 1 ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}>
@@ -365,132 +365,132 @@ export default function PagesAdmin() {
                 <Loader2 size={24} className="animate-spin text-teal" />
               </div>
             ) : (
-            <div className="mt-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Page Name</label>
-                  <input type="text" value={form.page_name} onChange={(e) => setForm({ ...form, page_name: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="Home" />
+              <div className="mt-6 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Page Name</label>
+                    <input type="text" value={form.page_name} onChange={(e) => setForm({ ...form, page_name: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="Home" />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Page Title</label>
+                    <input type="text" value={form.page_title} onChange={(e) => setForm({ ...form, page_title: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="Home Page" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Slug</label>
+                    <input type="text" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="home" />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Display In</label>
+                    <select value={form.display_in} onChange={(e) => setForm({ ...form, display_in: e.target.value || "1" })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
+                      <option value="1">Header</option>
+                      <option value="3">Footer</option>
+                      <option value="2">Both</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Status</label>
+                    <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+                  </div>
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Page Title</label>
-                  <input type="text" value={form.page_title} onChange={(e) => setForm({ ...form, page_title: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="Home Page" />
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Body Content</label>
+                  <textarea value={form.body} onChange={(e) => setForm({ ...form, body: e.target.value })}
+                    className="h-32 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" placeholder="Page content..." />
                 </div>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Slug</label>
-                  <input type="text" value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="home" />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Display In</label>
-                  <select value={form.display_in} onChange={(e) => setForm({ ...form, display_in: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                    <option value="1">Header</option>
-                    <option value="2">Footer</option>
-                    <option value="3">Both</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Status</label>
-                  <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal">
-                    <option value="1">Active</option>
-                    <option value="0">Inactive</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <label className="mb-1.5 block text-sm font-medium text-gray-700">Body Content</label>
-                <textarea value={form.body} onChange={(e) => setForm({ ...form, body: e.target.value })}
-                  className="h-32 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" placeholder="Page content..." />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Meta Keyword</label>
-                  <input type="text" value={form.meta_keyword} onChange={(e) => setForm({ ...form, meta_keyword: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                </div>
-                <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Meta Description</label>
-                  <input type="text" value={form.meta_description} onChange={(e) => setForm({ ...form, meta_description: e.target.value })}
-                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                </div>
-              </div>
-
-              {/* Extra Sections */}
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-sm font-semibold text-gray-900">Content Sections</h4>
-                  <button onClick={addSection} className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-medium text-teal hover:bg-teal/5">
-                    <Plus size={14} /> Add Section
-                  </button>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Meta Keyword</label>
+                    <input type="text" value={form.meta_keyword} onChange={(e) => setForm({ ...form, meta_keyword: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                  </div>
+                  <div>
+                    <label className="mb-1.5 block text-sm font-medium text-gray-700">Meta Description</label>
+                    <input type="text" value={form.meta_description} onChange={(e) => setForm({ ...form, meta_description: e.target.value })}
+                      className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                  </div>
                 </div>
 
-                {sections.length === 0 && (
-                  <p className="text-center text-sm text-gray-400 py-6">No sections yet. Click &ldquo;Add Section&rdquo; to create one.</p>
-                )}
+                {/* Extra Sections */}
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <h4 className="text-sm font-semibold text-gray-900">Content Sections</h4>
+                    <button onClick={addSection} className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-xs font-medium text-teal hover:bg-teal/5">
+                      <Plus size={14} /> Add Section
+                    </button>
+                  </div>
 
-                <div className="space-y-4">
-                  {sections.map((section, idx) => (
-                    <div key={idx} className="rounded-lg border border-gray-200 p-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <GripVertical size={16} className="text-gray-300" />
-                          <span className="text-sm font-medium text-gray-700">Section {idx + 1}</span>
+                  {sections.length === 0 && (
+                    <p className="text-center text-sm text-gray-400 py-6">No sections yet. Click &ldquo;Add Section&rdquo; to create one.</p>
+                  )}
+
+                  <div className="space-y-4">
+                    {sections.map((section, idx) => (
+                      <div key={idx} className="rounded-lg border border-gray-200 p-4">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <GripVertical size={16} className="text-gray-300" />
+                            <span className="text-sm font-medium text-gray-700">Section {idx + 1}</span>
+                          </div>
+                          <button onClick={() => removeSection(idx)} className="text-red-400 hover:text-red-600"><Trash2 size={14} /></button>
                         </div>
-                        <button onClick={() => removeSection(idx)} className="text-red-400 hover:text-red-600"><Trash2 size={14} /></button>
-                      </div>
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="mb-1 block text-xs text-gray-500">Title</label>
-                          <input type="text" value={section.extra_title} onChange={(e) => updateSection(idx, "extra_title", e.target.value)}
-                            className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="mb-1 block text-xs text-gray-500">Title</label>
+                            <input type="text" value={section.extra_title} onChange={(e) => updateSection(idx, "extra_title", e.target.value)}
+                              className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                          </div>
+                          <div>
+                            <label className="mb-1 block text-xs text-gray-500">Sub Title</label>
+                            <input type="text" value={section.extra_sub_title} onChange={(e) => updateSection(idx, "extra_sub_title", e.target.value)}
+                              className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                          </div>
                         </div>
-                        <div>
-                          <label className="mb-1 block text-xs text-gray-500">Sub Title</label>
-                          <input type="text" value={section.extra_sub_title} onChange={(e) => updateSection(idx, "extra_sub_title", e.target.value)}
-                            className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                        <div className="mt-3">
+                          <label className="mb-1 block text-xs text-gray-500">Body</label>
+                          <textarea value={section.extra_body} onChange={(e) => updateSection(idx, "extra_body", e.target.value)}
+                            className="h-20 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" />
+                        </div>
+                        <div className="mt-3 grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="mb-1 block text-xs text-gray-500">Button URL</label>
+                            <input type="text" value={section.extra_btn_url} onChange={(e) => updateSection(idx, "extra_btn_url", e.target.value)}
+                              className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                          </div>
+                          <div>
+                            <label className="mb-1 block text-xs text-gray-500">Button Text</label>
+                            <input type="text" value={section.extra_btn_text} onChange={(e) => updateSection(idx, "extra_btn_text", e.target.value)}
+                              className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                          </div>
+                        </div>
+                        <div className="mt-3 grid grid-cols-2 gap-3">
+                          <ImageUpload
+                            key={`section-${section.id ?? idx}-image-${section.extra_image_url ?? "none"}`}
+                            label="Section Image"
+                            value={section.extra_image_url || undefined}
+                            onChange={(file) => updateSection(idx, "extra_image", file)}
+                          />
+                          <ImageUpload
+                            key={`section-${section.id ?? idx}-image2-${section.extra_image2_url ?? "none"}`}
+                            label="Section Image 2"
+                            value={section.extra_image2_url || undefined}
+                            onChange={(file) => updateSection(idx, "extra_image2", file)}
+                          />
                         </div>
                       </div>
-                      <div className="mt-3">
-                        <label className="mb-1 block text-xs text-gray-500">Body</label>
-                        <textarea value={section.extra_body} onChange={(e) => updateSection(idx, "extra_body", e.target.value)}
-                          className="h-20 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm outline-none focus:border-teal" />
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-3">
-                        <div>
-                          <label className="mb-1 block text-xs text-gray-500">Button URL</label>
-                          <input type="text" value={section.extra_btn_url} onChange={(e) => updateSection(idx, "extra_btn_url", e.target.value)}
-                            className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                        </div>
-                        <div>
-                          <label className="mb-1 block text-xs text-gray-500">Button Text</label>
-                          <input type="text" value={section.extra_btn_text} onChange={(e) => updateSection(idx, "extra_btn_text", e.target.value)}
-                            className="h-9 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
-                        </div>
-                      </div>
-                      <div className="mt-3 grid grid-cols-2 gap-3">
-                        <ImageUpload
-                          key={`section-${section.id ?? idx}-image-${section.extra_image_url ?? "none"}`}
-                          label="Section Image"
-                          value={section.extra_image_url || undefined}
-                          onChange={(file) => updateSection(idx, "extra_image", file)}
-                        />
-                        <ImageUpload
-                          key={`section-${section.id ?? idx}-image2-${section.extra_image2_url ?? "none"}`}
-                          label="Section Image 2"
-                          value={section.extra_image2_url || undefined}
-                          onChange={(file) => updateSection(idx, "extra_image2", file)}
-                        />
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
             )}
 
             <div className="mt-6 flex items-center justify-end gap-3">
@@ -523,72 +523,72 @@ export default function PagesAdmin() {
                 {detailError}
               </div>
             ) : (
-            <>
-            <div className="mb-4">
-              <h3 className="text-xl font-semibold text-gray-900">{selected.page_name}</h3>
-              <p className="mt-1 text-sm font-mono text-teal">/{selected.slug}</p>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              {[
-                { label: "Title", value: selected.page_title },
-                { label: "Display In", value: selected.display_in === 1 ? "Header" : selected.display_in === 2 ? "Footer" : "Both" },
-                { label: "Status", value: selected.status === 1 ? "Active" : "Inactive" },
-                { label: "Menu Order", value: String(selected.menu_order) },
-              ].map((item) => (
-                <div key={item.label} className="rounded-lg bg-gray-50 p-3">
-                  <p className="text-xs text-gray-400">{item.label}</p>
-                  <p className="mt-1 text-sm font-medium text-gray-900">{item.value}</p>
+              <>
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900">{selected.page_name}</h3>
+                  <p className="mt-1 text-sm font-mono text-teal">/{selected.slug}</p>
                 </div>
-              ))}
-            </div>
 
-            {selected.body && (
-              <div className="rounded-lg bg-gray-50 p-3 mb-4">
-                <p className="text-xs text-gray-400">Body Content</p>
-                <p className="mt-1 text-sm text-gray-700 whitespace-pre-wrap">{selected.body}</p>
-              </div>
-            )}
-
-            {selected.meta_keyword && (
-              <div className="rounded-lg bg-gray-50 p-3 mb-4">
-                <p className="text-xs text-gray-400">Meta Keywords</p>
-                <p className="mt-1 text-sm text-gray-700">{selected.meta_keyword}</p>
-              </div>
-            )}
-
-            {selected.sections && selected.sections.length > 0 && (
-              <div className="border-t border-gray-200 pt-4">
-                <h4 className="text-sm font-semibold text-gray-900 mb-3">Content Sections ({selected.sections.length})</h4>
-                <div className="space-y-3">
-                  {selected.sections.map((s, i) => (
-                    <div key={s.id ?? i} className="rounded-lg border border-gray-100 p-3">
-                      <p className="text-sm font-medium text-gray-900">{s.title || `Section ${i + 1}`}</p>
-                      {s.sub_title && <p className="text-xs text-gray-500">{s.sub_title}</p>}
-                      {s.body && <p className="mt-1 text-sm text-gray-600 whitespace-pre-wrap">{s.body}</p>}
-                      {(s.btn_text || s.btn_url) && (
-                        <p className="mt-1 text-xs text-teal">
-                          {s.btn_text || "Link"}{s.btn_url ? `: ${s.btn_url}` : ""}
-                        </p>
-                      )}
-                      {s.image_url && (
-                        <p className="mt-1 text-xs text-gray-400 truncate">Image: {s.image_url}</p>
-                      )}
+                <div className="grid grid-cols-2 gap-3 mb-4">
+                  {[
+                    { label: "Title", value: selected.page_title },
+                    { label: "Display In", value: selected.display_in === 1 ? "Header" : selected.display_in === 2 ? "Both" : "Footer" },
+                    { label: "Status", value: selected.status === 1 ? "Active" : "Inactive" },
+                    { label: "Menu Order", value: String(selected.menu_order) },
+                  ].map((item) => (
+                    <div key={item.label} className="rounded-lg bg-gray-50 p-3">
+                      <p className="text-xs text-gray-400">{item.label}</p>
+                      <p className="mt-1 text-sm font-medium text-gray-900">{item.value}</p>
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
 
-            <div className="mt-6 flex items-center justify-end gap-3">
-              {!detailLoading && !detailError && (
-              <button onClick={() => openEdit(selected)} className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
-                <Edit size={14} /> Edit Page
-              </button>
-              )}
-              <button onClick={() => setModal(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">Close</button>
-            </div>
-            </>
+                {selected.body && (
+                  <div className="rounded-lg bg-gray-50 p-3 mb-4">
+                    <p className="text-xs text-gray-400">Body Content</p>
+                    <p className="mt-1 text-sm text-gray-700 whitespace-pre-wrap">{selected.body}</p>
+                  </div>
+                )}
+
+                {selected.meta_keyword && (
+                  <div className="rounded-lg bg-gray-50 p-3 mb-4">
+                    <p className="text-xs text-gray-400">Meta Keywords</p>
+                    <p className="mt-1 text-sm text-gray-700">{selected.meta_keyword}</p>
+                  </div>
+                )}
+
+                {selected.sections && selected.sections.length > 0 && (
+                  <div className="border-t border-gray-200 pt-4">
+                    <h4 className="text-sm font-semibold text-gray-900 mb-3">Content Sections ({selected.sections.length})</h4>
+                    <div className="space-y-3">
+                      {selected.sections.map((s, i) => (
+                        <div key={s.id ?? i} className="rounded-lg border border-gray-100 p-3">
+                          <p className="text-sm font-medium text-gray-900">{s.title || `Section ${i + 1}`}</p>
+                          {s.sub_title && <p className="text-xs text-gray-500">{s.sub_title}</p>}
+                          {s.body && <p className="mt-1 text-sm text-gray-600 whitespace-pre-wrap">{s.body}</p>}
+                          {(s.btn_text || s.btn_url) && (
+                            <p className="mt-1 text-xs text-teal">
+                              {s.btn_text || "Link"}{s.btn_url ? `: ${s.btn_url}` : ""}
+                            </p>
+                          )}
+                          {s.image_url && (
+                            <p className="mt-1 text-xs text-gray-400 truncate">Image: {s.image_url}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-6 flex items-center justify-end gap-3">
+                  {!detailLoading && !detailError && (
+                    <button onClick={() => openEdit(selected)} className="flex items-center gap-2 rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                      <Edit size={14} /> Edit Page
+                    </button>
+                  )}
+                  <button onClick={() => setModal(null)} className="rounded-lg bg-teal px-4 py-2 text-sm font-medium text-white hover:bg-teal/90">Close</button>
+                </div>
+              </>
             )}
           </div>
         </div>

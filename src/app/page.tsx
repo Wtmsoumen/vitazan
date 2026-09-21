@@ -309,12 +309,12 @@ export default function Home() {
                     className={`group flex flex-col sm:flex-row ${isEven ? "" : "sm:flex-row-reverse"} items-stretch overflow-hidden rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 bg-white`}
                   >
                     {/* Image side */}
-                    <div className="w-full sm:w-[42%] shrink-0 relative h-50 sm:h-auto min-h-80 overflow-hidden">
+                    <div className="w-full sm:w-[42%] shrink-0 relative h-50 sm:h-auto min-h-80 overflow-hidden rounded-2xl md:rounded-3xl">
                       <Image
                         src={item.img}
                         alt={item.name}
                         fill
-                        className="object-cover transition-transform duration-500 scale-98 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 scale-98 group-hover:scale-105 rounded-2xl md:rounded-3xl"
                       />
                     </div>
                     {/* Text side */}
