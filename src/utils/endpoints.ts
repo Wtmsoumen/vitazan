@@ -4,6 +4,8 @@ export const endpoints = {
     getFooter: "/get-footer",
     getPages: "/get-pages",
     getPageDetails: "/get-page-details",
+    getProducts: "/get-products",
+    getProductDetails: "/get-product-details",
     // Auth
     login: "/login",
     logout: "/logout",

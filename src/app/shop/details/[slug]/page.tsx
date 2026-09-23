@@ -1,12 +1,13 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Check, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import { notFound } from "next/navigation";
+import { fetchProductDetails, Product as ApiProduct } from "@/utils/public";
 
 const trustBadges = [
     { image: "/images/FreeShipping.svg", title: "Free Shipping", desc: "Over ₱199.00 USD" },
@@ -384,13 +385,43 @@ function FaqItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boo
 
 export default function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
-    const product = products[slug];
+    const [apiProduct, setApiProduct] = useState<ApiProduct | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    if (!product) {
+    useEffect(() => {
+        const loadDetails = async () => {
+            setIsLoading(true);
+            const data = await fetchProductDetails(slug);
+            if (data) {
+                setApiProduct(data);
+            }
+            setIsLoading(false);
+        };
+        loadDetails();
+    }, [slug]);
+
+    const fallbackProduct = products[slug];
+
+    if (!fallbackProduct && !apiProduct && !isLoading) {
         notFound();
     }
 
+    const product = { ...(fallbackProduct || products["acinil-neo"]) };
+    if (apiProduct) {
+        product.name = apiProduct.title || product.name;
+        product.synopsis = apiProduct.body || product.synopsis;
+        product.image = apiProduct.image_url || product.image;
+    }
+
     const [openFaq, setOpenFaq] = useState<number>(0);
+
+    if (isLoading) {
+        return (
+            <div className="w-full bg-white flex items-center justify-center min-h-[60vh]">
+                <div className="w-12 h-12 border-4 border-pink border-t-transparent rounded-full animate-spin"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="w-full bg-white">

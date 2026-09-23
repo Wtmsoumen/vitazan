@@ -67,6 +67,18 @@ interface ProductEditResponse {
   categories: Category[];
 }
 
+interface ExtraSectionFormData {
+  id?: number;
+  section_type: string;
+  title: string;
+  body: string;
+  btn_url: string;
+  btn_text: string;
+  rank: string;
+  image: File | null;
+  image2: File | null;
+}
+
 interface ProductFormData {
   title: string;
   slug: string;
@@ -80,6 +92,7 @@ interface ProductFormData {
   status: string;
   category_ids: string[];
   image?: File | null;
+  extraSections: ExtraSectionFormData[];
 }
 
 const emptyForm: ProductFormData = {
@@ -95,6 +108,7 @@ const emptyForm: ProductFormData = {
   status: "1",
   category_ids: [],
   image: null,
+  extraSections: [],
 };
 
 export default function ProductsPage() {
@@ -162,6 +176,17 @@ export default function ProductsPage() {
         status: String(detail.status),
         category_ids: detail.category?.map((c) => String(c.id)) ?? [],
         image: null,
+        extraSections: detail.extra?.map((e) => ({
+          id: e.id,
+          section_type: String(e.section_type ?? e.type ?? 1),
+          title: e.title ?? "",
+          body: e.body ?? "",
+          btn_url: e.btn_url ?? "",
+          btn_text: e.btn_text ?? "",
+          rank: String(e.rank ?? 1),
+          image: null,
+          image2: null,
+        })) ?? [],
       });
     } catch {
       setForm({
@@ -177,6 +202,17 @@ export default function ProductsPage() {
         status: String(product.status),
         category_ids: product.category?.map((c) => String(c.id)) ?? [],
         image: null,
+        extraSections: product.extra?.map((e) => ({
+          id: e.id,
+          section_type: String(e.section_type ?? e.type ?? 1),
+          title: e.title ?? "",
+          body: e.body ?? "",
+          btn_url: e.btn_url ?? "",
+          btn_text: e.btn_text ?? "",
+          rank: String(e.rank ?? 1),
+          image: null,
+          image2: null,
+        })) ?? [],
       });
     } finally {
       setDetailLoading(false);
@@ -281,6 +317,17 @@ export default function ProductsPage() {
       if (form.image) fd.append("image", form.image);
       if (modal === "edit" && selected) fd.append("id", String(selected.id));
 
+      form.extraSections.forEach((section) => {
+        fd.append("extra_section_type[]", section.section_type);
+        fd.append("extra_title[]", section.title);
+        fd.append("extra_body[]", section.body ?? "");
+        fd.append("extra_btn_url[]", section.btn_url ?? "");
+        fd.append("extra_btn_text[]", section.btn_text ?? "");
+        fd.append("extra_rank[]", section.rank);
+        if (section.image) fd.append("extra_image[]", section.image);
+        if (section.image2) fd.append("extra_image2[]", section.image2);
+      });
+
       await api(modal === "add" ? endpoints.productAdd : endpoints.productUpdate, {
         method: "POST",
         body: fd,
@@ -314,6 +361,35 @@ export default function ProductsPage() {
       ...p,
       category_ids: p.category_ids.includes(id) ? p.category_ids.filter((c) => c !== id) : [...p.category_ids, id],
     }));
+  };
+
+  const addExtraSection = () => {
+    setForm((p) => ({
+      ...p,
+      extraSections: [...p.extraSections, {
+        section_type: "1",
+        title: "",
+        body: "",
+        btn_url: "",
+        btn_text: "",
+        rank: String(p.extraSections.length + 1),
+        image: null,
+        image2: null,
+      }],
+    }));
+  };
+
+  const updateExtraSection = (idx: number, key: keyof ExtraSectionFormData, value: string | File | null) => {
+    setForm((p) => ({
+      ...p,
+      extraSections: p.extraSections.map((s, i) => i === idx ? { ...s, [key]: value } : s),
+    }));
+  };
+
+  const removeExtraSection = (idx: number) => {
+    const section = form.extraSections[idx];
+    if (section.id) deleteSection(section.id);
+    setForm((p) => ({ ...p, extraSections: p.extraSections.filter((_, i) => i !== idx) }));
   };
 
   const filtered = products.filter((p) =>
@@ -459,11 +535,34 @@ export default function ProductsPage() {
 
                 <div>
                   <label className="mb-1.5 block text-sm font-medium text-gray-700">Product Name</label>
-                  <input type="text" value={form.title} onChange={(e) => setForm((p) => ({ ...p, title: e.target.value }))} className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" />
+                  <input
+                    type="text"
+                    value={form.title}
+                    onChange={(e) => {
+                      const title = e.target.value;
+                      const slug = title
+                        .toLowerCase()
+                        .trim()
+                        .replace(/[^a-z0-9\s-]/g, "")
+                        .replace(/\s+/g, "-")
+                        .replace(/-+/g, "-");
+                      setForm((p) => ({ ...p, title, slug }));
+                    }}
+                    className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal"
+                  />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-sm font-medium text-gray-700">Slug</label>
-                  <input type="text" value={form.slug} onChange={(e) => setForm((p) => ({ ...p, slug: e.target.value }))} className="h-10 w-full rounded-lg border border-gray-200 px-3 text-sm outline-none focus:border-teal" placeholder="auto-generated if empty" />
+                  <label className="mb-1.5 flex items-center gap-1.5 text-sm font-medium text-gray-700">
+                    Slug
+                    <span className="text-[11px] font-normal text-gray-400">(auto-generated, editable)</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={form.slug}
+                    onChange={(e) => setForm((p) => ({ ...p, slug: e.target.value }))}
+                    className="h-10 w-full rounded-lg border border-gray-200 px-3 font-mono text-sm outline-none focus:border-teal"
+                    placeholder="auto-generated from name"
+                  />
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div>
@@ -519,48 +618,91 @@ export default function ProductsPage() {
                 </div>
 
                 {/* Sections */}
-                {modal === "edit" && selected?.extra && selected.extra.length > 0 && (
-                  <div>
-                    <label className="mb-2 block text-sm font-medium text-gray-700">Sections</label>
-                    <div className="space-y-3">
-                      {selected.extra.map((section) => (
-                        <div key={section.id} className="rounded-lg border border-gray-200 p-3">
-                          <div className="flex items-start justify-between gap-2">
-                            <p className="text-sm font-medium text-black">{section.title || `Section #${section.id}`}</p>
-                            <button
-                              onClick={() => deleteSection(section.id)}
-                              disabled={deletingImageId === `sec-${section.id}`}
-                              className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50"
-                            >
-                              {deletingImageId === `sec-${section.id}` ? <Loader2 size={11} className="animate-spin" /> : <Trash2 size={11} />}
-                              Delete section
-                            </button>
-                          </div>
-                          {(section.image || section.image_url || section.image2 || section.image2_url) && (
-                            <div className="mt-2 flex gap-3">
-                              {(section.image || section.image_url) && (
-                                <DeletableImage
-                                  src={section.image_url || section.image}
-                                  onDelete={() => deleteSectionImage(section.id, "image")}
-                                  deleteKey={`sec-img-${section.id}-image`}
-                                  label="Image 1"
-                                />
-                              )}
-                              {(section.image2 || section.image2_url) && (
-                                <DeletableImage
-                                  src={section.image2_url || section.image2}
-                                  onDelete={() => deleteSectionImage(section.id, "image2")}
-                                  deleteKey={`sec-img-${section.id}-image2`}
-                                  label="Image 2"
-                                />
-                              )}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
+                <div>
+                  <div className="mb-2 flex items-center justify-between">
+                    <label className="block text-sm font-medium text-gray-700">Extra Sections</label>
+                    <button type="button" onClick={addExtraSection} className="flex items-center gap-1 text-xs font-medium text-teal hover:text-teal/80">
+                      <Plus size={13} /> Add Section
+                    </button>
                   </div>
-                )}
+                  {form.extraSections.length === 0 && (
+                    <p className="text-xs text-gray-400 italic">No sections yet. Click "Add Section" to create one.</p>
+                  )}
+                  <div className="space-y-4">
+                    {form.extraSections.map((section, idx) => (
+                      <div key={idx} className="rounded-lg border border-gray-200 bg-gray-50/40 p-4 space-y-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-semibold text-black">Section {idx + 1}</span>
+                          <button
+                            type="button"
+                            onClick={() => removeExtraSection(idx)}
+                            disabled={section.id ? deletingImageId === `sec-${section.id}` : false}
+                            className="flex items-center gap-1 rounded-md px-2 py-1 text-xs text-red-500 hover:bg-red-50 disabled:opacity-50"
+                          >
+                            {(section.id && deletingImageId === `sec-${section.id}`) ? <Loader2 size={11} className="animate-spin" /> : <Trash2 size={11} />}
+                            Remove
+                          </button>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Type</label>
+                            <input type="number" value={section.section_type} onChange={e => updateExtraSection(idx, "section_type", e.target.value)} className="h-8 w-full rounded-lg border border-gray-200 bg-white px-2 text-xs outline-none focus:border-teal" />
+                          </div>
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Rank</label>
+                            <input type="number" value={section.rank} onChange={e => updateExtraSection(idx, "rank", e.target.value)} className="h-8 w-full rounded-lg border border-gray-200 bg-white px-2 text-xs outline-none focus:border-teal" />
+                          </div>
+                          <div className="col-span-2">
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Title</label>
+                            <input type="text" value={section.title} onChange={e => updateExtraSection(idx, "title", e.target.value)} className="h-8 w-full rounded-lg border border-gray-200 bg-white px-2 text-xs outline-none focus:border-teal" />
+                          </div>
+                          <div className="col-span-2">
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Body</label>
+                            <textarea value={section.body} onChange={e => updateExtraSection(idx, "body", e.target.value)} rows={3} className="w-full rounded-lg border border-gray-200 bg-white px-2 py-1.5 text-xs outline-none focus:border-teal resize-none" />
+                          </div>
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Button Text</label>
+                            <input type="text" value={section.btn_text} onChange={e => updateExtraSection(idx, "btn_text", e.target.value)} className="h-8 w-full rounded-lg border border-gray-200 bg-white px-2 text-xs outline-none focus:border-teal" />
+                          </div>
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Button URL</label>
+                            <input type="text" value={section.btn_url} onChange={e => updateExtraSection(idx, "btn_url", e.target.value)} className="h-8 w-full rounded-lg border border-gray-200 bg-white px-2 text-xs outline-none focus:border-teal" />
+                          </div>
+                          {/* Image 1 */}
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Image 1</label>
+                            {section.id && selected?.extra?.find(e => e.id === section.id)?.image_url && (
+                              <div className="mb-2">
+                                <DeletableImage
+                                  src={selected.extra.find(e => e.id === section.id)?.image_url}
+                                  onDelete={() => deleteSectionImage(section.id!, "image")}
+                                  deleteKey={`sec-img-${section.id}-image`}
+                                  label="Current"
+                                />
+                              </div>
+                            )}
+                            <ImageUpload label="Upload Image 1" value={undefined} onChange={f => updateExtraSection(idx, "image", f)} />
+                          </div>
+                          {/* Image 2 */}
+                          <div>
+                            <label className="mb-1 block text-xs font-medium text-gray-600">Image 2</label>
+                            {section.id && selected?.extra?.find(e => e.id === section.id)?.image2_url && (
+                              <div className="mb-2">
+                                <DeletableImage
+                                  src={selected.extra.find(e => e.id === section.id)?.image2_url}
+                                  onDelete={() => deleteSectionImage(section.id!, "image2")}
+                                  deleteKey={`sec-img-${section.id}-image2`}
+                                  label="Current"
+                                />
+                              </div>
+                            )}
+                            <ImageUpload label="Upload Image 2" value={undefined} onChange={f => updateExtraSection(idx, "image2", f)} />
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
                 {/* Gallery */}
                 {modal === "edit" && selected?.gallery && selected.gallery.length > 0 && (

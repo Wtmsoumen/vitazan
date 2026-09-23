@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import { Filter, X, ChevronDown, ShoppingBasket, Search } from "lucide-react";
+import { fetchProducts, Product } from "@/utils/public";
 
 const categories = [
     { name: "All", icon: "/images/Category Icons/General Wellness Symbol.svg" },
@@ -115,23 +116,55 @@ const allProducts = [
     },
 ];
 
+const categoryMap: Record<string, string> = {
+    "Bone, Joint & Muscle Care": "1",
+    "Gut Health": "2",
+    "Vitamins & Nutrition": "3",
+    "Hormonal Balance": "4",
+    "Fertility": "5",
+    "Sexual Health": "6",
+    "Menstruation": "7",
+    "Iron Supplement": "8",
+    "PCOS/PCOD": "9",
+};
+
 export default function Shop() {
     const router = useRouter();
     const [selectedCategory, setSelectedCategory] = useState("All");
     const [selectedAge, setSelectedAge] = useState("All Age");
     const [selectedGender, setSelectedGender] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
+
+    const [apiProducts, setApiProducts] = useState<Product[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
     const [expandedFilter, setExpandedFilter] = useState<string | null>("category");
 
-    const filtered = allProducts.filter((p) => {
-        if (selectedCategory !== "All" && !p.therapies.includes(selectedCategory)) return false;
-        if (selectedGender !== "All" && selectedGender !== "General Wellness" && p.gender !== selectedGender && p.gender !== "General Wellness") return false;
-        if (selectedGender === "General Wellness" && p.gender !== "General Wellness") return false;
-        if (selectedAge !== "All Age" && !p.ages.includes(selectedAge)) return false;
-        if (searchQuery.trim() && !p.name.toLowerCase().includes(searchQuery.toLowerCase()) && !p.desc.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-        return true;
-    });
+    useEffect(() => {
+        const loadProducts = async () => {
+            setIsLoading(true);
+            const params: Record<string, string> = {
+                order_by: "created_at",
+                order: "desc"
+            };
+
+            if (selectedCategory !== "All" && categoryMap[selectedCategory]) {
+                params.category_id = categoryMap[selectedCategory];
+            }
+            if (searchQuery.trim()) {
+                params.search = searchQuery.trim();
+            }
+
+            const res = await fetchProducts(params);
+            if (res && res.data) {
+                setApiProducts(res.data);
+            }
+            setIsLoading(false);
+        };
+
+        loadProducts();
+    }, [selectedCategory, searchQuery]);
 
     const toggleFilter = (name: string) => {
         setExpandedFilter(expandedFilter === name ? null : name);
@@ -278,7 +311,11 @@ export default function Shop() {
 
                     {/* Product Grid */}
                     <div className="flex-1">
-                        {filtered.length === 0 ? (
+                        {isLoading ? (
+                            <div className="py-20 flex justify-center w-full">
+                                <div className="w-8 h-8 border-4 border-pink border-t-transparent rounded-full animate-spin"></div>
+                            </div>
+                        ) : apiProducts.length === 0 ? (
                             <div className="py-20 text-center">
                                 <p className="text-[18px] text-gray-400">No products match your filters.</p>
                                 <button
@@ -291,65 +328,78 @@ export default function Shop() {
                         ) : (
                             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 sm:gap-6">
                                 <AnimatePresence mode="popLayout">
-                                    {filtered.map((product, idx) => (
-                                        <motion.div
-                                            key={product.name}
-                                            layout
-                                            initial={{ opacity: 0, scale: 0.95 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.95 }}
-                                            transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                        >
-                                            <Link href={`/shop/details/${product.slug}`} className="group block">
-                                                <div className="relative rounded-2xl sm:rounded-[20px] border border-gray-100 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
-                                                    {/* Product image */}
-                                                    <div className="relative h-[240px] sm:h-[280px] md:h-[300px] bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-6 overflow-hidden">
-                                                        <motion.div
-                                                            whileHover={{ y: -8, scale: 1.04 }}
-                                                            transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                                                            className="relative w-[70%] h-[85%]"
-                                                        >
-                                                            <Image
-                                                                src={product.image}
-                                                                alt={product.name}
-                                                                fill
-                                                                className="object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
-                                                            />
-                                                        </motion.div>
-                                                        <div className="absolute top-3 right-3">
-                                                            <span className="px-2.5 py-1 rounded-full bg-teal/10 text-teal text-[11px] font-semibold">
-                                                                {product.therapies[0] || product.gender}
-                                                            </span>
-                                                        </div>
-                                                    </div>
+                                    {apiProducts.map((apiProd, idx) => {
+                                        const fallback = allProducts.find(p => p.slug === apiProd.slug) || allProducts[0];
 
-                                                    {/* Product info */}
-                                                    <div className="p-4 sm:p-5">
-                                                        <h3 className="text-[16px] sm:text-[18px] font-bold text-black leading-[1.3] group-hover:text-pink transition-colors">
-                                                            {product.name}
-                                                        </h3>
-                                                        <p className="mt-1.5 text-[12px] sm:text-[13px] leading-[1.5] text-black line-clamp-2">
-                                                            {product.desc}
-                                                        </p>
-                                                        <div className="mt-4 flex items-center justify-end">
-                                                            <motion.button
-                                                                whileHover={{ scale: 1.05 }}
-                                                                whileTap={{ scale: 0.95 }}
-                                                                onClick={(e) => {
-                                                                    e.preventDefault();
-                                                                    router.push(`/enquiry?product=${encodeURIComponent(product.name)}`);
-                                                                }}
-                                                                className="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-pink text-white text-[13px] font-semibold hover:bg-pink/90 transition-colors cursor-pointer"
+                                        if (selectedGender !== "All" && selectedGender !== "General Wellness" && fallback.gender !== selectedGender && fallback.gender !== "General Wellness") return null;
+                                        if (selectedGender === "General Wellness" && fallback.gender !== "General Wellness") return null;
+                                        if (selectedAge !== "All Age" && !fallback.ages.includes(selectedAge)) return null;
+
+                                        const prodImage = apiProd.image_url || fallback.image;
+                                        const prodName = apiProd.title || fallback.name;
+                                        const prodDesc = apiProd.body || fallback.desc;
+                                        const prodTag = apiProd.category?.[0]?.name || fallback.therapies[0] || fallback.gender;
+
+                                        return (
+                                            <motion.div
+                                                key={apiProd.id || fallback.name}
+                                                layout
+                                                initial={{ opacity: 0, scale: 0.95 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                exit={{ opacity: 0, scale: 0.95 }}
+                                                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                                            >
+                                                <Link href={`/shop/details/${apiProd.slug || fallback.slug}`} className="group block">
+                                                    <div className="relative rounded-2xl sm:rounded-[20px] border border-gray-100 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300">
+                                                        <div className="relative h-[240px] sm:h-[280px] md:h-[300px] bg-gradient-to-b from-gray-50 to-white flex items-center justify-center p-6 overflow-hidden">
+                                                            <motion.div
+                                                                whileHover={{ y: -8, scale: 1.04 }}
+                                                                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                                                                className="relative w-[70%] h-[85%]"
                                                             >
-                                                                {/* <ShoppingBasket className="w-4 h-4" /> */}
-                                                                Enquiry Now
-                                                            </motion.button>
+                                                                <Image
+                                                                    src={prodImage}
+                                                                    alt={prodName}
+                                                                    fill
+                                                                    className="object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.12)]"
+                                                                />
+                                                            </motion.div>
+                                                            <div className="absolute top-3 right-3">
+                                                                <span className="px-2.5 py-1 rounded-full bg-teal/10 text-teal text-[11px] font-semibold">
+                                                                    {prodTag}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="p-4 sm:p-5">
+                                                            <h3 className="text-[16px] sm:text-[18px] font-bold text-black leading-[1.3] group-hover:text-pink transition-colors">
+                                                                {prodName}
+                                                            </h3>
+                                                            <p className="mt-1.5 text-[12px] sm:text-[13px] leading-[1.5] text-black line-clamp-2">
+                                                                {prodDesc}
+                                                            </p>
+                                                            <div className="mt-4 flex items-center justify-between">
+                                                                <span className="text-black font-bold text-[18px]">
+                                                                    {/* ₹{apiProd.sale_price || fallback.price} */}
+                                                                </span>
+                                                                <motion.button
+                                                                    whileHover={{ scale: 1.05 }}
+                                                                    whileTap={{ scale: 0.95 }}
+                                                                    onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        router.push(`/enquiry?product=${encodeURIComponent(prodName)}`);
+                                                                    }}
+                                                                    className="flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full bg-pink text-white text-[13px] font-semibold hover:bg-pink/90 transition-colors cursor-pointer"
+                                                                >
+                                                                    Enquiry Now
+                                                                </motion.button>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </Link>
-                                        </motion.div>
-                                    ))}
+                                                </Link>
+                                            </motion.div>
+                                        );
+                                    })}
                                 </AnimatePresence>
                             </div>
                         )}
