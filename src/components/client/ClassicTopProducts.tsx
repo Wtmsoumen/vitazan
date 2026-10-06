@@ -63,13 +63,10 @@ export default function ClassicTopProducts() {
             <AnimatedSection animation="fadeUp">
                 <div className="text-center">
                     <p className="text-[12px] sm:text-[14px] font-medium uppercase tracking-[2.1px] text-pink">
-                        CLASSIC TOP picks
+                        OUR PRODUCTS
                     </p>
                     <h2 className="font-display mt-2 text-[28px] sm:text-[36px] md:text-[44px] lg:text-[52px] text-black">
-                        Classic Top{" "}
-                        <span className="relative inline-block text-pink">
-                            Products
-                        </span>
+                        Our <span className="relative inline-block text-pink">Products</span>
                     </h2>
                 </div>
             </AnimatedSection>

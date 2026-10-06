@@ -4,14 +4,13 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedSection from "@/components/client/AnimatedSection";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export default function ContactUsPage() {
     const [form, setForm] = useState({
         firstName: "",
         lastName: "",
         email: "",
-        phone: "",
         message: "",
     });
 
@@ -61,9 +60,6 @@ export default function ContactUsPage() {
                         <h2 className="font-display text-[32px] sm:text-[42px] md:text-[52px] text-black">
                             Contact Info
                         </h2>
-                        <p className="mt-4 text-[14px] sm:text-[16px] leading-[1.7] text-black">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget enim vitae ex scelerisque hendrerit. Praesent pulvinar quam sapien, eget faucibus velit malesuada ac.
-                        </p>
                     </div>
                 </AnimatedSection>
 
@@ -76,11 +72,8 @@ export default function ContactUsPage() {
                                 <h3 className="text-[22px] sm:text-[28px] md:text-[32px] font-bold uppercase tracking-wide text-black">
                                     Send Us A Message
                                 </h3>
-                                <p className="mt-3 text-[14px] sm:text-[15px] leading-[1.7] text-black max-w-[550px]">
-                                    Nullam ut nunc pellentesque, ultrices odio non, dapibus eros. Proin auctor ultricies augue eget lobortis. Duis eu risus odio. In vel metus in dolor.
-                                </p>
 
-                                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                                <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
                                         <div>
                                             <label className="block text-[14px] sm:text-[15px] font-bold text-black mb-2">First Name</label>
@@ -106,7 +99,7 @@ export default function ContactUsPage() {
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6">
+                                    <div className="grid grid-cols-1 gap-5 sm:gap-6">
                                         <div>
                                             <label className="block text-[14px] sm:text-[15px] font-bold text-black mb-2">Email Address</label>
                                             <input
@@ -115,17 +108,6 @@ export default function ContactUsPage() {
                                                 value={form.email}
                                                 onChange={handleChange}
                                                 placeholder="Enter email address"
-                                                className="h-[52px] sm:h-[56px] w-full rounded-full border border-gray-300 px-6 text-[14px] sm:text-[15px] text-black outline-none transition-colors focus:border-pink focus:ring-2 focus:ring-pink/10 placeholder:text-gray-400"
-                                            />
-                                        </div>
-                                        <div>
-                                            <label className="block text-[14px] sm:text-[15px] font-bold text-black mb-2">Phone Number</label>
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                value={form.phone}
-                                                onChange={handleChange}
-                                                placeholder="Enter phone no"
                                                 className="h-[52px] sm:h-[56px] w-full rounded-full border border-gray-300 px-6 text-[14px] sm:text-[15px] text-black outline-none transition-colors focus:border-pink focus:ring-2 focus:ring-pink/10 placeholder:text-gray-400"
                                             />
                                         </div>
@@ -163,16 +145,6 @@ export default function ContactUsPage() {
                                 <div className="mt-8 sm:mt-10 space-y-5">
                                     <div className="flex items-center gap-4 rounded-2xl bg-white/30 backdrop-blur-sm p-4 sm:p-5">
                                         <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                                            <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                                        </div>
-                                        <div>
-                                            <p className="text-[14px] sm:text-[16px] font-bold text-white">Hotline :</p>
-                                            <p className="text-[14px] sm:text-[15px] text-white mt-0.5">+91 0123 456 789</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-center gap-4 rounded-2xl bg-white/30 backdrop-blur-sm p-4 sm:p-5">
-                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                                             <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                         </div>
                                         <div>
@@ -187,7 +159,7 @@ export default function ContactUsPage() {
                                         </div>
                                         <div>
                                             <p className="text-[14px] sm:text-[16px] font-bold text-white">Address :</p>
-                                            <p className="text-[14px] sm:text-[15px] text-white mt-0.5 leading-[1.5]">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore - 560016</p>
+                                            <p className="text-[14px] sm:text-[15px] text-white mt-0.5 leading-[1.5]">Manila, Philippines</p>
                                         </div>
                                     </div>
                                 </div>
@@ -213,15 +185,15 @@ export default function ContactUsPage() {
                                                 path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
                                             },
                                         ].map((social) => (
-                                            <a
+                                            <span
                                                 key={social.label}
-                                                href="#"
-                                                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-white/40 flex items-center justify-center hover:bg-white/20 transition-colors"
+                                                aria-label={`${social.label} profile URL not configured`}
+                                                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-white/40 flex items-center justify-center"
                                             >
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                                                     <path d={social.path} />
                                                 </svg>
-                                            </a>
+                                            </span>
                                         ))}
                                     </div>
                                 </div>
@@ -231,16 +203,6 @@ export default function ContactUsPage() {
                 </AnimatedSection>
             </section>
 
-            {/* map */}
-            <section className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-6 md:py-10">
-                <iframe
-                    className="w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-3xl"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.187392329399!2d77.6807386112917!3d13.023735687243494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae10e140888885%3A0xcaaa9429a2dbd9f1!2s1st%20Cross%20Rd%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1785152669980!5m2!1sen!2sin"
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="strict-origin-when-cross-origin">
-                </iframe>
-            </section>
         </div>
     );
 }

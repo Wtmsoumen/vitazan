@@ -1,25 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import AnimatedSection from "@/components/client/AnimatedSection";
 import { Filter, X, ChevronDown, ShoppingBasket, Search } from "lucide-react";
 import { fetchProducts, Product } from "@/utils/public";
+import { normalizeCategory, shopCategories } from "@/utils/shopCategories";
 
 const categories = [
-    { name: "All", icon: "/images/Category Icons/General Wellness Symbol.svg" },
-    { name: "Bone, Joint & Muscle Care", icon: "/images/Category Icons/Bone, joint & muscle care 2.svg" },
-    { name: "Gut Health", icon: "/images/Category Icons/Gut Health.svg" },
-    { name: "Vitamins & Nutrition", icon: "/images/Category Icons/Vit & Nutrition 1.svg" },
-    { name: "Hormonal Balance", icon: "/images/Category Icons/Hormonal balance ref 1.svg" },
-    { name: "Fertility", icon: "/images/Category Icons/fertility.svg" },
-    { name: "Sexual Health", icon: "/images/Category Icons/Sexual health.svg" },
-    { name: "Menstruation", icon: "/images/Category Icons/menstruation.svg" },
-    { name: "Iron Supplement", icon: "/images/Category Icons/Iron supplement.svg" },
-    { name: "PCOS/PCOD", icon: "/images/Category Icons/PCOS_PCOD.svg" },
+    { name: "All", filter: "All", icon: "/images/Category Icons/General Wellness Symbol.svg" },
+    ...shopCategories,
 ];
 
 const ageGroups = [
@@ -128,9 +121,48 @@ const categoryMap: Record<string, string> = {
     "PCOS/PCOD": "9",
 };
 
+const localCategoryAliases: Record<string, string[]> = {
+    "Bone, Joint & Muscle Care": ["Bone, Joint & Muscle Care"],
+    "Gut Health": ["Gut Health"],
+    "Vitamins & Nutrition": ["Vitamins & Nutrition", "Nutrition Plus", "Immunity Boost"],
+    "Hormonal Balance": ["Hormonal Balance", "Hormonal Care"],
+    Fertility: ["Fertility"],
+    "Sexual Health": ["Sexual Health"],
+    Menstruation: ["Menstruation"],
+    "Iron Supplement": ["Iron Supplement"],
+    "PCOS/PCOD": ["PCOS/PCOD"],
+    "Cold & Cough": ["Cold & Cough"],
+    "Urinary Health": ["Urinary Health"],
+    "Female Vitality": ["Female Vitality"],
+    "Male Vitality": ["Male Vitality"],
+    "Mental Wellness": ["Mental Wellness", "Mind & Focus"],
+    "General Wellness": ["General Wellness"],
+    "Natal Care": ["Natal Care"],
+    "Nutrition Plus": ["Vitamins & Nutrition", "Nutrition Plus"],
+    "Immunity Boost": ["Vitamins & Nutrition", "Immunity Boost"],
+    "Mind & Focus": ["Mental Wellness", "Mind & Focus"],
+    "Hormonal Care": ["Hormonal Balance", "Hormonal Care"],
+};
+
 export default function Shop() {
+    return (
+        <Suspense fallback={<div className="min-h-[50vh]" />}>
+            <ShopQuery />
+        </Suspense>
+    );
+}
+
+function ShopQuery() {
+    const searchParams = useSearchParams();
+    const requestedCategory = searchParams.get("category")?.trim().toLowerCase();
+    const initialCategory = categories.find((category) => normalizeCategory(category.filter) === normalizeCategory(requestedCategory ?? ""))?.name ?? "All";
+
+    return <ShopContent key={initialCategory} initialCategory={initialCategory} />;
+}
+
+function ShopContent({ initialCategory }: { initialCategory: string }) {
     const router = useRouter();
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedCategory, setSelectedCategory] = useState(initialCategory);
     const [selectedAge, setSelectedAge] = useState("All Age");
     const [selectedGender, setSelectedGender] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
@@ -149,8 +181,9 @@ export default function Shop() {
                 order: "desc"
             };
 
-            if (selectedCategory !== "All" && categoryMap[selectedCategory]) {
-                params.category_id = categoryMap[selectedCategory];
+            const selectedFilter = categories.find((category) => category.name === selectedCategory)?.filter ?? selectedCategory;
+            if (selectedFilter !== "All" && categoryMap[selectedFilter]) {
+                params.category_id = categoryMap[selectedFilter];
             }
             if (searchQuery.trim()) {
                 params.search = searchQuery.trim();
@@ -183,7 +216,7 @@ export default function Shop() {
                 </button>
                 <div
                     className="overflow-hidden transition-all duration-300 ease-in-out"
-                    style={{ maxHeight: expandedFilter === "category" ? "600px" : "0px", opacity: expandedFilter === "category" ? 1 : 0 }}
+                    style={{ maxHeight: expandedFilter === "category" ? "1000px" : "0px", opacity: expandedFilter === "category" ? 1 : 0 }}
                 >
                     <div className="space-y-1 pb-2">
                         {categories.map((cat) => (
@@ -330,7 +363,15 @@ export default function Shop() {
                                 <AnimatePresence mode="popLayout">
                                     {apiProducts.map((apiProd, idx) => {
                                         const fallback = allProducts.find(p => p.slug === apiProd.slug) || allProducts[0];
+                                        const selectedFilter = categories.find((category) => category.name === selectedCategory)?.filter ?? selectedCategory;
+                                        const selectedAliases = localCategoryAliases[selectedFilter] ?? [selectedFilter];
+                                        const productCategories = [
+                                            ...(apiProd.category ?? []).map((category) => category.name),
+                                            ...fallback.therapies,
+                                            fallback.gender,
+                                        ];
 
+                                        if (selectedCategory !== "All" && !selectedAliases.some((category) => productCategories.some((productCategory) => normalizeCategory(productCategory) === normalizeCategory(category)))) return null;
                                         if (selectedGender !== "All" && selectedGender !== "General Wellness" && fallback.gender !== selectedGender && fallback.gender !== "General Wellness") return null;
                                         if (selectedGender === "General Wellness" && fallback.gender !== "General Wellness") return null;
                                         if (selectedAge !== "All Age" && !fallback.ages.includes(selectedAge)) return null;

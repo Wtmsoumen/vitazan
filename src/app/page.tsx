@@ -20,6 +20,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import Carousel from "@/components/client/Carousel";
 import WellnessIsDailyRitual from "@/components/client/WellnessIsDailyRitual";
+import { shopCategories } from "@/utils/shopCategories";
 
 export default function Home() {
 
@@ -206,43 +207,25 @@ export default function Home() {
           </div>
         </AnimatedSection>
 
-        <div className="mt-8 md:mt-12">
-          <Carousel itemsPerView={{ base: 3, sm: 4, md: 5, lg: 8 }} gap={0} showDots={true} showArrows={true} leftArrow='top-[32%]' rightArrow='top-[32%]' className="py-4">
-            {[
-              { name: "Bone & Joint Care", icon: "/images/Category Icons/Bone, joint & muscle care 2.svg", bg: "#f3e4fd" },
-              { name: "Cold & Cough", icon: "/images/Category Icons/Cold and Cough remedy.svg", bg: "#fff1e0" },
-              { name: "Gut Health", icon: "/images/Category Icons/Gut Health.svg", bg: "#e2fbff" },
-              { name: "Vitamin & Nutrition", icon: "/images/Category Icons/Vit & Nutrition 1.svg", bg: "#eaecff" },
-              { name: "Sexual Health", icon: "/images/Category Icons/Sexual health.svg", bg: "#fce4ec" },
-              { name: "Hormonal Balance", icon: "/images/Category Icons/Hormonal balance ref 1.svg", bg: "#e8f5e9" },
-              { name: "Fertility", icon: "/images/Category Icons/fertility.svg", bg: "#fff3e0" },
-              { name: "Iron Supplement", icon: "/images/Category Icons/Iron supplement.svg", bg: "#ffebee" },
-              { name: "Menstruation", icon: "/images/Category Icons/menstruation.svg", bg: "#fce4ec" },
-              { name: "Urinary Health", icon: "/images/Category Icons/Urology care.svg", bg: "#e0f7fa" },
-              { name: "Female Vitality", icon: "/images/Category Icons/Female Vitality symbol.svg", bg: "#fce4ec" },
-              { name: "Male Vitality", icon: "/images/Category Icons/Male Vitality symbol.svg", bg: "#e3f2fd" },
-              { name: "Mental Wellness", icon: "/images/Category Icons/Mental Wellness 1.svg", bg: "#e8eaf6" },
-              { name: "General Wellness", icon: "/images/Category Icons/General Wellness Symbol.svg", bg: "#e0f2f1" },
-              { name: "Natal Care", icon: "/images/Category Icons/Natal Care.svg", bg: "#fff9c4" },
-              { name: "PCOS / PCOD", icon: "/images/Category Icons/PCOS_PCOD.svg", bg: "#f3e5f5" },
-              { name: "Nutrition Plus", icon: "/images/Category Icons/Vit & Nutrition 2.svg", bg: "#e8eaf6" },
-              { name: "Immunity Boost", icon: "/images/Category Icons/Vit & Nutrition 3.svg", bg: "#e0f7fa" },
-              { name: "Mind & Focus", icon: "/images/Category Icons/Mental Wellness 2.svg", bg: "#ede7f6" },
-              { name: "Hormonal Care", icon: "/images/Category Icons/Hormonal balance ref 2.svg", bg: "#e8f5e9" },
-            ].map((cat) => (
-              <motion.div
-                key={cat.name}
-                whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                className="group cursor-pointer flex flex-col items-center text-center"
-              >
-                <div
-                  className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-full flex items-center justify-center transition-all group-hover:scale-[1.08] shadow-sm group-hover:shadow-lg duration-300"
+        <div className="mt-5 sm:mt-7">
+          <Carousel itemsPerView={{ base: 2, sm: 3, md: 4, lg: 6 }} gap={12} showDots={true} showArrows={true} className="px-1 py-4 sm:px-3">
+            {shopCategories.map((cat) => (
+              <Link href={`/shop?category=${encodeURIComponent(cat.filter)}`} key={cat.filter} className="block h-full" aria-label={`Shop ${cat.name}`}>
+                <motion.div
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex h-full min-h-[142px] cursor-pointer flex-col items-center justify-center rounded-2xl border border-black/[0.04] px-2 py-4 text-center shadow-sm transition-shadow hover:shadow-md sm:min-h-[158px] sm:px-3"
                   style={{ backgroundColor: cat.bg }}
                 >
-                  <Image src={cat.icon} alt={cat.name} width={56} height={56} className="w-[40px] h-[40px] sm:w-[48px] sm:h-[48px] md:w-[56px] md:h-[56px]" />
-                </div>
-                <p className="mt-2 sm:mt-3 text-[12px] sm:text-[14px] md:text-[15px] font-semibold text-black leading-[1.3] max-w-[100px] sm:max-w-[120px]">{cat.name}</p>
-              </motion.div>
+                  <div
+                    className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/80 shadow-sm transition-transform duration-300 group-hover:scale-105 sm:h-14 sm:w-14"
+                  >
+                    <Image src={cat.icon} alt="" width={44} height={44} className="h-8 w-8 sm:h-9 sm:w-9" />
+                  </div>
+                  <p className="mt-3 max-w-[150px] text-[12px] font-semibold leading-snug text-[#183d35] sm:text-[13px]">{cat.name}</p>
+                  <span className="mt-1 text-[10px] font-medium text-[#52645d] opacity-0 transition-opacity group-hover:opacity-100">Browse products</span>
+                </motion.div>
+              </Link>
             ))}
           </Carousel>
         </div>
@@ -252,34 +235,36 @@ export default function Home() {
       <ClassicTopProducts />
 
       {/* Vitazan Essence */}
-      <section className="bg-[#eaffad]">
-        <div className="mx-auto max-w-[1600px] px-4 sm:px-8 md:px-16 lg:px-[100px] xl:px-[140px] py-12 md:py-20">
+      <section className="relative overflow-hidden bg-[#EAFFAD]">
+        <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 rounded-full bg-[#e2f1b7]/70 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-36 -left-20 h-80 w-80 rounded-full bg-white/80 blur-3xl" />
+        <div className="relative mx-auto max-w-[1600px] px-4 py-8 sm:px-8 md:px-16 md:py-10 lg:px-[100px] xl:px-[140px]">
           <AnimatedSection animation="fadeUp">
-            <div className="text-center">
-              <p className="text-[13px] sm:text-[15px] md:text-[16px] font-bold uppercase tracking-[2.1px] text-pink">
-                OUR ESSENCE
-              </p>
-              <h2 className="font-display mt-2 text-[32px] sm:text-[42px] md:text-[52px] lg:text-[60px] text-black">
-                Vitazan Essence
-              </h2>
-              <p className="mx-auto mt-4 md:mt-6 max-w-[800px] text-[16px] sm:text-[18px] md:text-[20px] leading-[24px] sm:leading-[28px] md:leading-[30px] text-black">
-                Among the lesser known Treasures of Ayurveda like Bhargi Muuli. A Hindi shrub/plant about more in
-                Village Traditions than in Classical Texts. Folk healers, however, always knew its Worth. They called it
-                Guardian of the Lungs, a Plant that gave Strength back to the Weak.
-              </p>
+            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-[11px] sm:text-[12px] font-bold uppercase tracking-[2.1px] text-pink">
+                  ROOTED IN NATURE
+                </p>
+                <h2 className="font-display mt-1 text-[30px] sm:text-[38px] md:text-[44px] text-black">
+                  VITAZAN Essence
+                </h2>
+                <p className="mt-2 max-w-[620px] text-[14px] sm:text-[15px] leading-[22px] text-black">
+                  Discover the story, science, and traditional wisdom behind the ingredients that inspire our formulations
+                </p>
+              </div>
               <Link href="/our-essence">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.97 }}
-                  className="mt-6 md:mt-8 rounded-full border-2 border-pink hover:border-dark-teal px-6 sm:px-8 py-2.5 sm:py-3.5 text-[15px] sm:text-[17px] font-semibold bg-pink text-white transition-colors hover:bg-dark-teal"
+                  className="shrink-0 rounded-full bg-[#174c40] px-5 py-2.5 text-[13px] sm:text-[14px] font-semibold text-white shadow-sm transition-colors hover:bg-[#10392f]"
                 >
-                  Explore More
+                  Explore ingredients <ArrowUpRight className="ml-1 inline h-4 w-4" />
                 </motion.button>
               </Link>
             </div>
           </AnimatedSection>
 
-          <div className="mt-10 md:mt-16 grid grid-cols-1 gap-6 md:gap-8">
+          <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 name: "Saw Palmetto",
@@ -300,37 +285,39 @@ export default function Home() {
                 img: "/images/Our Essence/Pomegranate.webp",
               },
             ].map((item, idx) => {
-              const isEven = idx % 2 === 0;
               return (
                 <AnimatedSection key={idx} animation="fadeUp" delay={idx * 0.1}>
                   <motion.div
-                    whileHover={{ y: -4 }}
+                    whileHover={{ y: -5 }}
                     transition={{ duration: 0.3 }}
-                    className={`group flex flex-col sm:flex-row ${isEven ? "" : "sm:flex-row-reverse"} items-stretch overflow-hidden rounded-2xl md:rounded-3xl shadow-sm border border-gray-100 bg-white`}
+                    className="group h-full overflow-hidden rounded-[22px] border border-white/80 bg-white/90 shadow-[0_8px_30px_rgba(24,61,53,0.07)] transition-shadow hover:shadow-[0_16px_40px_rgba(24,61,53,0.14)]"
                   >
-                    {/* Image side */}
-                    <div className="w-full sm:w-[42%] shrink-0 relative h-50 sm:h-auto min-h-80 overflow-hidden rounded-2xl md:rounded-3xl">
+                    <div className="relative h-40 overflow-hidden sm:h-44">
                       <Image
                         src={item.img}
                         alt={item.name}
                         fill
-                        className="object-cover transition-transform duration-500 scale-98 group-hover:scale-105 rounded-2xl md:rounded-3xl"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#102e27]/65 via-transparent to-transparent" />
+                      <span className="absolute bottom-3 left-4 rounded-full border border-white/35 bg-white/15 px-3 py-1 text-[10px] font-medium tracking-wide text-white backdrop-blur-sm">
+                        BOTANICAL SPOTLIGHT
+                      </span>
                     </div>
-                    {/* Text side */}
-                    <div className="flex-1 p-6 sm:p-8 md:p-10 flex flex-col justify-center gap-3">
-                      <p className="text-[12px] font-semibold uppercase tracking-[2px] text-pink">{item.subtitle}</p>
-                      <h3 className="font-display font-semibold text-[26px] sm:text-[32px] md:text-[40px] text-black leading-tight">
+                    <div className="flex min-h-[190px] flex-col p-4 sm:p-5">
+                      <p className="text-[10px] font-bold uppercase tracking-[1.8px] text-pink">{item.subtitle}</p>
+                      <h3 className="mt-1 font-display text-[22px] sm:text-[25px] text-black leading-tight">
                         {item.name}
                       </h3>
-                      <p className="text-[14px] sm:text-[16px] leading-[22px] sm:leading-[26px] text-gray-600">
+                      <p className="mt-2 line-clamp-3 text-[13px] leading-[20px] text-black">
                         {item.desc}
                       </p>
                       <Link
                         href={`/our-essence?ingredient=${encodeURIComponent(item.name)}`}
-                        className="mt-2 inline-flex items-center gap-2 text-[14px] font-semibold text-pink hover:text-dark-teal transition-colors w-fit"
+                        className="mt-auto inline-flex w-fit items-center gap-2 pt-3 text-[14px] font-medium text-pink transition-colors hover:text-[#174c40]"
                       >
-                        Read More <ArrowUpRight className="w-4 h-4" />
+                        Discover ingredient <ArrowUpRight className="h-4 w-4" />
                       </Link>
                     </div>
                   </motion.div>
@@ -346,28 +333,28 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center justify-end gap-8 lg:gap-16">
           <div className="w-full lg:w-[80%] flex flex-col lg:flex-row justify-center items-center gap-8 lg:gap-16 border border-solid border-[#00485D] p-6 sm:p-8 lg:py-15.75 rounded-3xl lg:pl-15.75">
             <Image
-              src="/images/syrup2.png"
+              src="/images/ALFAAKTIVP.png"
               alt="Wellness"
               width={1920}
               height={1080}
-              className="w-full sm:w-[60%] lg:w-auto h-auto lg:h-134.25 rounded-3xl lg:-ml-140 hover:scale-105 transition-all duration-700"
+              className="w-full sm:w-[60%] lg:w-auto h-auto lg:h-134.25 rounded-3xl lg:-ml-219 hover:scale-105 transition-all duration-700"
             />
             <AnimatedSection animation="fadeRight" delay={0.2} className="lg:mr-[-28rem]">
               <div className="flex flex-col items-start gap-4 sm:gap-6">
                 <p className="text-[13px] sm:text-[15px] md:text-[16px] font-bold uppercase tracking-[2.1px] text-pink">
-                  BEST SELLER . BONE & JOINT
+                  BEST SELLER . MALE VITALITY
                 </p>
                 <h2 className="font-display text-[30px] sm:text-[40px] md:text-[50px] leading-[1.15] text-black">
-                  Wellness <span className="relative inline-block text-pink">Formulated</span><br />with Intention.
+                  ALFAAKTIV <span className="relative inline-block text-pink">Wellness</span><br />with Intention.
                 </h2>
                 <p className="text-[15px] sm:text-[17px] leading-[22px] sm:leading-[26px] text-black w-[50%]">
-                  Our product line of HT-KOF is a herbal cough syrup/tonic carefully formulated using time-tested Ayurvedic herbs.
+                  ALFAAKTIV is formulated to support male vitality, energy and overall well-being.
                 </p>
                 <div className="space-y-3 sm:space-y-4">
                   {[
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                    "Lorem ipsum dolor sit amet, consectetur...",
-                    "Lorem ipsum dolor sit amet.",
+                    "Thoughtfully selected ingredients for everyday wellness.",
+                    "Made with a focus on quality and purposeful formulation.",
+                    "Designed to fit your daily vitality routine.",
                   ].map((text, i) => (
                     <motion.div
                       key={i}
@@ -654,15 +641,15 @@ export default function Home() {
                   <p className="text-[20px] sm:text-[22px] md:text-[24px] font-semibold leading-[26px] sm:leading-[30px] text-black">
                     {post.title}
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    href="/blog"
                     className="mt-3 sm:mt-4 inline-flex items-center gap-2 text-[16px] sm:text-[18px] font-semibold text-pink transition-colors hover:text-pink/80"
                   >
                     Read More
                     <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
                       <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                  </a>
+                  </Link>
                 </div>
               </motion.div>
             ))}

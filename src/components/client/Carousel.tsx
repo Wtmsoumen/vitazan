@@ -56,6 +56,10 @@ export default function Carousel({
     }, [updateDimensions]);
 
     const maxIndex = Math.max(0, totalItems - visibleCount);
+    const dotStops = Array.from({ length: Math.ceil(totalItems / visibleCount) }, (_, index) => Math.min(index * visibleCount, maxIndex))
+        .filter((index, position, stops) => stops.indexOf(index) === position);
+    const activeDot = dotStops.reduce((nearest, index, position) =>
+        Math.abs(index - currentIndex) < Math.abs(dotStops[nearest] - currentIndex) ? position : nearest, 0);
 
     const goTo = useCallback(
         (index: number) => {
@@ -126,18 +130,21 @@ export default function Carousel({
                 </>
             )}
 
-            {/* {showDots && maxIndex > 0 && (
-                <div className="mt-6 sm:mt-8 flex justify-center gap-2">
-                    {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            {showDots && dotStops.length > 1 && (
+                <div className="mt-3 flex justify-center gap-2" role="group" aria-label="Carousel pages">
+                    {dotStops.map((index, i) => (
                         <button
-                            key={i}
-                            onClick={() => goTo(i)}
-                            className={`h-2.5 rounded-full transition-all duration-300 ${i === currentIndex ? "w-8 bg-pink" : "w-2.5 bg-gray-300 hover:bg-gray-400"
+                            key={index}
+                            type="button"
+                            aria-label={`Show category page ${i + 1}`}
+                            aria-current={i === activeDot ? "true" : undefined}
+                            onClick={() => goTo(index)}
+                            className={`h-2 rounded-full transition-all duration-300 ${i === activeDot ? "w-7 bg-pink" : "w-2 bg-gray-300 hover:bg-gray-400"
                                 }`}
                         />
                     ))}
                 </div>
-            )} */}
+            )}
         </div>
     );
 }

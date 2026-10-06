@@ -12,7 +12,7 @@ export default function WellnessIsDailyRitual() {
             <AnimatedSection animation="fadeUp">
                 <div className="text-center">
                     <p className="text-[13px] sm:text-[15px] md:text-[16px] font-bold uppercase tracking-[2.1px] text-pink">
-                        CLASSIC TOP picks
+                        Our Products
                     </p>
                     <h2 className="font-display mt-2 text-[28px] sm:text-[38px] md:text-[50px] lg:text-[60px] text-black">
                         Wellness is a{" "}

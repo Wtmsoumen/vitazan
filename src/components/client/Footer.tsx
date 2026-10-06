@@ -19,6 +19,17 @@ export default function Footer() {
     const [footerData, setFooterData] = useState<any>([]);
     const [socialIcon, setSocialIcon] = useState("");
 
+    const categoryLinks: Record<string, string> = {
+        "Bone, Joint & Muscle Care": "Bone, Joint & Muscle Care",
+        "Gut Health": "Gut Health",
+        "Vitamins & Nutrition": "Vitamins & Nutrition",
+        "Sexual Health": "Sexual Health",
+        "Hormonal Balance": "Hormonal Balance",
+        "Fertility": "Fertility",
+        "Iron Supplement": "Iron Supplement",
+        "Menstruation": "Menstruation",
+    };
+
     useEffect(() => {
         fetchFooter().then((data: any) => { if (data) setFooterData(data?.site_footer1_menu); });
     }, []);
@@ -38,14 +49,14 @@ export default function Footer() {
                     {/* Logo & Info */}
                     <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants} className="sm:col-span-2 lg:col-span-1">
                         <motion.div whileHover={{ scale: 1.04 }} transition={{ duration: 0.25 }}>
-                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="brightness-0 invert w-[180px] h-[50px]" />
+                            <Image src="/images/logo.png" alt="Vitazan" width={1920} height={1080} className="brightness-0 invert w-[240px] h-[60px]" />
                         </motion.div>
-                        <p className="mt-4 text-[18px] leading-[22px] text-white">
-                            Bone health requires more than just calcium. VITAZAN OSTEOMAC delivers a complete, research-backed solution for maintaining bone density.
-                        </p>
+                        {/* <p className="mt-4 text-[18px] leading-[22px] text-white">
+                            Thoughtfully formulated wellness products, made to support your everyday vitality.
+                        </p> */}
                         {/* Social icons — staggered on scroll */}
                         <motion.div
-                            className="mt-6 flex"
+                            className="mt-10 flex"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
@@ -68,11 +79,11 @@ export default function Footer() {
                                     onMouseEnter={() => setSocialIcon(social.alt)}
                                     onMouseLeave={() => setSocialIcon("")}
                                 >
-                                    <Link href="#">
+                                    <span aria-label={`${social.alt} profile URL not configured`}>
                                         <motion.div whileHover={{ scale: 1.18, y: -3 }} whileTap={{ scale: 0.95 }} transition={{ duration: 0.2 }}>
                                             <Image src={social.alt === socialIcon ? social.srcp : social.src} alt={social.alt} width={1920} height={1080} className={`w-10 h-10 rounded ${social.alt === socialIcon ? "bg-black/50" : ""}`} />
                                         </motion.div>
-                                    </Link>
+                                    </span>
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -82,23 +93,40 @@ export default function Footer() {
                     <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
                         <h4 className="text-[24px] font-semibold text-white">Shop</h4>
                         <ul className="mt-4 space-y-3">
-                            {[{ name: "All Products", link: "/shop" },
-                            { name: "VITAZAN™ HT-Kof", link: "/shop/details" },
-                            { name: "VITAZAN™ Senax", link: "/shop/details" },
-                            { name: "VITAZAN™ Reload", link: "/shop/details" },
-                            { name: "VITAZAN™ Osteomac", link: "/shop/details" }].map((item, idx) => (
-                                <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <Link href={item.link} className="text-[16px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
-                                        {item.name}
-                                    </Link>
-                                </motion.li>
-                            ))}
+                            {[
+                                { name: "All Products", link: "/shop" },
+                                { name: "Bone, Joint & Muscle Care", icon: "/images/Category Icons/Bone, joint & muscle care 2.svg", bg: "#f3e4fd" },
+                                { name: "Cold & Cough", icon: "/images/Category Icons/Cold and Cough remedy.svg", bg: "#fff1e0" },
+                                { name: "Gut Health", icon: "/images/Category Icons/Gut Health.svg", bg: "#e2fbff" },
+                                { name: "Vitamins & Nutrition", icon: "/images/Category Icons/Vit & Nutrition 1.svg", bg: "#eaecff" },
+                                { name: "Sexual Health", icon: "/images/Category Icons/Sexual health.svg", bg: "#fce4ec" },
+                                { name: "Hormonal Balance", icon: "/images/Category Icons/Hormonal balance ref 1.svg", bg: "#e8f5e9" },
+                                { name: "Fertility", icon: "/images/Category Icons/fertility.svg", bg: "#fff3e0" },
+                                { name: "Iron Supplement", icon: "/images/Category Icons/Iron supplement.svg", bg: "#ffebee" },
+                                { name: "Menstruation", icon: "/images/Category Icons/menstruation.svg", bg: "#fce4ec" },
+                                { name: "Urinary Health", icon: "/images/Category Icons/Urology care.svg", bg: "#e0f7fa" },
+                                { name: "Female Vitality", icon: "/images/Category Icons/Female Vitality symbol.svg", bg: "#fce4ec" },
+                                { name: "Male Vitality", icon: "/images/Category Icons/Male Vitality symbol.png", bg: "#e3f2fd" },
+                                { name: "Mental Wellness", icon: "/images/Category Icons/Mental Wellness 1.svg", bg: "#e8eaf6" },
+                                { name: "General Wellness", icon: "/images/Category Icons/General Wellness Symbol.svg", bg: "#e0f2f1" },
+                                { name: "Natal Care", icon: "/images/Category Icons/Natal Care.svg", bg: "#fff9c4" },
+                                { name: "PCOS / PCOD", icon: "/images/Category Icons/PCOS_PCOD.svg", bg: "#f3e5f5" },
+                                { name: "Nutrition Plus", icon: "/images/Category Icons/Vit & Nutrition 2.svg", bg: "#e8eaf6" },
+                                { name: "Immunity Boost", icon: "/images/Category Icons/Vit & Nutrition 3.svg", bg: "#e0f7fa" },
+                                { name: "Mind & Focus", icon: "/images/Category Icons/Mental Wellness 2.svg", bg: "#ede7f6" },
+                                { name: "Hormonal Care", icon: "/images/Category Icons/Hormonal balance ref 2.svg", bg: "#e8f5e9" },].map((item, idx) => (
+                                    <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                                        <Link href={categoryLinks[item.name] ? `/shop?category=${encodeURIComponent(categoryLinks[item.name])}` : "/shop"} className="text-[16px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                            {item.name}
+                                        </Link>
+                                    </motion.li>
+                                ))}
                         </ul>
                     </motion.div>
 
                     {/* Company */}
                     <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
-                        <h4 className="text-[24px] font-semibold text-white">Company</h4>
+                        <h4 className="text-[24px] font-semibold text-white">Site Map</h4>
                         <ul className="mt-4 space-y-3">
                             {footerData?.length ? footerData.map((item: any, idx: number) => (
                                 <motion.li key={idx} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
@@ -106,21 +134,32 @@ export default function Footer() {
                                         {item?.page_name}
                                     </Link>
                                 </motion.li>
-                            )) : null}
+                            )) : [
+                                { name: "About Us", href: "/about" },
+                                { name: "Our Essence", href: "/our-essence" },
+                                { name: "Blog", href: "/blog" },
+                                { name: "Contact Us", href: "/contact-us" },
+                            ].map((item) => (
+                                <motion.li key={item.href} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                                    <Link href={item.href} className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                        {item.name}
+                                    </Link>
+                                </motion.li>
+                            ))}
                         </ul>
                     </motion.div>
 
                     {/* Contact */}
                     <motion.div custom={3} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={colVariants}>
-                        <h4 className="text-[24px] font-semibold text-white">Contact</h4>
+                        <h4 className="text-[24px] font-semibold text-white">Newsletter Subscription</h4>
                         <ul className="mt-4 space-y-3">
                             {[
-                                "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore - 560016",
-                                "health@vitazan.co.uk",
+                                { label: "Manila, Philippines", href: "/contact-us" },
+                                { label: "health@vitazan.co.uk", href: "mailto:health@vitazan.co.uk" },
                             ].map((item) => (
-                                <motion.li key={item} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
-                                    <a href="#" className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
-                                        {item}
+                                <motion.li key={item.href} whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                                    <a href={item.href} className="text-[15px] text-white hover:text-pink-light transition-colors font-medium! hover:border-b border-solid border-pink-light">
+                                        {item.label}
                                     </a>
                                 </motion.li>
                             ))}
@@ -141,9 +180,13 @@ export default function Footer() {
                     <p className="text-center text-[12px] sm:text-[13px] text-white">
                         Copyright &copy; 2026 Vitazan. All rights reserved.
                     </p>
-                    <p className="text-center text-[12px] sm:text-[13px] text-white flex items-baseline gap-4">
-                        Terms <span className="w-0.5 h-0.5 rounded-full bg-white" /> Privacy Policy <span className="w-0.5 h-0.5 rounded-full bg-white" /> FAQ
-                    </p>
+                    <nav aria-label="Legal" className="flex items-baseline gap-4 text-center text-[12px] sm:text-[13px] text-white">
+                        <span>Terms</span>
+                        <span className="w-0.5 h-0.5 rounded-full bg-white" />
+                        <span>Privacy Policy</span>
+                        <span className="w-0.5 h-0.5 rounded-full bg-white" />
+                        <span>FAQ</span>
+                    </nav>
                 </div>
             </motion.div>
         </motion.footer>

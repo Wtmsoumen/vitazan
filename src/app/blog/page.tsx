@@ -191,27 +191,27 @@ export default function BlogPage() {
                             {/* Main featured */}
                             <AnimatedSection animation="fadeUp">
                                 <Link href={`/blog/${featured[0].id}`}>
-                                <motion.div
-                                    whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                                    className="group rounded-2xl overflow-hidden shadow-lg h-fit cursor-pointer"
-                                >
-                                    <div className="relative h-[280px] sm:h-[340px] overflow-hidden">
-                                        <Image src={featured[0].img} alt={featured[0].title} width={1920} height={1080} className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                        <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
-                                            <span className="rounded-full bg-pink px-4 py-1.5 text-[12px] uppercase tracking-[0.26px] text-white font-semibold">
-                                                {featured[0].tag}
-                                            </span>
-                                            <h2 className="mt-3 text-[22px] sm:text-[26px] font-bold leading-[1.2] text-white">
-                                                {featured[0].title}
-                                            </h2>
-                                            <div className="mt-3 flex items-center gap-4 text-white/70 text-[13px]">
-                                                <span>{featured[0].date}</span>
-                                                <span className="flex items-center gap-1"><Clock size={13} /> {featured[0].readTime}</span>
+                                    <motion.div
+                                        whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                                        className="group rounded-2xl overflow-hidden shadow-lg h-fit cursor-pointer"
+                                    >
+                                        <div className="relative h-[280px] sm:h-[340px] overflow-hidden">
+                                            <Image src={featured[0].img} alt={featured[0].title} width={1920} height={1080} className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                                            <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
+                                                <span className="rounded-full bg-pink px-4 py-1.5 text-[12px] uppercase tracking-[0.26px] text-white font-semibold">
+                                                    {featured[0].tag}
+                                                </span>
+                                                <h2 className="mt-3 text-[22px] sm:text-[26px] font-bold leading-[1.2] text-white">
+                                                    {featured[0].title}
+                                                </h2>
+                                                <div className="mt-3 flex items-center gap-4 text-white/70 text-[13px]">
+                                                    <span>{featured[0].date}</span>
+                                                    <span className="flex items-center gap-1"><Clock size={13} /> {featured[0].readTime}</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </motion.div>
+                                    </motion.div>
                                 </Link>
                             </AnimatedSection>
 
@@ -220,29 +220,29 @@ export default function BlogPage() {
                                 {featured.slice(1, 3).map((post, idx) => (
                                     <AnimatedSection key={post.id} animation="fadeUp" delay={0.1 * (idx + 1)}>
                                         <Link href={`/blog/${post.id}`}>
-                                        <motion.div
-                                            whileHover={{ y: -4, transition: { duration: 0.3 } }}
-                                            className="group flex flex-col sm:flex-row gap-4 rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white h-full"
-                                        >
-                                            <div className="relative w-full sm:w-[200px] md:w-[240px] h-[180px] sm:h-auto flex-shrink-0 overflow-hidden">
-                                                <Image src={post.img} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                                            </div>
-                                            <div className="flex flex-col justify-center p-4 sm:p-5">
-                                                <span className="w-fit rounded-full bg-gray-100 px-3 py-1 text-[11px] uppercase tracking-[0.26px] text-gray-600 font-semibold">
-                                                    {post.tag}
-                                                </span>
-                                                <h3 className="mt-2 text-[17px] sm:text-[19px] font-bold leading-[1.3] text-black">
-                                                    {post.title}
-                                                </h3>
-                                                <div className="mt-2 flex items-center gap-3 text-gray-400 text-[12px]">
-                                                    <span>{post.date}</span>
-                                                    <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                                            <motion.div
+                                                whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                                                className="group flex flex-col sm:flex-row gap-4 rounded-2xl overflow-hidden shadow-md cursor-pointer bg-white h-full"
+                                            >
+                                                <div className="relative w-full sm:w-[200px] md:w-[240px] h-[180px] sm:h-auto flex-shrink-0 overflow-hidden">
+                                                    <Image src={post.img} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                                                 </div>
-                                                <span className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-pink hover:text-pink/80 transition-colors">
-                                                    Read More <ArrowRight size={14} />
-                                                </span>
-                                            </div>
-                                        </motion.div>
+                                                <div className="flex flex-col justify-center p-4 sm:p-5">
+                                                    <span className="w-fit rounded-full bg-gray-100 px-3 py-1 text-[11px] uppercase tracking-[0.26px] text-gray-600 font-semibold">
+                                                        {post.tag}
+                                                    </span>
+                                                    <h3 className="mt-2 text-[17px] sm:text-[19px] font-bold leading-[1.3] text-black">
+                                                        {post.title}
+                                                    </h3>
+                                                    <div className="mt-2 flex items-center gap-3 text-gray-400 text-[12px]">
+                                                        <span>{post.date}</span>
+                                                        <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                                                    </div>
+                                                    <span className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-semibold text-pink hover:text-pink/80 transition-colors">
+                                                        Read More <ArrowRight size={14} />
+                                                    </span>
+                                                </div>
+                                            </motion.div>
                                         </Link>
                                     </AnimatedSection>
                                 ))}
@@ -279,37 +279,37 @@ export default function BlogPage() {
                             {(searchQuery || activeCategory !== "All" ? filtered : rest).map((post, idx) => (
                                 <AnimatedSection key={post.id} animation="fadeUp" delay={0.05 * idx}>
                                     <Link href={`/blog/${post.id}`}>
-                                    <motion.div
-                                        whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                                        className="group flex flex-col h-full cursor-pointer shadow-md rounded-2xl overflow-hidden bg-white"
-                                    >
-                                        <div className="relative h-[200px] sm:h-[230px] md:h-[255px] overflow-hidden">
-                                            <Image src={post.img} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                                            <div className="absolute bottom-4 left-4">
-                                                <span className="rounded-full bg-white px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] uppercase tracking-[0.26px] text-black font-semibold">
-                                                    {post.tag}
+                                        <motion.div
+                                            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                                            className="group flex flex-col h-full cursor-pointer shadow-md rounded-2xl overflow-hidden bg-white"
+                                        >
+                                            <div className="relative h-[200px] sm:h-[230px] md:h-[255px] overflow-hidden">
+                                                <Image src={post.img} alt={post.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                                                <div className="absolute bottom-4 left-4">
+                                                    <span className="rounded-full bg-white px-4 sm:px-5 py-2 text-[12px] sm:text-[13px] uppercase tracking-[0.26px] text-black font-semibold">
+                                                        {post.tag}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col flex-1 p-5">
+                                                <div className="flex items-center gap-3 text-gray-400 text-[12px] mb-3">
+                                                    <span>{post.date}</span>
+                                                    <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
+                                                </div>
+                                                <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.3] text-black">
+                                                    {post.title}
+                                                </h3>
+                                                <p className="mt-2 text-[14px] leading-[1.6] text-black line-clamp-2">
+                                                    {post.desc}
+                                                </p>
+                                                <span className="mt-auto pt-4 inline-flex items-center gap-2 text-[15px] sm:text-[16px] font-semibold text-pink transition-colors hover:text-pink/80">
+                                                    Read More
+                                                    <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+                                                        <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
                                                 </span>
                                             </div>
-                                        </div>
-                                        <div className="flex flex-col flex-1 p-5">
-                                            <div className="flex items-center gap-3 text-gray-400 text-[12px] mb-3">
-                                                <span>{post.date}</span>
-                                                <span className="flex items-center gap-1"><Clock size={12} /> {post.readTime}</span>
-                                            </div>
-                                            <h3 className="text-[18px] sm:text-[20px] font-bold leading-[1.3] text-black">
-                                                {post.title}
-                                            </h3>
-                                            <p className="mt-2 text-[14px] leading-[1.6] text-black line-clamp-2">
-                                                {post.desc}
-                                            </p>
-                                            <span className="mt-auto pt-4 inline-flex items-center gap-2 text-[15px] sm:text-[16px] font-semibold text-pink transition-colors hover:text-pink/80">
-                                                Read More
-                                                <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
-                                                    <path d="M1 6H17M17 6L12 1M17 6L12 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </span>
-                                        </div>
-                                    </motion.div>
+                                        </motion.div>
                                     </Link>
                                 </AnimatedSection>
                             ))}
