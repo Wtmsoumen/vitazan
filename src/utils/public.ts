@@ -62,6 +62,34 @@ export interface PageDetail extends PageItem {
   sections?: PageSection[];
 }
 
+function extractArrayPayload(value: unknown): unknown[] | null {
+  if (Array.isArray(value)) return value;
+  if (!value || typeof value !== "object") return null;
+
+  const record = value as Record<string, unknown>;
+  for (const key of ["response_data", "data", "pages", "items", "results"]) {
+    const candidate = record[key];
+    if (Array.isArray(candidate)) return candidate;
+    const nested = extractArrayPayload(candidate);
+    if (nested) return nested;
+  }
+
+  return null;
+}
+
+function extractObjectPayload(value: unknown, keys: string[]): Record<string, unknown> | null {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const record = value as Record<string, unknown>;
+  if ("slug" in record || "page_title" in record) return record;
+
+  for (const key of keys) {
+    const nested = extractObjectPayload(record[key], keys);
+    if (nested) return nested;
+  }
+
+  return null;
+}
+
 export async function fetchHeader(): Promise<HeaderData | null> {
   try {
     const res: any = await api<ApiEnvelope<HeaderData>>(endpoints.getHeader);
@@ -82,8 +110,13 @@ export async function fetchFooter(): Promise<FooterData | null> {
 
 export async function fetchPages(): Promise<PageItem[]> {
   try {
-    const res: any = await api<ApiEnvelope<PageItem[]>>(endpoints.getPages);
-    return res;
+    const response = await api<ApiEnvelope<unknown>>(endpoints.getPages);
+    const payload = getResponseData(response) ?? response;
+    const pages = extractArrayPayload(payload);
+    return (pages ?? []).filter(
+      (page): page is PageItem =>
+        !!page && typeof page === "object" && typeof (page as PageItem).slug === "string",
+    );
   } catch {
     return [];
   }
@@ -91,10 +124,11 @@ export async function fetchPages(): Promise<PageItem[]> {
 
 export async function fetchPageDetails(slug: string): Promise<PageDetail | null> {
   try {
-    const res: any = await api<ApiEnvelope<PageDetail>>(endpoints.getPageDetails, {
+    const response = await api<ApiEnvelope<unknown>>(endpoints.getPageDetails, {
       params: { slug },
     });
-    return res;
+    const payload = getResponseData(response) ?? response;
+    return extractObjectPayload(payload, ["response_data", "data", "page", "item"]) as PageDetail | null;
   } catch {
     return null;
   }

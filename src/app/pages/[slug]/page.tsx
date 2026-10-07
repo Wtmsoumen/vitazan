@@ -8,7 +8,9 @@ interface Props {
 
 export async function generateStaticParams() {
   const pages = await fetchPages();
-  return pages.map((p) => ({ slug: p.slug }));
+  return (Array.isArray(pages) ? pages : [])
+    .filter((page) => typeof page?.slug === "string" && page.slug.length > 0)
+    .map((page) => ({ slug: page.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -46,7 +48,7 @@ export default async function PageDetailPage({ params }: Props) {
         />
       )}
 
-      {page.sections && page.sections.length > 0 && (
+      {Array.isArray(page.sections) && page.sections.length > 0 && (
         <div className="mt-12 space-y-16">
           {page.sections.map((section) => (
             <section key={section.id} className="flex flex-col md:flex-row gap-8 items-start">
