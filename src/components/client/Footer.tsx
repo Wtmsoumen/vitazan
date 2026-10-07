@@ -194,11 +194,11 @@ export default function Footer() {
                         Copyright &copy; 2026 Vitazan. All rights reserved.
                     </p>
                     <nav aria-label="Legal" className="flex items-baseline gap-4 text-center text-[12px] sm:text-[13px] text-white">
-                        <span>Terms</span>
+                        <Link className="hover:text-pink-light" href="/terms">Terms</Link>
                         <span className="w-0.5 h-0.5 rounded-full bg-white" />
-                        <span>Privacy Policy</span>
+                        <Link className="hover:text-pink-light" href="/privacy-policy">Privacy Policy</Link>
                         <span className="w-0.5 h-0.5 rounded-full bg-white" />
-                        <span>FAQ</span>
+                        <Link className="hover:text-pink-light" href="/faq">FAQ</Link>
                     </nav>
                 </div>
             </motion.div>
