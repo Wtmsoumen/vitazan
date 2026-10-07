@@ -72,7 +72,7 @@ export default function ClassicTopProducts() {
             </AnimatedSection>
 
             {/* Product cards grid */}
-            <StaggerContainer className="mt-10 md:mt-16 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5" staggerDelay={0.1}>
+            <StaggerContainer className="mt-6 md:mt-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5" staggerDelay={0.1}>
                 {products.slice(0, 4).map((product, idx) => (
                     <StaggerItem key={idx} animation="scaleUp">
                         <Link href="/shop/details">

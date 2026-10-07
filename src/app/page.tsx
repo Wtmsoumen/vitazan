@@ -158,7 +158,7 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-              <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 -right-20" />
+              <Image src="/images/bannerPart1.png" alt="" width={1920} height={180} className="hidden md:block absolute w-[60%] sm:w-[55%] md:w-[55rem] h-auto bottom-0 -right-20" />
             </div>
           </div>
         </motion.div>
@@ -223,7 +223,7 @@ export default function Home() {
                     <Image src={cat.icon} alt="" width={44} height={44} className="h-8 w-8 sm:h-9 sm:w-9" />
                   </div>
                   <p className="mt-3 max-w-[150px] text-[12px] font-semibold leading-snug text-[#183d35] sm:text-[13px]">{cat.name}</p>
-                  <span className="mt-1 text-[10px] font-medium text-[#52645d] opacity-0 transition-opacity group-hover:opacity-100">Browse products</span>
+                  {/* <span className="mt-1 text-[10px] font-medium text-[#52645d] opacity-0 transition-opacity group-hover:opacity-100">Browse products</span> */}
                 </motion.div>
               </Link>
             ))}

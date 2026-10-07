@@ -126,8 +126,8 @@ export default function BlogPage() {
                     className="relative w-full h-[30vh]"
                 >
                     <Image
-                        src="/images/FiveMinuteReads.png"
-                        alt="Blog"
+                        src="/images/blogBanner.png"
+                        alt="Blog Banner"
                         width={1920}
                         height={1080}
                         className="w-full h-full object-cover"
@@ -139,7 +139,7 @@ export default function BlogPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.35 }}
-                            className="font-display mt-2 sm:mt-3 text-[36px] sm:text-[52px] md:text-[64px] leading-[1.1] text-white"
+                            className="font-display mt-2 sm:mt-3 text-[36px] sm:text-[52px] md:text-[64px] leading-[1.1] text-white text-shadow-md"
                         >
                             Notes on<br />Living Well
                         </motion.h1>
@@ -147,7 +147,7 @@ export default function BlogPage() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className="mt-3 sm:mt-4 text-[15px] sm:text-[17px] leading-[1.6] text-white max-w-[500px]"
+                            className="mt-3 sm:mt-4 text-[15px] sm:text-[17px] leading-[1.6] text-white max-w-[500px] text-shadow-md"
                         >
                             Five-minute reads for a healthier you. Expert insights on wellness, nutrition, and natural health.
                         </motion.p>
@@ -195,7 +195,7 @@ export default function BlogPage() {
                                         whileHover={{ y: -6, transition: { duration: 0.3 } }}
                                         className="group rounded-2xl overflow-hidden shadow-lg h-fit cursor-pointer"
                                     >
-                                        <div className="relative h-[280px] sm:h-[340px] overflow-hidden">
+                                        <div className="relative h-[280px] sm:h-[380px] overflow-hidden">
                                             <Image src={featured[0].img} alt={featured[0].title} width={1920} height={1080} className="w-full h-full transition-transform duration-500 group-hover:scale-105" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                                             <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-7">
@@ -216,7 +216,7 @@ export default function BlogPage() {
                             </AnimatedSection>
 
                             {/* Side featured */}
-                            <div className="flex flex-col gap-6">
+                            <div className="flex flex-col gap-6 h-fit">
                                 {featured.slice(1, 3).map((post, idx) => (
                                     <AnimatedSection key={post.id} animation="fadeUp" delay={0.1 * (idx + 1)}>
                                         <Link href={`/blog/${post.id}`}>
